@@ -15,6 +15,9 @@
 		7509F4DD1DF0564F00E1EBD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7509F4DB1DF0564F00E1EBD3 /* LaunchScreen.storyboard */; };
 		7509F4E81DF0565000E1EBD3 /* PictureMyWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */; };
 		751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828BA1DF05A53001D12ED /* DKExtensions.swift */; };
+		751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 751828C61DF08B26001D12ED /* Model.xcdatamodeld */; };
+		751828CB1DF08BAD001D12ED /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */; };
+		751828CC1DF08BAD001D12ED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828CA1DF08BAD001D12ED /* Post.swift */; };
 		756E74461DF0579000960616 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 756E74451DF0579000960616 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,9 @@
 		7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureMyWorldTests.swift; sourceTree = "<group>"; };
 		7509F4E91DF0565000E1EBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		751828BA1DF05A53001D12ED /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
+		751828C71DF08B26001D12ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "Database/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		751828CA1DF08BAD001D12ED /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Database/Post.swift; sourceTree = "<group>"; };
 		756E74451DF0579000960616 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +91,7 @@
 		7509F4C61DF0564F00E1EBD3 = {
 			isa = PBXGroup;
 			children = (
+				751828C51DF08B10001D12ED /* Database */,
 				751828B71DF05A53001D12ED /* Submodules */,
 				756E74441DF0578200960616 /* Resources */,
 				7509F4D11DF0564F00E1EBD3 /* PictureMyWorld */,
@@ -140,6 +147,16 @@
 				751828BA1DF05A53001D12ED /* DKExtensions.swift */,
 			);
 			path = DKExtensionsSwift;
+			sourceTree = "<group>";
+		};
+		751828C51DF08B10001D12ED /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */,
+				751828CA1DF08BAD001D12ED /* Post.swift */,
+				751828C61DF08B26001D12ED /* Model.xcdatamodeld */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 		756E74441DF0578200960616 /* Resources */ = {
@@ -321,6 +338,9 @@
 				7509F4D51DF0564F00E1EBD3 /* ViewController.swift in Sources */,
 				7509F4D31DF0564F00E1EBD3 /* AppDelegate.swift in Sources */,
 				751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */,
+				751828CC1DF08BAD001D12ED /* Post.swift in Sources */,
+				751828CB1DF08BAD001D12ED /* Post+CoreDataProperties.swift in Sources */,
+				751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +550,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		751828C61DF08B26001D12ED /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				751828C71DF08B26001D12ED /* Model.xcdatamodel */,
+			);
+			currentVersion = 751828C71DF08B26001D12ED /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = Database/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7509F4C71DF0564F00E1EBD3 /* Project object */;
 }
