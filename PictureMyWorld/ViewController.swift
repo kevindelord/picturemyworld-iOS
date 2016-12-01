@@ -12,7 +12,19 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+
+		let myURLString = "http://picturemy.world"
+		guard let myURL = NSURL(string: myURLString) else {
+			print("Error: \(myURLString) doesn't seem to be a valid URL")
+			return
+		}
+
+		do {
+			let myHTMLString = try String(contentsOfURL: myURL)
+			print("HTML : \(myHTMLString)")
+		} catch let error as NSError {
+			print("Error: \(error)")
+		}
 	}
 
 	override func didReceiveMemoryWarning() {
