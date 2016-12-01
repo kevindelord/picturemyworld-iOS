@@ -14,6 +14,7 @@
 		7509F4DA1DF0564F00E1EBD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7509F4D91DF0564F00E1EBD3 /* Assets.xcassets */; };
 		7509F4DD1DF0564F00E1EBD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7509F4DB1DF0564F00E1EBD3 /* LaunchScreen.storyboard */; };
 		7509F4E81DF0565000E1EBD3 /* PictureMyWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */; };
+		751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828BA1DF05A53001D12ED /* DKExtensions.swift */; };
 		756E74461DF0579000960616 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 756E74451DF0579000960616 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		7509F4E31DF0565000E1EBD3 /* PictureMyWorldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictureMyWorldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureMyWorldTests.swift; sourceTree = "<group>"; };
 		7509F4E91DF0565000E1EBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		751828BA1DF05A53001D12ED /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		756E74451DF0579000960616 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 		7509F4C61DF0564F00E1EBD3 = {
 			isa = PBXGroup;
 			children = (
+				751828B71DF05A53001D12ED /* Submodules */,
 				756E74441DF0578200960616 /* Resources */,
 				7509F4D11DF0564F00E1EBD3 /* PictureMyWorld */,
 				7509F4E61DF0565000E1EBD3 /* PictureMyWorldTests */,
@@ -121,6 +124,22 @@
 				7509F4E91DF0565000E1EBD3 /* Info.plist */,
 			);
 			path = PictureMyWorldTests;
+			sourceTree = "<group>";
+		};
+		751828B71DF05A53001D12ED /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				751828B81DF05A53001D12ED /* DKExtensionsSwift */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		751828B81DF05A53001D12ED /* DKExtensionsSwift */ = {
+			isa = PBXGroup;
+			children = (
+				751828BA1DF05A53001D12ED /* DKExtensions.swift */,
+			);
+			path = DKExtensionsSwift;
 			sourceTree = "<group>";
 		};
 		756E74441DF0578200960616 /* Resources */ = {
@@ -301,6 +320,7 @@
 			files = (
 				7509F4D51DF0564F00E1EBD3 /* ViewController.swift in Sources */,
 				7509F4D31DF0564F00E1EBD3 /* AppDelegate.swift in Sources */,
+				751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,8 +452,10 @@
 			baseConfigurationReference = 61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = PictureMyWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D ADHOC -D ALPHA -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -444,8 +466,10 @@
 			baseConfigurationReference = 23FB15770CAD38DF12FD5C5B /* Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = PictureMyWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D ADHOC -D ALPHA -D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

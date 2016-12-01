@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4EF5B61FEC67F123514B486A918C4FD1257FD1A9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4EF5B61FEC67F123514B486A918C4FD1257FD1A9" : 0,
+    "919CF189C56C1B8A65F5272C2F5A7797ECED2EC7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D8D60008-65A2-4727-8775-71DE0A541540",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4EF5B61FEC67F123514B486A918C4FD1257FD1A9" : "picturemyworld-iOS\/",
+    "919CF189C56C1B8A65F5272C2F5A7797ECED2EC7" : "picturemyworld-iOS\/Submodules\/DKExtensionsSwift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PictureMyWorld",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PictureMyWorld.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kevindelord\/picturemyworld-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4EF5B61FEC67F123514B486A918C4FD1257FD1A9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kevindelord\/DKExtensionsSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "919CF189C56C1B8A65F5272C2F5A7797ECED2EC7"
+    }
+  ]
+}
