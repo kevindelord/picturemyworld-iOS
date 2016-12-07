@@ -256,6 +256,7 @@ extension AssetManager {
 		// Create new operation
 		operation = NSBlockOperation {
 			self.downloadAndCacheImage(imageURL) { (image: UIImage?) in
+				image?.accessibilityIdentifier = imageURL
 				completion?(image: image)
 				dispatch_sync(self.concurrentQueue) {
 					self.operations.removeValueForKey(imageURL)

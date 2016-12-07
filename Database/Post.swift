@@ -21,7 +21,7 @@ class Post: NSManagedObject {
 extension Post {
 
 	override var description: String {
-		return "\(self.title ?? "nil"): \(self.date ?? "nil"), location: \(self.mapsText ?? ""))"
+		return "'\(self.title ?? "nil")': \(self.dateString ?? "nil"), location: \(self.mapsText ?? "")"
 	}
 
 	override func updateWithDictionary(dictionary: [NSObject: AnyObject]?, inContext savingContext: NSManagedObjectContext) {
@@ -36,6 +36,11 @@ extension Post {
 		self.thumbnailURL		= dictionary?[Database.Key.Post.ThumbnailURL] as? String
 		self.imageURL			= dictionary?[Database.Key.Post.ImageURL] as? String
 		self.date 				= NSDate(fromISOString: (dictionary?[Database.Key.Post.Date] as? String) ?? "")
+
+		// Remove extra whitespace and newline characters.
+		self.mapsText 			= self.mapsText?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+		self.descriptionText 	= self.descriptionText?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+		self.title 				= self.title?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 	}
 
 	override class func verbose() -> Bool {

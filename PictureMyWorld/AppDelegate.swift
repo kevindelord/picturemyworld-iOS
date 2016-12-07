@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-		self.setupDatabase()
+		DKDBManager.setupLocalDatabase()
 
 		return true
 	}
@@ -25,17 +25,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 		// Saves changes in the application's managed object context before the application terminates.
 		DKDBManager.cleanUp()
-	}
-
-	private func setupDatabase() {
-		DKDBManager.setVerbose(Verbose.Manager.Database)
-		DKDBManager.setResetStoredEntities(Configuration.RestoreDatabaseOnStart)
-		DKDBManager.setupDatabaseWithName(Database.SqliteFilename, didResetDatabase: {
-			// Block executed when the database has been erased and created again.
-			// Depending on your needs you might want to do something special right now as:.
-			// - Setting up some user defaults.
-			// - Deal with your api/store manager.
-			// Etc.
-		})
 	}
 }

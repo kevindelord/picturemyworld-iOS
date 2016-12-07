@@ -50,3 +50,8 @@ extension HTMLParser {
 
 	static let DateFormat					= "MMMM dd, yyyy"
 }
+
+struct ReusableIdentifier {
+
+	static let PostCollectionViewCell		= "PostCollectionViewCell_ID"
+}

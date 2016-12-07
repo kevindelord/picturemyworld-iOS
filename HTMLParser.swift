@@ -50,7 +50,6 @@ struct HTMLParser {
 			for node in doc.xpath("//section/ul[@class='grid']/li/figure") {
 				if let postData = HTMLParser.generatePostData(node) {
 					posts.append(postData)
-					break
 				}
 			}
 		}
@@ -71,7 +70,7 @@ private extension HTMLParser {
 			title 				= node.xpath("figcaption/h3").first?.text,
 			descriptionText 	= node.xpath("figcaption/p").first?.text,
 			mapsLink		 	= node.xpath("figcaption/a").first?["href"],
-			mapsText 			= node.xpath("figcaption/a").first?.text,
+			mapsText 			= (node.xpath("figcaption/a").first?.text),
 			// Generate the missing data required by the local app.
 			identifier 			= HTMLParser.generateIdentifier(fromThumbnailURL: thumbnailURL),
 			imageURL		 	= HTMLParser.generateImageURL(fromThumbnailURL: thumbnailURL),
