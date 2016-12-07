@@ -1,8 +1,9 @@
 //
 //  SDWebImage.swift
+//  PictureMyWorld
 //
-//  Created by kevin delord on 20/05/15.
-//  Copyright (c) 2015 Smart Mobile Factory. All rights reserved.
+//  Created by Kevin Delord on 06/12/16.
+//  Copyright © 2016 Kevin Delord. All rights reserved.
 //
 
 import Foundation

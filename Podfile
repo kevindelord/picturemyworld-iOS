@@ -11,6 +11,8 @@ def corePods
     pod 'Buglife', '~> 1.3.3'
     pod 'HockeySDK', '~> 4.1.2'
 	pod 'Kanna', '~> 1.1.0'
+	pod 'DKDBManager', '~> 1.0.0'
+	pod 'SDWebImage', '~> 3.7.1'
 end
 
 target 'PictureMyWorld-AdHoc-Alpha' do
