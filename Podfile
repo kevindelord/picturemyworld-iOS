@@ -13,6 +13,7 @@ def corePods
 	pod 'Kanna', '~> 1.1.0'
 	pod 'DKDBManager', '~> 1.0.0'
 	pod 'SDWebImage', '~> 3.7.1'
+	pod 'CollectionViewWaterfallLayoutSH'
 end
 
 target 'PictureMyWorld-AdHoc-Alpha' do

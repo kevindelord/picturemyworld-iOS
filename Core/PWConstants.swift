@@ -39,8 +39,9 @@ struct Interface {
 
 	struct CollectionView {
 
-		static let EdgeSpacing = 20.0
-		static let MinimumCellWidth = 254.0
+		static let Inset		 			: CGFloat = 20.0
+		static let MinimumItemWidth 		: CGFloat = 254.0
+		static let MinimumItemHeight 		: CGFloat = 247.0
 	}
 }
 

@@ -9,6 +9,7 @@
 import UIKit
 import DKDBManager
 import DKHelper
+import CollectionViewWaterfallLayoutSH
 
 class PWCollectionViewController	: UICollectionViewController {
 
@@ -24,12 +25,8 @@ class PWCollectionViewController	: UICollectionViewController {
 		self.reloadButtonPressed()
 	}
 
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-	}
-
 	override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-		self.collectionView?.collectionViewLayout.invalidateLayout()
+		self.setupWaterfallLayout()
 	}
 }
 
@@ -42,6 +39,7 @@ extension PWCollectionViewController {
 			let postsArray = HTMLParser.parse(html)
 			DKDBManager.crudPosts(postsArray, completionBlock: {
 				self.posts = Post.allEntities()
+				self.setupWaterfallLayout()
 				self.collectionView?.reloadData()
 			})
 		}
@@ -67,31 +65,49 @@ extension PWCollectionViewController {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension PWCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-
-		let width = self.calculateItemWidth(collectionView)
-
-		// Apply a ratio to make the final view looks good on every device.
-		return CGSize(width: width, height: width * 1.5)
+	private func setupWaterfallLayout() {
+		guard let layout = self.collectionView?.collectionViewLayout as? CollectionViewWaterfallLayout else {
+			return
+		}
+		layout.columnCount = Int(self.numberOfItemsPerRow)
+		layout.minimumColumnSpacing = Float(Interface.CollectionView.Inset)
+		layout.minimumInteritemSpacing = Float(Interface.CollectionView.Inset)
+		layout.invalidateLayout()
 	}
 
-	private func calculateItemWidth(collectionView: UICollectionView) -> Double {
+	func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
-		// Calculate the available with in between the two left and right margins.
-		let edgeSpacing = Interface.CollectionView.EdgeSpacing
-		let widthAvailable = (Double(collectionView.bounds.size.width) - (edgeSpacing * 2))
+		let post = self.posts[safe: indexPath.item]
+		// Calculate the exact minimum size per item to fill the view.
+		let separatorsWidth = ((self.numberOfItemsPerRow * Interface.CollectionView.Inset) * 0.5)
+		let width = ((self.currentWidthAvailable - separatorsWidth) / self.numberOfItemsPerRow)
+		let height = PWPostCollectionViewCell.descriptionTextHeight(post?.descriptionText, forSizeWidth: width)
+		return CGSize(width: width, height: height + Interface.CollectionView.MinimumItemHeight)
+	}
 
-		// Calculate the number of item available until the minimum width of the displayed item.
-		var numberOfItemPerRow = 0.0
+	func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, insetForSection section: Int) -> UIEdgeInsets {
+		let padding = Interface.CollectionView.Inset
+		return UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+	}
+
+	/// Calculate the available with in between the two left and right margins.
+	private var currentWidthAvailable: CGFloat {
+		guard let collectionView = self.collectionView else {
+			return 0
+		}
+		let edgeSpacing = Interface.CollectionView.Inset
+		let widthAvailable = (collectionView.bounds.size.width - (edgeSpacing * 2))
+		return widthAvailable
+	}
+
+	/// Calculate the number of item available until the minimum width of the displayed item.
+	private var numberOfItemsPerRow: CGFloat {
+		var numberOfItemPerRow : CGFloat = 0.0
 		repeat {
 			numberOfItemPerRow += 1.0
-		} while ((widthAvailable / (numberOfItemPerRow + 1.0)) > Interface.CollectionView.MinimumCellWidth)
-
-		// Calculate the exact minimum size per item to fill the view.
-		let separatorsWidth = ((numberOfItemPerRow * edgeSpacing) * 0.5)
-		let width = ((widthAvailable - separatorsWidth) / numberOfItemPerRow)
-		return width
+		} while ((self.currentWidthAvailable / (numberOfItemPerRow + 1.0)) > Interface.CollectionView.MinimumItemWidth)
+		return numberOfItemPerRow
 	}
 }

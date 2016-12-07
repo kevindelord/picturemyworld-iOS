@@ -50,3 +50,21 @@ class PWPostCollectionViewCell 					: UICollectionViewCell {
 		self.currentThumbnailURL = nil
 	}
 }
+
+// MARK: - Size
+
+extension PWPostCollectionViewCell {
+
+	class func descriptionTextHeight(text: String?, forSizeWidth width: CGFloat) -> CGFloat {
+		guard let text = text else {
+			return 0
+		}
+
+		let label = UILabel()
+		label.numberOfLines = 0
+		label.text = text
+		label.font = UIFont.systemFontOfSize(13)
+		let neededSize = label.sizeThatFits(CGSize(width: width, height: CGFloat.max))
+		return neededSize.height
+	}
+}

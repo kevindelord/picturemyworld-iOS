@@ -29,18 +29,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="NZX-6E-yzj">
-                            <size key="itemSize" width="231" height="342"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="tpo-qR-9rU" customClass="CollectionViewWaterfallLayout" customModule="CollectionViewWaterfallLayoutSH"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostCollectionViewCell_ID" id="Pre-KK-tRv" customClass="PWPostCollectionViewCell" customModule="PictureMyWorld_AdHoc_Alpha" customModuleProvider="target">
-                                <rect key="frame" x="20" y="84" width="231" height="342"/>
+                                <rect key="frame" x="0.0" y="64" width="231" height="334"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="231" height="342"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="231" height="334"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zej-bc-aPL">
@@ -68,13 +63,16 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1L-o2-vVu">
-                                            <rect key="frame" x="8" y="210" width="215" height="95"/>
+                                            <rect key="frame" x="8" y="210" width="215" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" id="fGe-Nj-8jF"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.2784313725" green="0.63921568630000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6y-vV-YXh">
-                                            <rect key="frame" x="8" y="313" width="215" height="21"/>
+                                            <rect key="frame" x="8" y="234" width="215" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="vcg-Oz-yUR"/>
                                             </constraints>
@@ -104,6 +102,12 @@
                                     <constraint firstAttribute="bottom" secondItem="A6y-vV-YXh" secondAttribute="bottom" constant="8" id="y0e-rI-cnU"/>
                                     <constraint firstItem="A6y-vV-YXh" firstAttribute="top" secondItem="j1L-o2-vVu" secondAttribute="bottom" constant="8" id="z6r-oS-YbN"/>
                                 </constraints>
+                                <size key="customSize" width="231" height="334"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="y0e-rI-cnU"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dateLabel" destination="A6y-vV-YXh" id="qd1-Zh-Cor"/>
                                     <outlet property="descriptionLabel" destination="j1L-o2-vVu" id="zeW-Ik-Pnd"/>
