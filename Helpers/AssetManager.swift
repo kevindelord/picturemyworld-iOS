@@ -313,7 +313,7 @@ extension AssetManager {
 			return true
 
 		} catch let error as NSError {
-			DKLog(Verbose.Error, error)
+			print(error)
 			return false
 		}
 	}

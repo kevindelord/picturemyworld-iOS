@@ -35,11 +35,30 @@ extension Post {
 		self.dateString			= dictionary?[Database.Key.Post.DateString] as? String
 		self.thumbnailURL		= dictionary?[Database.Key.Post.ThumbnailURL] as? String
 		self.imageURL			= dictionary?[Database.Key.Post.ImageURL] as? String
-		self.date 				= GET_DATE(dictionary, Database.Key.Post.Date)
+		self.date 				= NSDate(fromISOString: (dictionary?[Database.Key.Post.Date] as? String) ?? "")
 	}
 
 	override class func verbose() -> Bool {
 		return Verbose.Database.Post
+	}
+
+	override func invalidReason() -> String? {
+
+		guard
+			((self.identifier != nil) &&
+			(self.title != nil) &&
+			(self.descriptionText != nil) &&
+			(self.mapsLink != nil) &&
+			(self.mapsText != nil) &&
+			(self.dateString != nil) &&
+			(self.thumbnailURL != nil) &&
+			(self.imageURL != nil) &&
+			(self.date != nil)) else {
+				// If one value is missing, invalid the data and ignore the post
+				return "Missing value"
+		}
+
+		return super.invalidReason()
 	}
 
 	override class func sortingAttributeName() -> String? {

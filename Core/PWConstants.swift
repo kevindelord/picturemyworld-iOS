@@ -33,3 +33,20 @@ struct API {
 
 	static let BaseURL						= "http://picturemy.world"
 }
+
+extension HTMLParser {
+
+	struct Key {
+
+		static let ImageThumbnail			= "thumb"
+		static let ImageLarge				= "large"
+	}
+
+	struct Regex {
+
+		static let Filename					= "[0-9A-Za-z_-]+.[a-z]{3}$"
+		static let Identifier				= "^[0-9A-Za-z_-]+"
+	}
+
+	static let DateFormat					= "MMMM dd, yyyy"
+}
