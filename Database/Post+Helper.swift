@@ -12,8 +12,11 @@ import DKHelper
 
 class Post: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+	// Insert code here to add functionality to your managed object subclass
 
+	class func allEntities() -> [Post] {
+		return (Post.MR_findAllSortedBy(Database.Key.Post.Date, ascending: false) as? [Post] ?? [])
+	}
 }
 
 // MARK: - DKDBManager
@@ -51,16 +54,16 @@ extension Post {
 
 		guard
 			((self.identifier != nil) &&
-			(self.title != nil) &&
-			(self.descriptionText != nil) &&
-			(self.mapsLink != nil) &&
-			(self.mapsText != nil) &&
-			(self.dateString != nil) &&
-			(self.thumbnailURL != nil) &&
-			(self.imageURL != nil) &&
-			(self.date != nil)) else {
-				// If one value is missing, invalid the data and ignore the post
-				return "Missing value"
+				(self.title != nil) &&
+				(self.descriptionText != nil) &&
+				(self.mapsLink != nil) &&
+				(self.mapsText != nil) &&
+				(self.dateString != nil) &&
+				(self.thumbnailURL != nil) &&
+				(self.imageURL != nil) &&
+				(self.date != nil)) else {
+					// If one value is missing, invalid the data and ignore the post
+					return "Missing value"
 		}
 
 		return super.invalidReason()

@@ -1,53 +1,13 @@
 //
-//  ViewController.swift
+//  PWPostCollectionViewCell.swift
 //  PictureMyWorld
 //
-//  Created by Kevin Delord on 01/12/16.
+//  Created by Kevin Delord on 07/12/16.
 //  Copyright © 2016 Kevin Delord. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import DKDBManager
-
-class PWCollectionViewController	: UICollectionViewController {
-
-	private var posts				= [Post]()
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-		self.title = "Picture My World"
-		self.posts = (Post.all() as? [Post] ?? [])
-		self.reloadButtonPressed()
-	}
-
-	@IBAction func reloadButtonPressed() {
-		if let html = HTMLParser.fetchHTML(fromString: API.BaseURL) {
-			let postsArray = HTMLParser.parse(html)
-			DKDBManager.crudPosts(postsArray, completionBlock: {
-				self.posts = (Post.all() as? [Post] ?? [])
-				self.collectionView?.reloadData()
-			})
-		}
-	}
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension PWCollectionViewController {
-
-	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return self.posts.count
-	}
-
-	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReusableIdentifier.PostCollectionViewCell, forIndexPath: indexPath) as? PWPostCollectionViewCell else {
-			return UICollectionViewCell()
-		}
-		cell.updateWithPost(self.posts[safe: indexPath.item])
-		return cell
-	}
-}
 
 class PWPostCollectionViewCell 					: UICollectionViewCell {
 

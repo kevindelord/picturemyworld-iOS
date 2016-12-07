@@ -11,7 +11,11 @@ import DKDBManager
 
 extension DKDBManager {
 
+	/**
+	Setup, and reset if needed, the datamodel using an auto migrating system.
+	*/
 	class func setupLocalDatabase() {
+
 		DKDBManager.setVerbose(Verbose.Manager.Database)
 		DKDBManager.setResetStoredEntities(Configuration.RestoreDatabaseOnStart)
 		DKDBManager.setupDatabaseWithName(Database.SqliteFilename, didResetDatabase: {
@@ -24,9 +28,15 @@ extension DKDBManager {
 		})
 	}
 
-	class func crudPosts(postsArray: [[String: String]], completionBlock: (() -> Void)?) {
-		DKDBManager.saveWithBlock({ (savingContext: NSManagedObjectContext) in
+	/**
+	CRUD new Post model objects.
 
+	- parameter postsArray:      An array of dictionaries representing the posts.
+	- parameter completionBlock: Completion block executed after the database saved to the persistent store.
+	*/
+	class func crudPosts(postsArray: [[String: String]], completionBlock: (() -> Void)?) {
+
+		DKDBManager.saveWithBlock({ (savingContext: NSManagedObjectContext) in
 			// When reloading manually the posts, remove all stored identifiers.
 			// By doing so, the logic to remove any potential deprecated entities will work perfectly.
 			DKDBManager.removeAllStoredIdentifiers()
@@ -34,7 +44,12 @@ extension DKDBManager {
 			Post.crudEntitiesWithArray(postsArray, inContext: savingContext)
 			// Check and remove any potential deprecated post (i.e. has been removed from the web page).
 			DKDBManager.removeDeprecatedEntitiesInContext(savingContext)
+
 		}, completion: { (contextDidSave: Bool, error: NSError?) in
+			if let _error = error {
+				print(_error)
+			}
+			// Call the completion block.
 			completionBlock?()
 		})
 	}
