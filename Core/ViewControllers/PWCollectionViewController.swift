@@ -18,6 +18,7 @@ class PWCollectionViewController	: UICollectionViewController {
 		super.viewDidLoad()
 
 		self.title = L("FULL_TITLE")
+		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
 		self.posts = Post.allEntities()
 		self.reloadButtonPressed()
 	}

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DKHelper
 
 struct Database {
 
@@ -54,4 +55,12 @@ extension HTMLParser {
 struct ReusableIdentifier {
 
 	static let PostCollectionViewCell		= "PostCollectionViewCell_ID"
+}
+
+extension UIColor {
+
+	class func themeColor() -> UIColor {
+
+		return (UIColor(fromHexString: "47A3DA") ?? UIColor.blueColor())
+	}
 }
