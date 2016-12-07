@@ -19,9 +19,23 @@ class PWCollectionViewController	: UICollectionViewController {
 
 		self.title = L("FULL_TITLE")
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
+		self.collectionView?.collectionViewLayout.est
+		//estimatedItemSize = CGSize(width: 100, height: 100)
+
 		self.posts = Post.allEntities()
 		self.reloadButtonPressed()
 	}
+
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+
+
+	}
+}
+
+// MARK: - IBAction
+
+extension PWCollectionViewController {
 
 	@IBAction func reloadButtonPressed() {
 		if let html = HTMLParser.fetchHTML(fromString: API.BaseURL) {
@@ -48,5 +62,19 @@ extension PWCollectionViewController {
 		}
 		cell.updateWithPost(self.posts[safe: indexPath.item])
 		return cell
+	}
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension PWCollectionViewController: UICollectionViewDelegateFlowLayout {
+
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+		let kWhateverHeightYouWant : CGFloat = 400
+		let leftEdgeInset : CGFloat = 10
+		let rightEdgeInset : CGFloat = 10
+		let width = collectionView.bounds.size.width - leftEdgeInset - rightEdgeInset
+		// the item width must be less than the width of the UICollectionView minus the section insets left and right values, minus the content insets left and right
+		return CGSizeMake(width, kWhateverHeightYouWant)
 	}
 }
