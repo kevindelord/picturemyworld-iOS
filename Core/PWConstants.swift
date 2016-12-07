@@ -35,6 +35,15 @@ struct API {
 	static let BaseURL						= "http://picturemy.world"
 }
 
+struct Interface {
+
+	struct CollectionView {
+
+		static let EdgeSpacing = 20.0
+		static let MinimumCellWidth = 254.0
+	}
+}
+
 extension HTMLParser {
 
 	struct Key {

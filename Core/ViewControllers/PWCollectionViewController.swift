@@ -19,8 +19,6 @@ class PWCollectionViewController	: UICollectionViewController {
 
 		self.title = L("FULL_TITLE")
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
-		self.collectionView?.collectionViewLayout.est
-		//estimatedItemSize = CGSize(width: 100, height: 100)
 
 		self.posts = Post.allEntities()
 		self.reloadButtonPressed()
@@ -28,8 +26,10 @@ class PWCollectionViewController	: UICollectionViewController {
 
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
+	}
 
-
+	override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+		self.collectionView?.collectionViewLayout.invalidateLayout()
 	}
 }
 
@@ -70,11 +70,28 @@ extension PWCollectionViewController {
 extension PWCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		let kWhateverHeightYouWant : CGFloat = 400
-		let leftEdgeInset : CGFloat = 10
-		let rightEdgeInset : CGFloat = 10
-		let width = collectionView.bounds.size.width - leftEdgeInset - rightEdgeInset
-		// the item width must be less than the width of the UICollectionView minus the section insets left and right values, minus the content insets left and right
-		return CGSizeMake(width, kWhateverHeightYouWant)
+
+		let width = self.calculateItemWidth(collectionView)
+
+		// Apply a ratio to make the final view looks good on every device.
+		return CGSize(width: width, height: width * 1.5)
+	}
+
+	private func calculateItemWidth(collectionView: UICollectionView) -> Double {
+
+		// Calculate the available with in between the two left and right margins.
+		let edgeSpacing = Interface.CollectionView.EdgeSpacing
+		let widthAvailable = (Double(collectionView.bounds.size.width) - (edgeSpacing * 2))
+
+		// Calculate the number of item available until the minimum width of the displayed item.
+		var numberOfItemPerRow = 0.0
+		repeat {
+			numberOfItemPerRow += 1.0
+		} while ((widthAvailable / (numberOfItemPerRow + 1.0)) > Interface.CollectionView.MinimumCellWidth)
+
+		// Calculate the exact minimum size per item to fill the view.
+		let separatorsWidth = ((numberOfItemPerRow * edgeSpacing) * 0.5)
+		let width = ((widthAvailable - separatorsWidth) / numberOfItemPerRow)
+		return width
 	}
 }
