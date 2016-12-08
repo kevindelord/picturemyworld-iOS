@@ -8,7 +8,7 @@
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mapsLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mapsText" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="thumbnailRatio" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="thumbnailRatio" optional="YES" attributeType="Float" syncable="YES"/>
         <attribute name="thumbnailURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>

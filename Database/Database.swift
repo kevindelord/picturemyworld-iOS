@@ -49,8 +49,27 @@ extension DKDBManager {
 			if let _error = error {
 				print(_error)
 			}
+			// Preload all thumbnail images.
+			self.preloadAllThumbnails()
 			// Call the completion block.
 			completionBlock?()
 		})
+	}
+
+	/**
+	Preload all thumbnail images.
+	This function also calculates and stores the image ratio into the local persistent store.
+	An image is usually about 20kb. This will not kill the device memory.
+	*/
+	private class func preloadAllThumbnails() {
+		for post in Post.allEntities() {
+			if (post.thumbnailRatio == nil) {
+				AssetManager.downloadImage(post.thumbnailURL, priority: DownloadPriority.Low, completion: { (image: UIImage?) in
+					if let image = image {
+						post.validThumbnailRatio = (image.size.height / image.size.width)
+					}
+				})
+			}
+		}
 	}
 }
