@@ -12,11 +12,33 @@ import DKHelper
 import CollectionViewWaterfallLayoutSH
 import ImageSlideshow
 
-class PWCollectionViewController	: UICollectionViewController {
+class AssetManagerSource	: NSObject, InputSource {
+	var urlString			: String
 
-	private var posts				= [Post]()
-	private var imageSlideshow		= ImageSlideshow()
-	private var transitionDelegate	: ZoomAnimatedTransitioningDelegate?
+	init(urlString: String) {
+		self.urlString = urlString
+		super.init()
+	}
+
+	private func preloadImage() {
+		AssetManager.downloadImage(self.urlString, priority: DownloadPriority.VeryHigh, completion: nil)
+	}
+
+	func setToImageView(imageView: UIImageView) {
+		AssetManager.downloadImage(self.urlString, priority: DownloadPriority.Low) { (image: UIImage?) in
+			imageView.image = image
+		}
+	}
+}
+
+class PWCollectionViewController				: UICollectionViewController {
+
+	private var posts							= [Post]() {
+		didSet {
+			self.setupInputSources()
+		}
+	}
+	private var inputSources					= [AssetManagerSource]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,8 +46,6 @@ class PWCollectionViewController	: UICollectionViewController {
 		self.title = L("FULL_TITLE")
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
 
-		self.imageSlideshow.circular = false
-		self.imageSlideshow.zoomEnabled = false
 		self.posts = Post.allEntities()
 		self.reloadButtonPressed()
 	}
@@ -51,41 +71,51 @@ extension PWCollectionViewController {
 	}
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - ImageSlideshow
+
+extension PWCollectionViewController {
+
+	private func setupInputSources() {
+		self.inputSources = self.posts.flatMap { (post: Post) -> AssetManagerSource? in
+			guard let urlString = post.imageURL else {
+				return nil
+			}
+			return AssetManagerSource(urlString: urlString)
+		}
+	}
+
+	private func openSlideShowController(initialImageIndex: Int) {
+
+		self.inputSources[safe: initialImageIndex]?.preloadImage()
+
+		let ctr = FullScreenSlideshowViewController()
+		// Called when full-screen VC dismissed and used to set the page to our original slideshow
+		ctr.pageSelected = { (page: Int) in
+			let indexPath = NSIndexPath(forItem: page, inSection: 0)
+			self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: false)
+		}
+		ctr.initialImageIndex = initialImageIndex
+		ctr.inputs = self.inputSources
+		ctr.slideshow.circular = false
+		ctr.slideshow.zoomEnabled = true
+		ctr.slideshow.pageControl.removeFromSuperview()
+
+		self.presentViewController(ctr, animated: true, completion: nil)
+	}
+}
+
+// MARK: - UICollectionViewDelegate
 
 extension PWCollectionViewController {
 
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		guard let post = self.posts[safe: indexPath.item] else {
-			return
-		}
-		AssetManager.downloadImage(post.imageURL, priority: DownloadPriority.VeryHigh) { [weak self] (image) in
-
-			guard let
-				image = image,
-
-				slideShow = self?.imageSlideshow else {
-				return
-			}
-//			self?.imageSlideshow.setImageInputs(inu)
-//			self?.imageSlideshow.presentFullScreenController(from: self)
-
-			let ctr = FullScreenSlideshowViewController()
-			// called when full-screen VC dismissed and used to set the page to our original slideshow
-			ctr.pageSelected = { (page: Int) in
-				print(page)
-//    			self.slideshow.setScrollViewPage(page, animated: false)
-			}
-
-			// set the initial page
-			ctr.initialImageIndex = 0
-			// set the inputs
-			ctr.inputs = [ImageSource(image: image)]
-			self?.transitionDelegate = ZoomAnimatedTransitioningDelegate(slideshowView: slideShow, slideshowController: ctr)
-			ctr.transitioningDelegate = self?.transitionDelegate
-			self?.presentViewController(ctr, animated: true, completion: nil)
-		}
+		self.openSlideShowController(indexPath.item)
 	}
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension PWCollectionViewController {
 
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.posts.count

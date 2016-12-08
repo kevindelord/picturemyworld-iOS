@@ -24,7 +24,7 @@ PODS:
 DEPENDENCIES:
   - Appirater (~> 2.0.5)
   - Buglife (~> 1.3.3)
-  - CollectionViewWaterfallLayoutSH
+  - CollectionViewWaterfallLayoutSH (~> 0.3.0)
   - DKDBManager (~> 1.0.0)
   - DKHelper (~> 2.2.3)
   - HockeySDK (~> 4.1.2)
@@ -58,6 +58,6 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
-PODFILE CHECKSUM: 49ab40ee1a8ba4c723ace60c5e7aaa4718da184c
+PODFILE CHECKSUM: a7e868d7877fb53de7e00549d3ca59f10fa1c396
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
