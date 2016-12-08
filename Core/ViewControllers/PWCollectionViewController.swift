@@ -10,7 +10,6 @@ import UIKit
 import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
-import ImageSlideshow
 
 class AssetManagerSource	: NSObject, InputSource {
 	var urlString			: String
@@ -20,13 +19,9 @@ class AssetManagerSource	: NSObject, InputSource {
 		super.init()
 	}
 
-	private func preloadImage() {
-		AssetManager.downloadImage(self.urlString, priority: DownloadPriority.VeryHigh, completion: nil)
-	}
-
-	func setToImageView(imageView: UIImageView) {
+	func fetchImage(completionBlock: ((image: UIImage?) -> Void)) {
 		AssetManager.downloadImage(self.urlString, priority: DownloadPriority.Low) { (image: UIImage?) in
-			imageView.image = image
+			completionBlock(image: image)
 		}
 	}
 }
@@ -86,8 +81,6 @@ extension PWCollectionViewController {
 
 	private func openSlideShowController(initialImageIndex: Int) {
 
-		self.inputSources[safe: initialImageIndex]?.preloadImage()
-
 		let ctr = FullScreenSlideshowViewController()
 		// Called when full-screen VC dismissed and used to set the page to our original slideshow
 		ctr.pageSelected = { (page: Int) in
@@ -96,9 +89,7 @@ extension PWCollectionViewController {
 		}
 		ctr.initialImageIndex = initialImageIndex
 		ctr.inputs = self.inputSources
-		ctr.slideshow.circular = false
 		ctr.slideshow.zoomEnabled = true
-		ctr.slideshow.pageControl.removeFromSuperview()
 
 		self.presentViewController(ctr, animated: true, completion: nil)
 	}

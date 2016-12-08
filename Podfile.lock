@@ -8,9 +8,6 @@ PODS:
   - HockeySDK (4.1.2):
     - HockeySDK/DefaultLib (= 4.1.2)
   - HockeySDK/DefaultLib (4.1.2)
-  - ImageSlideshow (0.6):
-    - ImageSlideshow/Core (= 0.6)
-  - ImageSlideshow/Core (0.6)
   - Kanna (1.1.1)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
@@ -28,21 +25,10 @@ DEPENDENCIES:
   - DKDBManager (~> 1.0.0)
   - DKHelper (~> 2.2.3)
   - HockeySDK (~> 4.1.2)
-  - ImageSlideshow (from `https://github.com/zvonicek/ImageSlideshow`, branch `swift-2.3`)
   - Kanna (~> 1.1.0)
   - MBProgressHUD (~> 1.0.0)
   - Reachability (~> 3.2)
   - SDWebImage (~> 3.7.1)
-
-EXTERNAL SOURCES:
-  ImageSlideshow:
-    :branch: swift-2.3
-    :git: https://github.com/zvonicek/ImageSlideshow
-
-CHECKOUT OPTIONS:
-  ImageSlideshow:
-    :commit: 0931c492b5125760aee3a79f0dc682508c1e22c5
-    :git: https://github.com/zvonicek/ImageSlideshow
 
 SPEC CHECKSUMS:
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
@@ -51,13 +37,12 @@ SPEC CHECKSUMS:
   DKDBManager: f81d5dacaf286e84d9b25e64ec7d77af1bc930b9
   DKHelper: f22567a185f1248641e1a2173996857b25e7e0ad
   HockeySDK: c7523379550a4305cefc1cdfa7b5f9a5a3538180
-  ImageSlideshow: f26824fa9f254c35f122e9ed6e8791571251cbe3
   Kanna: 9d3118cff609bd21eb374be5be590b544941160f
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
-PODFILE CHECKSUM: a7e868d7877fb53de7e00549d3ca59f10fa1c396
+PODFILE CHECKSUM: 0d66c2da8e2bef222cc3f03bd0bc07a668ed3df7
 
 COCOAPODS: 1.1.1

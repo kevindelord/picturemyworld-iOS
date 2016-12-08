@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
 		DKDBManager.setupLocalDatabase()
-
+		AssetManager.removeAllStoredAssets()
 		return true
 	}
 
