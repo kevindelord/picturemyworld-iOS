@@ -10,10 +10,13 @@ import UIKit
 import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
+import ImageSlideshow
 
 class PWCollectionViewController	: UICollectionViewController {
 
 	private var posts				= [Post]()
+	private var imageSlideshow		= ImageSlideshow()
+	private var transitionDelegate	: ZoomAnimatedTransitioningDelegate?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -21,6 +24,8 @@ class PWCollectionViewController	: UICollectionViewController {
 		self.title = L("FULL_TITLE")
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
 
+		self.imageSlideshow.circular = false
+		self.imageSlideshow.zoomEnabled = false
 		self.posts = Post.allEntities()
 		self.reloadButtonPressed()
 	}
@@ -49,6 +54,38 @@ extension PWCollectionViewController {
 // MARK: - UICollectionViewDataSource
 
 extension PWCollectionViewController {
+
+	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		guard let post = self.posts[safe: indexPath.item] else {
+			return
+		}
+		AssetManager.downloadImage(post.imageURL, priority: DownloadPriority.VeryHigh) { [weak self] (image) in
+
+			guard let
+				image = image,
+
+				slideShow = self?.imageSlideshow else {
+				return
+			}
+//			self?.imageSlideshow.setImageInputs(inu)
+//			self?.imageSlideshow.presentFullScreenController(from: self)
+
+			let ctr = FullScreenSlideshowViewController()
+			// called when full-screen VC dismissed and used to set the page to our original slideshow
+			ctr.pageSelected = { (page: Int) in
+				print(page)
+//    			self.slideshow.setScrollViewPage(page, animated: false)
+			}
+
+			// set the initial page
+			ctr.initialImageIndex = 0
+			// set the inputs
+			ctr.inputs = [ImageSource(image: image)]
+			self?.transitionDelegate = ZoomAnimatedTransitioningDelegate(slideshowView: slideShow, slideshowController: ctr)
+			ctr.transitioningDelegate = self?.transitionDelegate
+			self?.presentViewController(ctr, animated: true, completion: nil)
+		}
+	}
 
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.posts.count

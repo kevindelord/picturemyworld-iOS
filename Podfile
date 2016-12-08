@@ -13,7 +13,8 @@ def corePods
 	pod 'Kanna', '~> 1.1.0'
 	pod 'DKDBManager', '~> 1.0.0'
 	pod 'SDWebImage', '~> 3.7.1'
-	pod 'CollectionViewWaterfallLayoutSH'
+	pod 'CollectionViewWaterfallLayoutSH', '~> 0.3.0'
+	pod 'ImageSlideshow', :git => 'https://github.com/zvonicek/ImageSlideshow', :branch => 'swift-2.3'
 end
 
 target 'PictureMyWorld-AdHoc-Alpha' do
