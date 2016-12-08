@@ -8,21 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		62063C4F3752F42B38BC0DC7 /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */; };
-		7509F4D31DF0564F00E1EBD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509F4D21DF0564F00E1EBD3 /* AppDelegate.swift */; };
-		7509F4D51DF0564F00E1EBD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509F4D41DF0564F00E1EBD3 /* ViewController.swift */; };
-		7509F4D81DF0564F00E1EBD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7509F4D61DF0564F00E1EBD3 /* Main.storyboard */; };
-		7509F4DA1DF0564F00E1EBD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7509F4D91DF0564F00E1EBD3 /* Assets.xcassets */; };
-		7509F4DD1DF0564F00E1EBD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7509F4DB1DF0564F00E1EBD3 /* LaunchScreen.storyboard */; };
 		7509F4E81DF0565000E1EBD3 /* PictureMyWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */; };
 		751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828BA1DF05A53001D12ED /* DKExtensions.swift */; };
 		751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 751828C61DF08B26001D12ED /* Model.xcdatamodeld */; };
 		751828CB1DF08BAD001D12ED /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */; };
-		751828CC1DF08BAD001D12ED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828CA1DF08BAD001D12ED /* Post.swift */; };
+		751828CC1DF08BAD001D12ED /* Post+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828CA1DF08BAD001D12ED /* Post+Helper.swift */; };
 		756E74461DF0579000960616 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 756E74451DF0579000960616 /* Settings.bundle */; };
+		7582288E1DF7A87A00567725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582288B1DF7A87A00567725 /* AppDelegate.swift */; };
+		7582288F1DF7A87A00567725 /* PWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582288D1DF7A87A00567725 /* PWCollectionViewController.swift */; };
+		758228911DF7A88600567725 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758228901DF7A88600567725 /* HTMLParser.swift */; };
+		758228991DF7A8A800567725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 758228951DF7A8A800567725 /* Assets.xcassets */; };
+		7582289A1DF7A8A800567725 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758228961DF7A8A800567725 /* LaunchScreen.storyboard */; };
+		7582289C1DF7A8A800567725 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758228981DF7A8A800567725 /* Main.storyboard */; };
+		7582289D1DF7A8C700567725 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7582289F1DF7A8C700567725 /* Localizable.strings */; };
+		758228A11DF7A94B00567725 /* PWPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758228A01DF7A94B00567725 /* PWPostCollectionViewCell.swift */; };
 		75925EAE1DF778A4006C7277 /* PWConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EAD1DF778A4006C7277 /* PWConstants.swift */; };
 		75925EB01DF778E7006C7277 /* PWDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EAF1DF778E7006C7277 /* PWDefines.swift */; };
 		75925EB21DF77C1E006C7277 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EB11DF77C1E006C7277 /* AssetManager.swift */; };
-		75925EB51DF77DE7006C7277 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EB41DF77DE7006C7277 /* HTMLParser.swift */; };
+		75925EB71DF796DA006C7277 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EB61DF796DA006C7277 /* Database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,24 +43,27 @@
 		2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureMyWorld_AdHoc_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		7509F4CF1DF0564F00E1EBD3 /* PictureMyWorld-AdHoc-Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PictureMyWorld-AdHoc-Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7509F4D21DF0564F00E1EBD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7509F4D41DF0564F00E1EBD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7509F4D71DF0564F00E1EBD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7509F4D91DF0564F00E1EBD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7509F4DC1DF0564F00E1EBD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7509F4DE1DF0564F00E1EBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7509F4E31DF0565000E1EBD3 /* PictureMyWorldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictureMyWorldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureMyWorldTests.swift; sourceTree = "<group>"; };
 		7509F4E91DF0565000E1EBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		751828BA1DF05A53001D12ED /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		751828C71DF08B26001D12ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "Database/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		751828CA1DF08BAD001D12ED /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Database/Post.swift; sourceTree = "<group>"; };
+		751828CA1DF08BAD001D12ED /* Post+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+Helper.swift"; path = "Database/Post+Helper.swift"; sourceTree = "<group>"; };
 		756E74451DF0579000960616 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		7582288B1DF7A87A00567725 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Core/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		7582288D1DF7A87A00567725 /* PWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCollectionViewController.swift; sourceTree = "<group>"; };
+		758228901DF7A88600567725 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLParser.swift; path = Helpers/HTMLParser.swift; sourceTree = "<group>"; };
+		758228931DF7A89300567725 /* PictureMyWorld-Alpha-InHouse-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PictureMyWorld-Alpha-InHouse-Info.plist"; sourceTree = "<group>"; };
+		758228951DF7A8A800567725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		758228961DF7A8A800567725 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		758228981DF7A8A800567725 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Resources/Main.storyboard; sourceTree = "<group>"; };
+		7582289E1DF7A8C700567725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		758228A01DF7A94B00567725 /* PWPostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		75925EAD1DF778A4006C7277 /* PWConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PWConstants.swift; path = Core/PWConstants.swift; sourceTree = SOURCE_ROOT; };
 		75925EAF1DF778E7006C7277 /* PWDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PWDefines.swift; path = Core/PWDefines.swift; sourceTree = SOURCE_ROOT; };
 		75925EB11DF77C1E006C7277 /* AssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetManager.swift; path = Helpers/AssetManager.swift; sourceTree = "<group>"; };
-		75925EB41DF77DE7006C7277 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
+		75925EB61DF796DA006C7277 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Database/Database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +105,12 @@
 		7509F4C61DF0564F00E1EBD3 = {
 			isa = PBXGroup;
 			children = (
-				75925EB31DF77C21006C7277 /* Helpers */,
+				75925EAC1DF77890006C7277 /* Core */,
 				751828C51DF08B10001D12ED /* Database */,
+				75925EB31DF77C21006C7277 /* Helpers */,
 				751828B71DF05A53001D12ED /* Submodules */,
 				756E74441DF0578200960616 /* Resources */,
-				75925EAC1DF77890006C7277 /* Core */,
-				7509F4D11DF0564F00E1EBD3 /* PictureMyWorld */,
+				758228921DF7A89300567725 /* PLists */,
 				7509F4E61DF0565000E1EBD3 /* PictureMyWorldTests */,
 				7509F4D01DF0564F00E1EBD3 /* Products */,
 				67458EE5424703F408659D75 /* Pods */,
@@ -119,19 +125,6 @@
 				7509F4E31DF0565000E1EBD3 /* PictureMyWorldTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7509F4D11DF0564F00E1EBD3 /* PictureMyWorld */ = {
-			isa = PBXGroup;
-			children = (
-				7509F4D21DF0564F00E1EBD3 /* AppDelegate.swift */,
-				7509F4D41DF0564F00E1EBD3 /* ViewController.swift */,
-				7509F4D61DF0564F00E1EBD3 /* Main.storyboard */,
-				7509F4D91DF0564F00E1EBD3 /* Assets.xcassets */,
-				7509F4DB1DF0564F00E1EBD3 /* LaunchScreen.storyboard */,
-				7509F4DE1DF0564F00E1EBD3 /* Info.plist */,
-			);
-			path = PictureMyWorld;
 			sourceTree = "<group>";
 		};
 		7509F4E61DF0565000E1EBD3 /* PictureMyWorldTests */ = {
@@ -163,7 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */,
-				751828CA1DF08BAD001D12ED /* Post.swift */,
+				751828CA1DF08BAD001D12ED /* Post+Helper.swift */,
+				75925EB61DF796DA006C7277 /* Database.swift */,
 				751828C61DF08B26001D12ED /* Model.xcdatamodeld */,
 			);
 			name = Database;
@@ -172,16 +166,49 @@
 		756E74441DF0578200960616 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				758228951DF7A8A800567725 /* Assets.xcassets */,
+				758228961DF7A8A800567725 /* LaunchScreen.storyboard */,
+				7582289F1DF7A8C700567725 /* Localizable.strings */,
+				758228981DF7A8A800567725 /* Main.storyboard */,
 				756E74451DF0579000960616 /* Settings.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		7582288A1DF7A87A00567725 /* AdditionalViews */ = {
+			isa = PBXGroup;
+			children = (
+				758228A01DF7A94B00567725 /* PWPostCollectionViewCell.swift */,
+			);
+			name = AdditionalViews;
+			path = Core/AdditionalViews;
+			sourceTree = SOURCE_ROOT;
+		};
+		7582288C1DF7A87A00567725 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7582288D1DF7A87A00567725 /* PWCollectionViewController.swift */,
+			);
+			name = ViewControllers;
+			path = Core/ViewControllers;
+			sourceTree = SOURCE_ROOT;
+		};
+		758228921DF7A89300567725 /* PLists */ = {
+			isa = PBXGroup;
+			children = (
+				758228931DF7A89300567725 /* PictureMyWorld-Alpha-InHouse-Info.plist */,
+			);
+			path = PLists;
+			sourceTree = "<group>";
+		};
 		75925EAC1DF77890006C7277 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				7582288B1DF7A87A00567725 /* AppDelegate.swift */,
 				75925EAD1DF778A4006C7277 /* PWConstants.swift */,
 				75925EAF1DF778E7006C7277 /* PWDefines.swift */,
+				7582288A1DF7A87A00567725 /* AdditionalViews */,
+				7582288C1DF7A87A00567725 /* ViewControllers */,
 			);
 			name = Core;
 			path = PictureMyWorld;
@@ -191,7 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				75925EB11DF77C1E006C7277 /* AssetManager.swift */,
-				75925EB41DF77DE7006C7277 /* HTMLParser.swift */,
+				758228901DF7A88600567725 /* HTMLParser.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -281,10 +308,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7582289A1DF7A8A800567725 /* LaunchScreen.storyboard in Resources */,
+				7582289C1DF7A8A800567725 /* Main.storyboard in Resources */,
+				7582289D1DF7A8C700567725 /* Localizable.strings in Resources */,
+				758228991DF7A8A800567725 /* Assets.xcassets in Resources */,
 				756E74461DF0579000960616 /* Settings.bundle in Resources */,
-				7509F4DD1DF0564F00E1EBD3 /* LaunchScreen.storyboard in Resources */,
-				7509F4DA1DF0564F00E1EBD3 /* Assets.xcassets in Resources */,
-				7509F4D81DF0564F00E1EBD3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,16 +392,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7509F4D51DF0564F00E1EBD3 /* ViewController.swift in Sources */,
+				758228911DF7A88600567725 /* HTMLParser.swift in Sources */,
+				75925EB71DF796DA006C7277 /* Database.swift in Sources */,
 				75925EAE1DF778A4006C7277 /* PWConstants.swift in Sources */,
-				7509F4D31DF0564F00E1EBD3 /* AppDelegate.swift in Sources */,
+				7582288F1DF7A87A00567725 /* PWCollectionViewController.swift in Sources */,
 				751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */,
-				751828CC1DF08BAD001D12ED /* Post.swift in Sources */,
+				751828CC1DF08BAD001D12ED /* Post+Helper.swift in Sources */,
 				751828CB1DF08BAD001D12ED /* Post+CoreDataProperties.swift in Sources */,
 				751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */,
 				75925EB21DF77C1E006C7277 /* AssetManager.swift in Sources */,
+				758228A11DF7A94B00567725 /* PWPostCollectionViewCell.swift in Sources */,
 				75925EB01DF778E7006C7277 /* PWDefines.swift in Sources */,
-				75925EB51DF77DE7006C7277 /* HTMLParser.swift in Sources */,
+				7582288E1DF7A87A00567725 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,20 +426,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7509F4D61DF0564F00E1EBD3 /* Main.storyboard */ = {
+		7582289F1DF7A8C700567725 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7509F4D71DF0564F00E1EBD3 /* Base */,
+				7582289E1DF7A8C700567725 /* Base */,
 			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7509F4DB1DF0564F00E1EBD3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7509F4DC1DF0564F00E1EBD3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -506,7 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = PictureMyWorld/Info.plist;
+				INFOPLIST_FILE = "PLists/PictureMyWorld-Alpha-InHouse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ADHOC -D ALPHA -D DEBUG";
@@ -521,7 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = PictureMyWorld/Info.plist;
+				INFOPLIST_FILE = "PLists/PictureMyWorld-Alpha-InHouse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ADHOC -D ALPHA -D RELEASE";

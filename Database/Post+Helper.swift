@@ -12,8 +12,30 @@ import DKHelper
 
 class Post: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+	// Insert code here to add functionality to your managed object subclass
 
+	class func allEntities() -> [Post] {
+		return (Post.MR_findAllSortedBy(Database.Key.Post.Date, ascending: false) as? [Post] ?? [])
+	}
+
+	var validThumbnailRatio: CGFloat {
+		get {
+			var imageRatio = Interface.CollectionView.DefaultRatio
+			if let ratio = self.thumbnailRatio where (ratio != 0) {
+				imageRatio = ratio
+			}
+			return CGFloat(imageRatio)
+		}
+		set {
+			if (self.thumbnailRatio == nil || self.thumbnailRatio?.isEqualToNumber(0) == true) {
+				DKDBManager.saveWithBlock { (savingContext: NSManagedObjectContext) in
+					if let post = self.entityInContext(savingContext) {
+						post.thumbnailRatio = newValue
+					}
+				}
+			}
+		}
+	}
 }
 
 // MARK: - DKDBManager
@@ -21,7 +43,7 @@ class Post: NSManagedObject {
 extension Post {
 
 	override var description: String {
-		return "\(self.title ?? "nil"): \(self.date ?? "nil"), location: \(self.mapsText ?? ""))"
+		return "'\(self.title ?? "nil")': \(self.dateString ?? "nil"), location: \(self.mapsText ?? "")"
 	}
 
 	override func updateWithDictionary(dictionary: [NSObject: AnyObject]?, inContext savingContext: NSManagedObjectContext) {
@@ -36,6 +58,11 @@ extension Post {
 		self.thumbnailURL		= dictionary?[Database.Key.Post.ThumbnailURL] as? String
 		self.imageURL			= dictionary?[Database.Key.Post.ImageURL] as? String
 		self.date 				= NSDate(fromISOString: (dictionary?[Database.Key.Post.Date] as? String) ?? "")
+
+		// Remove extra whitespace and newline characters.
+		self.mapsText 			= self.mapsText?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+		self.descriptionText 	= self.descriptionText?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+		self.title 				= self.title?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 	}
 
 	override class func verbose() -> Bool {
@@ -46,16 +73,16 @@ extension Post {
 
 		guard
 			((self.identifier != nil) &&
-			(self.title != nil) &&
-			(self.descriptionText != nil) &&
-			(self.mapsLink != nil) &&
-			(self.mapsText != nil) &&
-			(self.dateString != nil) &&
-			(self.thumbnailURL != nil) &&
-			(self.imageURL != nil) &&
-			(self.date != nil)) else {
-				// If one value is missing, invalid the data and ignore the post
-				return "Missing value"
+				(self.title != nil) &&
+				(self.descriptionText != nil) &&
+				(self.mapsLink != nil) &&
+				(self.mapsText != nil) &&
+				(self.dateString != nil) &&
+				(self.thumbnailURL != nil) &&
+				(self.imageURL != nil) &&
+				(self.date != nil)) else {
+					// If one value is missing, invalid the data and ignore the post
+					return "Missing value"
 		}
 
 		return super.invalidReason()

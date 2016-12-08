@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DKHelper
 
 struct Database {
 
@@ -34,6 +35,18 @@ struct API {
 	static let BaseURL						= "http://picturemy.world"
 }
 
+struct Interface {
+
+	struct CollectionView {
+
+		static let Inset		 			: CGFloat = 20.0
+		static let MinimumItemWidth 		: CGFloat = 254.0
+		static let DefaultRatio		 		= NSNumber(double: 0.75)
+		static let MinComposentItemHeight	: CGFloat = 100.0
+		static let DescriptionLabelInset	: CGFloat = 8.0
+	}
+}
+
 extension HTMLParser {
 
 	struct Key {
@@ -49,4 +62,17 @@ extension HTMLParser {
 	}
 
 	static let DateFormat					= "MMMM dd, yyyy"
+}
+
+struct ReusableIdentifier {
+
+	static let PostCollectionViewCell		= "PostCollectionViewCell_ID"
+}
+
+extension UIColor {
+
+	class func themeColor() -> UIColor {
+
+		return (UIColor(fromHexString: "47A3DA") ?? UIColor.blueColor())
+	}
 }

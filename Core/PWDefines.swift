@@ -30,7 +30,7 @@ struct Verbose {
 		static let Database					= false
 		static let Asset 					= false
 		static let Cache					= false
-		static let HTMLParser				= true
+		static let HTMLParser				= false
 	}
 
 	struct Database {
