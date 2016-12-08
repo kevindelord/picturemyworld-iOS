@@ -64,7 +64,8 @@ extension PWPostCollectionViewCell {
 		label.numberOfLines = 0
 		label.text = text
 		label.font = UIFont.systemFontOfSize(13)
-		let neededSize = label.sizeThatFits(CGSize(width: width, height: CGFloat.max))
+		let labelWidth = (width - Interface.CollectionView.DescriptionLabelInset * 2)
+		let neededSize = label.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.max))
 		return neededSize.height
 	}
 }
