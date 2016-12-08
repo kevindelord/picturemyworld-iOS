@@ -79,12 +79,19 @@ extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 
 	func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
-		let post = self.posts[safe: indexPath.item]
+		guard let post = self.posts[safe: indexPath.item] else {
+			return CGSize.zero
+		}
+
 		// Calculate the exact minimum size per item to fill the view.
+		// Width
 		let separatorsWidth = ((self.numberOfItemsPerRow * Interface.CollectionView.Inset) * 0.5)
 		let width = ((self.currentWidthAvailable - separatorsWidth) / self.numberOfItemsPerRow)
-		let height = PWPostCollectionViewCell.descriptionTextHeight(post?.descriptionText, forSizeWidth: width)
-		return CGSize(width: width, height: height + Interface.CollectionView.MinimumItemHeight)
+		// Height
+		let imageHeight = (width * post.validThumbnailRatio)
+		let descriptionHeight = PWPostCollectionViewCell.descriptionTextHeight(post.descriptionText, forSizeWidth: width)
+		let height = imageHeight + descriptionHeight + Interface.CollectionView.MinComposentItemHeight
+		return CGSize(width: width, height: height)
 	}
 
 	func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, insetForSection section: Int) -> UIEdgeInsets {

@@ -16,8 +16,10 @@ class PWPostCollectionViewCell 					: UICollectionViewCell {
 	@IBOutlet private weak var descriptionLabel	: UILabel?
 	@IBOutlet private weak var dateLabel 		: UILabel?
 	@IBOutlet private weak var imageView 		: UIImageView?
+	@IBOutlet private weak var imageViewHeight	: NSLayoutConstraint?
 
 	var currentThumbnailURL 					: String?
+	weak var post								: Post?
 
 	func updateWithPost(post: Post?) {
 
@@ -30,13 +32,17 @@ class PWPostCollectionViewCell 					: UICollectionViewCell {
 		self.descriptionLabel?.text = post.descriptionText
 		self.dateLabel?.text = post.dateString
 		self.currentThumbnailURL = post.thumbnailURL
+		self.imageViewHeight?.constant = (self.frame.size.width * post.validThumbnailRatio)
+
+		self.post = post
 
 		AssetManager.downloadImage(self.currentThumbnailURL, priority: DownloadPriority.High, completion: { [weak self] (image) in
 			// Only display the picture if and only if the cell is still waiting for the same image.
 			// For example, if the user scrolls fast the cell will be reused many times.
 			// Each reuse will start the download of the asset; which will be later displayed and then replaced by the next one.
 			// The downloaded (or retrieved) image has its url set as `accessibilityIdentifier`.
-			if (image?.accessibilityIdentifier == self?.currentThumbnailURL) {
+			if (image?.accessibilityIdentifier == self?.currentThumbnailURL), let image = image {
+				self?.post?.validThumbnailRatio = (image.size.height / image.size.width)
 				self?.performBlockInMainThread {
 					self?.imageView?.image = image
 				}

@@ -17,6 +17,25 @@ class Post: NSManagedObject {
 	class func allEntities() -> [Post] {
 		return (Post.MR_findAllSortedBy(Database.Key.Post.Date, ascending: false) as? [Post] ?? [])
 	}
+
+	var validThumbnailRatio: CGFloat {
+		get {
+			var imageRatio = Interface.CollectionView.DefaultRatio
+			if let ratio = self.thumbnailRatio where (ratio != 0) {
+				imageRatio = ratio
+			}
+			return CGFloat(imageRatio)
+		}
+		set {
+			if (self.thumbnailRatio == nil || self.thumbnailRatio?.isEqualToNumber(0) == true) {
+				DKDBManager.saveWithBlock { (savingContext: NSManagedObjectContext) in
+					if let post = self.entityInContext(savingContext) {
+						post.thumbnailRatio = newValue
+					}
+				}
+			}
+		}
+	}
 }
 
 // MARK: - DKDBManager
