@@ -28,7 +28,7 @@ public class ImageSlideshow						: UIView, UIScrollViewDelegate {
     /// Enables/disables user interactions
     public var draggingEnabled 					= true {
         didSet {
-            self.scrollView.userInteractionEnabled = draggingEnabled
+            self.scrollView.userInteractionEnabled = self.draggingEnabled
         }
     }
     

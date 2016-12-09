@@ -67,14 +67,13 @@ extension PWCollectionViewController {
 	private func openSlideShowController(initialImageIndex: Int) {
 
 		let ctr = FullScreenSlideshowViewController()
-		// Called when full-screen VC dismissed and used to set the page to our original slideshow
-		ctr.pageSelected = { (page: Int) in
-			let indexPath = NSIndexPath(forItem: page, inSection: 0)
-			self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: false)
-		}
 		ctr.initialImageIndex = initialImageIndex
 		ctr.inputs = self.inputSources
 		ctr.slideshow.zoomEnabled = true
+		ctr.slideshowDidClose = { (onPageIndex: Int) in
+			let indexPath = NSIndexPath(forItem: onPageIndex, inSection: 0)
+			self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: false)
+		}
 
 		self.presentViewController(ctr, animated: true, completion: nil)
 	}

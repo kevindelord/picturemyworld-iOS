@@ -12,8 +12,6 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
     public let imageView 			= UIImageView()
     public let input				: InputSource
 	public let inputIndex			: Int
-    public var gestureRecognizer	: UITapGestureRecognizer?
-    
     public let zoomEnabled			: Bool
     public var zoomInInitially 		= false
     private var lastFrame 			= CGRectZero
@@ -40,12 +38,6 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
         self.addSubview(self.imageView)
         self.minimumZoomScale = 1.0
         self.maximumZoomScale = self.calculateMaximumScale()
-        
-        // tap gesture recognizer
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImageSlideshowItem.tapZoom))
-        tapRecognizer.numberOfTapsRequired = 2
-        self.imageView.addGestureRecognizer(tapRecognizer)
-        self.gestureRecognizer = tapRecognizer
     }
     
     required public init?(coder aDecoder: NSCoder) {
