@@ -14,6 +14,10 @@ def corePods
 	pod 'DKDBManager', '~> 1.0.0'
 	pod 'SDWebImage', '~> 3.7.1'
 	pod 'CollectionViewWaterfallLayoutSH', '~> 0.3.0'
+	pod 'Appirater', '~> 2.0.5'
+	pod 'Buglife', '~> 1.3.3'
+	pod 'Google/Analytics'
+	pod 'Firebase/Core'
 	# ImageSlideshow has been integrated manually to fix performance issues and usability.
 	# The latest version for Swift 3.x seems to be better but requires a lot of migration.
 #	pod 'ImageSlideshow'

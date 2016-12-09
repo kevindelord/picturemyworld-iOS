@@ -45,7 +45,8 @@ class PWCollectionViewController		: UICollectionViewController {
 extension PWCollectionViewController {
 
 	@IBAction func reloadButtonPressed() {
-		if let html = HTMLParser.fetchHTML(fromString: API.BaseURL) {
+		let baseURL = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
+		if let html = HTMLParser.fetchHTML(fromString: baseURL) {
 			let postsArray = HTMLParser.parse(html)
 			DKDBManager.crudPosts(postsArray, completionBlock: {
 				self.posts = Post.allEntities()

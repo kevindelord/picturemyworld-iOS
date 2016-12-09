@@ -8,6 +8,8 @@
 
 import UIKit
 import DKDBManager
+import Buglife
+import Appirater
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+		Appirater.setup()
+		Buglife.sharedBuglife().startWithAPIKey(NSBundle.stringEntryInPListForKey(PWPlist.BuglifeID))
+		HockeySDK.setup()
+		Analytics.setup()
 		DKDBManager.setupLocalDatabase()
 		AssetManager.shouldCacheImagesInMemory = false
 		return true

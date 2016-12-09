@@ -11,14 +11,18 @@ import Foundation
 // MARK: - Configuration
 
 #if DEBUG
-	private let isDebug = true
+	private let isDebug     = true
+	private let isRelease   = false
 #else
-	private let isDebug = false
+	private let isDebug     = false
+	private let isRelease   = true
 #endif
 
 struct Configuration {
 
 	static let RestoreDatabaseOnStart		= (false && isDebug)
+	static let DebugAppirater				= (false && isDebug)
+	static let AnalyticsEnabled				= (true && isRelease)
 }
 
 // MARK: - Verbose
@@ -31,6 +35,7 @@ struct Verbose {
 		static let Asset 					= false
 		static let Cache					= false
 		static let HTMLParser				= false
+		static let Analytics				= false
 	}
 
 	struct Database {

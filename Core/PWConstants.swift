@@ -9,6 +9,13 @@
 import Foundation
 import DKHelper
 
+struct PWPlist {
+
+	static let AppId            = "AppID"
+	static let APIBaseURL       = "APIBaseURL"
+	static let BuglifeID        = "BuglifeID"
+}
+
 struct Database {
 
 	static let SqliteFilename				= "PictureMyWorld_iOS.sqlite"
@@ -28,11 +35,6 @@ struct Database {
 			static let ImageURL 			= "imageURL"
 		}
 	}
-}
-
-struct API {
-
-	static let BaseURL						= "http://picturemy.world"
 }
 
 struct Interface {
