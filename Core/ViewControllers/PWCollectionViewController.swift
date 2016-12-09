@@ -11,14 +11,14 @@ import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
 
-class PWCollectionViewController				: UICollectionViewController {
+class PWCollectionViewController		: UICollectionViewController {
 
-	private var posts							= [Post]() {
+	private var posts					= [Post]() {
 		didSet {
 			self.setupInputSources()
 		}
 	}
-	private var inputSources					= [AssetManagerSource]()
+	private var inputSources			= [AssetManagerSource]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -27,11 +27,16 @@ class PWCollectionViewController				: UICollectionViewController {
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
 
 		self.posts = Post.allEntities()
+		self.setupWaterfallLayout()
 		self.reloadButtonPressed()
 	}
 
-	override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-		self.setupWaterfallLayout()
+	override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+
+		coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext) in
+			self.setupWaterfallLayout()
+		})
 	}
 }
 

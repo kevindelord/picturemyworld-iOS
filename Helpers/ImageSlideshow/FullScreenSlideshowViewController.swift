@@ -60,6 +60,8 @@ public class FullScreenSlideshowViewController	: UIViewController {
         self.closeButton.setImage(UIImage(named: "ic_cross_white"), forState: UIControlState.Normal)
         self.closeButton.addTarget(self, action: #selector(FullScreenSlideshowViewController.close), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(self.closeButton)
+
+		self.setupTapRecognizers()
     }
 
     override public func prefersStatusBarHidden() -> Bool {
