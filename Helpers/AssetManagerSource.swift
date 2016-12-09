@@ -19,14 +19,7 @@ class AssetManagerSource	: NSObject, InputSource {
 	}
 
 	func fetchImage(completionBlock: ((image: UIImage?) -> Void)) {
-//		AssetManager.downloadImage(self.urlString, priority: DownloadPriority.Low) { (image: UIImage?) in
-//			completionBlock(image: image)
-//		}
-
-		guard let url = NSURL(string: self.urlString) else {
-			return
-		}
-		SDWebImageDownloader.sharedDownloader().downloadImageWithURL(url, options: SDWebImageDownloaderOptions(), progress: nil) {(image: UIImage!, data: NSData!, error: NSError!, finished: Bool) in
+		AssetManager.downloadImage(self.urlString, priority: DownloadPriority.Low) { (image: UIImage?) in
 			completionBlock(image: image)
 		}
 	}

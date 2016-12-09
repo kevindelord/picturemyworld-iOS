@@ -148,6 +148,16 @@ struct AssetManager {
 			SDImageCache.sharedImageCache().removeImageForKey(_imageURL)
 		}
 	}
+
+	/// Should the asset manager cache the images in memory
+	static var shouldCacheImagesInMemory: Bool {
+		get {
+			return SDImageCache.sharedImageCache().shouldCacheImagesInMemory
+		}
+		set {
+			SDImageCache.sharedImageCache().shouldCacheImagesInMemory = newValue
+		}
+	}
 }
 
 extension AssetManager {
