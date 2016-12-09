@@ -123,7 +123,7 @@ public class ImageSlideshow						: UIView, UIScrollViewDelegate {
 					item.imageView.contentMode = self.contentScaleMode
 					item.refreshPosition(scrollViewSize: self.scrollView.frame.size)
 					self.slideshowItems[index] = item
-					self.scrollView.addSubview(item)
+					self.scrollView.addSubview(safe: item)
 				}
 			} else {
 				self.slideshowItems[index]?.removeFromSuperview()
@@ -170,12 +170,9 @@ public class ImageSlideshow						: UIView, UIScrollViewDelegate {
 
     // MARK: UIScrollViewDelegate
 
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-        self.setCurrentPageForScrollViewPage(page)
-    }
-    
     public func scrollViewDidScroll(scrollView: UIScrollView) {
+		let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+		self.setCurrentPageForScrollViewPage(page)
 		self.refreshDisplayedImages(shouldLayoutScrollView: false)
 	}
 }

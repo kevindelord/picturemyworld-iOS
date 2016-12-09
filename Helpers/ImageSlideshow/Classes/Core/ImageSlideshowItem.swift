@@ -79,13 +79,12 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
         self.maximumZoomScale = self.calculateMaximumScale()
     }
 
-	private func loadImage() {
+	func loadImage() {
 		self.input.fetchImage { (image: UIImage?) in
-			self.imageView.image = image
-			self.setPictoCenter()
-			self.imageView.setNeedsLayout()
-			self.imageView.setNeedsDisplay()
-			self.imageView.layoutIfNeeded()
+			self.performBlockInMainThread {
+				self.imageView.image = image
+				self.setPictoCenter()
+			}
 		}
 	}
 
