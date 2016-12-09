@@ -37,6 +37,11 @@ struct API {
 
 struct Interface {
 
+	struct Slideshow {
+
+		static let PreloadDelta				= 2
+	}
+
 	struct CollectionView {
 
 		static let Inset		 			: CGFloat = 20.0

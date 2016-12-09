@@ -53,8 +53,8 @@
                                             <color key="textColor" red="0.2784313725" green="0.63921568630000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYg-Oa-lZs">
-                                            <rect key="frame" x="8" y="181" width="215" height="21"/>
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYg-Oa-lZs">
+                                            <rect key="frame" x="34" y="181" width="189" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="bEp-2U-mYM"/>
                                             </constraints>
@@ -80,6 +80,13 @@
                                             <color key="textColor" red="0.2784313725" green="0.63921568630000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_button" translatesAutoresizingMaskIntoConstraints="NO" id="zZv-uB-zya">
+                                            <rect key="frame" x="8" y="181.5" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="URF-d5-taH"/>
+                                                <constraint firstAttribute="height" constant="20" id="agP-ss-iPP"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -89,19 +96,29 @@
                                     <constraint firstItem="A6y-vV-YXh" firstAttribute="leading" secondItem="Pre-KK-tRv" secondAttribute="leading" constant="8" id="5UB-J7-oxK"/>
                                     <constraint firstAttribute="trailing" secondItem="Pxw-CR-ApT" secondAttribute="trailing" constant="8" id="Aoo-Cm-u7P"/>
                                     <constraint firstItem="zej-bc-aPL" firstAttribute="leading" secondItem="Pre-KK-tRv" secondAttribute="leading" id="DJ6-Ao-xoV"/>
+                                    <constraint firstItem="NYg-Oa-lZs" firstAttribute="leading" secondItem="zZv-uB-zya" secondAttribute="trailing" constant="6" id="Fvv-Lq-Bt2"/>
                                     <constraint firstAttribute="trailing" secondItem="zej-bc-aPL" secondAttribute="trailing" id="Hx6-SU-mdm"/>
+                                    <constraint firstItem="zZv-uB-zya" firstAttribute="leading" secondItem="Pxw-CR-ApT" secondAttribute="leading" id="Ows-Gt-djz"/>
                                     <constraint firstAttribute="trailing" secondItem="NYg-Oa-lZs" secondAttribute="trailing" constant="8" id="PVe-U6-owq"/>
                                     <constraint firstAttribute="bottom" secondItem="A6y-vV-YXh" secondAttribute="bottom" constant="8" id="Pja-DA-dTh"/>
                                     <constraint firstAttribute="trailing" secondItem="A6y-vV-YXh" secondAttribute="trailing" constant="8" id="V1s-Rh-hdA"/>
                                     <constraint firstItem="NYg-Oa-lZs" firstAttribute="top" secondItem="Pxw-CR-ApT" secondAttribute="bottom" constant="2" id="agc-ut-fhP"/>
                                     <constraint firstItem="Pxw-CR-ApT" firstAttribute="leading" secondItem="Pre-KK-tRv" secondAttribute="leading" constant="8" id="flu-UI-32d"/>
-                                    <constraint firstItem="NYg-Oa-lZs" firstAttribute="leading" secondItem="Pre-KK-tRv" secondAttribute="leading" constant="8" id="gco-J9-VvI"/>
+                                    <constraint firstItem="NYg-Oa-lZs" firstAttribute="leading" secondItem="Pre-KK-tRv" secondAttribute="leading" constant="50" id="gco-J9-VvI"/>
                                     <constraint firstItem="j1L-o2-vVu" firstAttribute="top" secondItem="NYg-Oa-lZs" secondAttribute="bottom" constant="8" id="lw8-eW-TWV"/>
                                     <constraint firstItem="j1L-o2-vVu" firstAttribute="leading" secondItem="Pre-KK-tRv" secondAttribute="leading" constant="8" id="lyS-mz-61c"/>
                                     <constraint firstItem="Pxw-CR-ApT" firstAttribute="top" secondItem="zej-bc-aPL" secondAttribute="bottom" constant="8" id="oRF-PK-mQn"/>
                                     <constraint firstItem="zej-bc-aPL" firstAttribute="top" secondItem="Pre-KK-tRv" secondAttribute="top" id="qbd-68-tjW"/>
+                                    <constraint firstItem="zZv-uB-zya" firstAttribute="top" secondItem="Pxw-CR-ApT" secondAttribute="bottom" id="uYC-hz-9MJ"/>
+                                    <constraint firstItem="NYg-Oa-lZs" firstAttribute="centerY" secondItem="zZv-uB-zya" secondAttribute="centerY" id="xhy-9n-QgK"/>
                                 </constraints>
                                 <size key="customSize" width="231" height="334"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uYC-hz-9MJ"/>
+                                        <exclude reference="gco-J9-VvI"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dateLabel" destination="A6y-vV-YXh" id="qd1-Zh-Cor"/>
                                     <outlet property="descriptionLabel" destination="j1L-o2-vVu" id="zeW-Ik-Pnd"/>
@@ -124,4 +141,7 @@
             <point key="canvasLocation" x="821" y="-95"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map_button" width="30" height="30"/>
+    </resources>
 </document>

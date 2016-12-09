@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		62063C4F3752F42B38BC0DC7 /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */; };
-		7509F4E81DF0565000E1EBD3 /* PictureMyWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */; };
 		751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828BA1DF05A53001D12ED /* DKExtensions.swift */; };
 		751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 751828C61DF08B26001D12ED /* Model.xcdatamodeld */; };
 		751828CB1DF08BAD001D12ED /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */; };
 		751828CC1DF08BAD001D12ED /* Post+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828CA1DF08BAD001D12ED /* Post+Helper.swift */; };
 		756E74461DF0579000960616 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 756E74451DF0579000960616 /* Settings.bundle */; };
+		757809F61DFB06CB003AEAD2 /* AssetManagerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809F51DFB06CB003AEAD2 /* AssetManagerSource.swift */; };
+		757809FE1DFB1BF4003AEAD2 /* FullScreenSlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809F71DFB1BF4003AEAD2 /* FullScreenSlideshowViewController.swift */; };
+		757809FF1DFB1BF4003AEAD2 /* ImageSlideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809F81DFB1BF4003AEAD2 /* ImageSlideshow.swift */; };
+		75780A001DFB1BF4003AEAD2 /* ImageSlideshowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809F91DFB1BF4003AEAD2 /* ImageSlideshowItem.swift */; };
+		75780A011DFB1BF4003AEAD2 /* InputSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809FA1DFB1BF4003AEAD2 /* InputSource.swift */; };
+		75780A021DFB1BF4003AEAD2 /* UIImage+AspectFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809FB1DFB1BF4003AEAD2 /* UIImage+AspectFit.swift */; };
+		75780A031DFB1BF4003AEAD2 /* UIImageView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809FC1DFB1BF4003AEAD2 /* UIImageView+Tools.swift */; };
+		75780A041DFB1BF4003AEAD2 /* ZoomAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809FD1DFB1BF4003AEAD2 /* ZoomAnimatedTransitioning.swift */; };
 		7582288E1DF7A87A00567725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582288B1DF7A87A00567725 /* AppDelegate.swift */; };
 		7582288F1DF7A87A00567725 /* PWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582288D1DF7A87A00567725 /* PWCollectionViewController.swift */; };
 		758228911DF7A88600567725 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758228901DF7A88600567725 /* HTMLParser.swift */; };
@@ -28,29 +35,24 @@
 		75925EB71DF796DA006C7277 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EB61DF796DA006C7277 /* Database.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7509F4E41DF0565000E1EBD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7509F4C71DF0564F00E1EBD3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7509F4CE1DF0564F00E1EBD3;
-			remoteInfo = PictureMyWorld;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		23FB15770CAD38DF12FD5C5B /* Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureMyWorld_AdHoc_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		7509F4CF1DF0564F00E1EBD3 /* PictureMyWorld-AdHoc-Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PictureMyWorld-AdHoc-Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7509F4E31DF0565000E1EBD3 /* PictureMyWorldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictureMyWorldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureMyWorldTests.swift; sourceTree = "<group>"; };
-		7509F4E91DF0565000E1EBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		751828BA1DF05A53001D12ED /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		751828C71DF08B26001D12ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "Database/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		751828CA1DF08BAD001D12ED /* Post+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+Helper.swift"; path = "Database/Post+Helper.swift"; sourceTree = "<group>"; };
 		756E74451DF0579000960616 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		757809F51DFB06CB003AEAD2 /* AssetManagerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetManagerSource.swift; path = Helpers/AssetManagerSource.swift; sourceTree = "<group>"; };
+		757809F71DFB1BF4003AEAD2 /* FullScreenSlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenSlideshowViewController.swift; sourceTree = "<group>"; };
+		757809F81DFB1BF4003AEAD2 /* ImageSlideshow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSlideshow.swift; sourceTree = "<group>"; };
+		757809F91DFB1BF4003AEAD2 /* ImageSlideshowItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSlideshowItem.swift; sourceTree = "<group>"; };
+		757809FA1DFB1BF4003AEAD2 /* InputSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputSource.swift; sourceTree = "<group>"; };
+		757809FB1DFB1BF4003AEAD2 /* UIImage+AspectFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+AspectFit.swift"; sourceTree = "<group>"; };
+		757809FC1DFB1BF4003AEAD2 /* UIImageView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Tools.swift"; sourceTree = "<group>"; };
+		757809FD1DFB1BF4003AEAD2 /* ZoomAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		7582288B1DF7A87A00567725 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Core/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		7582288D1DF7A87A00567725 /* PWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCollectionViewController.swift; sourceTree = "<group>"; };
 		758228901DF7A88600567725 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLParser.swift; path = Helpers/HTMLParser.swift; sourceTree = "<group>"; };
@@ -72,13 +74,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62063C4F3752F42B38BC0DC7 /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7509F4E01DF0565000E1EBD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +106,6 @@
 				751828B71DF05A53001D12ED /* Submodules */,
 				756E74441DF0578200960616 /* Resources */,
 				758228921DF7A89300567725 /* PLists */,
-				7509F4E61DF0565000E1EBD3 /* PictureMyWorldTests */,
 				7509F4D01DF0564F00E1EBD3 /* Products */,
 				67458EE5424703F408659D75 /* Pods */,
 				43E0D9FFC75DDC169A03B19F /* Frameworks */,
@@ -122,18 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				7509F4CF1DF0564F00E1EBD3 /* PictureMyWorld-AdHoc-Alpha.app */,
-				7509F4E31DF0565000E1EBD3 /* PictureMyWorldTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7509F4E61DF0565000E1EBD3 /* PictureMyWorldTests */ = {
-			isa = PBXGroup;
-			children = (
-				7509F4E71DF0565000E1EBD3 /* PictureMyWorldTests.swift */,
-				7509F4E91DF0565000E1EBD3 /* Info.plist */,
-			);
-			path = PictureMyWorldTests;
 			sourceTree = "<group>";
 		};
 		751828B71DF05A53001D12ED /* Submodules */ = {
@@ -161,6 +145,21 @@
 				751828C61DF08B26001D12ED /* Model.xcdatamodeld */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		751949851DFA1A7C008CA6D9 /* ImageSlideshow */ = {
+			isa = PBXGroup;
+			children = (
+				757809F71DFB1BF4003AEAD2 /* FullScreenSlideshowViewController.swift */,
+				757809F81DFB1BF4003AEAD2 /* ImageSlideshow.swift */,
+				757809F91DFB1BF4003AEAD2 /* ImageSlideshowItem.swift */,
+				757809FA1DFB1BF4003AEAD2 /* InputSource.swift */,
+				757809FB1DFB1BF4003AEAD2 /* UIImage+AspectFit.swift */,
+				757809FC1DFB1BF4003AEAD2 /* UIImageView+Tools.swift */,
+				757809FD1DFB1BF4003AEAD2 /* ZoomAnimatedTransitioning.swift */,
+			);
+			name = ImageSlideshow;
+			path = Helpers/ImageSlideshow;
 			sourceTree = "<group>";
 		};
 		756E74441DF0578200960616 /* Resources */ = {
@@ -217,7 +216,9 @@
 		75925EB31DF77C21006C7277 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				751949851DFA1A7C008CA6D9 /* ImageSlideshow */,
 				75925EB11DF77C1E006C7277 /* AssetManager.swift */,
+				757809F51DFB06CB003AEAD2 /* AssetManagerSource.swift */,
 				758228901DF7A88600567725 /* HTMLParser.swift */,
 			);
 			name = Helpers;
@@ -247,24 +248,6 @@
 			productReference = 7509F4CF1DF0564F00E1EBD3 /* PictureMyWorld-AdHoc-Alpha.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7509F4E21DF0565000E1EBD3 /* PictureMyWorldTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7509F4EF1DF0565000E1EBD3 /* Build configuration list for PBXNativeTarget "PictureMyWorldTests" */;
-			buildPhases = (
-				7509F4DF1DF0565000E1EBD3 /* Sources */,
-				7509F4E01DF0565000E1EBD3 /* Frameworks */,
-				7509F4E11DF0565000E1EBD3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7509F4E51DF0565000E1EBD3 /* PBXTargetDependency */,
-			);
-			name = PictureMyWorldTests;
-			productName = PictureMyWorldTests;
-			productReference = 7509F4E31DF0565000E1EBD3 /* PictureMyWorldTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -277,10 +260,7 @@
 				TargetAttributes = {
 					7509F4CE1DF0564F00E1EBD3 = {
 						CreatedOnToolsVersion = 7.3.1;
-					};
-					7509F4E21DF0565000E1EBD3 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 7509F4CE1DF0564F00E1EBD3;
+						DevelopmentTeam = QXY3J9PHW4;
 					};
 				};
 			};
@@ -298,7 +278,6 @@
 			projectRoot = "";
 			targets = (
 				7509F4CE1DF0564F00E1EBD3 /* PictureMyWorld-AdHoc-Alpha */,
-				7509F4E21DF0565000E1EBD3 /* PictureMyWorldTests */,
 			);
 		};
 /* End PBXProject section */
@@ -313,13 +292,6 @@
 				7582289D1DF7A8C700567725 /* Localizable.strings in Resources */,
 				758228991DF7A8A800567725 /* Assets.xcassets in Resources */,
 				756E74461DF0579000960616 /* Settings.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7509F4E11DF0565000E1EBD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E3ECC7FDCB1E17B0C509389C /* [CP] Embed Pods Frameworks */ = {
@@ -394,36 +366,28 @@
 			files = (
 				758228911DF7A88600567725 /* HTMLParser.swift in Sources */,
 				75925EB71DF796DA006C7277 /* Database.swift in Sources */,
+				757809FE1DFB1BF4003AEAD2 /* FullScreenSlideshowViewController.swift in Sources */,
+				75780A021DFB1BF4003AEAD2 /* UIImage+AspectFit.swift in Sources */,
 				75925EAE1DF778A4006C7277 /* PWConstants.swift in Sources */,
 				7582288F1DF7A87A00567725 /* PWCollectionViewController.swift in Sources */,
 				751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */,
 				751828CC1DF08BAD001D12ED /* Post+Helper.swift in Sources */,
+				75780A001DFB1BF4003AEAD2 /* ImageSlideshowItem.swift in Sources */,
 				751828CB1DF08BAD001D12ED /* Post+CoreDataProperties.swift in Sources */,
+				75780A011DFB1BF4003AEAD2 /* InputSource.swift in Sources */,
+				75780A041DFB1BF4003AEAD2 /* ZoomAnimatedTransitioning.swift in Sources */,
+				757809FF1DFB1BF4003AEAD2 /* ImageSlideshow.swift in Sources */,
 				751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */,
 				75925EB21DF77C1E006C7277 /* AssetManager.swift in Sources */,
+				75780A031DFB1BF4003AEAD2 /* UIImageView+Tools.swift in Sources */,
 				758228A11DF7A94B00567725 /* PWPostCollectionViewCell.swift in Sources */,
+				757809F61DFB06CB003AEAD2 /* AssetManagerSource.swift in Sources */,
 				75925EB01DF778E7006C7277 /* PWDefines.swift in Sources */,
 				7582288E1DF7A87A00567725 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7509F4DF1DF0565000E1EBD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7509F4E81DF0565000E1EBD3 /* PictureMyWorldTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7509F4E51DF0565000E1EBD3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7509F4CE1DF0564F00E1EBD3 /* PictureMyWorld-AdHoc-Alpha */;
-			targetProxy = 7509F4E41DF0565000E1EBD3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7582289F1DF7A8C700567725 /* Localizable.strings */ = {
@@ -528,13 +492,16 @@
 			baseConfigurationReference = 61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "PLists/PictureMyWorld-Alpha-InHouse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ADHOC -D ALPHA -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.app.picturemyworld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "46aa9cc9-a8b7-4dbf-903a-fee1bba433e8";
 			};
 			name = Debug;
 		};
@@ -543,37 +510,15 @@
 			baseConfigurationReference = 23FB15770CAD38DF12FD5C5B /* Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "PLists/PictureMyWorld-Alpha-InHouse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ADHOC -D ALPHA -D RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.app.picturemyworld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		7509F4F01DF0565000E1EBD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PictureMyWorldTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorldTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PictureMyWorld.app/PictureMyWorld";
-			};
-			name = Debug;
-		};
-		7509F4F11DF0565000E1EBD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PictureMyWorldTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorldTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PictureMyWorld.app/PictureMyWorld";
+				PROVISIONING_PROFILE = "774727aa-09c3-4109-83ad-d573b1bd43ac";
 			};
 			name = Release;
 		};
@@ -594,15 +539,6 @@
 			buildConfigurations = (
 				7509F4ED1DF0565000E1EBD3 /* Debug */,
 				7509F4EE1DF0565000E1EBD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7509F4EF1DF0565000E1EBD3 /* Build configuration list for PBXNativeTarget "PictureMyWorldTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7509F4F01DF0565000E1EBD3 /* Debug */,
-				7509F4F11DF0565000E1EBD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

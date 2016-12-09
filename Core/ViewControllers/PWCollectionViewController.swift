@@ -11,9 +11,14 @@ import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
 
-class PWCollectionViewController	: UICollectionViewController {
+class PWCollectionViewController				: UICollectionViewController {
 
-	private var posts				= [Post]()
+	private var posts							= [Post]() {
+		didSet {
+			self.setupInputSources()
+		}
+	}
+	private var inputSources					= [AssetManagerSource]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -43,6 +48,43 @@ extension PWCollectionViewController {
 				self.collectionView?.reloadData()
 			})
 		}
+	}
+}
+
+// MARK: - ImageSlideshow
+
+extension PWCollectionViewController {
+
+	private func setupInputSources() {
+		self.inputSources = self.posts.flatMap { (post: Post) -> AssetManagerSource? in
+			guard let urlString = post.imageURL else {
+				return nil
+			}
+			return AssetManagerSource(urlString: urlString)
+		}
+	}
+
+	private func openSlideShowController(initialImageIndex: Int) {
+
+		let ctr = FullScreenSlideshowViewController()
+		ctr.initialImageIndex = initialImageIndex
+		ctr.inputs = self.inputSources
+		ctr.slideshow.zoomEnabled = true
+		ctr.slideshowDidClose = { (onPageIndex: Int) in
+			let indexPath = NSIndexPath(forItem: onPageIndex, inSection: 0)
+			self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: false)
+		}
+
+		self.presentViewController(ctr, animated: true, completion: nil)
+	}
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension PWCollectionViewController {
+
+	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		self.openSlideShowController(indexPath.item)
 	}
 }
 
