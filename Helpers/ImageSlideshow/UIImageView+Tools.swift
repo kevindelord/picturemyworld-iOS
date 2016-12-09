@@ -3,7 +3,8 @@
 //  Pods
 //
 //  Created by Aleš Kocur on 20/04/16.
-//
+//  Code base updated from version: 0.6.0
+// 	URL: https://github.com/zvonicek/ImageSlideshow
 //
 
 import UIKit

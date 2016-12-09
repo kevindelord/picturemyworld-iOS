@@ -14,7 +14,9 @@ def corePods
 	pod 'DKDBManager', '~> 1.0.0'
 	pod 'SDWebImage', '~> 3.7.1'
 	pod 'CollectionViewWaterfallLayoutSH', '~> 0.3.0'
-#	pod 'ImageSlideshow', :git => 'https://github.com/zvonicek/ImageSlideshow', :branch => 'swift-2.3'
+	# ImageSlideshow has been integrated manually to fix performance issues and usability.
+	# The latest version for Swift 3.x seems to be better but requires a lot of migration.
+#	pod 'ImageSlideshow'
 end
 
 target 'PictureMyWorld-AdHoc-Alpha' do

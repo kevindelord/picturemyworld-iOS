@@ -3,7 +3,8 @@
 //  ImageSlideshow
 //
 //  Created by Petr Zvoníček on 31.08.15.
-//
+//  Code base updated from version: 0.6.0
+// 	URL: https://github.com/zvonicek/ImageSlideshow
 //
 
 import UIKit
