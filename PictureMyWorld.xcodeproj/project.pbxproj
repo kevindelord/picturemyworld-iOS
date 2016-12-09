@@ -20,6 +20,7 @@
 		751949991DFA1A7C008CA6D9 /* UIImageView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751949901DFA1A7C008CA6D9 /* UIImageView+Tools.swift */; };
 		7519499A1DFA1A7C008CA6D9 /* ZoomAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751949911DFA1A7C008CA6D9 /* ZoomAnimatedTransitioning.swift */; };
 		756E74461DF0579000960616 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 756E74451DF0579000960616 /* Settings.bundle */; };
+		757809F61DFB06CB003AEAD2 /* AssetManagerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809F51DFB06CB003AEAD2 /* AssetManagerSource.swift */; };
 		7582288E1DF7A87A00567725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582288B1DF7A87A00567725 /* AppDelegate.swift */; };
 		7582288F1DF7A87A00567725 /* PWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582288D1DF7A87A00567725 /* PWCollectionViewController.swift */; };
 		758228911DF7A88600567725 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758228901DF7A88600567725 /* HTMLParser.swift */; };
@@ -51,6 +52,7 @@
 		751949901DFA1A7C008CA6D9 /* UIImageView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Tools.swift"; sourceTree = "<group>"; };
 		751949911DFA1A7C008CA6D9 /* ZoomAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		756E74451DF0579000960616 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		757809F51DFB06CB003AEAD2 /* AssetManagerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetManagerSource.swift; path = Helpers/AssetManagerSource.swift; sourceTree = "<group>"; };
 		7582288B1DF7A87A00567725 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Core/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		7582288D1DF7A87A00567725 /* PWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCollectionViewController.swift; sourceTree = "<group>"; };
 		758228901DF7A88600567725 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLParser.swift; path = Helpers/HTMLParser.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				751949851DFA1A7C008CA6D9 /* ImageSlideshow */,
 				75925EB11DF77C1E006C7277 /* AssetManager.swift */,
+				757809F51DFB06CB003AEAD2 /* AssetManagerSource.swift */,
 				758228901DF7A88600567725 /* HTMLParser.swift */,
 			);
 			name = Helpers;
@@ -392,6 +395,7 @@
 				751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */,
 				75925EB21DF77C1E006C7277 /* AssetManager.swift in Sources */,
 				758228A11DF7A94B00567725 /* PWPostCollectionViewCell.swift in Sources */,
+				757809F61DFB06CB003AEAD2 /* AssetManagerSource.swift in Sources */,
 				751949971DFA1A7C008CA6D9 /* InputSource.swift in Sources */,
 				75925EB01DF778E7006C7277 /* PWDefines.swift in Sources */,
 				7582288E1DF7A87A00567725 /* AppDelegate.swift in Sources */,

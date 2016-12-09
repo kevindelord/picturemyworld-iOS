@@ -11,21 +11,6 @@ import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
 
-class AssetManagerSource	: NSObject, InputSource {
-	var urlString			: String
-
-	init(urlString: String) {
-		self.urlString = urlString
-		super.init()
-	}
-
-	func fetchImage(completionBlock: ((image: UIImage?) -> Void)) {
-		AssetManager.downloadImage(self.urlString, priority: DownloadPriority.Low) { (image: UIImage?) in
-			completionBlock(image: image)
-		}
-	}
-}
-
 class PWCollectionViewController				: UICollectionViewController {
 
 	private var posts							= [Post]() {
