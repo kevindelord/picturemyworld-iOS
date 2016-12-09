@@ -16,12 +16,28 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="fXb-nG-hD7">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="dZX-d0-H8l"/>
+                                    <constraint firstAttribute="height" constant="200" id="yqM-r6-TzC"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fXb-nG-hD7" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5iI-id-lw9"/>
+                            <constraint firstItem="fXb-nG-hD7" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mkC-tb-DW1"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="344" y="389"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_launchscreen" width="200" height="200"/>
+    </resources>
 </document>
