@@ -3,7 +3,7 @@
 //  ImageSlideshow
 //
 //  Created by Petr Zvoníček on 14.01.16.
-//
+// 	Updated by Kevin Delord on 09.12.16
 //
 
 import UIKit

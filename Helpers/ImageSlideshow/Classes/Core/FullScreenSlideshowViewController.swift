@@ -3,6 +3,7 @@
 //  ImageSlideshow
 //
 //  Created by Petr Zvoníček on 31.08.15.
+// 	Updated by Kevin Delord on 09.12.16
 //
 
 import UIKit
@@ -10,11 +11,10 @@ import UIKit
 public class FullScreenSlideshowViewController	: UIViewController {
     
     public var slideshow						: ImageSlideshow = {
-        let slideshow = ImageSlideshow()
-        slideshow.zoomEnabled = true
-        slideshow.contentScaleMode = UIViewContentMode.ScaleAspectFit
-        slideshow.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-        
+        let slideshow 				= ImageSlideshow()
+        slideshow.zoomEnabled 		= true
+        slideshow.contentScaleMode 	= UIViewContentMode.ScaleAspectFit
+        slideshow.autoresizingMask 	= [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         return slideshow
     }()
     
