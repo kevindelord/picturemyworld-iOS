@@ -14,7 +14,7 @@ struct Analytics {
      static func setup() {
 
         // Check if the analytics is enabled
-        if (Configuration.AnalyticsEnabled == false) {
+        guard (Configuration.AnalyticsEnabled == true) else {
             return
         }
 
@@ -30,7 +30,7 @@ struct Analytics {
     private static func send(category: String, action: String, label: String?, value: NSNumber?) {
 
         // Check if the analytics is enabled
-        if (Configuration.AnalyticsEnabled == false) {
+        guard (Configuration.AnalyticsEnabled == true) else {
             return
         }
 
@@ -44,7 +44,7 @@ struct Analytics {
     static func sendScreenView(screen: Analytics.Screen) {
 
         // Check if the analytics is enabled
-        if (Configuration.AnalyticsEnabled == false) {
+        guard (Configuration.AnalyticsEnabled == true) else {
             return
         }
 
@@ -61,6 +61,13 @@ struct Analytics {
 
         case CollectionView					= "Screen_CollectionView"
         case Slideshow                      = "Screen_Slideshow"
+
+		var className : String {
+			switch self {
+			case .CollectionView: 			return "PWCollectionViewController"
+			case .Slideshow:				return "FullScreenSlideshowViewController"
+			}
+		}
     }
 
     enum UserAction                       	: String {
@@ -143,7 +150,6 @@ private struct Firebase {
     }
 
     static func sendScreenView(screen: Analytics.Screen) {
-        let params = [kFIRParameterItemName: screen.rawValue, kFIRParameterItemCategory: kGAIScreenName]
-        FIRAnalytics.logEventWithName(kFIREventSelectContent, parameters: params)
+		FIRAnalytics.setScreenName(screen.rawValue, screenClass: screen.className)
     }
 }
