@@ -73,6 +73,7 @@ struct Analytics {
 		case DidScrollCollectionView		= "UserAction_DidScrollCollectionView"
 		case DidScrollSlideshow				= "UserAction_DidScrollSlideshow"
 		case DidOpenInfoView				= "UserAction_DidOpenInfoView"
+		case DidCloseInfoView				= "UserAction_DidCloseInfoView"
 		case DidZoomImage					= "UserAction_DidZoomImage"
 		case DidHideCloseButton				= "UserAction_DidHideCloseButton"
 		case DidShowCloseButton				= "UserAction_DidShowCloseButton"

@@ -4,16 +4,13 @@
 
 ### In Progress
 
-- Integrate Analytics
-- Integrate HockeySDK
-- Integrate Buglife
-- Integrate Appirater
+- Integrate Info popup
 
 ### To be done
 
 - Fix rotation bug when coming back to CollectionViewController.
-- Integrate Info popup
 - Update all pods before release
+- Localisation
 
 ### Backlog
 

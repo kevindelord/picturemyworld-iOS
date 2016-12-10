@@ -11,21 +11,24 @@ import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
 
-class PWCollectionViewController		: UICollectionViewController {
+class PWCollectionViewController				: UIViewController {
 
-	private var posts					= [Post]() {
+	private var posts							= [Post]() {
 		didSet {
 			self.setupInputSources()
 		}
 	}
-	private var inputSources			= [AssetManagerSource]()
-	private var refreshControl			= UIRefreshControl()
+	private var inputSources					= [AssetManagerSource]()
+	private var refreshControl					= UIRefreshControl()
+	@IBOutlet private weak var infoView			: UIView?
+	@IBOutlet private weak var collectionView 	: UICollectionView?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.title = L("FULL_TITLE")
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
+		self.navigationController?.navigationBar.tintColor = UIColor.themeColor()
 		self.refreshControl.addTarget(self, action: #selector(self.didPullToRefresh), forControlEvents: .ValueChanged)
 		self.collectionView?.addSubview(self.refreshControl)
 
@@ -46,6 +49,14 @@ class PWCollectionViewController		: UICollectionViewController {
 			Analytics.UserAction.DidChangeDeviceOrientation
 			self.setupWaterfallLayout()
 		})
+	}
+
+	@IBAction func helpButtonPressed() {
+		Analytics.UserAction.DidOpenInfoView
+		self.view.bringSubviewToFront(safe: self.infoView)
+		UIView.animateWithDuration(0.3) {
+			self.infoView?.alpha = 1
+		}
 	}
 }
 
@@ -102,30 +113,30 @@ extension PWCollectionViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension PWCollectionViewController {
+extension PWCollectionViewController: UICollectionViewDelegate {
 
-	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		Analytics.UserAction.DidSelectItemCell.send()
 		self.openSlideShowController(indexPath.item)
 	}
 }
 
-extension PWCollectionViewController {
+extension PWCollectionViewController: UIScrollViewDelegate {
 
-	override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 		Analytics.UserAction.DidScrollCollectionView.send()
 	}
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension PWCollectionViewController {
+extension PWCollectionViewController: UICollectionViewDataSource {
 
-	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.posts.count
 	}
 
-	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReusableIdentifier.PostCollectionViewCell, forIndexPath: indexPath) as? PWPostCollectionViewCell else {
 			return UICollectionViewCell()
 		}
