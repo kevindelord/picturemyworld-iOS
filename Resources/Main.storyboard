@@ -107,7 +107,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="B23-iN-FL1" firstAttribute="centerX" secondItem="fP3-df-2xF" secondAttribute="centerX" id="R0i-wA-PbQ"/>
                                     <constraint firstItem="B23-iN-FL1" firstAttribute="centerY" secondItem="fP3-df-2xF" secondAttribute="centerY" id="nZv-5G-wq4"/>
@@ -116,8 +116,8 @@
                                     <outlet property="containerView" destination="B23-iN-FL1" id="Ney-wZ-ByW"/>
                                 </connections>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-F9-D9c">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-F9-D9c">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G0h-8W-1JJ">
                                     <size key="itemSize" width="50" height="50"/>
@@ -236,6 +236,7 @@
                             <constraint firstAttribute="trailing" secondItem="fP3-df-2xF" secondAttribute="trailing" id="9dh-ct-U8P"/>
                             <constraint firstItem="zdP-mm-8QG" firstAttribute="top" secondItem="fP3-df-2xF" secondAttribute="bottom" id="FvS-dY-Gtf"/>
                             <constraint firstItem="fP3-df-2xF" firstAttribute="leading" secondItem="vCP-Us-z9Z" secondAttribute="leading" id="LyE-ng-PDX"/>
+                            <constraint firstItem="wVb-F9-D9c" firstAttribute="top" secondItem="z2R-uv-Itz" secondAttribute="bottom" id="Wi5-VP-lxf"/>
                             <constraint firstItem="wVb-F9-D9c" firstAttribute="top" secondItem="z2R-uv-Itz" secondAttribute="bottom" id="Wzd-VD-Z2v"/>
                             <constraint firstItem="zdP-mm-8QG" firstAttribute="top" secondItem="wVb-F9-D9c" secondAttribute="bottom" id="YPE-G1-eZB"/>
                             <constraint firstItem="wVb-F9-D9c" firstAttribute="leading" secondItem="vCP-Us-z9Z" secondAttribute="leading" id="lWJ-Ms-eDK"/>
@@ -245,6 +246,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Wzd-VD-Z2v"/>
+                                <exclude reference="zPd-Ib-gUg"/>
                             </mask>
                         </variation>
                     </view>

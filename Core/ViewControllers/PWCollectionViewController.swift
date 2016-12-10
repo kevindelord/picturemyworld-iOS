@@ -20,7 +20,7 @@ class PWCollectionViewController				: UIViewController {
 	}
 	private var inputSources					= [AssetManagerSource]()
 	private var refreshControl					= UIRefreshControl()
-	@IBOutlet private weak var infoView			: UIView?
+	@IBOutlet private weak var infoView			: PWInfoView?
 	@IBOutlet private weak var collectionView 	: UICollectionView?
 
 	override func viewDidLoad() {
@@ -29,6 +29,7 @@ class PWCollectionViewController				: UIViewController {
 		self.title = L("FULL_TITLE")
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
 		self.navigationController?.navigationBar.tintColor = UIColor.themeColor()
+
 		self.refreshControl.addTarget(self, action: #selector(self.didPullToRefresh), forControlEvents: .ValueChanged)
 		self.collectionView?.addSubview(self.refreshControl)
 
@@ -52,11 +53,8 @@ class PWCollectionViewController				: UIViewController {
 	}
 
 	@IBAction func helpButtonPressed() {
-		Analytics.UserAction.DidOpenInfoView
 		self.view.bringSubviewToFront(safe: self.infoView)
-		UIView.animateWithDuration(0.3) {
-			self.infoView?.alpha = 1
-		}
+		self.infoView?.toggleState()
 	}
 }
 

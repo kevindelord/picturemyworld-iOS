@@ -32,15 +32,24 @@ class PWInfoView										: UIView {
 		self.madeByTextView?.text = "Made by Kevin Delord"
 
 		// Hide info view
-		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissInfoView))
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.toggleState))
 		tapRecognizer.numberOfTapsRequired = 1
 		self.addGestureRecognizer(tapRecognizer)
 	}
 
-	func dismissInfoView() {
-		Analytics.UserAction.DidCloseInfoView.send()
-		UIView.animateWithDuration(0.3) {
-			self.alpha = 0
+	func toggleState() {
+		if (self.alpha == 0.0) {
+			UIView.animateWithDuration(0.3, animations: {
+				self.alpha = 1
+			}, completion: { (didFinish: Bool) in
+				Analytics.UserAction.DidOpenInfoView
+			})
+		} else {
+			UIView.animateWithDuration(0.3, animations: {
+				self.alpha = 0
+			}, completion: { (didFinish: Bool) in
+				Analytics.UserAction.DidCloseInfoView.send()
+			})
 		}
 	}
 }
