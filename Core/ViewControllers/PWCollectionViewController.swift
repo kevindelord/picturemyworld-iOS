@@ -19,12 +19,15 @@ class PWCollectionViewController		: UICollectionViewController {
 		}
 	}
 	private var inputSources			= [AssetManagerSource]()
+	private var refreshControl			= UIRefreshControl()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.title = L("FULL_TITLE")
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
+		self.refreshControl.addTarget(self, action: #selector(self.didPullToRefresh), forControlEvents: .ValueChanged)
+		self.collectionView?.addSubview(self.refreshControl)
 
 		self.posts = Post.allEntities()
 		self.setupWaterfallLayout()
@@ -50,6 +53,11 @@ class PWCollectionViewController		: UICollectionViewController {
 
 extension PWCollectionViewController {
 
+	func didPullToRefresh() {
+		Analytics.UserAction.DidPullToRefresh.send()
+		self.refreshContent()
+	}
+
 	private func refreshContent() {
 		let baseURL = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
 		if let html = HTMLParser.fetchHTML(fromString: baseURL) {
@@ -58,6 +66,7 @@ extension PWCollectionViewController {
 				self.posts = Post.allEntities()
 				self.setupWaterfallLayout()
 				self.collectionView?.reloadData()
+				self.refreshControl.endRefreshing()
 			})
 		}
 	}
@@ -104,8 +113,6 @@ extension PWCollectionViewController {
 extension PWCollectionViewController {
 
 	override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-		super.scrollViewDidEndDecelerating(scrollView)
-
 		Analytics.UserAction.DidScrollCollectionView.send()
 	}
 }
