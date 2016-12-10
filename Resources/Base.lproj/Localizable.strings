@@ -6,4 +6,9 @@
  Copyright © 2016 Kevin Delord. All rights reserved.
  */
 
-"FULL_TITLE" = "Picture My World";
+"FULL_TITLE" 			= "Picture My World";
+"INFO_ABOUT_TITLE"      = "About";
+"INFO_ABOUT_TEXT"       = "This application is an open-source version of the travel blog:\n\n%@";
+"INFO_BUG_TITLE"        = "Found a bug?";
+"INFO_BUG_TEXT"         = "Shake your device to report a problem!";
+"INFO_MADE_BY"          = "Made with ❤️ by Kevin Delord.";

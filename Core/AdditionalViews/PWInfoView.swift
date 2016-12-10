@@ -15,21 +15,22 @@ class PWInfoView										: UIView {
 	@IBOutlet private weak var containerView 			: UIView?
 	@IBOutlet private weak var versionLabel 			: UILabel?
 	@IBOutlet private weak var aboutLabel 				: UILabel?
-	@IBOutlet private weak var appDescriptionTextView	: UITextView?
+	@IBOutlet private weak var aboutTextLabel			: UILabel?
 	@IBOutlet private weak var buglifeDescriptionLabel 	: UILabel?
 	@IBOutlet private weak var buglifeTitleLabel 		: UILabel?
-	@IBOutlet private weak var madeByTextView			: UITextView?
+	@IBOutlet private weak var madeByLabel				: UILabel?
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
 
-		self.containerView?.roundRect(radius: 15)
-		self.versionLabel?.text = appVersion()
-		self.aboutLabel?.text = "About Pict My World"
-		self.appDescriptionTextView?.text = "Super app, you know life and shit. awesome."
-		self.buglifeTitleLabel?.text = "Found a bug?"
-		self.buglifeDescriptionLabel?.text = "Shake your device to report a problem!"
-		self.madeByTextView?.text = "Made by Kevin Delord"
+		self.containerView?.roundRect(radius: 10)
+		self.versionLabel?.text 			= appVersion()
+		let url = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
+		self.aboutTextLabel?.text 			= String(format: L("INFO_ABOUT_TEXT"), url)
+		self.aboutLabel?.text				= L("INFO_ABOUT_TITLE")
+		self.buglifeTitleLabel?.text 		= L("INFO_BUG_TITLE")
+		self.buglifeDescriptionLabel?.text 	= L("INFO_BUG_TEXT")
+		self.madeByLabel?.text 				= L("INFO_MADE_BY")
 
 		// Hide info view
 		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.toggleState))
