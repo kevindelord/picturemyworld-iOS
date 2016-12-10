@@ -36,6 +36,7 @@
 		75925EB01DF778E7006C7277 /* PWDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EAF1DF778E7006C7277 /* PWDefines.swift */; };
 		75925EB21DF77C1E006C7277 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EB11DF77C1E006C7277 /* AssetManager.swift */; };
 		75925EB71DF796DA006C7277 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75925EB61DF796DA006C7277 /* Database.swift */; };
+		75FC84F31DFB79C5009AA25D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75FC84F21DFB79C5009AA25D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		75925EAF1DF778E7006C7277 /* PWDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PWDefines.swift; path = Core/PWDefines.swift; sourceTree = SOURCE_ROOT; };
 		75925EB11DF77C1E006C7277 /* AssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetManager.swift; path = Helpers/AssetManager.swift; sourceTree = "<group>"; };
 		75925EB61DF796DA006C7277 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Database/Database.swift; sourceTree = "<group>"; };
+		75FC84F21DFB79C5009AA25D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				758228931DF7A89300567725 /* PictureMyWorld-Alpha-InHouse-Info.plist */,
+				75FC84F21DFB79C5009AA25D /* GoogleService-Info.plist */,
 			);
 			path = PLists;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				7582289D1DF7A8C700567725 /* Localizable.strings in Resources */,
 				758228991DF7A8A800567725 /* Assets.xcassets in Resources */,
 				756E74461DF0579000960616 /* Settings.bundle in Resources */,
+				75FC84F31DFB79C5009AA25D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

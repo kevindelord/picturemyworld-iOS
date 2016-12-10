@@ -28,23 +28,29 @@ class PWCollectionViewController		: UICollectionViewController {
 
 		self.posts = Post.allEntities()
 		self.setupWaterfallLayout()
-		self.reloadButtonPressed()
+		self.refreshContent()
+	}
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		Analytics.sendScreenView(.CollectionView)
 	}
 
 	override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
 		super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
 
 		coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext) in
+			Analytics.UserAction.DidChangeDeviceOrientation
 			self.setupWaterfallLayout()
 		})
 	}
 }
 
-// MARK: - IBAction
+// MARK: - Data Management
 
 extension PWCollectionViewController {
 
-	@IBAction func reloadButtonPressed() {
+	private func refreshContent() {
 		let baseURL = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
 		if let html = HTMLParser.fetchHTML(fromString: baseURL) {
 			let postsArray = HTMLParser.parse(html)
@@ -90,7 +96,17 @@ extension PWCollectionViewController {
 extension PWCollectionViewController {
 
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		Analytics.UserAction.DidSelectItemCell.send()
 		self.openSlideShowController(indexPath.item)
+	}
+}
+
+extension PWCollectionViewController {
+
+	override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+		super.scrollViewDidEndDecelerating(scrollView)
+
+		Analytics.UserAction.DidScrollCollectionView.send()
 	}
 }
 

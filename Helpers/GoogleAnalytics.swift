@@ -59,58 +59,27 @@ struct Analytics {
 
     enum Screen                             : String {
 
-        case MapView                        = "Screen_MapView"
-        case Settings                       = "Screen_Settings"
+        case CollectionView					= "Screen_CollectionView"
+        case Slideshow                      = "Screen_Slideshow"
     }
 
-    enum PinLocation                        : String {
+    enum UserAction                       	: String {
 
-        static let CategoryId               = "PinLocation"
-        case DidSetStart                    = "Pin_DidSetStart"
-        case DidSetDestination              = "Pin_DidSetDestination"
-        case DidCancelStart                 = "Pin_DidCancelStart"
-        case DidCancelDestination           = "Pin_DidCancelDestination"
+        static let CategoryId               = "UserAction"
+
+		case DidSelectItemCell				= "UserAction_DidSelectItemCell"
+		case DidChangeDeviceOrientation		= "UserAction_DidChangeDeviceOrientation"
+		case DidCloseSlideshow				= "UserAction_DidCloseSlideshow"
+		case DidScrollCollectionView		= "UserAction_DidScrollCollectionView"
+		case DidScrollSlideshow				= "UserAction_DidScrollSlideshow"
+		case DidOpenInfoView				= "UserAction_DidOpenInfoView"
+		case DidZoomImage					= "UserAction_DidZoomImage"
+		case DidHideCloseButton				= "UserAction_DidHideCloseButton"
+		case DidShowCloseButton				= "UserAction_DidShowCloseButton"
 
         func send() {
-            let category = Analytics.PinLocation.CategoryId
+            let category = Analytics.UserAction.CategoryId
             Analytics.send(category, action: self.rawValue, label: nil, value: nil)
-        }
-    }
-
-    enum UserLocation                       : String {
-
-        static let CategoryId               = "UserLocation"
-        case DidLocateUser                  = "UserLocation_DidLocateUser"
-        case DidLocateUserTooFar            = "UserLocation_DidLocateUserTooFar"
-        case DidAskForSettings              = "UserLocation_DidAskForSettings"
-        case DidAskForUserLocation          = "UserLocation_DidAskForUserLocation"
-
-        func send() {
-            let category = Analytics.UserLocation.CategoryId
-            Analytics.send(category, action: self.rawValue, label: nil, value: nil)
-        }
-    }
-
-    enum Route                              : String {
-
-        static let CategoryId               = "Route"
-        static let LabelSearch              = "Search"
-
-        case DidDrawRoute                   = "Route_DidDrawRoute"
-        case DidSelectRoute                 = "Route_DidSelectRoute"
-
-        case DidSearchForMatchingRoutes     = "Route_DidSearchForMatchingRoutes"
-        case DidSearchForStartRoutes        = "Route_DidSearchForStartRoutes"
-        case DidSearchForDestinationRoutes  = "Route_DidSearchForDestinationRoutes"
-
-        func send(routeCode routeCode: String? = nil, rounteCount: Int? = 0) {
-            let category = Analytics.Route.CategoryId
-            switch self {
-            case .DidDrawRoute, .DidSelectRoute:
-                Analytics.send(category, action: self.rawValue, label: routeCode, value: rounteCount)
-            case .DidSearchForMatchingRoutes, .DidSearchForStartRoutes, .DidSearchForDestinationRoutes:
-                Analytics.send(category, action: self.rawValue, label: Analytics.Route.LabelSearch, value: rounteCount)
-            }
         }
     }
 }

@@ -70,7 +70,9 @@ public class FullScreenSlideshowViewController	: UIViewController {
     
     override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+
+		Analytics.sendScreenView(.Slideshow)
+
         if (self.isInit == true) {
             self.isInit = false
             self.slideshow.setScrollViewPage(self.initialImageIndex, animated: false)
@@ -78,7 +80,7 @@ public class FullScreenSlideshowViewController	: UIViewController {
     }
     
     func close() {
-        // if pageSelected closure set, send call it with current page
+        Analytics.UserAction.DidCloseSlideshow.send()
 		self.slideshowDidClose?(onPageIndex: self.slideshow.scrollViewPage)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -104,10 +106,18 @@ extension FullScreenSlideshowViewController {
 	}
 
 	func tapZoom() {
+		Analytics.UserAction.DidZoomImage.send()
 		self.slideshow.currentSlideshowItem?.tapZoom()
 	}
 
 	func toggleCloseButton() {
+		if (self.closeButton.hidden == true) {
+			// Close button is now hidden and will be shown.
+			Analytics.UserAction.DidShowCloseButton.send()
+		} else {
+			// Close button is now shown and will be hidden.
+			Analytics.UserAction.DidHideCloseButton.send()
+		}
 		self.closeButton.hidden = (self.closeButton.hidden == false)
 	}
 }

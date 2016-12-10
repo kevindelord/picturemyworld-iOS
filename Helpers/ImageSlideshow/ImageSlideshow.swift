@@ -173,6 +173,10 @@ public class ImageSlideshow						: UIView, UIScrollViewDelegate {
 
     // MARK: UIScrollViewDelegate
 
+	public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+		Analytics.UserAction.DidScrollSlideshow.send()
+	}
+
     public func scrollViewDidScroll(scrollView: UIScrollView) {
 		let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
 		self.setCurrentPageForScrollViewPage(page)
