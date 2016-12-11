@@ -11,17 +11,15 @@ import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
 
-class PWCollectionViewController				: UIViewController {
+class PWCollectionViewController				: UICollectionViewController {
 
+	private var inputSources					= [AssetManagerSource]()
+	private var refreshControl					= UIRefreshControl()
 	private var posts							= [Post]() {
 		didSet {
 			self.setupInputSources()
 		}
 	}
-	private var inputSources					= [AssetManagerSource]()
-	private var refreshControl					= UIRefreshControl()
-	@IBOutlet private weak var infoView			: PWInfoView?
-	@IBOutlet private weak var collectionView 	: UICollectionView?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -53,8 +51,13 @@ class PWCollectionViewController				: UIViewController {
 	}
 
 	@IBAction func helpButtonPressed() {
-		self.view.bringSubviewToFront(safe: self.infoView)
-		self.infoView?.toggleState()
+		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(ReusableIdentifier.InfoViewController) as? PWInfoViewController {
+			self.navigationController?.addChildViewController(controller)
+			controller.view.frame = self.view.frame
+			self.navigationController?.view.addSubview(controller.view)
+			controller.didMoveToParentViewController(self)
+			controller.toggleState()
+		}
 	}
 }
 
@@ -111,30 +114,30 @@ extension PWCollectionViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension PWCollectionViewController: UICollectionViewDelegate {
+extension PWCollectionViewController {
 
-	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		Analytics.UserAction.DidSelectItemCell.send()
 		self.openSlideShowController(indexPath.item)
 	}
 }
 
-extension PWCollectionViewController: UIScrollViewDelegate {
+extension PWCollectionViewController {
 
-	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+	override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 		Analytics.UserAction.DidScrollCollectionView.send()
 	}
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension PWCollectionViewController: UICollectionViewDataSource {
+extension PWCollectionViewController {
 
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.posts.count
 	}
 
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReusableIdentifier.PostCollectionViewCell, forIndexPath: indexPath) as? PWPostCollectionViewCell else {
 			return UICollectionViewCell()
 		}

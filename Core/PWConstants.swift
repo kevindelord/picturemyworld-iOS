@@ -74,6 +74,7 @@ extension HTMLParser {
 struct ReusableIdentifier {
 
 	static let PostCollectionViewCell		= "PostCollectionViewCell_ID"
+	static let InfoViewController			= "PWInfoViewController_ID"
 }
 
 extension UIColor {

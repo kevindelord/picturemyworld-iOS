@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		62063C4F3752F42B38BC0DC7 /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */; };
+		7517D08D1DFCD51700AC423E /* PWInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7517D08C1DFCD51700AC423E /* PWInfoViewController.swift */; };
 		751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828BA1DF05A53001D12ED /* DKExtensions.swift */; };
 		751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 751828C61DF08B26001D12ED /* Model.xcdatamodeld */; };
 		751828CB1DF08BAD001D12ED /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */; };
 		751828CC1DF08BAD001D12ED /* Post+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828CA1DF08BAD001D12ED /* Post+Helper.swift */; };
-		756A98621DFB833F00C8D631 /* PWInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756A98611DFB833F00C8D631 /* PWInfoView.swift */; };
 		756E74461DF0579000960616 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 756E74451DF0579000960616 /* Settings.bundle */; };
 		757809F61DFB06CB003AEAD2 /* AssetManagerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809F51DFB06CB003AEAD2 /* AssetManagerSource.swift */; };
 		757809FE1DFB1BF4003AEAD2 /* FullScreenSlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757809F71DFB1BF4003AEAD2 /* FullScreenSlideshowViewController.swift */; };
@@ -45,11 +45,11 @@
 		2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureMyWorld_AdHoc_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		7509F4CF1DF0564F00E1EBD3 /* PictureMyWorld-AdHoc-Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PictureMyWorld-AdHoc-Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7517D08C1DFCD51700AC423E /* PWInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWInfoViewController.swift; sourceTree = "<group>"; };
 		751828BA1DF05A53001D12ED /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		751828C71DF08B26001D12ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		751828C91DF08BAD001D12ED /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "Database/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		751828CA1DF08BAD001D12ED /* Post+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+Helper.swift"; path = "Database/Post+Helper.swift"; sourceTree = "<group>"; };
-		756A98611DFB833F00C8D631 /* PWInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWInfoView.swift; sourceTree = "<group>"; };
 		756E74451DF0579000960616 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		757809F51DFB06CB003AEAD2 /* AssetManagerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetManagerSource.swift; path = Helpers/AssetManagerSource.swift; sourceTree = "<group>"; };
 		757809F71DFB1BF4003AEAD2 /* FullScreenSlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenSlideshowViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				758228A01DF7A94B00567725 /* PWPostCollectionViewCell.swift */,
-				756A98611DFB833F00C8D631 /* PWInfoView.swift */,
 			);
 			name = AdditionalViews;
 			path = Core/AdditionalViews;
@@ -199,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				7582288D1DF7A87A00567725 /* PWCollectionViewController.swift */,
+				7517D08C1DFCD51700AC423E /* PWInfoViewController.swift */,
 			);
 			name = ViewControllers;
 			path = Core/ViewControllers;
@@ -391,7 +391,6 @@
 				7582288F1DF7A87A00567725 /* PWCollectionViewController.swift in Sources */,
 				751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */,
 				7587869A1DFB3ACD002C766D /* GoogleAnalytics.swift in Sources */,
-				756A98621DFB833F00C8D631 /* PWInfoView.swift in Sources */,
 				751828CC1DF08BAD001D12ED /* Post+Helper.swift in Sources */,
 				75780A001DFB1BF4003AEAD2 /* ImageSlideshowItem.swift in Sources */,
 				751828CB1DF08BAD001D12ED /* Post+CoreDataProperties.swift in Sources */,
@@ -406,6 +405,7 @@
 				757809F61DFB06CB003AEAD2 /* AssetManagerSource.swift in Sources */,
 				75925EB01DF778E7006C7277 /* PWDefines.swift in Sources */,
 				7582288E1DF7A87A00567725 /* AppDelegate.swift in Sources */,
+				7517D08D1DFCD51700AC423E /* PWInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

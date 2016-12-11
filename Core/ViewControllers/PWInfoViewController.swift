@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import DKHelper
 
-class PWInfoView										: UIView {
+class PWInfoViewController								: UIViewController {
 
 	@IBOutlet private weak var containerView 			: UIView?
 	@IBOutlet private weak var versionLabel 			: UILabel?
@@ -20,10 +20,14 @@ class PWInfoView										: UIView {
 	@IBOutlet private weak var buglifeTitleLabel 		: UILabel?
 	@IBOutlet private weak var madeByLabel				: UILabel?
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
+		// View setup
 		self.containerView?.roundRect(radius: 10)
+		self.containerView?.alpha = 0
+
+		// Text
 		self.versionLabel?.text 			= appVersion()
 		let url = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
 		self.aboutTextLabel?.text 			= String(format: L("INFO_ABOUT_TEXT"), url)
@@ -32,23 +36,28 @@ class PWInfoView										: UIView {
 		self.buglifeDescriptionLabel?.text 	= L("INFO_BUG_TEXT")
 		self.madeByLabel?.text 				= L("INFO_MADE_BY")
 
-		// Hide info view
+		// Hide action
 		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.toggleState))
 		tapRecognizer.numberOfTapsRequired = 1
-		self.addGestureRecognizer(tapRecognizer)
+		self.view.addGestureRecognizer(tapRecognizer)
 	}
 
 	func toggleState() {
-		if (self.alpha == 0.0) {
+		if (self.containerView?.alpha == 0.0) {
 			UIView.animateWithDuration(0.3, animations: {
-				self.alpha = 1
+				self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.65)
+				self.containerView?.alpha = 1
 			}, completion: { (didFinish: Bool) in
-				Analytics.UserAction.DidOpenInfoView
+				Analytics.UserAction.DidOpenInfoView.send()
 			})
 		} else {
 			UIView.animateWithDuration(0.3, animations: {
-				self.alpha = 0
-			}, completion: { (didFinish: Bool) in
+				self.view.backgroundColor = UIColor.clearColor()
+				self.containerView?.alpha = 0
+			}, completion: { [weak self] (didFinish: Bool) in
+				self?.willMoveToParentViewController(nil)
+				self?.view.removeFromSuperview()
+				self?.removeFromParentViewController()
 				Analytics.UserAction.DidCloseInfoView.send()
 			})
 		}
