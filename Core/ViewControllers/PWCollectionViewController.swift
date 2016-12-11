@@ -11,46 +11,74 @@ import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
 
-class PWCollectionViewController		: UICollectionViewController {
+class PWCollectionViewController				: UICollectionViewController {
 
-	private var posts					= [Post]() {
+	private var inputSources					= [AssetManagerSource]()
+	private var refreshControl					= UIRefreshControl()
+	private var posts							= [Post]() {
 		didSet {
 			self.setupInputSources()
 		}
 	}
-	private var inputSources			= [AssetManagerSource]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.title = L("FULL_TITLE")
 		self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.themeColor()]
+		self.navigationController?.navigationBar.tintColor = UIColor.themeColor()
+
+		self.refreshControl.addTarget(self, action: #selector(self.didPullToRefresh), forControlEvents: .ValueChanged)
+		self.collectionView?.addSubview(self.refreshControl)
 
 		self.posts = Post.allEntities()
 		self.setupWaterfallLayout()
-		self.reloadButtonPressed()
+		self.refreshContent()
+	}
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		Analytics.sendScreenView(.CollectionView)
 	}
 
 	override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
 		super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
 
 		coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext) in
+			Analytics.UserAction.DidChangeDeviceOrientation
 			self.setupWaterfallLayout()
 		})
 	}
+
+	@IBAction func helpButtonPressed() {
+		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(ReusableIdentifier.InfoViewController) as? PWInfoViewController {
+			self.navigationController?.addChildViewController(controller)
+			controller.view.frame = self.view.frame
+			self.navigationController?.view.addSubview(controller.view)
+			controller.didMoveToParentViewController(self)
+			controller.toggleState()
+		}
+	}
 }
 
-// MARK: - IBAction
+// MARK: - Data Management
 
 extension PWCollectionViewController {
 
-	@IBAction func reloadButtonPressed() {
-		if let html = HTMLParser.fetchHTML(fromString: API.BaseURL) {
+	func didPullToRefresh() {
+		Analytics.UserAction.DidPullToRefresh.send()
+		self.refreshContent()
+	}
+
+	private func refreshContent() {
+		let baseURL = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
+		if let html = HTMLParser.fetchHTML(fromString: baseURL) {
 			let postsArray = HTMLParser.parse(html)
 			DKDBManager.crudPosts(postsArray, completionBlock: {
 				self.posts = Post.allEntities()
 				self.setupWaterfallLayout()
 				self.collectionView?.reloadData()
+				self.refreshControl.endRefreshing()
 			})
 		}
 	}
@@ -89,7 +117,15 @@ extension PWCollectionViewController {
 extension PWCollectionViewController {
 
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		Analytics.UserAction.DidSelectItemCell.send()
 		self.openSlideShowController(indexPath.item)
+	}
+}
+
+extension PWCollectionViewController {
+
+	override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+		Analytics.UserAction.DidScrollCollectionView.send()
 	}
 }
 

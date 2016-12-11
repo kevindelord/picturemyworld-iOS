@@ -2,10 +2,17 @@
 
 ## Version 1.0
 
-- Integrate Location button to opens Maps or GoogleMaps
-- Integrate Analytics
-- Integrate HockeySDK
-- Integrate Buglife
-- Integrate Info popup
-- Integrate Appirater
+### In Progress
+
+
+### To be done
+
+- Fix rotation bug when coming back to CollectionViewController.
 - Update all pods before release
+- Localisation
+- Set AppId into Info.plist
+- Deal with no internet popup + error in case of first start
+
+### Backlog
+
+- Integrate Location button to opens Maps or GoogleMaps

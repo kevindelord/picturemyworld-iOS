@@ -56,6 +56,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>HockeyAppId</key>
+	<string>4511034018144bb7ae83d05cf1fa1ee0</string>
+	<key>APIBaseURL</key>
+	<string>http://picturemy.world</string>
+	<key>BuglifeID</key>
+	<string>zABHFQBQuM6ZzTTXZoRDDwtt</string>
+	<key>AppID</key>
+	<string>TODO</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
