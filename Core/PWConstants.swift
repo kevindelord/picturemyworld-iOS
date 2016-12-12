@@ -24,7 +24,7 @@ struct Database {
 
 		struct Post {
 
-			static let Identifier			= "identifier"
+			static let Timestamp			= "timestamp"
 			static let Title                = "title"
 			static let DescriptionText 		= "descriptionText"
 			static let MapsLink 			= "mapsLink"

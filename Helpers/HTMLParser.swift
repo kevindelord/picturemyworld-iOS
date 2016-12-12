@@ -72,16 +72,16 @@ private extension HTMLParser {
 			mapsLink		 	= node.xpath("figcaption/a").first?["href"],
 			mapsText 			= (node.xpath("figcaption/a").first?.text),
 			// Generate the missing data required by the local app.
-			identifier 			= HTMLParser.generateIdentifier(fromThumbnailURL: thumbnailURL),
+			timestamp 			= HTMLParser.generateTimestamp(fromThumbnailURL: thumbnailURL),
 			imageURL		 	= HTMLParser.generateImageURL(fromThumbnailURL: thumbnailURL),
 			date 				= HTMLParser.generateISODateString(fromDateString: dateString)
 			else {
 				// If one value is missing, invalid the data and ignore the post
-				DKLog(Verbose.Manager.HTMLParser, "Invalid node found: \(node)")
+				print("ERROR: Invalid node found: \(node.text)")
 				return nil
 		}
 
-		var post = [String: String]()
+ 		var post = [String: String]()
 		// Set valid data that has been fetched.
 		post[Database.Key.Post.Title] 			= title
 		post[Database.Key.Post.DescriptionText] = descriptionText
@@ -89,7 +89,7 @@ private extension HTMLParser {
 		post[Database.Key.Post.MapsText] 		= mapsText
 		post[Database.Key.Post.ThumbnailURL] 	= thumbnailURL
 		post[Database.Key.Post.DateString] 		= dateString
-		post[Database.Key.Post.Identifier] 		= identifier
+		post[Database.Key.Post.Timestamp] 		= timestamp
 		post[Database.Key.Post.ImageURL]		= imageURL
 		post[Database.Key.Post.Date] 			= date
 
@@ -103,9 +103,9 @@ private extension HTMLParser {
 		return url.stringByReplacingOccurrencesOfString(HTMLParser.Key.ImageThumbnail, withString: HTMLParser.Key.ImageLarge)
 	}
 
-	private static func generateIdentifier(fromThumbnailURL url: String) -> String? {
+	private static func generateTimestamp(fromThumbnailURL url: String) -> String? {
 		// The thumbnail image is always formed like this: http://picturemy.world//img/thumb/1480443470.jpg
-		// As identifier we will use the image file name as it is a timestamp.
+		// As timestamp we will use the image file name.
 		// Careful, sometimes it is a random string and not a real timestamp (number).
 		guard let filename = HTMLParser.matchesForRegexInText(HTMLParser.Regex.Filename, text: url).first else {
 			return nil
@@ -120,6 +120,7 @@ private extension HTMLParser {
 		let formatter = NSDateFormatter()
 		formatter.dateFormat = HTMLParser.DateFormat
 		formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+		formatter.locale = NSLocale(localeIdentifier: "en_US")
 		guard let validDate = formatter.dateFromString(dateString) else {
 			return nil
 		}

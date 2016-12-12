@@ -15,7 +15,7 @@ class Post: NSManagedObject {
 	// Insert code here to add functionality to your managed object subclass
 
 	class func allEntities() -> [Post] {
-		return (Post.MR_findAllSortedBy(Database.Key.Post.Date, ascending: false) as? [Post] ?? [])
+		return (Post.MR_findAllSortedBy(Database.Key.Post.Timestamp, ascending: false) as? [Post] ?? [])
 	}
 
 	var validThumbnailRatio: CGFloat {
@@ -49,7 +49,7 @@ extension Post {
 	override func updateWithDictionary(dictionary: [NSObject: AnyObject]?, inContext savingContext: NSManagedObjectContext) {
 		super.updateWithDictionary(dictionary, inContext: savingContext)
 
-		self.identifier			= dictionary?[Database.Key.Post.Identifier] as? String
+		self.timestamp			= dictionary?[Database.Key.Post.Timestamp] as? String
 		self.title				= dictionary?[Database.Key.Post.Title] as? String
 		self.descriptionText	= dictionary?[Database.Key.Post.DescriptionText] as? String
 		self.mapsLink			= dictionary?[Database.Key.Post.MapsLink] as? String
@@ -72,7 +72,7 @@ extension Post {
 	override func invalidReason() -> String? {
 
 		guard
-			((self.identifier != nil) &&
+			((self.timestamp != nil) &&
 				(self.title != nil) &&
 				(self.descriptionText != nil) &&
 				(self.mapsLink != nil) &&
@@ -89,7 +89,7 @@ extension Post {
 	}
 
 	override class func sortingAttributeName() -> String? {
-		return Database.Key.Post.Date
+		return Database.Key.Post.Timestamp
 	}
 
 	override func deleteEntityWithReason(reason: String?, inContext savingContext: NSManagedObjectContext) {
@@ -99,8 +99,8 @@ extension Post {
 	}
 
 	override class func primaryPredicateWithDictionary(dictionary: [NSObject: AnyObject]?) -> NSPredicate? {
-		if let identifier = dictionary?[Database.Key.Post.Identifier] as? String {
-			return NSPredicate(format: "%K == %@", Database.Key.Post.Identifier, identifier)
+		if let identifier = dictionary?[Database.Key.Post.Timestamp] as? String {
+			return NSPredicate(format: "%K == %@", Database.Key.Post.Timestamp, identifier)
 		}
 		return super.primaryPredicateWithDictionary(dictionary)
 	}
