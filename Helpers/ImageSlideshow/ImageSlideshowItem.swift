@@ -76,6 +76,9 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
 
 	func loadImage() {
 		self.input.fetchImage { (image: UIImage?) in
+			guard let image = image else {
+				return
+			}
 			self.performBlockInMainThread {
 				self.imageView.image = image
 				self.setImageToCenter()
