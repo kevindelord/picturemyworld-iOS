@@ -4,7 +4,7 @@
 
 ### In Progress
 
-- Fix rotation bug when coming back to CollectionViewController.
+- iOS: unzoom photo after scroll
 
 ### To be done
 

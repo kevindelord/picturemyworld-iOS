@@ -48,7 +48,7 @@ class PWCollectionViewController				: UICollectionViewController {
 
 		coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext) in
 			Analytics.UserAction.DidChangeDeviceOrientation
-			self.setupWaterfallLayout()
+			self.setupWaterfallLayout(size)
 		})
 	}
 
@@ -175,11 +175,11 @@ extension PWCollectionViewController {
 
 extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 
-	private func setupWaterfallLayout() {
+	private func setupWaterfallLayout(size: CGSize? = nil) {
 		guard let layout = self.collectionView?.collectionViewLayout as? CollectionViewWaterfallLayout else {
 			return
 		}
-		layout.columnCount = Int(self.numberOfItemsPerRow)
+		layout.columnCount = Int(self.numberOfItemsPerRow(size))
 		layout.minimumColumnSpacing = Float(Interface.CollectionView.Inset)
 		layout.minimumInteritemSpacing = Float(Interface.CollectionView.Inset)
 		let visibleItems = (self.collectionView?.indexPathsForVisibleItems() ?? [])
@@ -197,8 +197,8 @@ extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 
 		// Calculate the exact minimum size per item to fill the view.
 		// Width
-		let separatorsWidth = ((self.numberOfItemsPerRow * Interface.CollectionView.Inset) * 0.5)
-		let width = ((self.currentWidthAvailable - separatorsWidth) / self.numberOfItemsPerRow)
+		let separatorsWidth = ((self.numberOfItemsPerRow() * Interface.CollectionView.Inset) * 0.5)
+		let width = ((self.currentWidthAvailable() - separatorsWidth) / self.numberOfItemsPerRow())
 		// Height
 		let imageHeight = (width * post.validThumbnailRatio)
 		let descriptionHeight = PWPostCollectionViewCell.descriptionTextHeight(post.descriptionText, forSizeWidth: width)
@@ -211,22 +211,40 @@ extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 		return UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
 	}
 
-	/// Calculate the available with in between the two left and right margins.
-	private var currentWidthAvailable: CGFloat {
-		guard let collectionView = self.collectionView else {
-			return 0
+	/**
+	Calculate the with available for the items between the two left and right margins.
+
+	- parameter size: In case of device roatation, the new size for the container’s view.
+
+	- returns: The width available in CGFloat for the items in the colleciton view cell.
+	*/
+	private func currentWidthAvailable(size: CGSize? = nil) -> CGFloat {
+
+		let edgeSpacing = (Interface.CollectionView.Inset * 2)
+
+		if let size = size {
+			return (size.width - edgeSpacing)
 		}
-		let edgeSpacing = Interface.CollectionView.Inset
-		let widthAvailable = (collectionView.bounds.size.width - (edgeSpacing * 2))
-		return widthAvailable
+
+		if let collectionView = self.collectionView {
+			return (collectionView.bounds.size.width - edgeSpacing)
+		}
+
+		return 0
 	}
 
-	/// Calculate the number of item available until the minimum width of the displayed item.
-	private var numberOfItemsPerRow: CGFloat {
+	/**
+	Calculate the number of item that can be displayed per row.
+
+	- parameter size: In case of device roatation, the new size for the container’s view.
+
+	- returns: The number of item.
+	*/
+	private func numberOfItemsPerRow(size: CGSize? = nil) -> CGFloat {
 		var numberOfItemPerRow : CGFloat = 0.0
 		repeat {
 			numberOfItemPerRow += 1.0
-		} while ((self.currentWidthAvailable / (numberOfItemPerRow + 1.0)) > Interface.CollectionView.MinimumItemWidth)
+		} while ((self.currentWidthAvailable(size) / (numberOfItemPerRow + 1.0)) > Interface.CollectionView.MinimumItemWidth)
 		return numberOfItemPerRow
 	}
 }
