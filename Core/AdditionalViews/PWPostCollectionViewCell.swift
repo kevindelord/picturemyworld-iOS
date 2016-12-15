@@ -16,7 +16,6 @@ class PWPostCollectionViewCell 					: UICollectionViewCell {
 	@IBOutlet private weak var descriptionLabel	: UILabel?
 	@IBOutlet private weak var dateLabel 		: UILabel?
 	@IBOutlet private weak var imageView 		: UIImageView?
-	@IBOutlet private weak var imageViewHeight	: NSLayoutConstraint?
 
 	var currentThumbnailURL 					: String?
 	weak var post								: Post?
@@ -32,7 +31,6 @@ class PWPostCollectionViewCell 					: UICollectionViewCell {
 		self.descriptionLabel?.text = post.descriptionText
 		self.dateLabel?.text = post.dateString
 		self.currentThumbnailURL = post.thumbnailURL
-		self.imageViewHeight?.constant = (self.frame.size.width * post.validThumbnailRatio)
 
 		self.post = post
 
