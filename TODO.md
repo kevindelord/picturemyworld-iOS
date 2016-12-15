@@ -4,8 +4,6 @@
 
 ### In Progress
 
-- iOS: unzoom photo after scroll
-
 ### To be done
 
 - Update all pods before release

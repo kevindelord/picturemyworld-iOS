@@ -42,6 +42,7 @@ struct Interface {
 	struct Slideshow {
 
 		static let PreloadDelta				= 2
+		static let BounceEffectZoomRatio	: CGFloat = 0.3
 	}
 
 	struct CollectionView {

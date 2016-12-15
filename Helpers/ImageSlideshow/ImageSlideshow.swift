@@ -163,9 +163,7 @@ public class ImageSlideshow						: UIView, UIScrollViewDelegate {
     public func setCurrentPageForScrollViewPage(page: Int) {
         if (self.scrollViewPage != page) {
             // current page has changed, zoom out this image
-            if (self.slideshowItems.count > self.scrollViewPage) {
-                self.slideshowItems[self.scrollViewPage]?.zoomOut()
-            }
+			self.slideshowItems[self.scrollViewPage]?.zoomOut()
         }
         self.scrollViewPage = page
 		self.currentItemIndex = page
@@ -178,7 +176,9 @@ public class ImageSlideshow						: UIView, UIScrollViewDelegate {
 	}
 
     public func scrollViewDidScroll(scrollView: UIScrollView) {
-		let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+		let width = scrollView.frame.size.width
+		// Change the actuall offset in the calculation to fix the UI glitch when scrolling to the previous picture while being zoomed in.
+		let page = Int((scrollView.contentOffset.x + (width * Interface.Slideshow.BounceEffectZoomRatio)) / width)
 		self.setCurrentPageForScrollViewPage(page)
 		self.refreshDisplayedImages(shouldLayoutScrollView: false)
 	}
