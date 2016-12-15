@@ -4,6 +4,8 @@
 
 ### In Progress
 
+- Try to first show thumbnail and then real big pict once downlaoded?
+
 ### To be done
 
 - Update all pods before release
