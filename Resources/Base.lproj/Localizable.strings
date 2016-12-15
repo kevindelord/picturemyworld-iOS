@@ -13,3 +13,4 @@
 "INFO_BUG_TEXT"         	= "Shake your device to report a problem!";
 "INFO_MADE_BY"          	= "Made with ❤️ by Kevin Delord";
 "NO_INTERNET_CONNECTION"    = "The Internet connection appears to be offline.";
+"POPUP_OK"					= "OK";

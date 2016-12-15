@@ -13,3 +13,4 @@
 "INFO_BUG_TEXT"         	= "Agite su dispositivo para reportar problemas!";
 "INFO_MADE_BY"          	= "Hecho con ❤️ por Kevin Delord";
 "NO_INTERNET_CONNECTION"    = "No hay conexión a Internet.";
+"POPUP_OK"					= "OK";

@@ -13,3 +13,4 @@
 "INFO_BUG_TEXT"         	= "Secouez votre appareil pour le signaler.";
 "INFO_MADE_BY"          	= "Réalisé avec ❤️ par Kevin Delord";
 "NO_INTERNET_CONNECTION"    = "Pas de connexion Internet.";
+"POPUP_OK"					= "OK";

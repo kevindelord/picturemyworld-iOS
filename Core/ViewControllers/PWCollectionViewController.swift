@@ -10,6 +10,7 @@ import UIKit
 import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
+import Reachability
 
 class PWCollectionViewController				: UICollectionViewController {
 
@@ -67,10 +68,16 @@ extension PWCollectionViewController {
 
 	func didPullToRefresh() {
 		Analytics.UserAction.DidPullToRefresh.send()
-		self.refreshContent()
+		self.refreshContent(didPullToRefresh: true)
 	}
 
-	private func refreshContent() {
+	private func refreshContent(didPullToRefresh pullToRefresh: Bool = false) {
+		guard (Reachability.isConnected == true) else {
+			self.showNoInternetAlert(didPullToRefresh: pullToRefresh)
+			self.refreshControl.endRefreshing()
+			return
+		}
+
 		let baseURL = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
 		if let html = HTMLParser.fetchHTML(fromString: baseURL) {
 			let postsArray = HTMLParser.parse(html)
@@ -81,6 +88,21 @@ extension PWCollectionViewController {
 				self.refreshControl.endRefreshing()
 			})
 		}
+	}
+
+	private func showNoInternetAlert(didPullToRefresh pullToRefresh: Bool) {
+		if (Reachability.isConnected == true || (Post.count() != 0 && pullToRefresh == false)) {
+			return
+		}
+		let alert = UIAlertController(title: "", message: L("NO_INTERNET_CONNECTION"), preferredStyle: .Alert)
+		alert.addAction(UIAlertAction(title: L("POPUP_OK"), style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) in
+			self.performBlockAfterDelay(1, block: { [weak self] in
+				self?.refreshContent()
+			})
+		}))
+		self.presentViewController(alert, animated: true, completion: {
+			Analytics.UserAction.DidLoadWithoutInternet.send()
+		})
 	}
 }
 
@@ -121,6 +143,8 @@ extension PWCollectionViewController {
 		self.openSlideShowController(indexPath.item)
 	}
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension PWCollectionViewController {
 
