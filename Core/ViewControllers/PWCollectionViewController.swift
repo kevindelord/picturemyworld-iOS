@@ -31,6 +31,7 @@ class PWCollectionViewController				: UICollectionViewController {
 
 		self.refreshControl.addTarget(self, action: #selector(self.didPullToRefresh), forControlEvents: .ValueChanged)
 		self.collectionView?.addSubview(self.refreshControl)
+		self.collectionView?.collectionViewLayout = CollectionViewWaterfallLayout()
 
 		self.posts = Post.allEntities()
 		self.setupWaterfallLayout()
@@ -50,6 +51,11 @@ class PWCollectionViewController				: UICollectionViewController {
 			self.setupWaterfallLayout()
 		})
 	}
+
+//	override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+//		super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+//		self.setupWaterfallLayout()
+//	}
 
 	@IBAction func helpButtonPressed() {
 		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(ReusableIdentifier.InfoViewController) as? PWInfoViewController {
