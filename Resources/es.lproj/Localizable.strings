@@ -11,5 +11,5 @@
 "INFO_ABOUT_TEXT"       	= "Esta aplicación es una version open-source del blog de viajes:\n\n%@";
 "INFO_BUG_TITLE"        	= "¿Encontró un problema?";
 "INFO_BUG_TEXT"         	= "Agite su dispositivo para reportar problemas!";
-"INFO_MADE_BY"          	= "Hecho con ❤️ por Kevin Delord.";
-"NO_INTERNET_CONNECTION"    = "No hay conexión a internet.";
+"INFO_MADE_BY"          	= "Hecho con ❤️ por Kevin Delord";
+"NO_INTERNET_CONNECTION"    = "No hay conexión a Internet.";

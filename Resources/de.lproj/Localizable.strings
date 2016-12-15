@@ -7,9 +7,9 @@
  */
 
 "FULL_TITLE" 				= "Picture My World";
-"INFO_ABOUT_TITLE"      	= "About";
-"INFO_ABOUT_TEXT"       	= "This application is an open-source version of the travel blog:\n\n%@";
-"INFO_BUG_TITLE"        	= "Found a bug?";
-"INFO_BUG_TEXT"         	= "Shake your device to report a problem!";
-"INFO_MADE_BY"          	= "Made with ❤️ by Kevin Delord.";
-"NO_INTERNET_CONNECTION"    = "The Internet connection appears to be offline.";
+"INFO_ABOUT_TITLE"      	= "Über";
+"INFO_ABOUT_TEXT"       	= "Diese Applikation ist eine open-source Version von dem Reiseblog:\n\n%@";
+"INFO_BUG_TITLE"        	= "Einen Bug gefunden?";
+"INFO_BUG_TEXT"         	= "Schütteln Sie Ihr Gerät um ein Problem zu melden!";
+"INFO_MADE_BY"          	= "Mit ❤️ gemacht von Kevin Delord";
+"NO_INTERNET_CONNECTION"    = "Die Internetverbindung scheint offline zu sein.";
