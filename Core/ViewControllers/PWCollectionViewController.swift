@@ -52,11 +52,6 @@ class PWCollectionViewController				: UICollectionViewController {
 		})
 	}
 
-//	override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-//		super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-//		self.setupWaterfallLayout()
-//	}
-
 	@IBAction func helpButtonPressed() {
 		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(ReusableIdentifier.InfoViewController) as? PWInfoViewController {
 			self.navigationController?.addChildViewController(controller)
@@ -187,7 +182,11 @@ extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 		layout.columnCount = Int(self.numberOfItemsPerRow)
 		layout.minimumColumnSpacing = Float(Interface.CollectionView.Inset)
 		layout.minimumInteritemSpacing = Float(Interface.CollectionView.Inset)
+		let visibleItems = (self.collectionView?.indexPathsForVisibleItems() ?? [])
 		layout.invalidateLayout()
+		if let indexPath = visibleItems.last {
+			self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: false)
+		}
 	}
 
 	func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
