@@ -1,0 +1,16 @@
+/*
+ Localizable.strings
+ PictureMyWorld
+
+ Created by Kevin Delord on 07/12/16.
+ Copyright © 2016 Kevin Delord. All rights reserved.
+ */
+
+"FULL_TITLE" 				= "Picture My World";
+"INFO_ABOUT_TITLE"      	= "Über";
+"INFO_ABOUT_TEXT"       	= "Diese Applikation ist eine open-source Version von dem Reiseblog:\n\n%@";
+"INFO_BUG_TITLE"        	= "Einen Bug gefunden?";
+"INFO_BUG_TEXT"         	= "Schütteln Sie Ihr Gerät um ein Problem zu melden!";
+"INFO_MADE_BY"          	= "Mit ❤️ gemacht von Kevin Delord";
+"NO_INTERNET_CONNECTION"    = "Die Internetverbindung scheint offline zu sein.";
+"POPUP_OK"					= "OK";

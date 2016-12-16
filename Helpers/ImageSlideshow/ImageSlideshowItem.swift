@@ -32,7 +32,7 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
         self.imageView.userInteractionEnabled = true
 
 		self.loadImage()
-        self.setPictoCenter()
+        self.setImageToCenter()
         
         // scroll view configuration
         self.delegate = self
@@ -54,13 +54,13 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
             self.imageView.frame.size = frame.size;
         } else if (self.isZoomed() == false) {
             self.imageView.frame.size = self.calculatePictureSize()
-            self.setPictoCenter()
+            self.setImageToCenter()
         }
         
         if (self.isFullScreen() == true) {
             self.clearContentInsets()
         } else {
-            self.setPictoCenter()
+            self.setImageToCenter()
         }
         
         // if self.frame was changed and zoomInInitially enabled, zoom in
@@ -76,9 +76,12 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
 
 	func loadImage() {
 		self.input.fetchImage { (image: UIImage?) in
+			guard let image = image else {
+				return
+			}
 			self.performBlockInMainThread {
 				self.imageView.image = image
-				self.setPictoCenter()
+				self.setImageToCenter()
 			}
 		}
 	}
@@ -94,7 +97,7 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
     }
     
     func zoomOut() {
-        self.setZoomScale(self.minimumZoomScale, animated: false)
+        self.setZoomScale(self.minimumZoomScale, animated: true)
     }
     
     func tapZoom() {
@@ -128,7 +131,7 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
         return 2.0
     }
     
-    private func setPictoCenter() {
+    private func setImageToCenter() {
         var intendHorizon = ((self.screenSize().width - self.imageView.frame.width) * 0.5)
         var intendVertical = ((self.screenSize().height - self.imageView.frame.height) * 0.5)
 		intendHorizon = max(intendHorizon, 0)
@@ -147,7 +150,7 @@ public class ImageSlideshowItem		: UIScrollView, UIScrollViewDelegate {
     // MARK: UIScrollViewDelegate
     
     public func scrollViewDidZoom(scrollView: UIScrollView) {
-        self.setPictoCenter()
+        self.setImageToCenter()
     }
 
     public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {

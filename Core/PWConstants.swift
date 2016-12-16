@@ -24,7 +24,7 @@ struct Database {
 
 		struct Post {
 
-			static let Identifier			= "identifier"
+			static let Timestamp			= "timestamp"
 			static let Title                = "title"
 			static let DescriptionText 		= "descriptionText"
 			static let MapsLink 			= "mapsLink"
@@ -42,6 +42,7 @@ struct Interface {
 	struct Slideshow {
 
 		static let PreloadDelta				= 2
+		static let BounceEffectZoomRatio	: CGFloat = 0.3
 	}
 
 	struct CollectionView {

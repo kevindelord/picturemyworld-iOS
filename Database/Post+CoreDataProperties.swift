@@ -17,7 +17,7 @@ extension Post {
     @NSManaged var date: NSDate?
     @NSManaged var dateString: String?
     @NSManaged var descriptionText: String?
-    @NSManaged var identifier: String?
+    @NSManaged var timestamp: String?
     @NSManaged var imageURL: String?
     @NSManaged var mapsLink: String?
     @NSManaged var mapsText: String?

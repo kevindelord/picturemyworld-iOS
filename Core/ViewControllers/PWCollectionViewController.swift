@@ -10,6 +10,7 @@ import UIKit
 import DKDBManager
 import DKHelper
 import CollectionViewWaterfallLayoutSH
+import Reachability
 
 class PWCollectionViewController				: UICollectionViewController {
 
@@ -30,6 +31,7 @@ class PWCollectionViewController				: UICollectionViewController {
 
 		self.refreshControl.addTarget(self, action: #selector(self.didPullToRefresh), forControlEvents: .ValueChanged)
 		self.collectionView?.addSubview(self.refreshControl)
+		self.collectionView?.collectionViewLayout = CollectionViewWaterfallLayout()
 
 		self.posts = Post.allEntities()
 		self.setupWaterfallLayout()
@@ -46,7 +48,7 @@ class PWCollectionViewController				: UICollectionViewController {
 
 		coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext) in
 			Analytics.UserAction.DidChangeDeviceOrientation
-			self.setupWaterfallLayout()
+			self.setupWaterfallLayout(size)
 		})
 	}
 
@@ -67,10 +69,16 @@ extension PWCollectionViewController {
 
 	func didPullToRefresh() {
 		Analytics.UserAction.DidPullToRefresh.send()
-		self.refreshContent()
+		self.refreshContent(didPullToRefresh: true)
 	}
 
-	private func refreshContent() {
+	private func refreshContent(didPullToRefresh pullToRefresh: Bool = false) {
+		guard (Reachability.isConnected == true) else {
+			self.showNoInternetAlert(didPullToRefresh: pullToRefresh)
+			self.refreshControl.endRefreshing()
+			return
+		}
+
 		let baseURL = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
 		if let html = HTMLParser.fetchHTML(fromString: baseURL) {
 			let postsArray = HTMLParser.parse(html)
@@ -82,6 +90,21 @@ extension PWCollectionViewController {
 			})
 		}
 	}
+
+	private func showNoInternetAlert(didPullToRefresh pullToRefresh: Bool) {
+		if (Reachability.isConnected == true || (Post.count() != 0 && pullToRefresh == false)) {
+			return
+		}
+		let alert = UIAlertController(title: "", message: L("NO_INTERNET_CONNECTION"), preferredStyle: .Alert)
+		alert.addAction(UIAlertAction(title: L("POPUP_OK"), style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) in
+			self.performBlockAfterDelay(1, block: { [weak self] in
+				self?.refreshContent()
+			})
+		}))
+		self.presentViewController(alert, animated: true, completion: {
+			Analytics.UserAction.DidLoadWithoutInternet.send()
+		})
+	}
 }
 
 // MARK: - ImageSlideshow
@@ -90,10 +113,12 @@ extension PWCollectionViewController {
 
 	private func setupInputSources() {
 		self.inputSources = self.posts.flatMap { (post: Post) -> AssetManagerSource? in
-			guard let urlString = post.imageURL else {
-				return nil
+			guard let
+				imageURLString = post.imageURL,
+				thumbnailURLString = post.thumbnailURL else {
+					return nil
 			}
-			return AssetManagerSource(urlString: urlString)
+			return AssetManagerSource(imageURLString: imageURLString, thumbnailURLString: thumbnailURLString)
 		}
 	}
 
@@ -121,6 +146,8 @@ extension PWCollectionViewController {
 		self.openSlideShowController(indexPath.item)
 	}
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension PWCollectionViewController {
 
@@ -150,14 +177,18 @@ extension PWCollectionViewController {
 
 extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 
-	private func setupWaterfallLayout() {
+	private func setupWaterfallLayout(size: CGSize? = nil) {
 		guard let layout = self.collectionView?.collectionViewLayout as? CollectionViewWaterfallLayout else {
 			return
 		}
-		layout.columnCount = Int(self.numberOfItemsPerRow)
+		layout.columnCount = Int(self.numberOfItemsPerRow(size))
 		layout.minimumColumnSpacing = Float(Interface.CollectionView.Inset)
 		layout.minimumInteritemSpacing = Float(Interface.CollectionView.Inset)
+		let visibleItems = (self.collectionView?.indexPathsForVisibleItems() ?? [])
 		layout.invalidateLayout()
+		if let indexPath = visibleItems.last {
+			self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: false)
+		}
 	}
 
 	func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -168,8 +199,8 @@ extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 
 		// Calculate the exact minimum size per item to fill the view.
 		// Width
-		let separatorsWidth = ((self.numberOfItemsPerRow * Interface.CollectionView.Inset) * 0.5)
-		let width = ((self.currentWidthAvailable - separatorsWidth) / self.numberOfItemsPerRow)
+		let separatorsWidth = ((self.numberOfItemsPerRow() * Interface.CollectionView.Inset) * 0.5)
+		let width = ((self.currentWidthAvailable() - separatorsWidth) / self.numberOfItemsPerRow())
 		// Height
 		let imageHeight = (width * post.validThumbnailRatio)
 		let descriptionHeight = PWPostCollectionViewCell.descriptionTextHeight(post.descriptionText, forSizeWidth: width)
@@ -182,22 +213,40 @@ extension PWCollectionViewController: CollectionViewWaterfallLayoutDelegate {
 		return UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
 	}
 
-	/// Calculate the available with in between the two left and right margins.
-	private var currentWidthAvailable: CGFloat {
-		guard let collectionView = self.collectionView else {
-			return 0
+	/**
+	Calculate the with available for the items between the two left and right margins.
+
+	- parameter size: In case of device roatation, the new size for the container’s view.
+
+	- returns: The width available in CGFloat for the items in the colleciton view cell.
+	*/
+	private func currentWidthAvailable(size: CGSize? = nil) -> CGFloat {
+
+		let edgeSpacing = (Interface.CollectionView.Inset * 2)
+
+		if let size = size {
+			return (size.width - edgeSpacing)
 		}
-		let edgeSpacing = Interface.CollectionView.Inset
-		let widthAvailable = (collectionView.bounds.size.width - (edgeSpacing * 2))
-		return widthAvailable
+
+		if let collectionView = self.collectionView {
+			return (collectionView.bounds.size.width - edgeSpacing)
+		}
+
+		return 0
 	}
 
-	/// Calculate the number of item available until the minimum width of the displayed item.
-	private var numberOfItemsPerRow: CGFloat {
+	/**
+	Calculate the number of item that can be displayed per row.
+
+	- parameter size: In case of device roatation, the new size for the container’s view.
+
+	- returns: The number of item.
+	*/
+	private func numberOfItemsPerRow(size: CGSize? = nil) -> CGFloat {
 		var numberOfItemPerRow : CGFloat = 0.0
 		repeat {
 			numberOfItemPerRow += 1.0
-		} while ((self.currentWidthAvailable / (numberOfItemPerRow + 1.0)) > Interface.CollectionView.MinimumItemWidth)
+		} while ((self.currentWidthAvailable(size) / (numberOfItemPerRow + 1.0)) > Interface.CollectionView.MinimumItemWidth)
 		return numberOfItemPerRow
 	}
 }

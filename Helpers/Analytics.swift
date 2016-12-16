@@ -85,6 +85,7 @@ struct Analytics {
 		case DidHideCloseButton				= "UserAction_DidHideCloseButton"
 		case DidShowCloseButton				= "UserAction_DidShowCloseButton"
 		case DidPullToRefresh				= "UserAction_DidPullToRefresh"
+		case DidLoadWithoutInternet			= "UserAction_DidLoadWithoutInternet"
 
         func send() {
             let category = Analytics.UserAction.CategoryId

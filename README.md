@@ -45,16 +45,17 @@ Only [ImageSlideshow](https://github.com/zvonicek/ImageSlideshow) has been integ
 * Show grid of all posts
 * Integrate slideshow
 * Works offline
-* Location button: open maps or google maps.
 
 ### v1.1
 
 * Push Notification
 * Save image to PhotoLibrary from slideshow.
+* Add videos
 
 ### v1.2
 
 * Integrate maps of all locations.
+* Location button: redirect to in app map.
 
 ### v2.0
 
