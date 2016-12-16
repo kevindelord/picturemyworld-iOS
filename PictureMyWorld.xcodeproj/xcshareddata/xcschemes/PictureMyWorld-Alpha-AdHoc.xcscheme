@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7509F4CE1DF0564F00E1EBD3"
-               BuildableName = "PictureMyWorld-AdHoc-Alpha.app"
-               BlueprintName = "PictureMyWorld-AdHoc-Alpha"
+               BuildableName = "PictureMyWorld-Alpha-AdHoc.app"
+               BlueprintName = "PictureMyWorld-Alpha-AdHoc"
                ReferencedContainer = "container:PictureMyWorld.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7509F4CE1DF0564F00E1EBD3"
-            BuildableName = "PictureMyWorld-AdHoc-Alpha.app"
-            BlueprintName = "PictureMyWorld-AdHoc-Alpha"
+            BuildableName = "PictureMyWorld-Alpha-AdHoc.app"
+            BlueprintName = "PictureMyWorld-Alpha-AdHoc"
             ReferencedContainer = "container:PictureMyWorld.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7509F4CE1DF0564F00E1EBD3"
-            BuildableName = "PictureMyWorld-AdHoc-Alpha.app"
-            BlueprintName = "PictureMyWorld-AdHoc-Alpha"
+            BuildableName = "PictureMyWorld-Alpha-AdHoc.app"
+            BlueprintName = "PictureMyWorld-Alpha-AdHoc"
             ReferencedContainer = "container:PictureMyWorld.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,8 +85,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7509F4CE1DF0564F00E1EBD3"
-            BuildableName = "PictureMyWorld-AdHoc-Alpha.app"
-            BlueprintName = "PictureMyWorld-AdHoc-Alpha"
+            BuildableName = "PictureMyWorld-Alpha-AdHoc.app"
+            BlueprintName = "PictureMyWorld-Alpha-AdHoc"
             ReferencedContainer = "container:PictureMyWorld.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

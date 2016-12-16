@@ -73,11 +73,13 @@ extension PWCollectionViewController {
 	}
 
 	private func refreshContent(didPullToRefresh pullToRefresh: Bool = false) {
+		#if !ALPHA
 		guard (Reachability.isConnected == true) else {
 			self.showNoInternetAlert(didPullToRefresh: pullToRefresh)
 			self.refreshControl.endRefreshing()
 			return
 		}
+		#endif
 
 		let baseURL = NSBundle.stringEntryInPListForKey(PWPlist.APIBaseURL)
 		if let html = HTMLParser.fetchHTML(fromString: baseURL) {
