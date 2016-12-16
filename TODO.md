@@ -7,7 +7,6 @@
 ### To be done
 
 - Update all pods before release
-- Set AppId into Info.plist
 
 ### Backlog
 

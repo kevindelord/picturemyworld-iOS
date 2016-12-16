@@ -113,10 +113,12 @@ extension PWCollectionViewController {
 
 	private func setupInputSources() {
 		self.inputSources = self.posts.flatMap { (post: Post) -> AssetManagerSource? in
-			guard let urlString = post.imageURL else {
-				return nil
+			guard let
+				imageURLString = post.imageURL,
+				thumbnailURLString = post.thumbnailURL else {
+					return nil
 			}
-			return AssetManagerSource(urlString: urlString)
+			return AssetManagerSource(imageURLString: imageURLString, thumbnailURLString: thumbnailURLString)
 		}
 	}
 
