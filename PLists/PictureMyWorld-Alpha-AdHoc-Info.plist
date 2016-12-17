@@ -68,7 +68,7 @@
 	<key>HockeyAppId</key>
 	<string>4511034018144bb7ae83d05cf1fa1ee0</string>
 	<key>APIBaseURL</key>
-	<string>http://127.0.0.1:4000/</string>
+	<string>http://picturemy.world</string>
 	<key>BuglifeID</key>
 	<string>zABHFQBQuM6ZzTTXZoRDDwtt</string>
 	<key>AppID</key>
