@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0222ED6914F668B444696C91 /* Pods_PictureMyWorld_Live_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB19420E1D3F3C06BD0015E /* Pods_PictureMyWorld_Live_AppStore.framework */; };
+		4998AD57F0E6E42812AE27F6 /* Pods_PictureMyWorld_Alpha_AdHoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02582664AF79B4B6CF47B414 /* Pods_PictureMyWorld_Alpha_AdHoc.framework */; };
 		62063C4F3752F42B38BC0DC7 /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */; };
 		7517D08D1DFCD51700AC423E /* PWInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7517D08C1DFCD51700AC423E /* PWInfoViewController.swift */; };
 		751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828BA1DF05A53001D12ED /* DKExtensions.swift */; };
@@ -74,9 +76,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02582664AF79B4B6CF47B414 /* Pods_PictureMyWorld_Alpha_AdHoc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureMyWorld_Alpha_AdHoc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FB15770CAD38DF12FD5C5B /* Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig"; sourceTree = "<group>"; };
+		29D4617574AD17546A7350CA /* Pods-PictureMyWorld-Alpha-AdHoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-Alpha-AdHoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-Alpha-AdHoc/Pods-PictureMyWorld-Alpha-AdHoc.release.xcconfig"; sourceTree = "<group>"; };
 		2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureMyWorld_AdHoc_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59396562849084ED226F33E4 /* Pods-PictureMyWorld-Live-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-Live-AppStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-Live-AppStore/Pods-PictureMyWorld-Live-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
+		6DB19420E1D3F3C06BD0015E /* Pods_PictureMyWorld_Live_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureMyWorld_Live_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509F4CF1DF0564F00E1EBD3 /* PictureMyWorld-Alpha-AdHoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PictureMyWorld-Alpha-AdHoc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7517D08C1DFCD51700AC423E /* PWInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWInfoViewController.swift; sourceTree = "<group>"; };
 		751828BA1DF05A53001D12ED /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
@@ -116,6 +122,8 @@
 		75925EB11DF77C1E006C7277 /* AssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetManager.swift; path = Helpers/AssetManager.swift; sourceTree = "<group>"; };
 		75925EB61DF796DA006C7277 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Database/Database.swift; sourceTree = "<group>"; };
 		75FC84F21DFB79C5009AA25D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BD911563D2832CCF4F3E225F /* Pods-PictureMyWorld-Alpha-AdHoc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-Alpha-AdHoc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-Alpha-AdHoc/Pods-PictureMyWorld-Alpha-AdHoc.debug.xcconfig"; sourceTree = "<group>"; };
+		BDAD31E121CBA3DF9B467DB6 /* Pods-PictureMyWorld-Live-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld-Live-AppStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld-Live-AppStore/Pods-PictureMyWorld-Live-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62063C4F3752F42B38BC0DC7 /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */,
+				4998AD57F0E6E42812AE27F6 /* Pods_PictureMyWorld_Alpha_AdHoc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				756140D31E04ACDF003FF4DB /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */,
+				0222ED6914F668B444696C91 /* Pods_PictureMyWorld_Live_AppStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */,
+				02582664AF79B4B6CF47B414 /* Pods_PictureMyWorld_Alpha_AdHoc.framework */,
+				6DB19420E1D3F3C06BD0015E /* Pods_PictureMyWorld_Live_AppStore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,6 +163,10 @@
 			children = (
 				61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */,
 				23FB15770CAD38DF12FD5C5B /* Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig */,
+				BD911563D2832CCF4F3E225F /* Pods-PictureMyWorld-Alpha-AdHoc.debug.xcconfig */,
+				29D4617574AD17546A7350CA /* Pods-PictureMyWorld-Alpha-AdHoc.release.xcconfig */,
+				BDAD31E121CBA3DF9B467DB6 /* Pods-PictureMyWorld-Live-AppStore.debug.xcconfig */,
+				59396562849084ED226F33E4 /* Pods-PictureMyWorld-Live-AppStore.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -416,7 +432,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld-Alpha-AdHoc/Pods-PictureMyWorld-Alpha-AdHoc-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		751828B61DF058D0001D12ED /* Swiftlint */ = {
@@ -460,7 +476,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld-Live-AppStore/Pods-PictureMyWorld-Live-AppStore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		756140DC1E04ACDF003FF4DB /* [CP] Copy Pods Resources */ = {
@@ -475,7 +491,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld-Live-AppStore/Pods-PictureMyWorld-Live-AppStore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		756140DD1E04ACDF003FF4DB /* Swiftlint */ = {
@@ -519,7 +535,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld-AdHoc-Alpha/Pods-PictureMyWorld-AdHoc-Alpha-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld-Alpha-AdHoc/Pods-PictureMyWorld-Alpha-AdHoc-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -694,7 +710,7 @@
 		};
 		7509F4ED1DF0565000E1EBD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */;
+			baseConfigurationReference = BD911563D2832CCF4F3E225F /* Pods-PictureMyWorld-Alpha-AdHoc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -713,7 +729,7 @@
 		};
 		7509F4EE1DF0565000E1EBD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23FB15770CAD38DF12FD5C5B /* Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig */;
+			baseConfigurationReference = 29D4617574AD17546A7350CA /* Pods-PictureMyWorld-Alpha-AdHoc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -731,7 +747,7 @@
 		};
 		756140DF1E04ACDF003FF4DB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61A7E81F86DDF861155E22D3 /* Pods-PictureMyWorld-AdHoc-Alpha.debug.xcconfig */;
+			baseConfigurationReference = BDAD31E121CBA3DF9B467DB6 /* Pods-PictureMyWorld-Live-AppStore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -750,7 +766,7 @@
 		};
 		756140E01E04ACDF003FF4DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23FB15770CAD38DF12FD5C5B /* Pods-PictureMyWorld-AdHoc-Alpha.release.xcconfig */;
+			baseConfigurationReference = 59396562849084ED226F33E4 /* Pods-PictureMyWorld-Live-AppStore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
