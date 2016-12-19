@@ -713,7 +713,7 @@
 			baseConfigurationReference = BD911563D2832CCF4F3E225F /* Pods-PictureMyWorld-Alpha-AdHoc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "PLists/PictureMyWorld-Alpha-AdHoc-Info.plist";
@@ -732,7 +732,7 @@
 			baseConfigurationReference = 29D4617574AD17546A7350CA /* Pods-PictureMyWorld-Alpha-AdHoc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "PLists/PictureMyWorld-Alpha-AdHoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -750,7 +750,7 @@
 			baseConfigurationReference = BDAD31E121CBA3DF9B467DB6 /* Pods-PictureMyWorld-Live-AppStore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "PLists/PictureMyWorld-Live-AppStore-Info.plist";
@@ -769,7 +769,7 @@
 			baseConfigurationReference = 59396562849084ED226F33E4 /* Pods-PictureMyWorld-Live-AppStore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "PLists/PictureMyWorld-Live-AppStore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
