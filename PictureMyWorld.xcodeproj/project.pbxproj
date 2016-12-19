@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0222ED6914F668B444696C91 /* Pods_PictureMyWorld_Live_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB19420E1D3F3C06BD0015E /* Pods_PictureMyWorld_Live_AppStore.framework */; };
 		4998AD57F0E6E42812AE27F6 /* Pods_PictureMyWorld_Alpha_AdHoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02582664AF79B4B6CF47B414 /* Pods_PictureMyWorld_Alpha_AdHoc.framework */; };
-		62063C4F3752F42B38BC0DC7 /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */; };
 		7517D08D1DFCD51700AC423E /* PWInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7517D08C1DFCD51700AC423E /* PWInfoViewController.swift */; };
 		751828BE1DF05A53001D12ED /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751828BA1DF05A53001D12ED /* DKExtensions.swift */; };
 		751828C81DF08B26001D12ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 751828C61DF08B26001D12ED /* Model.xcdatamodeld */; };
@@ -41,7 +40,6 @@
 		756140CF1E04ACDF003FF4DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582288B1DF7A87A00567725 /* AppDelegate.swift */; };
 		756140D01E04ACDF003FF4DB /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D6C9E1E02444F0099F4FA /* Reachability.swift */; };
 		756140D11E04ACDF003FF4DB /* PWInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7517D08C1DFCD51700AC423E /* PWInfoViewController.swift */; };
-		756140D31E04ACDF003FF4DB /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B508A911BAF90FAD3D3B2A3 /* Pods_PictureMyWorld_AdHoc_Alpha.framework */; };
 		756140D51E04ACDF003FF4DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758228961DF7A8A800567725 /* LaunchScreen.storyboard */; };
 		756140D61E04ACDF003FF4DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758228981DF7A8A800567725 /* Main.storyboard */; };
 		756140D71E04ACDF003FF4DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7582289F1DF7A8C700567725 /* Localizable.strings */; };
@@ -131,7 +129,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62063C4F3752F42B38BC0DC7 /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */,
 				4998AD57F0E6E42812AE27F6 /* Pods_PictureMyWorld_Alpha_AdHoc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,7 +137,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				756140D31E04ACDF003FF4DB /* Pods_PictureMyWorld_AdHoc_Alpha.framework in Frameworks */,
 				0222ED6914F668B444696C91 /* Pods_PictureMyWorld_Live_AppStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
