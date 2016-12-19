@@ -6,8 +6,6 @@
 
 ### To be done
 
-- Update all pods before release
-
 ### Backlog
 
 - Integrate Location button to opens Maps or GoogleMaps
