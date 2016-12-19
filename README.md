@@ -6,6 +6,8 @@ Pict My World lets you discover the latest picture posts from the travel blog [p
 
 Read the stories and view the beautiful images through a beautiful slideshow.
 
+![alt tag](https://raw.githubusercontent.com/kevindelord/picturemyworld-iOS/master/Resources/iTunesConnect/iPad_AppStore_screenshots/iPad_DE/iPad_appstore_screenshots_preview_DE.jpg)
+
 ## How to get started
 
 To be able develop on this project you first need the following:
