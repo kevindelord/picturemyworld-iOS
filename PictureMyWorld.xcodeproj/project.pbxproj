@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		7566088220F89577005711BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088120F89577005711BF /* AppDelegate.swift */; };
 		7566088420F89577005711BF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088320F89577005711BF /* FirstViewController.swift */; };
-		7566088620F89577005711BF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088520F89577005711BF /* SecondViewController.swift */; };
+		7566088620F89577005711BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088520F89577005711BF /* WebViewController.swift */; };
 		7566088920F89577005711BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7566088720F89577005711BF /* Main.storyboard */; };
 		7566088B20F89579005711BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7566088A20F89579005711BF /* Assets.xcassets */; };
 		7566088E20F89579005711BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7566088C20F89579005711BF /* LaunchScreen.storyboard */; };
+		793298311A6D6726A4E3781F /* Pods_PictureMyWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E141CE60DB45694BA2D099 /* Pods_PictureMyWorld.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52B371298DF7DB77C97E1C29 /* Pods-PictureMyWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld.release.xcconfig"; sourceTree = "<group>"; };
+		5B7F55F1D136AB2CD125CBC1 /* Pods-PictureMyWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMyWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		7566087E20F89577005711BF /* PictureMyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7566088120F89577005711BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7566088320F89577005711BF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		7566088520F89577005711BF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		7566088520F89577005711BF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7566088820F89577005711BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7566088A20F89579005711BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7566088D20F89579005711BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7566088F20F89579005711BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6E141CE60DB45694BA2D099 /* Pods_PictureMyWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureMyWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				793298311A6D6726A4E3781F /* Pods_PictureMyWorld.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58A9229DE54424D6CD12DF65 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B7F55F1D136AB2CD125CBC1 /* Pods-PictureMyWorld.debug.xcconfig */,
+				52B371298DF7DB77C97E1C29 /* Pods-PictureMyWorld.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7566087520F89577005711BF = {
 			isa = PBXGroup;
 			children = (
 				7566088020F89577005711BF /* PictureMyWorld */,
 				7566087F20F89577005711BF /* Products */,
+				58A9229DE54424D6CD12DF65 /* Pods */,
+				FB1392B8801B74D120277B27 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +74,21 @@
 			children = (
 				7566088120F89577005711BF /* AppDelegate.swift */,
 				7566088320F89577005711BF /* FirstViewController.swift */,
-				7566088520F89577005711BF /* SecondViewController.swift */,
+				7566088520F89577005711BF /* WebViewController.swift */,
 				7566088720F89577005711BF /* Main.storyboard */,
 				7566088A20F89579005711BF /* Assets.xcassets */,
 				7566088C20F89579005711BF /* LaunchScreen.storyboard */,
 				7566088F20F89579005711BF /* Info.plist */,
 			);
 			path = PictureMyWorld;
+			sourceTree = "<group>";
+		};
+		FB1392B8801B74D120277B27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6E141CE60DB45694BA2D099 /* Pods_PictureMyWorld.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7566089220F89579005711BF /* Build configuration list for PBXNativeTarget "PictureMyWorld" */;
 			buildPhases = (
+				3E3C8213C7A57DA2CC1F9C34 /* [CP] Check Pods Manifest.lock */,
 				7566087A20F89577005711BF /* Sources */,
 				7566087B20F89577005711BF /* Frameworks */,
 				7566087C20F89577005711BF /* Resources */,
+				222A3C906D02F1047BAD4A7C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,12 +159,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		222A3C906D02F1047BAD4A7C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E3C8213C7A57DA2CC1F9C34 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PictureMyWorld-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7566087A20F89577005711BF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7566088620F89577005711BF /* SecondViewController.swift in Sources */,
+				7566088620F89577005711BF /* WebViewController.swift in Sources */,
 				7566088220F89577005711BF /* AppDelegate.swift in Sources */,
 				7566088420F89577005711BF /* FirstViewController.swift in Sources */,
 			);
@@ -282,9 +349,11 @@
 		};
 		7566089320F89579005711BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B7F55F1D136AB2CD125CBC1 /* Pods-PictureMyWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PictureMyWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -292,6 +361,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -299,9 +369,11 @@
 		};
 		7566089420F89579005711BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52B371298DF7DB77C97E1C29 /* Pods-PictureMyWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PictureMyWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -309,6 +381,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
