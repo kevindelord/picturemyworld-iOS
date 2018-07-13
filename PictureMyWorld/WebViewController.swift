@@ -9,18 +9,6 @@
 import UIKit
 import WebKit
 
-enum WebIndex : Int {
-	case staging = 0
-	case producation
-
-	var url: URL? {
-		switch self {
-		case .staging:		return URL(string: "https://kevindelord.io/staging")
-		case .producation:	return URL(string: "http://picturemy.world")
-		}
-	}
-}
-
 class WebViewController								: UIViewController, WKUIDelegate {
 
 	private var webView								: WKWebView?
@@ -36,16 +24,44 @@ class WebViewController								: UIViewController, WKUIDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		// Load the default selected index from the storyboard.
 		self.segmentedControlValueDidChange()
 	}
+}
 
-	@IBAction func segmentedControlValueDidChange() {
-		guard
-			let web = WebIndex(rawValue: self.segmentedControl.selectedSegmentIndex),
-			let url = web.url else {
-				return
+// MARK: - Web Content management
+
+extension WebViewController {
+
+	private func clearWebContent() {
+		guard let url = URL(string:"about:blank") else {
+			return
 		}
 
 		self.webView?.load(URLRequest(url: url))
+	}
+
+	private func loadWebContent(for environment: Environment) {
+		guard let url = environment.webURL else {
+			return
+		}
+
+		self.webView?.load(URLRequest(url: url))
+	}
+}
+
+// MARK: - User Action
+
+extension WebViewController {
+
+	@IBAction func segmentedControlValueDidChange() {
+		let index = self.segmentedControl.selectedSegmentIndex
+		guard
+			let environment = Environment(rawValue: index),
+			(environment.hasWebContent == true) else {
+				return
+		}
+
+		self.loadWebContent(for: environment)
 	}
 }

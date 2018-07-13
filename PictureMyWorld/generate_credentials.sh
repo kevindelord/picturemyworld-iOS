@@ -12,6 +12,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 	<dict>
 		<key>base_url</key>
 		<string></string>
+		<key>web_url</key>
+		<string></string>
 		<key>username</key>
 		<string></string>
 		<key>password</key>
@@ -21,6 +23,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 	<dict>
 		<key>base_url</key>
 		<string></string>
+		<key>web_url</key>
+		<string></string>
 		<key>username</key>
 		<string></string>
 		<key>password</key>
@@ -29,6 +33,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 	<key>production</key>
 	<dict>
 		<key>base_url</key>
+		<string></string>
+		<key>web_url</key>
 		<string></string>
 		<key>username</key>
 		<string></string>
