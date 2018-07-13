@@ -1,48 +1,95 @@
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/smartmobilefactory/SMF-CocoaPods-Specs.git'
 
-platform :ios, '8.0'
+platform :ios, '10.0'
 use_frameworks!
 
+inhibit_all_warnings!
+
+project 'HockeyApp-iOS.xcodeproj'
+
 def corePods
-    pod 'Reachability', '~> 3.2'
-	pod 'Appirater', '~> 2.1.2'
-	pod 'MBProgressHUD', '~> 1.0.0'
-	pod 'DKHelper', '~> 2.2.3'
-    pod 'Buglife', '~> 1.4.0'
-    pod 'HockeySDK', '~> 4.1.3'
-	pod 'DKDBManager', '~> 1.0.0'
-	pod 'SDWebImage', '~> 3.8.2'
-	pod 'CollectionViewWaterfallLayoutSH', '~> 0.3.0'
-	pod 'Google/Analytics'
-	pod 'Firebase', '~> 3.11.0'
-	# Newest versions of Kanna require Swift 3.x
-	pod 'Kanna', '~> 1.1.0'
-	# ImageSlideshow has been integrated manually to fix performance issues and usability.
-	# The latest version for Swift 3.x seems to be better but requires a lot of migration.
-#	pod 'ImageSlideshow'
+	pod 'SDWebImage', '~> 4.4.1'
+	pod 'DKDBManager', '~> 1.1.0'
+	pod 'Reachability', '~> 3.2'
+	pod 'Alamofire', '~> 4.7.2'
+	pod 'SMFLogger', '~> 4.2.0'
 end
 
-target 'PictureMyWorld-Alpha-AdHoc' do
-    corePods
+def coreApp
+	pod 'KeychainAccess', '~> 3.1.1'
+	pod 'SMF-HockeyAppBrowser-iOS', '~> 0.2.3'
+	pod 'PagingMenuController', '~> 2.2.0'
+	pod 'R.swift', '~> 4.0.0'
+	pod 'SwiftLint', '~> 0.25.1'
+	pod '1PasswordExtension', '~> 1.8.5'
+	pod 'Shimmer', '~> 1.0.2'
+	pod 'HockeySDK', '~> 5.1.1'
+	pod 'QAKit', '~> 0.0.5'
+	pod 'Buglife', '~> 2.8.0'
 end
 
-target 'PictureMyWorld-Live-AppStore' do
-    corePods
+def oneSignal
+	pod 'OneSignal', '~> 2.8.5'
+end
+
+target 'HockeyApp-Alpha-InHouse' do
+	corePods
+	coreApp
+	oneSignal
+end
+
+target 'HockeyApp-Beta-InHouse' do
+	corePods
+	coreApp
+	oneSignal
+end
+
+target 'NotificationContentExtension-ALPHA' do
+	corePods
+	oneSignal
+end
+
+target 'NotificationContentExtension-BETA' do
+	corePods
+	oneSignal
+end
+
+target 'TodayWidget-ALPHA' do
+	corePods
+end
+
+target 'TodayWidget-BETA' do
+	corePods
+end
+
+target 'IndexExtension-ALPHA' do
+	corePods
+end
+
+target 'IndexExtension-BETA' do
+	corePods
 end
 
 post_install do |installer|
 
-	installer.pods_project.targets.each do |target|
-		if target.name.include?("Pods-")
-			require 'fileutils'
-			FileUtils.cp_r('Pods/Target Support Files/' + target.name + '/' + target.name + '-acknowledgements.plist',
-			'Resources/Settings.bundle/Pods-acknowledgements.plist', :remove_destination => true)
-		end
+    installer.pods_project.targets.each do |target|
+        if target.name.include?("Pods-")
+            require 'fileutils'
+            FileUtils.cp_r('Pods/Target Support Files/' + target.name + '/' + target.name + '-acknowledgements.plist',
+            'Resources/Settings.bundle/Pods-acknowledgements.plist', :remove_destination => true)
+        end
 
-		target.build_configurations.each do |config|
-			config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
-			config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
-			config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+        target.build_configurations.each do |config|
+            config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+            config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+            config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+        end
+
+		if target.name == 'PagingMenuController'
+			target.build_configurations.each do |config|
+				config.build_settings['SWIFT_VERSION'] = '3.2'
+			end
 		end
-	end
+    end
 end
