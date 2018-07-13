@@ -12,11 +12,18 @@ class DashboardViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		PostManager.fetchEntities { (posts: [Post], error: Error?) in
+			print(posts.count)
+			if let error = error {
+				UIAlertController.showErrorMessage(error.localizedDescription,
+												   presentingViewController: AppDelegate.alertPresentingController)
+			}
+		}
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		print(sender)
-		print(segue.destination)
+
 	}
 }
 

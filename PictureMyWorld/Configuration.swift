@@ -53,6 +53,10 @@ enum Environment : Int {
 		}
 	}
 
+	static var current : Environment {
+		return .development
+	}
+
 	var webURL: URL? {
 		guard let webURLString = Configuration.getValue(for: .webURL, in: self) else {
 			return nil
@@ -65,8 +69,19 @@ enum Environment : Int {
 		return (self.webURL != nil)
 	}
 
-	var baseURL: String? {
-		let baseURL = Configuration.getValue(for: .baseURL, in: self)
-		return baseURL
+	var baseURL: URL? {
+		guard let baseURLString = Configuration.getValue(for: .baseURL, in: self) else {
+			return nil
+		}
+
+		return URL(string: baseURLString)
+	}
+
+	var username: String? {
+		return Configuration.getValue(for: .username, in: self)
+	}
+
+	var password: String? {
+		return Configuration.getValue(for: .password, in: self)
 	}
 }
