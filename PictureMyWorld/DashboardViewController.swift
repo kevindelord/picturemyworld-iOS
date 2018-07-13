@@ -10,20 +10,10 @@ import UIKit
 
 class DashboardViewController					: UIViewController {
 
+	@IBOutlet private weak var tableView		: ContentTableView?
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-//		PostManager.fetchEntities { (posts: [Post], error: Error?) in
-//			print(posts.count)
-//			if let error = error {
-//				UIAlertController.showErrorMessage(error.localizedDescription,
-//												   presentingViewController: AppDelegate.alertPresentingController)
-//			}
-//		}
-	}
-
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
 	}
 }
 
@@ -34,6 +24,8 @@ extension DashboardViewController {
 		VersionManager.presentDeployedVersion()
 	}
 
-	@IBAction private func openListView(_ sender: UIButton) {
+	@IBAction private func reloadListView(_ sender: UIButton) {
+
+		self.tableView?.load(for: .posts)
 	}
 }

@@ -16,21 +16,21 @@ struct PostManager {
 	/// Fetch available App info.
 	///
 	/// - Parameter completion: Completion Closure executed at the end of the fetch request.
-	static func fetchEntities(completion: ((_ posts: [Post], _ error: Error?) -> Void)?) {
+	static func fetchEntities(completion: @escaping ((_ posts: [Post], _ error: Error?) -> Void)) {
 		guard let endpoint = Environment.current.baseURL?.add(path: API.Endpoint.posts) else {
-			completion?([], nil)
+			completion([], nil)
 			return
 		}
 
 		APIManager.get(endpoint).responseJSON { (response: DataResponse<Any>) in
 			let result = APIManager.extractJSON(fromResponse: response)
 			guard let json = result.json?[API.Key.JSON.posts] as? [[AnyHashable: Any]] else {
-				completion?([], result.error)
+				completion([], result.error)
 				return
 			}
 
 			let posts = PostManager.createPosts(from: json)
-			completion?(posts, nil)
+			completion(posts, nil)
 		}
 	}
 

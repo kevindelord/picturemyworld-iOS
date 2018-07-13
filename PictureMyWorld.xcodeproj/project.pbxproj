@@ -14,6 +14,10 @@
 		75099D0720F8B758001A1F39 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D0620F8B758001A1F39 /* URL.swift */; };
 		75099D0920F8B814001A1F39 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D0820F8B814001A1F39 /* UIAlertController.swift */; };
 		75099D0C20F8B982001A1F39 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D0B20F8B981001A1F39 /* Post.swift */; };
+		75099D0E20F8D46D001A1F39 /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D0D20F8D46D001A1F39 /* VersionManager.swift */; };
+		75099D1020F8D5BF001A1F39 /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D0F20F8D5BF001A1F39 /* RawRepresentable.swift */; };
+		75099D1220F8E50B001A1F39 /* ContentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1120F8E50A001A1F39 /* ContentTableView.swift */; };
+		75099D1420F8E9AD001A1F39 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */; };
 		7566088220F89577005711BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088120F89577005711BF /* AppDelegate.swift */; };
 		7566088420F89577005711BF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088320F89577005711BF /* DashboardViewController.swift */; };
 		7566088620F89577005711BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088520F89577005711BF /* WebViewController.swift */; };
@@ -33,6 +37,10 @@
 		75099D0620F8B758001A1F39 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		75099D0820F8B814001A1F39 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		75099D0B20F8B981001A1F39 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		75099D0D20F8D46D001A1F39 /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
+		75099D0F20F8D5BF001A1F39 /* RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
+		75099D1120F8E50A001A1F39 /* ContentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableView.swift; sourceTree = "<group>"; };
+		75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		7566087E20F89577005711BF /* PictureMyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7566088120F89577005711BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7566088320F89577005711BF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				75099D0120F8B2E8001A1F39 /* PostManager.swift */,
+				75099D0D20F8D46D001A1F39 /* VersionManager.swift */,
 				75099D0220F8B2E8001A1F39 /* APIManager.swift */,
 			);
 			path = API;
@@ -77,6 +86,7 @@
 		75099D0520F8B758001A1F39 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				75099D0F20F8D5BF001A1F39 /* RawRepresentable.swift */,
 				75099D0820F8B814001A1F39 /* UIAlertController.swift */,
 				75099D0620F8B758001A1F39 /* URL.swift */,
 			);
@@ -118,6 +128,8 @@
 				75099CF720F8A385001A1F39 /* credentials.plist */,
 				75099CF920F8A490001A1F39 /* Configuration.swift */,
 				7566088120F89577005711BF /* AppDelegate.swift */,
+				75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */,
+				75099D1120F8E50A001A1F39 /* ContentTableView.swift */,
 				7566088320F89577005711BF /* DashboardViewController.swift */,
 				7566088520F89577005711BF /* WebViewController.swift */,
 				7566088720F89577005711BF /* Main.storyboard */,
@@ -253,12 +265,16 @@
 			files = (
 				75099D0420F8B2E8001A1F39 /* APIManager.swift in Sources */,
 				7566088620F89577005711BF /* WebViewController.swift in Sources */,
+				75099D0E20F8D46D001A1F39 /* VersionManager.swift in Sources */,
+				75099D1220F8E50B001A1F39 /* ContentTableView.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* PostManager.swift in Sources */,
 				75099D0720F8B758001A1F39 /* URL.swift in Sources */,
 				75099D0920F8B814001A1F39 /* UIAlertController.swift in Sources */,
 				7566088220F89577005711BF /* AppDelegate.swift in Sources */,
 				75099D0C20F8B982001A1F39 /* Post.swift in Sources */,
 				75099CFA20F8A490001A1F39 /* Configuration.swift in Sources */,
+				75099D1420F8E9AD001A1F39 /* PostTableViewCell.swift in Sources */,
+				75099D1020F8D5BF001A1F39 /* RawRepresentable.swift in Sources */,
 				7566088420F89577005711BF /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
