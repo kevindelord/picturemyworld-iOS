@@ -7,18 +7,14 @@
 //
 
 import UIKit
-import WebKit
 
-class WebViewController								: UIViewController, WKUIDelegate {
+class WebViewController								: UIViewController {
 
-	private var webView								: WKWebView?
+	private var webView								= ContentWebView()
 	@IBOutlet private weak var segmentedControl 	: EnvironmentSegmentedControl?
 
 	override func loadView() {
-		let webConfiguration = WKWebViewConfiguration()
-		self.webView = WKWebView(frame: .zero, configuration: webConfiguration)
-		webView?.uiDelegate = self
-		self.view = webView
+		self.view = self.webView
 	}
 
 	override func viewDidLoad() {
@@ -29,40 +25,17 @@ class WebViewController								: UIViewController, WKUIDelegate {
 	}
 }
 
-// MARK: - Web Content management
-
-extension WebViewController {
-
-	private func clearWebContent() {
-		guard let url = URL(string:"about:blank") else {
-			return
-		}
-
-		self.webView?.load(URLRequest(url: url))
-	}
-
-	private func loadWebContent(for environment: Environment) {
-		guard let url = environment.webURL else {
-			return
-		}
-
-		self.webView?.load(URLRequest(url: url))
-	}
-}
-
 // MARK: - User Action
 
 extension WebViewController {
 
 	@IBAction func reloadWebContent() {
-		self.clearWebContent()
 		guard
 			let index = self.segmentedControl?.selectedSegmentIndex,
-			let environment = Environment(rawValue: index),
-			(environment.hasWebContent == true) else {
+			let environment = Environment(rawValue: index) else {
 				return
 		}
 
-		self.loadWebContent(for: environment)
+		self.webView.load(for: environment)
 	}
 }
