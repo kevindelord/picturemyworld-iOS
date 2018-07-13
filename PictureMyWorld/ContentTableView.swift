@@ -8,12 +8,29 @@
 
 import UIKit
 
-enum ContentType {
-	case posts
+enum ContentType : Int {
+	case posts = 0
 	case countries
 	case videos
 
 	static var defaultType : ContentType = .posts
+
+	static var defaultData : [ContentType: [Any]] {
+		var contentData	= [ContentType: [Any]]()
+		for type in ContentType.allCases {
+			contentData[type] = []
+		}
+
+		return contentData
+	}
+
+	var title: String {
+		switch self {
+		case .posts			: return "Posts"
+		case .countries		: return "Countries"
+		case .videos		: return "Videos"
+		}
+	}
 
 	var fetch: ((@escaping (([Any], Error?) -> Void)) -> Void)? {
 		switch self {
@@ -51,17 +68,16 @@ enum ContentType {
 class ContentTableView 			: UITableView {
 
 	private var contentType		= ContentType.defaultType
-	private var contentData		= [ContentType: [Any]]()
+	private var contentData		= ContentType.defaultData
 
 	func load(for type: ContentType) {
 		self.contentType = type
 		self.delegate = self
 		self.dataSource = self
+		// Reload the table view when if is the content might not exist yet.
+		self.reloadData()
 
-		if (self.contentData[self.contentType]?.isEmpty == false) {
-			// Reload the table view is the content already exists.
-			self.reloadData()
-		} else {
+		if (self.contentData[self.contentType]?.isEmpty == true) {
 			// Otherwise fetch the content from the API and then reload the table view.
 			self.refreshContent(for: self.contentType)
 		}

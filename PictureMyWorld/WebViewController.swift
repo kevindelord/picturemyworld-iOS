@@ -12,7 +12,7 @@ import WebKit
 class WebViewController								: UIViewController, WKUIDelegate {
 
 	private var webView								: WKWebView?
-	@IBOutlet private weak var segmentedControl 	: UISegmentedControl!
+	@IBOutlet private weak var segmentedControl 	: EnvironmentSegmentedControl?
 
 	override func loadView() {
 		let webConfiguration = WKWebViewConfiguration()
@@ -25,7 +25,7 @@ class WebViewController								: UIViewController, WKUIDelegate {
 		super.viewDidLoad()
 
 		// Load the default selected index from the storyboard.
-		self.segmentedControlValueDidChange()
+		self.reloadWebContent()
 	}
 }
 
@@ -54,9 +54,10 @@ extension WebViewController {
 
 extension WebViewController {
 
-	@IBAction func segmentedControlValueDidChange() {
-		let index = self.segmentedControl.selectedSegmentIndex
+	@IBAction func reloadWebContent() {
+		self.clearWebContent()
 		guard
+			let index = self.segmentedControl?.selectedSegmentIndex,
 			let environment = Environment(rawValue: index),
 			(environment.hasWebContent == true) else {
 				return

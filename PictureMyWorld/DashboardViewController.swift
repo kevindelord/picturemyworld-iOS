@@ -10,10 +10,14 @@ import UIKit
 
 class DashboardViewController					: UIViewController {
 
+	@IBOutlet private weak var segmentedControl	: ContentTypeSegmentedControl?
 	@IBOutlet private weak var tableView		: ContentTableView?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		// Reload the default content to display.
+		self.reloadListView()
 	}
 }
 
@@ -24,8 +28,13 @@ extension DashboardViewController {
 		VersionManager.presentDeployedVersion()
 	}
 
-	@IBAction private func reloadListView(_ sender: UIButton) {
+	@IBAction private func reloadListView() {
+		guard
+			let index = self.segmentedControl?.selectedSegmentIndex,
+			let type = ContentType(rawValue: index) else {
+				return
+		}
 
-		self.tableView?.load(for: .posts)
+		self.tableView?.load(for: type)
 	}
 }

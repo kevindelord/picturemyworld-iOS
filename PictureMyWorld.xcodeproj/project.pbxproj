@@ -18,6 +18,9 @@
 		75099D1020F8D5BF001A1F39 /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D0F20F8D5BF001A1F39 /* RawRepresentable.swift */; };
 		75099D1220F8E50B001A1F39 /* ContentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1120F8E50A001A1F39 /* ContentTableView.swift */; };
 		75099D1420F8E9AD001A1F39 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */; };
+		75099D1620F8F578001A1F39 /* ContentTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */; };
+		75099D1820F8F5B5001A1F39 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1720F8F5B5001A1F39 /* API.swift */; };
+		75099D1A20F8F70F001A1F39 /* EnvironmentSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */; };
 		7566088220F89577005711BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088120F89577005711BF /* AppDelegate.swift */; };
 		7566088420F89577005711BF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088320F89577005711BF /* DashboardViewController.swift */; };
 		7566088620F89577005711BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088520F89577005711BF /* WebViewController.swift */; };
@@ -41,6 +44,9 @@
 		75099D0F20F8D5BF001A1F39 /* RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
 		75099D1120F8E50A001A1F39 /* ContentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableView.swift; sourceTree = "<group>"; };
 		75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTypeSegmentedControl.swift; sourceTree = "<group>"; };
+		75099D1720F8F5B5001A1F39 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSegmentedControl.swift; sourceTree = "<group>"; };
 		7566087E20F89577005711BF /* PictureMyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7566088120F89577005711BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7566088320F89577005711BF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 				75099D0120F8B2E8001A1F39 /* PostManager.swift */,
 				75099D0D20F8D46D001A1F39 /* VersionManager.swift */,
 				75099D0220F8B2E8001A1F39 /* APIManager.swift */,
+				75099D1720F8F5B5001A1F39 /* API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -128,10 +135,12 @@
 				75099CF720F8A385001A1F39 /* credentials.plist */,
 				75099CF920F8A490001A1F39 /* Configuration.swift */,
 				7566088120F89577005711BF /* AppDelegate.swift */,
+				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
 				75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */,
 				75099D1120F8E50A001A1F39 /* ContentTableView.swift */,
 				7566088320F89577005711BF /* DashboardViewController.swift */,
 				7566088520F89577005711BF /* WebViewController.swift */,
+				75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */,
 				7566088720F89577005711BF /* Main.storyboard */,
 				7566088A20F89579005711BF /* Assets.xcassets */,
 				7566088C20F89579005711BF /* LaunchScreen.storyboard */,
@@ -267,12 +276,15 @@
 				7566088620F89577005711BF /* WebViewController.swift in Sources */,
 				75099D0E20F8D46D001A1F39 /* VersionManager.swift in Sources */,
 				75099D1220F8E50B001A1F39 /* ContentTableView.swift in Sources */,
+				75099D1820F8F5B5001A1F39 /* API.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* PostManager.swift in Sources */,
 				75099D0720F8B758001A1F39 /* URL.swift in Sources */,
 				75099D0920F8B814001A1F39 /* UIAlertController.swift in Sources */,
 				7566088220F89577005711BF /* AppDelegate.swift in Sources */,
 				75099D0C20F8B982001A1F39 /* Post.swift in Sources */,
+				75099D1A20F8F70F001A1F39 /* EnvironmentSegmentedControl.swift in Sources */,
 				75099CFA20F8A490001A1F39 /* Configuration.swift in Sources */,
+				75099D1620F8F578001A1F39 /* ContentTypeSegmentedControl.swift in Sources */,
 				75099D1420F8E9AD001A1F39 /* PostTableViewCell.swift in Sources */,
 				75099D1020F8D5BF001A1F39 /* RawRepresentable.swift in Sources */,
 				7566088420F89577005711BF /* DashboardViewController.swift in Sources */,

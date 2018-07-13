@@ -9,35 +9,6 @@
 import Foundation
 import Alamofire
 
-struct API {
-
-	struct Error {
-
-		static let domain					= "PictureMyWorld-iOS-Client_APIManager"
-		static let code						= NSURLErrorUnknown
-	}
-
-	struct Key {
-
-		static let status					= "status"
-		static let error					= "error"
-		static let reason					= "reason"
-		static let errors					= "errors"
-		static let credentials				= "credentials"
-
-		struct JSON {
-
-			static let posts				= "posts"
-		}
-	}
-
-	struct Endpoint {
-
-		static let posts					= "posts"
-		static let versions					= "versions"
-	}
-}
-
 /// Manager handling all API requests.
 struct APIManager {
 
@@ -105,10 +76,8 @@ struct APIManager {
 	///   - encoding: The parameter encoding; JSONEncoding.default by default.
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func get(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
-
-		let headers = APIManager.authHeaders
 		print("endpoint: \(url)")
-		print("authHeaders: \(headers)")
+		let headers = APIManager.authHeaders
 		return Alamofire.request(url, method: .get, parameters: parameters, encoding: encoding, headers: headers)
 	}
 
