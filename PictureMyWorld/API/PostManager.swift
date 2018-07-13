@@ -29,18 +29,14 @@ struct PostManager {
 				return
 			}
 
-			let posts = PostManager.createPosts(from: json)
+			let posts = PostManager.posts(from: json)
 			completion(posts, nil)
 		}
 	}
 
-	private static func createPosts(from json: [[AnyHashable: Any]]) -> [Post] {
-		var posts = [Post]()
-		for postData in json {
-			let post = Post(hash: postData)
-			posts.append(post)
+	private static func posts(from json: [[AnyHashable: Any]]) -> [Post] {
+		return json.map { (data) -> Post in
+			return Post(json: data)
 		}
-
-		return posts
 	}
 }

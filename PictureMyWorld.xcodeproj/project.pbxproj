@@ -22,6 +22,14 @@
 		75099D1820F8F5B5001A1F39 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1720F8F5B5001A1F39 /* API.swift */; };
 		75099D1A20F8F70F001A1F39 /* EnvironmentSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */; };
 		75099D1C20F8F998001A1F39 /* ContentWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1B20F8F998001A1F39 /* ContentWebView.swift */; };
+		75099D1E20F8FA0B001A1F39 /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1D20F8FA0B001A1F39 /* CountryManager.swift */; };
+		75099D2020F8FAC2001A1F39 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1F20F8FAC2001A1F39 /* Country.swift */; };
+		75099D2220F8FC70001A1F39 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2120F8FC70001A1F39 /* ContentType.swift */; };
+		75099D2420F8FE1D001A1F39 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2320F8FE1D001A1F39 /* VideoManager.swift */; };
+		75099D2620F8FF0C001A1F39 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2520F8FF0C001A1F39 /* Video.swift */; };
+		75099D2A20F9046E001A1F39 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2920F9046E001A1F39 /* Environment.swift */; };
+		75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */; };
+		75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */; };
 		7566088220F89577005711BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088120F89577005711BF /* AppDelegate.swift */; };
 		7566088420F89577005711BF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088320F89577005711BF /* DashboardViewController.swift */; };
 		7566088620F89577005711BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088520F89577005711BF /* WebViewController.swift */; };
@@ -49,6 +57,14 @@
 		75099D1720F8F5B5001A1F39 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSegmentedControl.swift; sourceTree = "<group>"; };
 		75099D1B20F8F998001A1F39 /* ContentWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWebView.swift; sourceTree = "<group>"; };
+		75099D1D20F8FA0B001A1F39 /* CountryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryManager.swift; sourceTree = "<group>"; };
+		75099D1F20F8FAC2001A1F39 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		75099D2120F8FC70001A1F39 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		75099D2320F8FE1D001A1F39 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		75099D2520F8FF0C001A1F39 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		75099D2920F9046E001A1F39 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		7566087E20F89577005711BF /* PictureMyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7566088120F89577005711BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7566088320F89577005711BF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -84,8 +100,10 @@
 		75099D0020F8B2E8001A1F39 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				75099D0120F8B2E8001A1F39 /* PostManager.swift */,
 				75099D0D20F8D46D001A1F39 /* VersionManager.swift */,
+				75099D0120F8B2E8001A1F39 /* PostManager.swift */,
+				75099D1D20F8FA0B001A1F39 /* CountryManager.swift */,
+				75099D2320F8FE1D001A1F39 /* VideoManager.swift */,
 				75099D0220F8B2E8001A1F39 /* APIManager.swift */,
 				75099D1720F8F5B5001A1F39 /* API.swift */,
 			);
@@ -105,9 +123,55 @@
 		75099D0A20F8B976001A1F39 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				75099D2920F9046E001A1F39 /* Environment.swift */,
+				75099D2120F8FC70001A1F39 /* ContentType.swift */,
 				75099D0B20F8B981001A1F39 /* Post.swift */,
+				75099D1F20F8FAC2001A1F39 /* Country.swift */,
+				75099D2520F8FF0C001A1F39 /* Video.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		75099D2720F901C3001A1F39 /* WebViewer */ = {
+			isa = PBXGroup;
+			children = (
+				75099D1B20F8F998001A1F39 /* ContentWebView.swift */,
+				75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */,
+				7566088520F89577005711BF /* WebViewController.swift */,
+			);
+			path = WebViewer;
+			sourceTree = "<group>";
+		};
+		75099D2820F901DB001A1F39 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				75099D2C20F9063C001A1F39 /* TableViewCells */,
+				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
+				75099D1120F8E50A001A1F39 /* ContentTableView.swift */,
+				7566088320F89577005711BF /* DashboardViewController.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		75099D2B20F904CA001A1F39 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7566088720F89577005711BF /* Main.storyboard */,
+				7566088A20F89579005711BF /* Assets.xcassets */,
+				7566088C20F89579005711BF /* LaunchScreen.storyboard */,
+				7566088F20F89579005711BF /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		75099D2C20F9063C001A1F39 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */,
+				75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */,
+				75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		7566087520F89577005711BF = {
@@ -134,20 +198,12 @@
 				75099D0A20F8B976001A1F39 /* Models */,
 				75099D0520F8B758001A1F39 /* Extensions */,
 				75099D0020F8B2E8001A1F39 /* API */,
+				75099D2820F901DB001A1F39 /* Dashboard */,
+				75099D2720F901C3001A1F39 /* WebViewer */,
 				75099CF720F8A385001A1F39 /* credentials.plist */,
 				75099CF920F8A490001A1F39 /* Configuration.swift */,
 				7566088120F89577005711BF /* AppDelegate.swift */,
-				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
-				75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */,
-				75099D1120F8E50A001A1F39 /* ContentTableView.swift */,
-				7566088320F89577005711BF /* DashboardViewController.swift */,
-				75099D1B20F8F998001A1F39 /* ContentWebView.swift */,
-				7566088520F89577005711BF /* WebViewController.swift */,
-				75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */,
-				7566088720F89577005711BF /* Main.storyboard */,
-				7566088A20F89579005711BF /* Assets.xcassets */,
-				7566088C20F89579005711BF /* LaunchScreen.storyboard */,
-				7566088F20F89579005711BF /* Info.plist */,
+				75099D2B20F904CA001A1F39 /* Resources */,
 			);
 			path = PictureMyWorld;
 			sourceTree = "<group>";
@@ -279,16 +335,24 @@
 				7566088620F89577005711BF /* WebViewController.swift in Sources */,
 				75099D0E20F8D46D001A1F39 /* VersionManager.swift in Sources */,
 				75099D1220F8E50B001A1F39 /* ContentTableView.swift in Sources */,
+				75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */,
 				75099D1C20F8F998001A1F39 /* ContentWebView.swift in Sources */,
+				75099D2220F8FC70001A1F39 /* ContentType.swift in Sources */,
+				75099D2A20F9046E001A1F39 /* Environment.swift in Sources */,
 				75099D1820F8F5B5001A1F39 /* API.swift in Sources */,
+				75099D2620F8FF0C001A1F39 /* Video.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* PostManager.swift in Sources */,
+				75099D2020F8FAC2001A1F39 /* Country.swift in Sources */,
 				75099D0720F8B758001A1F39 /* URL.swift in Sources */,
+				75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */,
 				75099D0920F8B814001A1F39 /* UIAlertController.swift in Sources */,
 				7566088220F89577005711BF /* AppDelegate.swift in Sources */,
 				75099D0C20F8B982001A1F39 /* Post.swift in Sources */,
 				75099D1A20F8F70F001A1F39 /* EnvironmentSegmentedControl.swift in Sources */,
 				75099CFA20F8A490001A1F39 /* Configuration.swift in Sources */,
 				75099D1620F8F578001A1F39 /* ContentTypeSegmentedControl.swift in Sources */,
+				75099D1E20F8FA0B001A1F39 /* CountryManager.swift in Sources */,
+				75099D2420F8FE1D001A1F39 /* VideoManager.swift in Sources */,
 				75099D1420F8E9AD001A1F39 /* PostTableViewCell.swift in Sources */,
 				75099D1020F8D5BF001A1F39 /* RawRepresentable.swift in Sources */,
 				7566088420F89577005711BF /* DashboardViewController.swift in Sources */,
@@ -438,7 +502,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = PictureMyWorld/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PictureMyWorld/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = PictureMyWorld/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PictureMyWorld/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

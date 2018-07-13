@@ -10,26 +10,30 @@ import Foundation
 
 struct Post {
 
-	public var latitude			: String
-	public var ratio			: String
-	public var longitude		: String
-	public var title			: String
-	public var caption			: String
-	public var filename			: String
-	public var locationText		: String
-	public var photo			: String
-	public var date				: String
+	var latitude		: String
+	var ratio			: String
+	var longitude		: String
+	var title			: String
+	var caption			: String
+	var filename		: String
+	var locationText	: String
+	var photo			: String
+	var date			: String
 
-	init(hash: [AnyHashable: Any]) {
-		self.latitude = (hash["latitude"] as? String ?? "")
-		self.ratio = (hash["ratio"] as? String ?? "")
-		self.longitude = (hash["longitude"] as? String ?? "")
-		self.title = (hash["title"] as? String ?? "")
-		self.caption = (hash["caption"] as? String ?? "")
-		self.filename = (hash["filename"] as? String ?? "")
-		self.locationText = (hash["location_text"] as? String ?? "")
-		self.photo = (hash["photo"] as? String ?? "")
-		self.date = (hash["date"] as? String ?? "")
+	init(json: [AnyHashable: Any]) {
+		self.latitude = (json["latitude"] as? String ?? "")
+		self.ratio = (json["ratio"] as? String ?? "")
+		self.longitude = (json["longitude"] as? String ?? "")
+		self.title = (json["title"] as? String ?? "")
+		self.caption = (json["caption"] as? String ?? "")
+		self.filename = (json["filename"] as? String ?? "")
+		self.locationText = (json["location_text"] as? String ?? "")
+		self.photo = (json["photo"] as? String ?? "")
+		self.date = (json["date"] as? String ?? "")
+
+		if (self.isInvalid == true) {
+			fatalError("invalid post with json: \(json)")
+		}
 	}
 
 	var isInvalid: Bool {

@@ -8,63 +8,6 @@
 
 import UIKit
 
-enum ContentType : Int {
-	case posts = 0
-	case countries
-	case videos
-
-	static var defaultType : ContentType = .posts
-
-	static var defaultData : [ContentType: [Any]] {
-		var contentData	= [ContentType: [Any]]()
-		for type in ContentType.allCases {
-			contentData[type] = []
-		}
-
-		return contentData
-	}
-
-	var title: String {
-		switch self {
-		case .posts			: return "Posts"
-		case .countries		: return "Countries"
-		case .videos		: return "Videos"
-		}
-	}
-
-	var fetch: ((@escaping (([Any], Error?) -> Void)) -> Void)? {
-		switch self {
-		case .posts			: return PostManager.fetchEntities
-		case .countries		: return nil
-		case .videos		: return nil
-		}
-	}
-
-	var reuseIdentifier: String {
-		switch self {
-		case .posts			: return "post_list_cell_view"
-		case .countries		: return ""
-		case .videos		: return ""
-		}
-	}
-
-	func update(cell: UITableViewCell, with data: Any?) {
-		switch self {
-		case .posts			: (cell as? PostTableViewCell)?.update(with: data as? Post)
-		case .countries		: print("TODO")
-		case .videos		: print("TODO")
-		}
-	}
-
-	var heightForRow: CGFloat {
-		switch self {
-		case .posts			: return 98.0
-		case .countries		: return 30.0
-		case .videos		: return 30.0
-		}
-	}
-}
-
 class ContentTableView 			: UITableView {
 
 	private var contentType		= ContentType.defaultType

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIAlertController {
 
-	class func showErrorPopup(_ error: NSError?, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {
+	class func showErrorPopup(_ error: NSError?, presentingViewController: UIViewController? = nil) {
 		// Find a valid message to display
 		var message : String? = nil
 		if let errorMessage : String = error?.userInfo[API.Key.error] as? String {
@@ -27,13 +27,37 @@ extension UIAlertController {
 		}
 	}
 
-	class func showErrorMessage(_ message: String, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {
+	class func showErrorMessage(_ message: String, presentingViewController: UIViewController? = nil) {
 		self.showInfoMessage("Error", message: message, presentingViewController: presentingViewController)
 	}
 
-	class func showInfoMessage(_ title: String, message: String, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {
-		let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-		presentingViewController?.present(controller, animated: true, completion: nil)
+	class func showInfoMessage(_ title: String, message: String, presentingViewController: UIViewController? = nil) {
+		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+		// Present the UIAlertController
+		let controller = (presentingViewController ?? AppDelegate.alertPresentingController)
+		controller?.present(alertController, animated: true, completion: nil)
+	}
+}
+
+extension AppDelegate {
+
+	/// ViewController on which an alert controller should be presented.
+	class var alertPresentingController: UIViewController? {
+
+		let rootController = UIApplication.shared.windows.first?.rootViewController
+
+		guard var lastViewController = rootController?.presentedViewController else {
+			return rootController
+		}
+
+		repeat {
+			if let viewController = lastViewController.presentedViewController {
+				lastViewController = viewController
+			}
+		} while (lastViewController.presentedViewController != nil)
+
+		return lastViewController
 	}
 }

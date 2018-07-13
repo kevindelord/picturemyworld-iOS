@@ -9,8 +9,6 @@
 import Foundation
 import Alamofire
 
-// MARK: - Apps API
-
 struct VersionManager {
 
 	/// Fetch available App info.

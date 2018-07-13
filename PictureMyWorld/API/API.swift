@@ -27,12 +27,16 @@ struct API {
 		struct JSON {
 
 			static let posts				= "posts"
+			static let countries			= "countries"
+			static let videos				= "videos"
 		}
 	}
 
 	struct Endpoint {
 
 		static let posts					= "posts"
+		static let countries				= "countries"
+		static let videos					= "videos"
 		static let versions					= "versions"
 	}
 }

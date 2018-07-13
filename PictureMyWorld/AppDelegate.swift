@@ -18,24 +18,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 }
-
-extension AppDelegate {
-
-	/// ViewController on which an alert controller should be presented.
-	class var alertPresentingController: UIViewController? {
-
-		let rootController = UIApplication.shared.windows.first?.rootViewController
-
-		guard var lastViewController = rootController?.presentedViewController else {
-			return rootController
-		}
-
-		repeat {
-			if let viewController = lastViewController.presentedViewController {
-				lastViewController = viewController
-			}
-		} while (lastViewController.presentedViewController != nil)
-
-		return lastViewController
-	}
-}
