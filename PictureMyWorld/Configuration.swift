@@ -45,7 +45,7 @@ enum Environment : Int {
 	case staging
 	case producation
 
-	fileprivate var key: String {
+	var key: String {
 		switch self {
 		case .development:	return "development"
 		case .staging:		return "staging"

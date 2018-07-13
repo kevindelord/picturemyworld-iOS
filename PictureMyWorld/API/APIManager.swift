@@ -34,6 +34,7 @@ struct API {
 	struct Endpoint {
 
 		static let posts					= "posts"
+		static let versions					= "versions"
 	}
 }
 

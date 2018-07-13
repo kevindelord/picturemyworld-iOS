@@ -53,50 +53,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fE7-fW-kwn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="354"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label iuhiuh i ih iurehf iuerh fiuer fureh iureh fiuerh fiuer uierh fuireh fuireh uierh" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWE-L6-9A9">
-                                        <rect key="frame" x="17.5" y="0.0" width="340" height="111"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24O-S0-AvH">
-                                        <rect key="frame" x="147.5" y="111" width="80" height="81"/>
-                                        <state key="normal" title="Open Posts"/>
-                                        <connections>
-                                            <action selector="openListView:" destination="Fqu-gK-YBe" eventType="touchUpInside" id="eEE-NR-9mx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9h-47-EFO">
-                                        <rect key="frame" x="143.5" y="192" width="88" height="81"/>
-                                        <state key="normal" title="Open Videos"/>
-                                        <connections>
-                                            <action selector="openListView:" destination="Fqu-gK-YBe" eventType="touchUpInside" id="0ee-wE-e0N"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQ7-bF-c54">
-                                        <rect key="frame" x="133.5" y="273" width="108" height="81"/>
-                                        <state key="normal" title="Open Countries"/>
-                                        <connections>
-                                            <action selector="openListView:" destination="Fqu-gK-YBe" eventType="touchUpInside" id="dLg-mh-b03"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWE-L6-9A9">
+                                <rect key="frame" x="20" y="64" width="335" height="116"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116" id="oG6-ng-3hx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24O-S0-AvH">
+                                <rect key="frame" x="20" y="240" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Sdx-bV-LGQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="Open Posts"/>
+                                <connections>
+                                    <action selector="openListView:" destination="Fqu-gK-YBe" eventType="touchUpInside" id="eEE-NR-9mx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQ7-bF-c54">
+                                <rect key="frame" x="20" y="188" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="twJ-pe-Vza"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="Open Countries"/>
+                                <connections>
+                                    <action selector="openListView:" destination="Fqu-gK-YBe" eventType="touchUpInside" id="dLg-mh-b03"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9h-47-EFO">
+                                <rect key="frame" x="20" y="292" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OXY-cH-s6h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="Open Videos"/>
+                                <connections>
+                                    <action selector="openListView:" destination="Fqu-gK-YBe" eventType="touchUpInside" id="0ee-wE-e0N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fE7-fW-kwn" firstAttribute="trailing" secondItem="1dW-zP-S8D" secondAttribute="trailing" id="Fa8-zM-LkH"/>
-                            <constraint firstItem="fE7-fW-kwn" firstAttribute="top" secondItem="1dW-zP-S8D" secondAttribute="top" id="lje-k8-FB5"/>
-                            <constraint firstItem="fE7-fW-kwn" firstAttribute="leading" secondItem="1dW-zP-S8D" secondAttribute="leading" id="pP5-Zd-V0y"/>
-                            <constraint firstItem="1dW-zP-S8D" firstAttribute="bottom" secondItem="fE7-fW-kwn" secondAttribute="bottom" constant="200" id="sfo-n6-xPv"/>
+                            <constraint firstItem="BWE-L6-9A9" firstAttribute="leading" secondItem="1dW-zP-S8D" secondAttribute="leading" constant="20" id="9pO-Pd-AwN"/>
+                            <constraint firstItem="UQ7-bF-c54" firstAttribute="trailing" secondItem="BWE-L6-9A9" secondAttribute="trailing" id="JpJ-6D-7nk"/>
+                            <constraint firstItem="UQ7-bF-c54" firstAttribute="top" secondItem="BWE-L6-9A9" secondAttribute="bottom" constant="8" id="Jv3-RA-WgE"/>
+                            <constraint firstItem="24O-S0-AvH" firstAttribute="leading" secondItem="BWE-L6-9A9" secondAttribute="leading" id="QYZ-v3-Uce"/>
+                            <constraint firstItem="s9h-47-EFO" firstAttribute="leading" secondItem="BWE-L6-9A9" secondAttribute="leading" id="Rtm-RE-NGe"/>
+                            <constraint firstItem="UQ7-bF-c54" firstAttribute="leading" secondItem="BWE-L6-9A9" secondAttribute="leading" id="T5d-7T-ptl"/>
+                            <constraint firstItem="s9h-47-EFO" firstAttribute="top" secondItem="24O-S0-AvH" secondAttribute="bottom" constant="8" id="aSq-Wg-n0j"/>
+                            <constraint firstItem="24O-S0-AvH" firstAttribute="trailing" secondItem="BWE-L6-9A9" secondAttribute="trailing" id="dFO-ds-yB8"/>
+                            <constraint firstItem="BWE-L6-9A9" firstAttribute="top" secondItem="1dW-zP-S8D" secondAttribute="top" id="j26-aq-weJ"/>
+                            <constraint firstItem="BWE-L6-9A9" firstAttribute="trailing" secondItem="1dW-zP-S8D" secondAttribute="trailing" constant="-20" id="tVg-bd-mOg"/>
+                            <constraint firstItem="24O-S0-AvH" firstAttribute="top" secondItem="UQ7-bF-c54" secondAttribute="bottom" constant="8" id="xGI-Wr-0aL"/>
+                            <constraint firstItem="s9h-47-EFO" firstAttribute="trailing" secondItem="BWE-L6-9A9" secondAttribute="trailing" id="zwQ-EK-nKl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1dW-zP-S8D"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fj2-ut-PXp"/>
                     <connections>
+                        <outlet property="versionsLabel" destination="BWE-L6-9A9" id="NRg-1K-8pg"/>
                         <segue destination="HXQ-Bg-Ug4" kind="show" identifier="openListView" id="Fyl-cl-4AJ"/>
                     </connections>
                 </viewController>
