@@ -10,7 +10,7 @@
 		75099CF820F8A385001A1F39 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75099CF720F8A385001A1F39 /* credentials.plist */; };
 		75099CFA20F8A490001A1F39 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099CF920F8A490001A1F39 /* Configuration.swift */; };
 		7566088220F89577005711BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088120F89577005711BF /* AppDelegate.swift */; };
-		7566088420F89577005711BF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088320F89577005711BF /* FirstViewController.swift */; };
+		7566088420F89577005711BF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088320F89577005711BF /* DashboardViewController.swift */; };
 		7566088620F89577005711BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088520F89577005711BF /* WebViewController.swift */; };
 		7566088920F89577005711BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7566088720F89577005711BF /* Main.storyboard */; };
 		7566088B20F89579005711BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7566088A20F89579005711BF /* Assets.xcassets */; };
@@ -25,7 +25,7 @@
 		75099CF920F8A490001A1F39 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		7566087E20F89577005711BF /* PictureMyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7566088120F89577005711BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7566088320F89577005711BF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		7566088320F89577005711BF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7566088520F89577005711BF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7566088820F89577005711BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7566088A20F89579005711BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				75099CF720F8A385001A1F39 /* credentials.plist */,
 				75099CF920F8A490001A1F39 /* Configuration.swift */,
 				7566088120F89577005711BF /* AppDelegate.swift */,
-				7566088320F89577005711BF /* FirstViewController.swift */,
+				7566088320F89577005711BF /* DashboardViewController.swift */,
 				7566088520F89577005711BF /* WebViewController.swift */,
 				7566088720F89577005711BF /* Main.storyboard */,
 				7566088A20F89579005711BF /* Assets.xcassets */,
@@ -215,7 +215,7 @@
 				7566088620F89577005711BF /* WebViewController.swift in Sources */,
 				7566088220F89577005711BF /* AppDelegate.swift in Sources */,
 				75099CFA20F8A490001A1F39 /* Configuration.swift in Sources */,
-				7566088420F89577005711BF /* FirstViewController.swift in Sources */,
+				7566088420F89577005711BF /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
