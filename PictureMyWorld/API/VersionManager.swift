@@ -39,4 +39,29 @@ struct VersionManager {
 			completion?(versions, nil)
 		}
 	}
+
+	private static func displayDeployedVersion(versions: [Environment: String], error: Error?) {
+		let controller = AppDelegate.alertPresentingController
+		if let error = error {
+			UIAlertController.showErrorMessage(error.localizedDescription, presentingViewController: controller)
+		}
+
+		// Sort the result and generate a description string.
+		let environments = versions.keys.sorted { (lhs: Environment, rhs: Environment) -> Bool in
+			return (lhs.rawValue < rhs.rawValue)
+		}
+
+		var versionString = ""
+		for environment in environments {
+			versionString += "\(environment.key): \(versions[environment] ?? "")\n\n"
+		}
+
+		// Remove last 2 "\n"
+		versionString.removeLast(2)
+		UIAlertController.showInfoMessage("", message: versionString, presentingViewController: controller)
+	}
+
+	static func presentDeployedVersion() {
+		VersionManager.fetch(completion: self.displayDeployedVersion)
+	}
 }
