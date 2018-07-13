@@ -14,19 +14,8 @@ struct VersionManager {
 	/// Fetch available App info.
 	///
 	/// - Parameter completion: Completion Closure executed at the end of the fetch request.
-	static func fetch(completion: ((_ versions: [Environment: String], _ error: Error?) -> Void)?) {
-		guard let endpoint = Environment.current.baseURL?.add(path: API.Endpoint.versions) else {
-			completion?([:], nil)
-			return
-		}
-
-		APIManager.get(endpoint).responseJSON { (response: DataResponse<Any>) in
-			let result = APIManager.extractJSON(fromResponse: response)
-			guard let json = result.json else {
-				completion?([:], result.error)
-				return
-			}
-
+	static func fetch(completion: @escaping ((_ versions: [Environment: String], _ error: Error?) -> Void)) {
+		APIManager.fetch(endpoint: .versions, completion: { (json: [AnyHashable: Any], error: Error?) in
 			var versions = [Environment: String]()
 			for env in Environment.allCases {
 				if let version = json[env.key] as? String {
@@ -34,14 +23,13 @@ struct VersionManager {
 				}
 			}
 
-			completion?(versions, nil)
-		}
+			completion(versions, error)
+		})
 	}
 
 	private static func displayDeployedVersion(versions: [Environment: String], error: Error?) {
-		let controller = AppDelegate.alertPresentingController
 		if let error = error {
-			UIAlertController.showErrorMessage(error.localizedDescription, presentingViewController: controller)
+			UIAlertController.showErrorMessage(error.localizedDescription)
 		}
 
 		// Sort the result and generate a description string.
@@ -56,7 +44,7 @@ struct VersionManager {
 
 		// Remove last 2 "\n"
 		versionString.removeLast(2)
-		UIAlertController.showInfoMessage("", message: versionString, presentingViewController: controller)
+		UIAlertController.showInfoMessage("", message: versionString)
 	}
 
 	static func presentDeployedVersion() {

@@ -68,6 +68,45 @@ struct APIManager {
 		return (json: json, error: nil)
 	}
 
+	/// Perform a GET request at the given Endpoint in order to fetch an array of dictionary.
+	///
+	/// - Parameters:
+	///   - endpoint: Endpoint to fetch the data from.
+	///   - completion: Completion block called after process.
+	internal static func fetchArray(endpoint: Endpoint, completion: @escaping ((_ entities: [[AnyHashable: Any]], _ error: Error?) -> Void)) {
+		guard let url = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
+			completion([], nil)
+			return
+		}
+
+		APIManager.get(url).responseJSON { (response: DataResponse<Any>) in
+			let result = APIManager.extractJSON(fromResponse: response)
+			guard let json = result.json?[endpoint.jsonKey] as? [[AnyHashable: Any]] else {
+				completion([], result.error)
+				return
+			}
+
+			completion(json, nil)
+		}
+	}
+
+	internal static func fetch(endpoint: Endpoint, completion: @escaping ((_ entity: [AnyHashable: Any], _ error: Error?) -> Void)) {
+		guard let endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
+			completion([:], nil)
+			return
+		}
+
+		APIManager.get(endpoint).responseJSON { (response: DataResponse<Any>) in
+			let result = APIManager.extractJSON(fromResponse: response)
+			guard let json = result.json else {
+				completion([:], result.error)
+				return
+			}
+
+			completion(json, nil)
+		}
+	}
+
 	/// Perform a GET request to the API.
 	///
 	/// - Parameters:
@@ -76,7 +115,6 @@ struct APIManager {
 	///   - encoding: The parameter encoding; JSONEncoding.default by default.
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func get(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
-		print("endpoint: \(url)")
 		let headers = APIManager.authHeaders
 		return Alamofire.request(url, method: .get, parameters: parameters, encoding: encoding, headers: headers)
 	}

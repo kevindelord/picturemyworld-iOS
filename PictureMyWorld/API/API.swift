@@ -23,20 +23,22 @@ struct API {
 		static let reason					= "reason"
 		static let errors					= "errors"
 		static let credentials				= "credentials"
-
-		struct JSON {
-
-			static let posts				= "posts"
-			static let countries			= "countries"
-			static let videos				= "videos"
-		}
 	}
+}
 
-	struct Endpoint {
+enum Endpoint							: String {
 
-		static let posts					= "posts"
-		static let countries				= "countries"
-		static let videos					= "videos"
-		static let versions					= "versions"
+	case posts							= "posts"
+	case countries						= "countries"
+	case videos							= "videos"
+	case versions						= "versions"
+
+	var jsonKey		 					: String {
+		switch self {
+		case .posts						: return "posts"
+		case .countries					: return "countries"
+		case .videos					: return "videos"
+		case .versions					: return ""
+		}
 	}
 }
