@@ -90,6 +90,11 @@ struct APIManager {
 		}
 	}
 
+	/// Perform a GET request at the given Endpoint in order to fetch a dictionary.
+	///
+	/// - Parameters:
+	///   - endpoint: Endpoint to fetch the data from.
+	///   - completion: Completion block called after process.
 	internal static func fetch(endpoint: Endpoint, completion: @escaping ((_ entity: [AnyHashable: Any], _ error: Error?) -> Void)) {
 		guard let endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
 			completion([:], nil)
