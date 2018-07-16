@@ -8,10 +8,10 @@
 
 import UIKit
 
-class PostDetailViewController				: DetailViewController {
+class PostDetailViewController					: DetailViewController {
 }
 
-class VideoDetailViewController				: DetailViewController {
+class VideoDetailViewController					: DetailViewController {
 }
 
 class CountryDetailViewController				: DetailViewController {
@@ -23,6 +23,8 @@ class CountryDetailViewController				: DetailViewController {
 	@IBOutlet private weak var filenameTextField: UITextField!
 	@IBOutlet private weak var linkTextField	: UITextField!
 	@IBOutlet private weak var ratioTextField	: UITextField!
+
+	// MARK: - Setup functions
 
 	override func setupUIElements() {
 		super.setupUIElements()
