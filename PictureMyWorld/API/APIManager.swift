@@ -49,14 +49,12 @@ struct APIManager {
 		let json = response.result.value as? [AnyHashable: Any]
 
 		// Did request fail?
-		if (json == nil), let error = response.result.error {
-			return (json: nil, error: error)
-		}
-
-		// Did credential fail?
-		// TODO: refactor credential error.
-		if let errorMessage = ((json?[API.Key.errors] as? [AnyHashable: Any])?[API.Key.credentials] as? [String])?.first {
-			return (json: json, error: APIManager.errorWithMessage(errorMessage))
+		if (json == nil) {
+			if (response.response?.statusCode == 401) {
+				return (json: nil, error: APIManager.errorWithMessage(API.Error.Message.unauthorizedAccess))
+			} else if let error = response.result.error {
+				return (json: nil, error: error)
+			}
 		}
 
 		// A request is invalid if an error message exists.
@@ -78,7 +76,7 @@ struct APIManager {
 
 		// A request is invalid if its status is 'error'
 		if let status = json?[API.Key.status] as? String, (status == API.Key.error) {
-			return (json, error: APIManager.errorWithMessage("An error occurred, please try again later."))
+			return (json, error: APIManager.errorWithMessage(API.Error.Message.unknownError))
 		}
 
 		return (json: json, error: nil)
