@@ -12,7 +12,7 @@ class DetailViewController			: UIViewController {
 
 	// MARK: - Private Attributes
 
-	internal var entity				: Serializable?
+	internal var entity				: Model?
 	internal var contentType		: ContentType?
 
 	// MARK: - Computed Properties
@@ -36,7 +36,7 @@ class DetailViewController			: UIViewController {
 		// Override in subclass to init all outlets.
 	}
 
-	func setup(with entity: Serializable? = nil) {
+	func setup(with entity: Model? = nil) {
 		self.entity = entity
 	}
 }

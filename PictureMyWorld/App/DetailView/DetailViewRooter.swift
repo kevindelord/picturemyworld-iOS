@@ -47,7 +47,7 @@ struct DetailViewRooter {
 		}
 	}
 
-	func present(destination: Destination, entity: Serializable) {
+	func present(destination: Destination, entity: Model) {
 		guard let controller = destination.instantiateViewController else {
 			fatalError("Cannot instantiate detail view controller.")
 		}

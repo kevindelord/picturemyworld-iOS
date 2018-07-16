@@ -50,7 +50,7 @@ extension ContentTableView: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 
-		guard let entity = self.contentData[self.contentType]?[indexPath.row] as? Serializable else {
+		guard let entity = self.contentData[self.contentType]?[indexPath.row] as? Model else {
 			fatalError("cannot retrieve model object.")
 		}
 

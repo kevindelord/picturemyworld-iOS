@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Video {
+struct Video				: Model {
 
 	var caption				: String
 	var date				: String
@@ -37,19 +37,5 @@ struct Video {
 			self.music.isEmpty == true ||
 			self.title.isEmpty == true ||
 			self.youtubeIdentifier.isEmpty == true)
-	}
-}
-
-extension Video: Serializable {
-
-	var serialized: [AnyHashable : Any] {
-		return [
-			API.JSON.caption: self.caption,
-			API.JSON.date: self.date,
-			API.JSON.filename: self.filename,
-			API.JSON.music: self.music,
-			API.JSON.title: self.title,
-			API.JSON.youtubeIdentifier: self.youtubeIdentifier
-		]
 	}
 }

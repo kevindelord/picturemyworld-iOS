@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Country {
+struct Country		: Model {
 
 	var filename	: String
 	var link		: String
@@ -34,18 +34,5 @@ struct Country {
 			self.filename.isEmpty == true ||
 			self.name.isEmpty == true ||
 			self.image.isEmpty == true)
-	}
-}
-
-extension Country: Serializable {
-
-	var serialized: [AnyHashable : Any] {
-		return [
-			API.JSON.filename: self.filename,
-			API.JSON.name: self.name,
-			API.JSON.image: self.image,
-			API.JSON.link: self.link,
-			API.JSON.ratio: self.ratio
-		]
 	}
 }

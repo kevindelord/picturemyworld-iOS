@@ -22,7 +22,7 @@ class PostDetailViewController					: DetailViewController {
 
 	// MARK: - Setup functions
 
-	override func setup(with entity: Serializable?) {
+	override func setup(with entity: Model?) {
 		super.setup(with: entity)
 
 		self.contentType = .posts
@@ -70,7 +70,7 @@ class VideoDetailViewController					: DetailViewController {
 
 	// MARK: - Setup functions
 
-	override func setup(with entity: Serializable?) {
+	override func setup(with entity: Model?) {
 		super.setup(with: entity)
 
 		self.contentType = .videos
@@ -117,7 +117,7 @@ class CountryDetailViewController				: DetailViewController {
 
 	// MARK: - Setup functions
 
-	override func setup(with entity: Serializable?) {
+	override func setup(with entity: Model?) {
 		super.setup(with: entity)
 
 		self.contentType = .countries

@@ -7,12 +7,7 @@
 
 import Foundation
 
-protocol Serializable {
-
-	var serialized: [AnyHashable: Any] { get }
-}
-
-struct Post {
+struct Post				: Model {
 
 	var latitude		: String
 	var ratio			: String
@@ -50,22 +45,5 @@ struct Post {
 			self.locationText.isEmpty == true ||
 			self.image.isEmpty == true ||
 			self.date.isEmpty == true)
-	}
-}
-
-extension Post: Serializable {
-
-	var serialized: [AnyHashable: Any] {
-		return [
-			API.JSON.latitude: self.latitude,
-			API.JSON.ratio: self.ratio,
-			API.JSON.longitude: self.longitude,
-			API.JSON.title: self.title,
-			API.JSON.caption: self.caption,
-			API.JSON.filename: self.filename,
-			API.JSON.locationText: self.locationText,
-			API.JSON.image: self.image,
-			API.JSON.date: self.date
-		]
 	}
 }

@@ -42,17 +42,17 @@ enum ContentType : Int {
 
 	var fetchEntities: (@escaping (([Any], Error?) -> Void)) -> Void {
 		switch self {
-		case .posts			: return PostManager.fetchEntities
-		case .countries		: return CountryManager.fetchEntities
-		case .videos		: return VideoManager.fetchEntities
+		case .posts			: return Post.fetchEntities
+		case .countries		: return Country.fetchEntities
+		case .videos		: return Video.fetchEntities
 		}
 	}
 
 	var createOrUpdateEntity: ([String: Any], @escaping (Error?) -> Void) -> Void {
 		switch self {
-		case .posts			: return PostManager.createOrUpdateEntity
-		case .countries		: return CountryManager.createOrUpdateEntity
-		case .videos		: return VideoManager.createOrUpdateEntity
+		case .posts			: return Post.createOrUpdateEntity
+		case .countries		: return Country.createOrUpdateEntity
+		case .videos		: return Video.createOrUpdateEntity
 		}
 	}
 
