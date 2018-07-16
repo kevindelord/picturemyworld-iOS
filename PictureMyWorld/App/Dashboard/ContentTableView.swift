@@ -19,13 +19,9 @@ class ContentTableView 					: UITableView {
 		self.detailViewRooter = rooter
 		self.delegate = self
 		self.dataSource = self
-		// Reload the table view when if is the content might not exist yet.
-		self.reloadData()
 
-		if (self.contentData[self.contentType]?.isEmpty == true) {
-			// Otherwise fetch the content from the API and then reload the table view.
-			self.refreshContent(for: self.contentType)
-		}
+		// Otherwise fetch the content from the API and then reload the table view.
+		self.refreshContent(for: self.contentType)
 	}
 
 	func refreshContent(for type: ContentType) {

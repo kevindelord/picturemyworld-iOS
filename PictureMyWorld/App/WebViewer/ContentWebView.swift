@@ -10,15 +10,6 @@ import WebKit
 
 class ContentWebView : WKWebView {
 
-	init() {
-		let webConfiguration = WKWebViewConfiguration()
-		super.init(frame: .zero, configuration: webConfiguration)
-	}
-
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
 	private func clearWebContent() {
 		guard let url = URL(string:"about:blank") else {
 			return
@@ -28,10 +19,11 @@ class ContentWebView : WKWebView {
 	}
 
 	public func load(for environment: Environment) {
+		self.clearWebContent()
+
 		guard
 			(environment.hasWebContent == true),
 			let url = environment.webURL else {
-				self.clearWebContent()
 				return
 		}
 

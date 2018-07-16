@@ -24,17 +24,17 @@ class DashboardViewController					: UIViewController {
 		super.viewDidLoad()
 
 		self.detailViewRooter = DetailViewRooter(navigationController: self.navigationController)
-		// Reload the default content to display.
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		// Reload the content to display in case it changed in a child view controller.
 		self.reloadListView()
 	}
 }
 
 extension DashboardViewController {
-
-	@IBAction private func checkDesployedVersions() {
-		// Fetch and display the deployed versions.
-		VersionManager.presentDeployedVersion()
-	}
 
 	@IBAction private func reloadListView() {
 		guard
