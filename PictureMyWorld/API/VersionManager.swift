@@ -38,11 +38,7 @@ struct VersionManager {
 		}
 	}
 
-	private static func displayDeployedVersion(versions: [Environment: String], error: Error?) {
-		if let error = error {
-			UIAlertController.showErrorMessage(error.localizedDescription)
-		}
-
+	private static func displayDeployedVersions(_ versions: [Environment: String]) {
 		// Sort the result and generate a description string.
 		let environments = versions.keys.sorted { (lhs: Environment, rhs: Environment) -> Bool in
 			return (lhs.rawValue < rhs.rawValue)
@@ -59,6 +55,12 @@ struct VersionManager {
 	}
 
 	static func presentDeployedVersion() {
-		VersionManager.fetch(completion: self.displayDeployedVersion)
+		VersionManager.fetch(completion: { (versions: [Environment: String], error: Error?) in
+			if let error = error {
+				UIAlertController.showErrorMessage(error.localizedDescription)
+			} else {
+				VersionManager.displayDeployedVersions(versions)
+			}
+		})
 	}
 }
