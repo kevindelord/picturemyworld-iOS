@@ -36,6 +36,17 @@ class DashboardViewController					: UIViewController {
 
 extension DashboardViewController {
 
+	@IBAction private func createNew() {
+		let alertController = UIAlertController(title: "Create new...", message: nil, preferredStyle: .actionSheet)
+		for destination in DetailViewRooter.Destination.allCases {
+			alertController.addAction(UIAlertAction(title: destination.title, style: .default, handler: { (action: UIAlertAction) in
+				self.detailViewRooter?.present(destination: destination, entity: nil)
+			}))
+		}
+		alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		self.present(alertController, animated: true, completion: nil)
+	}
+
 	@IBAction private func reloadListView() {
 		guard
 			let index = self.segmentedControl?.selectedSegmentIndex,

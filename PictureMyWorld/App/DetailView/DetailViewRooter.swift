@@ -16,8 +16,8 @@ struct DetailViewRooter {
 		self.navigationController = navigationController
 	}
 
-	enum Destination {
-		case post
+	enum Destination	: Int {
+		case post 		= 0
 		case country
 		case video
 
@@ -26,6 +26,14 @@ struct DetailViewRooter {
 			case .post:		return .posts
 			case .country:	return .countries
 			case .video:	return .videos
+			}
+		}
+
+		var title: String {
+			switch self {
+			case .post:		return "Post"
+			case .country:	return "Country"
+			case .video:	return "Video"
 			}
 		}
 
@@ -47,7 +55,7 @@ struct DetailViewRooter {
 		}
 	}
 
-	func present(destination: Destination, entity: Model) {
+	func present(destination: Destination, entity: Model?) {
 		guard let controller = destination.instantiateViewController else {
 			fatalError("Cannot instantiate detail view controller.")
 		}

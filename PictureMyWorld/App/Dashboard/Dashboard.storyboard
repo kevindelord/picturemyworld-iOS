@@ -217,7 +217,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O5t-Mk-4HS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dashboard" id="J7s-gq-SuK"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="J7s-gq-SuK">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="yGk-OZ-v41">
+                            <connections>
+                                <action selector="createNew" destination="upb-1V-fzb" id="mru-Ou-F7F"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="s5x-vb-CTa" id="zy6-Rz-03O"/>
                         <outlet property="tableView" destination="T75-vq-Q1u" id="VrZ-eT-9hR"/>
