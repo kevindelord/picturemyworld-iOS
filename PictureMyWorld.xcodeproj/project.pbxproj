@@ -41,6 +41,8 @@
 		75532DEA20FA5EEA001DDCFC /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */; };
 		75532DF020FC9AE0001DDCFC /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */; };
 		755A4E4220FD02EA005656C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A4E4120FD02EA005656C8 /* String.swift */; };
+		755A4E4420FD130B005656C8 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A4E4320FD130B005656C8 /* ContentManager.swift */; };
+		755A4E4620FD1368005656C8 /* ContentManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A4E4520FD1368005656C8 /* ContentManagerDelegate.swift */; };
 		7566088220F89577005711BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088120F89577005711BF /* AppDelegate.swift */; };
 		7566088420F89577005711BF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088320F89577005711BF /* DashboardViewController.swift */; };
 		7566088620F89577005711BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088520F89577005711BF /* WebViewController.swift */; };
@@ -87,6 +89,8 @@
 		75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
 		75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
 		755A4E4120FD02EA005656C8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		755A4E4320FD130B005656C8 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		755A4E4520FD1368005656C8 /* ContentManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerDelegate.swift; sourceTree = "<group>"; };
 		7566087E20F89577005711BF /* PictureMyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7566088120F89577005711BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7566088320F89577005711BF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -169,10 +173,10 @@
 			isa = PBXGroup;
 			children = (
 				755A4E3F20FCE9A3005656C8 /* Helpers */,
-				75099D2C20F9063C001A1F39 /* TableViewCells */,
+				75099D2C20F9063C001A1F39 /* ContentTableViewCells */,
+				755A4E4720FD138C005656C8 /* ContentTableView */,
 				753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */,
 				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
-				75099D1120F8E50A001A1F39 /* ContentTableView.swift */,
 				7566088320F89577005711BF /* DashboardViewController.swift */,
 			);
 			path = Dashboard;
@@ -189,14 +193,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		75099D2C20F9063C001A1F39 /* TableViewCells */ = {
+		75099D2C20F9063C001A1F39 /* ContentTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */,
 				75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */,
 				75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */,
 			);
-			path = TableViewCells;
+			path = ContentTableViewCells;
 			sourceTree = "<group>";
 		};
 		753F3B5220FCABA80015CB23 /* App */ = {
@@ -246,6 +250,16 @@
 				75099D2920F9046E001A1F39 /* Environment.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		755A4E4720FD138C005656C8 /* ContentTableView */ = {
+			isa = PBXGroup;
+			children = (
+				75099D1120F8E50A001A1F39 /* ContentTableView.swift */,
+				755A4E4520FD1368005656C8 /* ContentManagerDelegate.swift */,
+				755A4E4320FD130B005656C8 /* ContentManager.swift */,
+			);
+			path = ContentTableView;
 			sourceTree = "<group>";
 		};
 		7566087520F89577005711BF = {
@@ -422,10 +436,12 @@
 				755A4E4220FD02EA005656C8 /* String.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* CRUD.swift in Sources */,
 				753F3B5A20FCDA9B0015CB23 /* APIManager+Models.swift in Sources */,
+				755A4E4420FD130B005656C8 /* ContentManager.swift in Sources */,
 				75099D2020F8FAC2001A1F39 /* Country.swift in Sources */,
 				75099D0720F8B758001A1F39 /* URL.swift in Sources */,
 				753F3B6120FCE1340015CB23 /* Video+CRUD.swift in Sources */,
 				753F3B5F20FCE11E0015CB23 /* Country+CRUD.swift in Sources */,
+				755A4E4620FD1368005656C8 /* ContentManagerDelegate.swift in Sources */,
 				75532DEA20FA5EEA001DDCFC /* CountryDetailViewController.swift in Sources */,
 				75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */,
 				75099D0920F8B814001A1F39 /* UIAlertController.swift in Sources */,
