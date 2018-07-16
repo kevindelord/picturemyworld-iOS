@@ -142,7 +142,6 @@
 		75099D0A20F8B976001A1F39 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				753F3B6420FCE1660015CB23 /* Helpers */,
 				753F3B6220FCE15D0015CB23 /* Model.swift */,
 				75099D0B20F8B981001A1F39 /* Post.swift */,
 				75099D1F20F8FAC2001A1F39 /* Country.swift */,
@@ -154,6 +153,7 @@
 		75099D2720F901C3001A1F39 /* WebViewer */ = {
 			isa = PBXGroup;
 			children = (
+				755A4E4020FCE9AD005656C8 /* Helpers */,
 				753F3B5020FCAADD0015CB23 /* WebViewer.storyboard */,
 				75099D1B20F8F998001A1F39 /* ContentWebView.swift */,
 				75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */,
@@ -165,8 +165,9 @@
 		75099D2820F901DB001A1F39 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */,
+				755A4E3F20FCE9A3005656C8 /* Helpers */,
 				75099D2C20F9063C001A1F39 /* TableViewCells */,
+				753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */,
 				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
 				75099D1120F8E50A001A1F39 /* ContentTableView.swift */,
 				7566088320F89577005711BF /* DashboardViewController.swift */,
@@ -216,15 +217,6 @@
 			path = CRUD;
 			sourceTree = "<group>";
 		};
-		753F3B6420FCE1660015CB23 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				75099D2920F9046E001A1F39 /* Environment.swift */,
-				75099D2120F8FC70001A1F39 /* ContentType.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		75532DE820FA5EDB001DDCFC /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +227,22 @@
 				753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */,
 			);
 			path = DetailView;
+			sourceTree = "<group>";
+		};
+		755A4E3F20FCE9A3005656C8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				75099D2120F8FC70001A1F39 /* ContentType.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		755A4E4020FCE9AD005656C8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				75099D2920F9046E001A1F39 /* Environment.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		7566087520F89577005711BF = {
