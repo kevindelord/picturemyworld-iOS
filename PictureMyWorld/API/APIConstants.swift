@@ -10,6 +10,20 @@ import Foundation
 
 struct API {
 
+	enum ContentType {
+		case urlEncoded
+		case json
+
+		var headerValue: String {
+			switch self {
+			case .urlEncoded	: return "application/x-www-form-urlencoded"
+			case .json			: return "application/json"
+			}
+		}
+
+		static var headerKey = "Content-Type"
+	}
+
 	struct Error {
 
 		static let domain				= "PictureMyWorld-iOS-Client_APIManager"

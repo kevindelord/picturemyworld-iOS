@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol DashboardDelegate {
-
-	func presentDetailView(for data: [AnyHashable: Any])
-}
-
 class DashboardViewController					: UIViewController {
 
 	@IBOutlet private weak var segmentedControl	: ContentTypeSegmentedControl?

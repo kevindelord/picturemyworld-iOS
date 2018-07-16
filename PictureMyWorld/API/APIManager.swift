@@ -9,25 +9,26 @@
 import Foundation
 import Alamofire
 
+fileprivate extension Dictionary where Key == String, Value == String {
+
+	mutating func contentType(_ contentType: API.ContentType) {
+		self.updateValue(contentType.headerValue, forKey: API.ContentType.headerKey)
+	}
+}
+
 /// Manager handling all API requests.
 struct APIManager {
 
 	/// Create valid authentification headers.
-	///
-	/// - Parameters:
-	///   - emailAddress: String email address to use in the authentification proccess.
-	///   - password: String password to use in the authentification proccess.
-	/// - Returns: Authentification headers for POST requests.
 	public static var authHeaders: HTTPHeaders {
 		guard
 			let username = Environment.current.username,
 			let password = Environment.current.password,
-			let authData = "\(username):\(password)".data(using: String.Encoding.utf8, allowLossyConversion: false) else {
+			let authorizationHeader = Request.authorizationHeader(user: username, password: password) else {
 				return [:]
 		}
 
-		let authValue = String(format: "Basic %@", authData.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength76Characters))
-		return ["Authorization": authValue]
+		return [authorizationHeader.key: authorizationHeader.value]
 	}
 
 	/// Create a new Error object with a specific error message.
@@ -59,18 +60,18 @@ struct APIManager {
 
 		// A request is invalid if an error message exists.
 		if let errorMessage = json?[API.Key.message] as? String {
-			return (json: json, error: APIManager.errorWithMessage(errorMessage))
+			return (json: json, error: APIManager.errorWithMessage(errorMessage.trim()))
 		}
 
 		// A request is invalid if a dictionary of errors has been received.
 		if let errors = (json?[API.Key.message] as? [String: Any]) {
 			if let message = errors[API.Key.message] as? String {
-				return (json: json, error: APIManager.errorWithMessage(message))
+				return (json: json, error: APIManager.errorWithMessage(message.trim()))
 			}
 
 			if let error = errors.first {
 				let errorMessage = "\(error.key): \(error.value as? String ?? "")"
-				return (json: json, error: APIManager.errorWithMessage(errorMessage))
+				return (json: json, error: APIManager.errorWithMessage(errorMessage.trim()))
 			}
 		}
 
@@ -102,7 +103,8 @@ struct APIManager {
 	///   - encoding: The parameter encoding; JSONEncoding.default by default.
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func post(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
-		let headers = APIManager.authHeaders
+		var headers = APIManager.authHeaders
+		headers.contentType(.json)
 		return Alamofire.request(url, method: .post, parameters: parameters, encoding: encoding, headers: headers)
 	}
 
@@ -114,7 +116,8 @@ struct APIManager {
 	///   - encoding: The parameter encoding; JSONEncoding.default by default.
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func put(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
-		let headers = APIManager.authHeaders
+		var headers = APIManager.authHeaders
+		headers.contentType(.json)
 		return Alamofire.request(url, method: .put, parameters: parameters, encoding: encoding, headers: headers)
 	}
 

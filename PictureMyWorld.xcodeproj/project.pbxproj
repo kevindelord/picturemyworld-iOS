@@ -40,6 +40,7 @@
 		753F3B6320FCE15D0015CB23 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B6220FCE15D0015CB23 /* Model.swift */; };
 		75532DEA20FA5EEA001DDCFC /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */; };
 		75532DF020FC9AE0001DDCFC /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */; };
+		755A4E4220FD02EA005656C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A4E4120FD02EA005656C8 /* String.swift */; };
 		7566088220F89577005711BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088120F89577005711BF /* AppDelegate.swift */; };
 		7566088420F89577005711BF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088320F89577005711BF /* DashboardViewController.swift */; };
 		7566088620F89577005711BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088520F89577005711BF /* WebViewController.swift */; };
@@ -85,6 +86,7 @@
 		753F3B6220FCE15D0015CB23 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
 		75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		755A4E4120FD02EA005656C8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7566087E20F89577005711BF /* PictureMyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7566088120F89577005711BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7566088320F89577005711BF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				75099D0F20F8D5BF001A1F39 /* RawRepresentable.swift */,
 				75099D0820F8B814001A1F39 /* UIAlertController.swift */,
 				75099D0620F8B758001A1F39 /* URL.swift */,
+				755A4E4120FD02EA005656C8 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				75099D1820F8F5B5001A1F39 /* APIConstants.swift in Sources */,
 				753F3B5D20FCE1070015CB23 /* Post+CRUD.swift in Sources */,
 				75099D2620F8FF0C001A1F39 /* Video.swift in Sources */,
+				755A4E4220FD02EA005656C8 /* String.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* CRUD.swift in Sources */,
 				753F3B5A20FCDA9B0015CB23 /* APIManager+Models.swift in Sources */,
 				75099D2020F8FAC2001A1F39 /* Country.swift in Sources */,

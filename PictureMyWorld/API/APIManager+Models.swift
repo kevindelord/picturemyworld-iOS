@@ -39,19 +39,12 @@ extension APIManager {
 	///   - dictionary: Dictionary representing the entity. If 'filename' exists, an update (PUT) will be performed; otherwise create (POST).
 	///   - completion: Completion block called after process.
 	internal static func createOrUpdate(_ endpoint: Endpoint, with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
-		guard var endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
+		guard let url = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
 			fatalError("Cannot create endpoint for: Country.createOrUpdateEntity")
 		}
 
-		if
-			let filename = dictionary[API.JSON.filename] as? String,
-			let updateEndpoint = endpoint.add(path: filename) {
-			endpoint = updateEndpoint
-		}
-
-		var parameters = dictionary
-		parameters.removeValue(forKey: API.JSON.filename)
-		APIManager.put(endpoint, parameters: parameters).responseJSON { (response: DataResponse<Any>) in
+		let request = self.createOrUpdateRequest(for: url, with: dictionary)
+		request.method(request.url, request.parameters, JSONEncoding.default).responseJSON { (response: DataResponse<Any>) in
 			let result = APIManager.extractJSON(fromResponse: response)
 			if let error = result.error {
 				completion(error)
@@ -59,6 +52,23 @@ extension APIManager {
 				completion(nil)
 			}
 		}
+	}
+
+	private typealias Request = (method: (URLConvertible, Parameters?, ParameterEncoding) -> DataRequest, url: URL, parameters: [String : Any])
+
+	private static func createOrUpdateRequest(for url: URL, with dictionary: [String: Any]) -> Request {
+		var parameters = dictionary
+		let filename = parameters[API.JSON.filename] as? String
+		parameters.removeValue(forKey: API.JSON.filename)
+
+		guard
+			let destination = filename,
+			(destination.isEmpty == false),
+			let updateEndpointURL = url.add(path: destination) else {
+				return (APIManager.post, url, parameters)
+		}
+
+		return (APIManager.put, updateEndpointURL, parameters)
 	}
 
 	/// Perform a DELETE request for a specific entity at the given Endpoint.
