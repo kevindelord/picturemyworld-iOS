@@ -34,6 +34,14 @@ class DetailViewController	: UIViewController {
 
 extension DetailViewController {
 
+	@IBAction func save() {
+		// TODO: API call
+		self.navigationController?.popViewController(animated: true)
+	}
+}
+
+extension DetailViewController {
+
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		self.view.endEditing(true)
 	}

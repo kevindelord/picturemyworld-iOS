@@ -30,7 +30,7 @@ struct DetailViewRooter {
 		}
 
 		private var storyboard: UIStoryboard {
-			return UIStoryboard(name: "DetailView", bundle: nil)
+			return UIStoryboard(name: DetailViewConstants.storyboardName, bundle: nil)
 		}
 
 		var instantiateViewController: DetailViewController? {
