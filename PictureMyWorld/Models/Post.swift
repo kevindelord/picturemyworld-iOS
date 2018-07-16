@@ -21,19 +21,19 @@ struct Post {
 	var caption			: String
 	var filename		: String
 	var locationText	: String
-	var photo			: String
+	var image			: String
 	var date			: String
 
 	init(json: [AnyHashable: Any]) {
-		self.latitude = (json[API.JSON.Post.latitude] as? String ?? "")
-		self.ratio = (json[API.JSON.Post.ratio] as? String ?? "")
-		self.longitude = (json[API.JSON.Post.longitude] as? String ?? "")
-		self.title = (json[API.JSON.Post.title] as? String ?? "")
-		self.caption = (json[API.JSON.Post.caption] as? String ?? "")
-		self.filename = (json[API.JSON.Post.filename] as? String ?? "")
-		self.locationText = (json[API.JSON.Post.locationText] as? String ?? "")
-		self.photo = (json[API.JSON.Post.photo] as? String ?? "")
-		self.date = (json[API.JSON.Post.date] as? String ?? "")
+		self.latitude = (json[API.JSON.latitude] as? String ?? "")
+		self.ratio = (json[API.JSON.ratio] as? String ?? "")
+		self.longitude = (json[API.JSON.longitude] as? String ?? "")
+		self.title = (json[API.JSON.title] as? String ?? "")
+		self.caption = (json[API.JSON.caption] as? String ?? "")
+		self.filename = (json[API.JSON.filename] as? String ?? "")
+		self.locationText = (json[API.JSON.locationText] as? String ?? "")
+		self.image = (json[API.JSON.image] as? String ?? "")
+		self.date = (json[API.JSON.date] as? String ?? "")
 
 		if (self.isInvalid == true) {
 			fatalError("invalid post with json: \(json)")
@@ -48,7 +48,7 @@ struct Post {
 			self.caption.isEmpty == true ||
 			self.filename.isEmpty == true ||
 			self.locationText.isEmpty == true ||
-			self.photo.isEmpty == true ||
+			self.image.isEmpty == true ||
 			self.date.isEmpty == true)
 	}
 }
@@ -57,15 +57,15 @@ extension Post: Serializable {
 
 	var serialized: [AnyHashable: Any] {
 		return [
-			API.JSON.Post.latitude: self.latitude,
-			API.JSON.Post.ratio: self.ratio,
-			API.JSON.Post.longitude: self.longitude,
-			API.JSON.Post.title: self.title,
-			API.JSON.Post.caption: self.caption,
-			API.JSON.Post.filename: self.filename,
-			API.JSON.Post.locationText: self.locationText,
-			API.JSON.Post.photo: self.photo,
-			API.JSON.Post.date: self.date
+			API.JSON.latitude: self.latitude,
+			API.JSON.ratio: self.ratio,
+			API.JSON.longitude: self.longitude,
+			API.JSON.title: self.title,
+			API.JSON.caption: self.caption,
+			API.JSON.filename: self.filename,
+			API.JSON.locationText: self.locationText,
+			API.JSON.image: self.image,
+			API.JSON.date: self.date
 		]
 	}
 }

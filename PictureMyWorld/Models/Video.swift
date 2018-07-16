@@ -18,12 +18,12 @@ struct Video {
 	var youtubeIdentifier	: String
 
 	init(json: [AnyHashable: Any]) {
-		self.caption = (json[API.JSON.Video.caption] as? String ?? "")
-		self.date = (json[API.JSON.Video.date] as? String ?? "")
-		self.filename = (json[API.JSON.Video.filename] as? String ?? "")
-		self.music = (json[API.JSON.Video.music] as? String ?? "")
-		self.title = (json[API.JSON.Video.title] as? String ?? "")
-		self.youtubeIdentifier = (json[API.JSON.Video.youtubeIdentifier] as? String ?? "")
+		self.caption = (json[API.JSON.caption] as? String ?? "")
+		self.date = (json[API.JSON.date] as? String ?? "")
+		self.filename = (json[API.JSON.filename] as? String ?? "")
+		self.music = (json[API.JSON.music] as? String ?? "")
+		self.title = (json[API.JSON.title] as? String ?? "")
+		self.youtubeIdentifier = (json[API.JSON.youtubeIdentifier] as? String ?? "")
 
 		if (self.isInvalid == true) {
 			fatalError("invalid video with json: \(json)")
@@ -44,12 +44,12 @@ extension Video: Serializable {
 
 	var serialized: [AnyHashable : Any] {
 		return [
-			API.JSON.Video.caption: self.caption,
-			API.JSON.Video.date: self.date,
-			API.JSON.Video.filename: self.filename,
-			API.JSON.Video.music: self.music,
-			API.JSON.Video.title: self.title,
-			API.JSON.Video.youtubeIdentifier: self.youtubeIdentifier
+			API.JSON.caption: self.caption,
+			API.JSON.date: self.date,
+			API.JSON.filename: self.filename,
+			API.JSON.music: self.music,
+			API.JSON.title: self.title,
+			API.JSON.youtubeIdentifier: self.youtubeIdentifier
 		]
 	}
 }

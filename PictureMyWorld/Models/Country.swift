@@ -13,15 +13,15 @@ struct Country {
 	var filename	: String
 	var link		: String
 	var name		: String
-	var photo		: String
+	var image		: String
 	var ratio		: String
 
 	init(json: [AnyHashable: Any]) {
-		self.ratio = (json[API.JSON.Country.ratio] as? String ?? "")
-		self.link = (json[API.JSON.Country.link] as? String ?? "")
-		self.filename = (json[API.JSON.Country.filename] as? String ?? "")
-		self.name = (json[API.JSON.Country.name] as? String ?? "")
-		self.photo = (json[API.JSON.Country.photo] as? String ?? "")
+		self.ratio = (json[API.JSON.ratio] as? String ?? "")
+		self.link = (json[API.JSON.link] as? String ?? "")
+		self.filename = (json[API.JSON.filename] as? String ?? "")
+		self.name = (json[API.JSON.name] as? String ?? "")
+		self.image = (json[API.JSON.image] as? String ?? "")
 
 		if (self.isInvalid == true) {
 			fatalError("invalid country with json: \(json)")
@@ -33,7 +33,7 @@ struct Country {
 			self.link.isEmpty == true ||
 			self.filename.isEmpty == true ||
 			self.name.isEmpty == true ||
-			self.photo.isEmpty == true)
+			self.image.isEmpty == true)
 	}
 }
 
@@ -41,11 +41,11 @@ extension Country: Serializable {
 
 	var serialized: [AnyHashable : Any] {
 		return [
-			API.JSON.Country.filename: self.filename,
-			API.JSON.Country.name: self.name,
-			API.JSON.Country.photo: self.photo,
-			API.JSON.Country.link: self.link,
-			API.JSON.Country.ratio: self.ratio
+			API.JSON.filename: self.filename,
+			API.JSON.name: self.name,
+			API.JSON.image: self.image,
+			API.JSON.link: self.link,
+			API.JSON.ratio: self.ratio
 		]
 	}
 }

@@ -17,7 +17,7 @@ struct PostManager {
 	///
 	/// - Parameter completion: Completion Closure executed at the end of the fetch request.
 	static func fetchEntities(completion: @escaping ((_ posts: [Post], _ error: Error?) -> Void)) {
-		APIManager.fetchArray(endpoint: .posts, completion: { (json: [[AnyHashable: Any]], error: Error?) in
+		APIManager.fetch(.posts, completion: { (json: [[AnyHashable: Any]], error: Error?) in
 			let posts = json.map { (data) -> Post in
 				return Post(json: data)
 			}
@@ -26,11 +26,11 @@ struct PostManager {
 		})
 	}
 
-	static func updateEntity(with dictionary: [AnyHashable: Any], completion: @escaping (_ error: Error?) -> Void) {
-		completion(nil)
+	static func createOrUpdateEntity(with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
+		APIManager.createOrUpdate(.post, with: dictionary, completion: completion)
 	}
 
-	static func createEntity(with dictionary: [AnyHashable: Any], completion: @escaping (_ error: Error?) -> Void) {
-		completion(nil)
+	static func deleteEntity(with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
+		APIManager.delete(.post, with: dictionary, completion: completion)
 	}
 }

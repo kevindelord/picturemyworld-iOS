@@ -54,62 +54,34 @@ struct APIManager {
 		}
 
 		// Did credential fail?
+		// TODO: refactor credential error.
 		if let errorMessage = ((json?[API.Key.errors] as? [AnyHashable: Any])?[API.Key.credentials] as? [String])?.first {
-			return (json: nil, error: APIManager.errorWithMessage(errorMessage))
+			return (json: json, error: APIManager.errorWithMessage(errorMessage))
 		}
 
-		// Was the request invalid?
-		if
-			let errorMessage = json?[API.Key.reason] as? String,
-			let status = json?[API.Key.status] as? String, (status == API.Key.error) {
-				return (json: nil, error: APIManager.errorWithMessage(errorMessage))
+		// A request is invalid if an error message exists.
+		if let errorMessage = json?[API.Key.message] as? String {
+			return (json: json, error: APIManager.errorWithMessage(errorMessage))
+		}
+
+		// A request is invalid if a dictionary of errors has been received.
+		if let errors = (json?[API.Key.message] as? [String: Any]) {
+			if let message = errors[API.Key.message] as? String {
+				return (json: json, error: APIManager.errorWithMessage(message))
+			}
+
+			if let error = errors.first {
+				let errorMessage = "\(error.key): \(error.value as? String ?? "")"
+				return (json: json, error: APIManager.errorWithMessage(errorMessage))
+			}
+		}
+
+		// A request is invalid if its status is 'error'
+		if let status = json?[API.Key.status] as? String, (status == API.Key.error) {
+			return (json, error: APIManager.errorWithMessage("An error occurred, please try again later."))
 		}
 
 		return (json: json, error: nil)
-	}
-
-	/// Perform a GET request at the given Endpoint in order to fetch an array of dictionary.
-	///
-	/// - Parameters:
-	///   - endpoint: Endpoint to fetch the data from.
-	///   - completion: Completion block called after process.
-	internal static func fetchArray(endpoint: Endpoint, completion: @escaping ((_ entities: [[AnyHashable: Any]], _ error: Error?) -> Void)) {
-		guard let url = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
-			completion([], nil)
-			return
-		}
-
-		APIManager.get(url).responseJSON { (response: DataResponse<Any>) in
-			let result = APIManager.extractJSON(fromResponse: response)
-			guard let json = result.json?[endpoint.jsonKey] as? [[AnyHashable: Any]] else {
-				completion([], result.error)
-				return
-			}
-
-			completion(json, nil)
-		}
-	}
-
-	/// Perform a GET request at the given Endpoint in order to fetch a dictionary.
-	///
-	/// - Parameters:
-	///   - endpoint: Endpoint to fetch the data from.
-	///   - completion: Completion block called after process.
-	internal static func fetch(endpoint: Endpoint, completion: @escaping ((_ entity: [AnyHashable: Any], _ error: Error?) -> Void)) {
-		guard let endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
-			completion([:], nil)
-			return
-		}
-
-		APIManager.get(endpoint).responseJSON { (response: DataResponse<Any>) in
-			let result = APIManager.extractJSON(fromResponse: response)
-			guard let json = result.json else {
-				completion([:], result.error)
-				return
-			}
-
-			completion(json, nil)
-		}
 	}
 
 	/// Perform a GET request to the API.

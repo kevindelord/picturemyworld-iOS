@@ -15,7 +15,7 @@ struct VideoManager {
 	///
 	/// - Parameter completion: Completion Closure executed at the end of the fetch request.
 	static func fetchEntities(completion: @escaping ((_ posts: [Video], _ error: Error?) -> Void)) {
-		APIManager.fetchArray(endpoint: .videos, completion: { (json: [[AnyHashable: Any]], error: Error?) in
+		APIManager.fetch(.videos, completion: { (json: [[AnyHashable: Any]], error: Error?) in
 			let videos = json.map { (data) -> Video in
 				return Video(json: data)
 			}
@@ -24,11 +24,11 @@ struct VideoManager {
 		})
 	}
 
-	static func updateEntity(with dictionary: [AnyHashable: Any], completion: @escaping (_ error: Error?) -> Void) {
-		completion(nil)
+	static func createOrUpdateEntity(with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
+		APIManager.createOrUpdate(.video, with: dictionary, completion: completion)
 	}
 
-	static func createEntity(with dictionary: [AnyHashable: Any], completion: @escaping (_ error: Error?) -> Void) {
-		completion(nil)
+	static func deleteEntity(with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
+		APIManager.delete(.video, with: dictionary, completion: completion)
 	}
 }

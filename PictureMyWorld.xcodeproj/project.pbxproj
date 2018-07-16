@@ -35,6 +35,7 @@
 		753F3B5120FCAADD0015CB23 /* WebViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F3B5020FCAADD0015CB23 /* WebViewer.storyboard */; };
 		753F3B5420FCABF40015CB23 /* DetailViewRooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B5320FCABF40015CB23 /* DetailViewRooter.swift */; };
 		753F3B5620FCAEC00015CB23 /* DetailViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B5520FCAEC00015CB23 /* DetailViewConstants.swift */; };
+		753F3B5A20FCDA9B0015CB23 /* APIManager+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B5920FCDA9B0015CB23 /* APIManager+Models.swift */; };
 		75532DEA20FA5EEA001DDCFC /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */; };
 		75532DF020FC9AE0001DDCFC /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */; };
 		7566088220F89577005711BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566088120F89577005711BF /* AppDelegate.swift */; };
@@ -77,6 +78,7 @@
 		753F3B5020FCAADD0015CB23 /* WebViewer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewer.storyboard; sourceTree = "<group>"; };
 		753F3B5320FCABF40015CB23 /* DetailViewRooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewRooter.swift; sourceTree = "<group>"; };
 		753F3B5520FCAEC00015CB23 /* DetailViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewConstants.swift; sourceTree = "<group>"; };
+		753F3B5920FCDA9B0015CB23 /* APIManager+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Models.swift"; sourceTree = "<group>"; };
 		75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
 		75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
 		7566087E20F89577005711BF /* PictureMyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				75099D2320F8FE1D001A1F39 /* VideoManager.swift */,
 				75099D0220F8B2E8001A1F39 /* APIManager.swift */,
 				75099D1720F8F5B5001A1F39 /* APIConstants.swift */,
+				753F3B5920FCDA9B0015CB23 /* APIManager+Models.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				75099D1820F8F5B5001A1F39 /* APIConstants.swift in Sources */,
 				75099D2620F8FF0C001A1F39 /* Video.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* PostManager.swift in Sources */,
+				753F3B5A20FCDA9B0015CB23 /* APIManager+Models.swift in Sources */,
 				75099D2020F8FAC2001A1F39 /* Country.swift in Sources */,
 				75099D0720F8B758001A1F39 /* URL.swift in Sources */,
 				75532DEA20FA5EEA001DDCFC /* CountryDetailViewController.swift in Sources */,

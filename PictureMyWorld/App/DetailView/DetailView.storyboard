@@ -27,7 +27,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlB-y9-MJg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlB-y9-MJg">
                                 <rect key="frame" x="16" y="139" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="UmD-TN-9md"/>
@@ -154,9 +154,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="filenameTextField" destination="wAZ-bF-rea" id="DZD-cg-i3o"/>
+                        <outlet property="imageTextField" destination="Kd2-M4-DBH" id="ldf-Qw-wp1"/>
                         <outlet property="linkTextField" destination="reJ-Jp-Uxp" id="4lT-ul-bkJ"/>
                         <outlet property="nameTextField" destination="C09-vd-5tx" id="j1c-lo-BhO"/>
-                        <outlet property="photoTextField" destination="Kd2-M4-DBH" id="83Y-mD-Uwa"/>
                         <outlet property="ratioTextField" destination="wfg-tY-t8W" id="M8j-w2-MeA"/>
                     </connections>
                 </viewController>

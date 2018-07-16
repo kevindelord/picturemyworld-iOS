@@ -22,6 +22,12 @@ class PostDetailViewController					: DetailViewController {
 
 	// MARK: - Setup functions
 
+	override func setup(with entity: Serializable?) {
+		super.setup(with: entity)
+
+		self.contentType = .posts
+	}
+
 	override func setupUIElements() {
 		super.setupUIElements()
 
@@ -30,24 +36,23 @@ class PostDetailViewController					: DetailViewController {
 			return
 		}
 
-		self.contentType = .posts
 		self.title = "Update post"
 		self.titleTextField.text = post.title
-		self.imageTextField.text = post.photo
+		self.imageTextField.text = post.image
 		self.dateTextField.text = post.date
 		self.filenameTextField.text = post.filename
 		self.locationTextField.text = post.locationText
 		self.captionTextView.text = post.caption
 	}
 
-	override var serializedEntity				: [AnyHashable: Any] {
+	override var serializedEntity				: [String: Any] {
 		return [
-			API.JSON.Post.caption: (self.captionTextView.text ?? ""),
-			API.JSON.Post.date: (self.dateTextField.text ?? ""),
-			API.JSON.Post.filename: (self.filenameTextField.text ?? ""),
-//			API.JSON.Post.image: self.imageFile, TODO
-			API.JSON.Post.title: (self.titleTextField.text ?? ""),
-			API.JSON.Post.locationText: (self.locationTextField.text ?? "")
+			API.JSON.caption: (self.captionTextView.text ?? ""),
+			API.JSON.date: (self.dateTextField.text ?? ""),
+			API.JSON.filename: (self.filenameTextField.text ?? ""),
+//			API.JSON.image: self.imageFile, TODO
+			API.JSON.title: (self.titleTextField.text ?? ""),
+			API.JSON.locationText: (self.locationTextField.text ?? "")
 		]
 	}
 }
@@ -65,6 +70,12 @@ class VideoDetailViewController					: DetailViewController {
 
 	// MARK: - Setup functions
 
+	override func setup(with entity: Serializable?) {
+		super.setup(with: entity)
+
+		self.contentType = .videos
+	}
+
 	override func setupUIElements() {
 		super.setupUIElements()
 
@@ -73,7 +84,6 @@ class VideoDetailViewController					: DetailViewController {
 			return
 		}
 
-		self.contentType = .videos
 		self.title = "Update video"
 		self.titleTextField.text = video.title
 		self.dateTextField.text = video.date
@@ -83,14 +93,14 @@ class VideoDetailViewController					: DetailViewController {
 		self.captionTextView.text = video.caption
 	}
 
-	override var serializedEntity				: [AnyHashable: Any] {
+	override var serializedEntity				: [String: Any] {
 		return [
-			API.JSON.Video.caption: (self.captionTextView.text ?? ""),
-			API.JSON.Video.date: (self.dateTextField.text ?? ""),
-			API.JSON.Video.filename: (self.filenameTextField.text ?? ""),
-			API.JSON.Video.music: (self.musicTextField.text ?? ""),
-			API.JSON.Video.title: (self.titleTextField.text ?? ""),
-			API.JSON.Video.youtubeIdentifier: (self.youtubeTextField.text ?? "")
+			API.JSON.caption: (self.captionTextView.text ?? ""),
+			API.JSON.date: (self.dateTextField.text ?? ""),
+			API.JSON.filename: (self.filenameTextField.text ?? ""),
+			API.JSON.music: (self.musicTextField.text ?? ""),
+			API.JSON.title: (self.titleTextField.text ?? ""),
+			API.JSON.youtubeIdentifier: (self.youtubeTextField.text ?? "")
 		]
 	}
 }
@@ -100,12 +110,18 @@ class CountryDetailViewController				: DetailViewController {
 	// MARK: - IBOutlets
 
 	@IBOutlet private weak var nameTextField	: UITextField!
-	@IBOutlet private weak var photoTextField	: UITextField!
+	@IBOutlet private weak var imageTextField	: UITextField!
 	@IBOutlet private weak var filenameTextField: UITextField!
 	@IBOutlet private weak var linkTextField	: UITextField!
 	@IBOutlet private weak var ratioTextField	: UITextField!
 
 	// MARK: - Setup functions
+
+	override func setup(with entity: Serializable?) {
+		super.setup(with: entity)
+
+		self.contentType = .countries
+	}
 
 	override func setupUIElements() {
 		super.setupUIElements()
@@ -115,20 +131,19 @@ class CountryDetailViewController				: DetailViewController {
 			return
 		}
 
-		self.contentType = .countries
 		self.title = "Update country"
 		self.nameTextField.text = country.name
-		self.photoTextField.text = country.photo
+		self.imageTextField.text = country.image
 		self.filenameTextField.text = country.filename
 		self.linkTextField.text = country.link
 		self.ratioTextField.text = country.ratio
 	}
 
-	override var serializedEntity				: [AnyHashable: Any] {
+	override var serializedEntity				: [String: Any] {
 		return [
-			API.JSON.Country.name: (self.nameTextField.text ?? ""),
-			API.JSON.Country.photo: (self.photoTextField.text ?? ""),
-			API.JSON.Country.filename: (self.filenameTextField.text ?? ""),
+			API.JSON.name: (self.nameTextField.text ?? ""),
+			API.JSON.image: (self.imageTextField.text ?? ""),
+			API.JSON.filename: (self.filenameTextField.text ?? ""),
 		]
 	}
 }

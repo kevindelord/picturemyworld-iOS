@@ -15,7 +15,7 @@ struct CountryManager {
 	///
 	/// - Parameter completion: Completion Closure executed at the end of the fetch request.
 	static func fetchEntities(completion: @escaping ((_ posts: [Country], _ error: Error?) -> Void)) {
-		APIManager.fetchArray(endpoint: .countries, completion: { (json: [[AnyHashable: Any]], error: Error?) in
+		APIManager.fetch(.countries, completion: { (json: [[AnyHashable: Any]], error: Error?) in
 			let countries = json.map { (data) -> Country in
 				return Country(json: data)
 			}
@@ -24,11 +24,11 @@ struct CountryManager {
 		})
 	}
 
-	static func updateEntity(with dictionary: [AnyHashable: Any], completion: @escaping (_ error: Error?) -> Void) {
-		completion(nil)
+	static func createOrUpdateEntity(with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
+		APIManager.createOrUpdate(.country, with: dictionary, completion: completion)
 	}
 
-	static func createEntity(with dictionary: [AnyHashable: Any], completion: @escaping (_ error: Error?) -> Void) {
-		completion(nil)
+	static func deleteEntity(with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
+		APIManager.delete(.country, with: dictionary, completion: completion)
 	}
 }

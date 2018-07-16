@@ -48,19 +48,11 @@ enum ContentType : Int {
 		}
 	}
 
-	var updateEntity: ([AnyHashable: Any], @escaping (Error?) -> Void) -> Void {
+	var createOrUpdateEntity: ([String: Any], @escaping (Error?) -> Void) -> Void {
 		switch self {
-		case .posts			: return PostManager.updateEntity
-		case .countries		: return CountryManager.updateEntity
-		case .videos		: return VideoManager.updateEntity
-		}
-	}
-
-	var createEntity: ([AnyHashable: Any], @escaping (Error?) -> Void) -> Void {
-		switch self {
-		case .posts			: return PostManager.createEntity
-		case .countries		: return CountryManager.createEntity
-		case .videos		: return VideoManager.createEntity
+		case .posts			: return PostManager.createOrUpdateEntity
+		case .countries		: return CountryManager.createOrUpdateEntity
+		case .videos		: return VideoManager.createOrUpdateEntity
 		}
 	}
 

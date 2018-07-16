@@ -17,7 +17,7 @@ class DetailViewController			: UIViewController {
 
 	// MARK: - Computed Properties
 
-	internal var serializedEntity	: [AnyHashable: Any] {
+	internal var serializedEntity	: [String: Any] {
 		// Override in subclass.
 		fatalError("Must be overridden in subclass")
 	}
@@ -44,17 +44,13 @@ class DetailViewController			: UIViewController {
 extension DetailViewController {
 
 	@IBAction func save() {
-		if (self.entity != nil) {
-			// Update existing Entity
-			self.contentType?.updateEntity(self.serializedEntity) { [weak self] (error: Error?) in
-				self?.navigationController?.popViewController(animated: true)
+		self.contentType?.createOrUpdateEntity(self.serializedEntity) { [weak self] (error: Error?) in
+			guard (error == nil) else {
+				UIAlertController.showErrorPopup(error as NSError?)
+				return
 			}
 
-		} else {
-			// Create new entity
-			self.contentType?.createEntity(self.serializedEntity) { [weak self] (error: Error?) in
-				self?.navigationController?.popViewController(animated: true)
-			}
+			self?.navigationController?.popViewController(animated: true)
 		}
 	}
 }
