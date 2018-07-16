@@ -8,6 +8,11 @@
 
 import Foundation
 
+protocol Serializable {
+
+	var serialized: [AnyHashable: Any] { get }
+}
+
 struct Post {
 
 	var latitude		: String
@@ -46,5 +51,22 @@ struct Post {
 			self.locationText.isEmpty == true ||
 			self.photo.isEmpty == true ||
 			self.date.isEmpty == true)
+	}
+}
+
+extension Post: Serializable {
+
+	var serialized: [AnyHashable : Any] {
+		return [
+			"latitude": self.latitude,
+			"ratio": self.ratio,
+			"longitude": self.longitude,
+			"title": self.title,
+			"caption": self.caption,
+			"filename": self.filename,
+			"location_text": self.locationText,
+			"photo": self.photo,
+			"date": self.date
+		]
 	}
 }

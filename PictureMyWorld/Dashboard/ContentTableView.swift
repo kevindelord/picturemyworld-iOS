@@ -8,13 +8,15 @@
 
 import UIKit
 
-class ContentTableView 			: UITableView {
+class ContentTableView 					: UITableView {
 
-	private var contentType		= ContentType.defaultType
-	private var contentData		= ContentType.defaultData
+	private var contentType				= ContentType.defaultType
+	private var contentData				= ContentType.defaultData
+	private var detailViewRooter		: DetailViewRooter?
 
-	func load(for type: ContentType) {
+	func load(for type: ContentType, rooter: DetailViewRooter?) {
 		self.contentType = type
+		self.detailViewRooter = rooter
 		self.delegate = self
 		self.dataSource = self
 		// Reload the table view when if is the content might not exist yet.
@@ -47,6 +49,12 @@ extension ContentTableView: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
+
+		guard let entity = self.contentData[self.contentType]?[indexPath.row] as? Serializable else {
+			fatalError("cannot retrieve model object.")
+		}
+
+		self.detailViewRooter?.present(destination: self.contentType.destination, entity: entity)
 	}
 }
 

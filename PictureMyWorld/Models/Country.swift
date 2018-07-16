@@ -36,3 +36,16 @@ struct Country {
 			self.photo.isEmpty == true)
 	}
 }
+
+extension Country: Serializable {
+
+	var serialized: [AnyHashable : Any] {
+		return [
+			"filename": self.filename,
+			"name": self.name,
+			"photo": self.photo,
+			"link": self.link,
+			"ratio": self.ratio
+		]
+	}
+}

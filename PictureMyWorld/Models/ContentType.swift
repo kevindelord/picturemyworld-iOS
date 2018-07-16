@@ -32,6 +32,14 @@ enum ContentType : Int {
 		}
 	}
 
+	var destination : DetailViewRooter.Destination {
+		switch self {
+		case .posts			: return .post
+		case .countries		: return .country
+		case .videos		: return .video
+		}
+	}
+
 	var fetch: ((@escaping (([Any], Error?) -> Void)) -> Void)? {
 		switch self {
 		case .posts			: return PostManager.fetchEntities

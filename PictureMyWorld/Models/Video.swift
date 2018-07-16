@@ -39,3 +39,17 @@ struct Video {
 			self.youtubeIdentifier.isEmpty == true)
 	}
 }
+
+extension Video: Serializable {
+
+	var serialized: [AnyHashable : Any] {
+		return [
+			"caption": self.caption,
+			"date": self.date,
+			"filename": self.filename,
+			"music": self.music,
+			"title": self.title,
+			"youtube_id": self.youtubeIdentifier
+		]
+	}
+}
