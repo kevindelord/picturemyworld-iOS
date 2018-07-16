@@ -8,6 +8,9 @@
 
 import UIKit
 
+// TODO: Integrate pull to refresh
+// TODO: Seprate logic Content Management
+
 class ContentTableView 					: UITableView {
 
 	private var contentType				= ContentType.defaultType
@@ -21,21 +24,69 @@ class ContentTableView 					: UITableView {
 		self.dataSource = self
 
 		// Otherwise fetch the content from the API and then reload the table view.
-		self.refreshContent(for: self.contentType)
+		self.refreshContent()
 	}
+}
 
-	func refreshContent(for type: ContentType) {
-		type.fetchEntities({ (result: [Any], error: Error?) in
+// MARK: Content Management
+
+fileprivate extension ContentTableView {
+
+	func refreshContent(deleteRows: [IndexPath] = []) {
+		self.contentType.fetchEntities({ [weak self] (result: [Any], error: Error?) in
 			if let error = error {
 				let controller = AppDelegate.alertPresentingController
 				UIAlertController.showErrorMessage(error.localizedDescription, presentingViewController: controller)
 			}
 
-			self.contentData[type] = result
-			self.reloadData()
+			guard let type = self?.contentType else {
+				return
+			}
+
+			self?.contentData[type] = result
+			if (deleteRows.isEmpty == false) {
+				self?.deleteRows(at: deleteRows, with: .fade)
+			} else {
+				self?.reloadData()
+			}
 		})
 	}
+
+	func deleteContent(for indexPath: IndexPath) {
+		guard let model = self.model(at: indexPath) else {
+			return
+		}
+
+		self.contentType.deleteEntity(model.filename) { [weak self] (error: Error?) in
+			guard (error == nil) else {
+				UIAlertController.showErrorPopup(error as NSError?)
+				return
+			}
+
+			self?.refreshContent(deleteRows: [indexPath])
+		}
+	}
+
+	func presentDeleteContentAlert(for indexPath: IndexPath) {
+		guard let model = self.model(at: indexPath) else {
+			return
+		}
+
+		let alert = UIAlertController(title: nil, message: "Delete '\(model.title)' ?", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Go for it", style: .destructive, handler: { [weak self] (_ : UIAlertAction) in
+			self?.deleteContent(for: indexPath)
+		}))
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+		AppDelegate.alertPresentingController?.present(alert, animated: true, completion: nil)
+	}
+
+	func model(at indexPath: IndexPath) -> Model? {
+		return self.contentData[self.contentType]?[indexPath.row] as? Model
+	}
 }
+
+// MARK: - UITableViewDelegate
 
 extension ContentTableView: UITableViewDelegate {
 
@@ -46,13 +97,21 @@ extension ContentTableView: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 
-		guard let entity = self.contentData[self.contentType]?[indexPath.row] as? Model else {
+		guard let entity = self.model(at: indexPath) else {
 			fatalError("cannot retrieve model object.")
 		}
 
 		self.detailViewRooter?.present(destination: self.contentType.destination, entity: entity)
 	}
+
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if (editingStyle == .delete) {
+			self.presentDeleteContentAlert(for: indexPath)
+		}
+	}
 }
+
+// MARK: - UITableViewDataSource
 
 extension ContentTableView: UITableViewDataSource {
 
@@ -65,7 +124,7 @@ extension ContentTableView: UITableViewDataSource {
 			return UITableViewCell()
 		}
 
-		self.contentType.update(cell: cell, with: self.contentData[self.contentType]?[indexPath.row])
+		self.contentType.update(cell: cell, with: self.model(at: indexPath))
 		return cell
 	}
 

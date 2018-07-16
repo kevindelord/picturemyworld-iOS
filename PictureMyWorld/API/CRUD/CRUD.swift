@@ -32,7 +32,7 @@ extension CRUD where Self: Model {
 		APIManager.createOrUpdate(Self.entityEndpoint, with: dictionary, completion: completion)
 	}
 
-	static func deleteEntity(with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
-		APIManager.delete(Self.entityEndpoint, with: dictionary, completion: completion)
+	static func deleteEntity(with filename: String, completion: @escaping ((_ error: Error?) -> Void)) {
+		APIManager.delete(Self.entityEndpoint, with: filename, completion: completion)
 	}
 }

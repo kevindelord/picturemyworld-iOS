@@ -8,7 +8,16 @@
 
 protocol Model {
 
-	init(json: [AnyHashable: Any])
+	// MARK: - Initialization Methods
 
-	var isInvalid: Bool { get }
+	init(json		: [AnyHashable: Any])
+
+	// MARK: - Helper functions
+
+	var isInvalid	: Bool { get }
+
+	// MARK: - Common Properties
+
+	var title		: String { get set }
+	var filename	: String { get set }
 }

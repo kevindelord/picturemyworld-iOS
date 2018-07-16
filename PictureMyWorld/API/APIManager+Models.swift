@@ -75,11 +75,10 @@ extension APIManager {
 	///
 	/// - Parameters:
 	///   - endpoint: Endpoint to perform the request at.
-	///   - dictionary: Dictionary representing the entity. Property 'filename' must exist.
+	///   - filename: String property 'filename' of the model entity to delete.
 	///   - completion: Completion block called after process.
-	internal static func delete(_ endpoint: Endpoint, with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
+	internal static func delete(_ endpoint: Endpoint, with filename: String, completion: @escaping ((_ error: Error?) -> Void)) {
 		guard
-			let filename = dictionary[API.JSON.filename] as? String,
 			let endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue),
 			let deleteEndpoint = endpoint.add(path: filename) else {
 				fatalError("Cannot create endpoint for: Country.createOrUpdateEntity")

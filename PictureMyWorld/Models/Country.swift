@@ -15,6 +15,7 @@ struct Country		: Model {
 	var name		: String
 	var image		: String
 	var ratio		: String
+	var title		: String
 
 	init(json: [AnyHashable: Any]) {
 		self.ratio = (json[API.JSON.ratio] as? String ?? "")
@@ -22,6 +23,9 @@ struct Country		: Model {
 		self.filename = (json[API.JSON.filename] as? String ?? "")
 		self.name = (json[API.JSON.name] as? String ?? "")
 		self.image = (json[API.JSON.image] as? String ?? "")
+
+		// TODO: remove country.name
+		self.title = self.name
 
 		if (self.isInvalid == true) {
 			fatalError("invalid country with json: \(json)")
