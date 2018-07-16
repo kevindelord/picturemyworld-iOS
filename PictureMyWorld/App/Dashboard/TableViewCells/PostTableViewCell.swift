@@ -20,6 +20,8 @@ class PostTableViewCell: UITableViewCell {
 			return
 		}
 
+		// TODO: If model is invalid display a error icon.
+
 		self.title?.text = post.title
 		self.date?.text = post.date
 		self.location?.text = post.locationText
