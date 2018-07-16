@@ -188,6 +188,16 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		753F3B5220FCABA80015CB23 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				75099D2820F901DB001A1F39 /* Dashboard */,
+				75532DE820FA5EDB001DDCFC /* DetailView */,
+				75099D2720F901C3001A1F39 /* WebViewer */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		75532DE820FA5EDB001DDCFC /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,16 +230,14 @@
 		7566088020F89577005711BF /* PictureMyWorld */ = {
 			isa = PBXGroup;
 			children = (
-				75532DE820FA5EDB001DDCFC /* DetailView */,
+				753F3B5220FCABA80015CB23 /* App */,
 				75099D0A20F8B976001A1F39 /* Models */,
 				75099D0520F8B758001A1F39 /* Extensions */,
 				75099D0020F8B2E8001A1F39 /* API */,
-				75099D2820F901DB001A1F39 /* Dashboard */,
-				75099D2720F901C3001A1F39 /* WebViewer */,
+				75099D2B20F904CA001A1F39 /* Resources */,
 				75099CF720F8A385001A1F39 /* credentials.plist */,
 				75099CF920F8A490001A1F39 /* Configuration.swift */,
 				7566088120F89577005711BF /* AppDelegate.swift */,
-				75099D2B20F904CA001A1F39 /* Resources */,
 			);
 			path = PictureMyWorld;
 			sourceTree = "<group>";
