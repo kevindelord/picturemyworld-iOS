@@ -30,6 +30,7 @@ class PostDetailViewController					: DetailViewController {
 			return
 		}
 
+		self.contentType = .posts
 		self.title = "Update post"
 		self.titleTextField.text = post.title
 		self.imageTextField.text = post.photo
@@ -37,6 +38,17 @@ class PostDetailViewController					: DetailViewController {
 		self.filenameTextField.text = post.filename
 		self.locationTextField.text = post.locationText
 		self.captionTextView.text = post.caption
+	}
+
+	override var serializedEntity				: [AnyHashable: Any] {
+		return [
+			API.JSON.Post.caption: (self.captionTextView.text ?? ""),
+			API.JSON.Post.date: (self.dateTextField.text ?? ""),
+			API.JSON.Post.filename: (self.filenameTextField.text ?? ""),
+//			API.JSON.Post.image: self.imageFile, TODO
+			API.JSON.Post.title: (self.titleTextField.text ?? ""),
+			API.JSON.Post.locationText: (self.locationTextField.text ?? "")
+		]
 	}
 }
 
@@ -61,6 +73,7 @@ class VideoDetailViewController					: DetailViewController {
 			return
 		}
 
+		self.contentType = .videos
 		self.title = "Update video"
 		self.titleTextField.text = video.title
 		self.dateTextField.text = video.date
@@ -68,6 +81,17 @@ class VideoDetailViewController					: DetailViewController {
 		self.musicTextField.text = video.music
 		self.youtubeTextField.text = video.youtubeIdentifier
 		self.captionTextView.text = video.caption
+	}
+
+	override var serializedEntity				: [AnyHashable: Any] {
+		return [
+			API.JSON.Video.caption: (self.captionTextView.text ?? ""),
+			API.JSON.Video.date: (self.dateTextField.text ?? ""),
+			API.JSON.Video.filename: (self.filenameTextField.text ?? ""),
+			API.JSON.Video.music: (self.musicTextField.text ?? ""),
+			API.JSON.Video.title: (self.titleTextField.text ?? ""),
+			API.JSON.Video.youtubeIdentifier: (self.youtubeTextField.text ?? "")
+		]
 	}
 }
 
@@ -91,11 +115,20 @@ class CountryDetailViewController				: DetailViewController {
 			return
 		}
 
+		self.contentType = .countries
 		self.title = "Update country"
 		self.nameTextField.text = country.name
 		self.photoTextField.text = country.photo
 		self.filenameTextField.text = country.filename
 		self.linkTextField.text = country.link
 		self.ratioTextField.text = country.ratio
+	}
+
+	override var serializedEntity				: [AnyHashable: Any] {
+		return [
+			API.JSON.Country.name: (self.nameTextField.text ?? ""),
+			API.JSON.Country.photo: (self.photoTextField.text ?? ""),
+			API.JSON.Country.filename: (self.filenameTextField.text ?? ""),
+		]
 	}
 }

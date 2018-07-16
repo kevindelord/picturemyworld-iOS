@@ -21,6 +21,14 @@ struct DetailViewRooter {
 		case country
 		case video
 
+		var contentType: ContentType {
+			switch self {
+			case .post:		return .posts
+			case .country:	return .countries
+			case .video:	return .videos
+			}
+		}
+
 		private var identifier: String {
 			switch self {
 			case .post:		return "\(PostDetailViewController.self)"

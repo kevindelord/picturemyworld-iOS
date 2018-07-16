@@ -8,12 +8,19 @@
 
 import UIKit
 
-class DetailViewController	: UIViewController {
+class DetailViewController			: UIViewController {
 
 	// MARK: - Private Attributes
 
-	internal var entity		: Serializable?
-	internal var responders	= [UIResponder]()
+	internal var entity				: Serializable?
+	internal var contentType		: ContentType?
+
+	// MARK: - Computed Properties
+
+	internal var serializedEntity	: [AnyHashable: Any] {
+		// Override in subclass.
+		fatalError("Must be overridden in subclass")
+	}
 
 	// MARK: - Life View Cycles
 
@@ -22,6 +29,8 @@ class DetailViewController	: UIViewController {
 
 		self.setupUIElements()
 	}
+
+	// MARK: - Setup Functions
 
 	func setupUIElements() {
 		// Override in subclass to init all outlets.
@@ -35,8 +44,18 @@ class DetailViewController	: UIViewController {
 extension DetailViewController {
 
 	@IBAction func save() {
-		// TODO: API call
-		self.navigationController?.popViewController(animated: true)
+		if (self.entity != nil) {
+			// Update existing Entity
+			self.contentType?.updateEntity(self.serializedEntity) { [weak self] (error: Error?) in
+				self?.navigationController?.popViewController(animated: true)
+			}
+
+		} else {
+			// Create new entity
+			self.contentType?.createEntity(self.serializedEntity) { [weak self] (error: Error?) in
+				self?.navigationController?.popViewController(animated: true)
+			}
+		}
 	}
 }
 
