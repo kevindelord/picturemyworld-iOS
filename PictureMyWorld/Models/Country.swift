@@ -17,11 +17,11 @@ struct Country {
 	var ratio		: String
 
 	init(json: [AnyHashable: Any]) {
-		self.ratio = (json["ratio"] as? String ?? "")
-		self.link = (json["link"] as? String ?? "")
-		self.filename = (json["filename"] as? String ?? "")
-		self.name = (json["name"] as? String ?? "")
-		self.photo = (json["photo"] as? String ?? "")
+		self.ratio = (json[API.JSON.Country.ratio] as? String ?? "")
+		self.link = (json[API.JSON.Country.link] as? String ?? "")
+		self.filename = (json[API.JSON.Country.filename] as? String ?? "")
+		self.name = (json[API.JSON.Country.name] as? String ?? "")
+		self.photo = (json[API.JSON.Country.photo] as? String ?? "")
 
 		if (self.isInvalid == true) {
 			fatalError("invalid country with json: \(json)")
@@ -41,11 +41,11 @@ extension Country: Serializable {
 
 	var serialized: [AnyHashable : Any] {
 		return [
-			"filename": self.filename,
-			"name": self.name,
-			"photo": self.photo,
-			"link": self.link,
-			"ratio": self.ratio
+			API.JSON.Country.filename: self.filename,
+			API.JSON.Country.name: self.name,
+			API.JSON.Country.photo: self.photo,
+			API.JSON.Country.link: self.link,
+			API.JSON.Country.ratio: self.ratio
 		]
 	}
 }

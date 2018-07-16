@@ -21,7 +21,15 @@ struct Configuration {
 		return (configuration ?? NSDictionary())
 	}
 
-	public enum Keys	: String {
+	public enum SupportedEnvironmentName : String {
+
+		case development 	= "development"
+		case staging 		= "staging"
+		case producation	= "production"
+	}
+
+	public enum Keys		: String {
+
 		case baseURL 		= "base_url"
 		case webURL 		= "web_url"
 		case username 		= "username"

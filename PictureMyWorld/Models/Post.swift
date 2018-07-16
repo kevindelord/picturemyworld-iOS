@@ -1,4 +1,3 @@
-//
 //  Post.swift
 //  PictureMyWorld
 //
@@ -26,15 +25,15 @@ struct Post {
 	var date			: String
 
 	init(json: [AnyHashable: Any]) {
-		self.latitude = (json["latitude"] as? String ?? "")
-		self.ratio = (json["ratio"] as? String ?? "")
-		self.longitude = (json["longitude"] as? String ?? "")
-		self.title = (json["title"] as? String ?? "")
-		self.caption = (json["caption"] as? String ?? "")
-		self.filename = (json["filename"] as? String ?? "")
-		self.locationText = (json["location_text"] as? String ?? "")
-		self.photo = (json["photo"] as? String ?? "")
-		self.date = (json["date"] as? String ?? "")
+		self.latitude = (json[API.JSON.Post.latitude] as? String ?? "")
+		self.ratio = (json[API.JSON.Post.ratio] as? String ?? "")
+		self.longitude = (json[API.JSON.Post.longitude] as? String ?? "")
+		self.title = (json[API.JSON.Post.title] as? String ?? "")
+		self.caption = (json[API.JSON.Post.caption] as? String ?? "")
+		self.filename = (json[API.JSON.Post.filename] as? String ?? "")
+		self.locationText = (json[API.JSON.Post.locationText] as? String ?? "")
+		self.photo = (json[API.JSON.Post.photo] as? String ?? "")
+		self.date = (json[API.JSON.Post.date] as? String ?? "")
 
 		if (self.isInvalid == true) {
 			fatalError("invalid post with json: \(json)")
@@ -56,17 +55,17 @@ struct Post {
 
 extension Post: Serializable {
 
-	var serialized: [AnyHashable : Any] {
+	var serialized: [AnyHashable: Any] {
 		return [
-			"latitude": self.latitude,
-			"ratio": self.ratio,
-			"longitude": self.longitude,
-			"title": self.title,
-			"caption": self.caption,
-			"filename": self.filename,
-			"location_text": self.locationText,
-			"photo": self.photo,
-			"date": self.date
+			API.JSON.Post.latitude: self.latitude,
+			API.JSON.Post.ratio: self.ratio,
+			API.JSON.Post.longitude: self.longitude,
+			API.JSON.Post.title: self.title,
+			API.JSON.Post.caption: self.caption,
+			API.JSON.Post.filename: self.filename,
+			API.JSON.Post.locationText: self.locationText,
+			API.JSON.Post.photo: self.photo,
+			API.JSON.Post.date: self.date
 		]
 	}
 }

@@ -29,7 +29,7 @@ class ContentTableView 					: UITableView {
 	}
 
 	func refreshContent(for type: ContentType) {
-		type.fetch?({ (result: [Any], error: Error?) in
+		type.fetchEntities({ (result: [Any], error: Error?) in
 			if let error = error {
 				let controller = AppDelegate.alertPresentingController
 				UIAlertController.showErrorMessage(error.localizedDescription, presentingViewController: controller)

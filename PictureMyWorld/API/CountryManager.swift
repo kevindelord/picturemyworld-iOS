@@ -23,4 +23,12 @@ struct CountryManager {
 			completion(countries, error)
 		})
 	}
+
+	static func updateEntity(with dictionary: [AnyHashable: Any], completion: @escaping (_ error: Error?) -> Void) {
+		completion(nil)
+	}
+
+	static func createEntity(with dictionary: [AnyHashable: Any], completion: @escaping (_ error: Error?) -> Void) {
+		completion(nil)
+	}
 }
