@@ -8,9 +8,6 @@
 
 import UIKit
 
-// http://picturemy.world/img/thumb/1526300437.jpg
-// https://kevindelord.io/staging/img/thumb/1526300437.jpg
-
 extension APIManager {
 
 	static func downloadAndCache(_ endpoint: Endpoint.Image, for image: String, completion: @escaping ((UIImage?) -> Void)) {
