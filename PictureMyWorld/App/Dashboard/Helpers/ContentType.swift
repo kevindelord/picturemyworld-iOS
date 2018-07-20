@@ -33,6 +33,14 @@ enum ContentType : Int {
 		}
 	}
 
+	var sorting: ((Any, Any) -> Bool) {
+		switch self {
+		case .posts			: return { ((($0 as? Post)?.date ?? "") > (($1 as? Post)?.date ?? "")) }
+		case .countries		: return { ((($0 as? Country)?.link ?? "") < (($1 as? Country)?.link ?? "")) }
+		case .videos		: return { ((($0 as? Video)?.date ?? "") > (($1 as? Video)?.date ?? "")) }
+		}
+	}
+
 	var destination : DetailViewRooter.Destination {
 		switch self {
 		case .posts			: return .post

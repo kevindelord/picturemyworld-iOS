@@ -34,6 +34,16 @@ extension ContentManager {
 	}
 }
 
+// MARK: - Private Setters
+
+extension ContentManager {
+
+	func set(data: [Any], for contentType: ContentType) {
+		let result = data.sorted(by: contentType.sorting)
+		self.contentData[contentType] = result
+	}
+}
+
 // MARK: - Public Utility functions
 
 extension ContentManager {
@@ -45,7 +55,7 @@ extension ContentManager {
 				UIAlertController.showErrorMessage(error.localizedDescription, presentingViewController: controller)
 			}
 
-			self.contentData[self.contentType] = result
+			self.set(data: result, for: self.contentType)
 			self.delegate?.reloadContent(deleteRows: deleteRows)
 		})
 	}
