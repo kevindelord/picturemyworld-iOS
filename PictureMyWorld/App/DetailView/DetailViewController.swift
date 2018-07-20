@@ -22,6 +22,11 @@ class DetailViewController			: UIViewController {
 		fatalError("Must be overridden in subclass")
 	}
 
+	internal var imageData			: Data? {
+		// If needed, override in subclass to upload an image.
+		return nil
+	}
+
 	// MARK: - Life View Cycles
 
 	override func viewDidLoad() {
@@ -46,7 +51,7 @@ class DetailViewController			: UIViewController {
 extension DetailViewController {
 
 	@IBAction func save() {
-		self.contentType?.createOrUpdateEntity(self.serializedEntity) { [weak self] (error: Error?) in
+		self.contentType?.createOrUpdateEntity(self.serializedEntity, self.imageData) { [weak self] (error: Error?) in
 			guard (error == nil) else {
 				UIAlertController.showErrorPopup(error as NSError?)
 				return

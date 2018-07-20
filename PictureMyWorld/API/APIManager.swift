@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-fileprivate extension Dictionary where Key == String, Value == String {
+extension Dictionary where Key == String, Value == String {
 
 	mutating func contentType(_ contentType: API.ContentType) {
 		self.updateValue(contentType.headerValue, forKey: API.ContentType.headerKey)

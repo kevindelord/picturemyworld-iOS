@@ -86,7 +86,7 @@ extension ContentType {
 		}
 	}
 
-	var createOrUpdateEntity: ([String: Any], @escaping (Error?) -> Void) -> Void {
+	var createOrUpdateEntity: ([String: Any], Data?, @escaping (Error?) -> Void) -> Void {
 		switch self {
 		case .posts			: return Post.createOrUpdateEntity
 		case .countries		: return Country.createOrUpdateEntity

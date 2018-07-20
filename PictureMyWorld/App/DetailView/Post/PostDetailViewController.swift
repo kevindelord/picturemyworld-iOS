@@ -8,6 +8,9 @@
 
 import UIKit
 
+// TODO: use reachability to prevent API calls when there is no internet.
+// TODO: Integrate scroll view.
+
 class PostDetailViewController					: DetailViewController {
 
 	// MARK: - IBOutlets
@@ -42,14 +45,25 @@ class PostDetailViewController					: DetailViewController {
 		})
 	}
 
+	override internal var imageData : Data? {
+		// If needed, override in subclass to upload an image.
+		guard
+			let image = self.imageView.image,
+			let jpegRepresentation = UIImageJPEGRepresentation(image, 1.0) else {
+				return nil
+		}
+
+		return jpegRepresentation
+	}
+
 	override var serializedEntity				: [String: Any] {
 		return [
-			API.JSON.caption: (self.captionTextView.text ?? ""),
-			API.JSON.date: (self.dateTextField.text ?? ""),
-			API.JSON.filename: (self.filenameTextField.text ?? ""),
-			//			API.JSON.image: self.imageFile, TODO: when creating a new post. Upload valid image file.
-			API.JSON.title: (self.titleTextField.text ?? ""),
-			API.JSON.locationText: (self.locationTextField.text ?? "")
+			// TODO: Use real value from the text fields.
+			API.JSON.caption: "tmp caption",//(self.captionTextView.text ?? ""),
+			API.JSON.date: "2018-07-07",//(self.dateTextField.text ?? ""),
+//			API.JSON.filename: (self.filenameTextField.text ?? ""),
+			API.JSON.title: "Tmp Tile Awesome",//(self.titleTextField.text ?? ""),
+			API.JSON.location: "testing upload"//(self.locationTextField.text ?? "")
 		]
 	}
 }
@@ -57,10 +71,13 @@ class PostDetailViewController					: DetailViewController {
 
 // MARK: - IBActions
 
-extension PostDetailViewController {
+extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 	@IBAction private func selectPhotoFromLibrary() {
+		let imagePicker = ImagePicker { [weak self] (image: UIImage?) in
+			self?.imageView.image = image
+		}
 
+		self.present(imagePicker, animated: true, completion: nil)
 	}
 }
-

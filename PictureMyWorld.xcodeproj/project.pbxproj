@@ -29,6 +29,8 @@
 		75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */; };
 		75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */; };
 		752B22BB21021CEE004FF82A /* VideoWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BA21021CEE004FF82A /* VideoWebView.swift */; };
+		752B22BD21022392004FF82A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BC21022392004FF82A /* ImagePicker.swift */; };
+		752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BE21022EE8004FF82A /* APIManager+Upload.swift */; };
 		753F3B4D20FCA49C0015CB23 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */; };
 		753F3B4F20FCAA530015CB23 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */; };
 		753F3B5120FCAADD0015CB23 /* WebViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F3B5020FCAADD0015CB23 /* WebViewer.storyboard */; };
@@ -82,6 +84,8 @@
 		75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		752B22BA21021CEE004FF82A /* VideoWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWebView.swift; sourceTree = "<group>"; };
+		752B22BC21022392004FF82A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		752B22BE21022EE8004FF82A /* APIManager+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIManager+Upload.swift"; path = "/Users/kevindelord/Projects/picturemyworld-iOS/PictureMyWorld/API/APIManager+Upload.swift"; sourceTree = "<absolute>"; };
 		753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		753F3B5020FCAADD0015CB23 /* WebViewer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewer.storyboard; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		75099D0020F8B2E8001A1F39 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				752B22BE21022EE8004FF82A /* APIManager+Upload.swift */,
 				753F3B5B20FCE0F60015CB23 /* CRUD */,
 				75099D1720F8F5B5001A1F39 /* APIConstants.swift */,
 				75099D0220F8B2E8001A1F39 /* APIManager.swift */,
@@ -228,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				75D859472101FAF60073C1BD /* PostDetailViewController.swift */,
+				752B22BC21022392004FF82A /* ImagePicker.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -475,10 +481,12 @@
 				753F3B5D20FCE1070015CB23 /* Post+CRUD.swift in Sources */,
 				75099D2620F8FF0C001A1F39 /* Video.swift in Sources */,
 				75D8594B210202AB0073C1BD /* AssetManager.swift in Sources */,
+				752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */,
 				752B22BB21021CEE004FF82A /* VideoWebView.swift in Sources */,
 				755A4E4220FD02EA005656C8 /* String.swift in Sources */,
 				75D859482101FAF60073C1BD /* PostDetailViewController.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* CRUD.swift in Sources */,
+				752B22BD21022392004FF82A /* ImagePicker.swift in Sources */,
 				753F3B5A20FCDA9B0015CB23 /* APIManager+Models.swift in Sources */,
 				75D8594F2102067C0073C1BD /* APIManager+Images.swift in Sources */,
 				755A4E4420FD130B005656C8 /* ContentManager.swift in Sources */,

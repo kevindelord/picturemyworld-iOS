@@ -13,11 +13,13 @@ struct API {
 	enum ContentType {
 		case urlEncoded
 		case json
+		case multipart
 
 		var headerValue: String {
 			switch self {
 			case .urlEncoded	: return "application/x-www-form-urlencoded"
 			case .json			: return "application/json"
+			case .multipart		: return "multipart/form-data"
 			}
 		}
 
@@ -56,10 +58,16 @@ struct API {
 		static let ratio 				= "ratio"
 		static let longitude 			= "longitude"
 		static let locationText 		= "location_text"
+		static let location 			= "location"
 		static let image				= "image"
 		static let link 				= "link"
 		static let name 				= "name"
+		static let defaultImageName		= "image.jpg"
+	}
 
+	struct MimeType {
+
+		static let imageJPEG			= "image/jpeg"
 	}
 }
 
