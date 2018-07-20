@@ -49,6 +49,10 @@
 		7566088920F89577005711BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7566088720F89577005711BF /* Main.storyboard */; };
 		7566088B20F89579005711BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7566088A20F89579005711BF /* Assets.xcassets */; };
 		7566088E20F89579005711BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7566088C20F89579005711BF /* LaunchScreen.storyboard */; };
+		75D859482101FAF60073C1BD /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D859472101FAF60073C1BD /* PostDetailViewController.swift */; };
+		75D8594B210202AB0073C1BD /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D8594A210202AB0073C1BD /* AssetManager.swift */; };
+		75D8594D210204680073C1BD /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D8594C210204680073C1BD /* VideoDetailViewController.swift */; };
+		75D8594F2102067C0073C1BD /* APIManager+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D8594E2102067C0073C1BD /* APIManager+Images.swift */; };
 		793298311A6D6726A4E3781F /* Pods_PictureMyWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E141CE60DB45694BA2D099 /* Pods_PictureMyWorld.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +103,10 @@
 		7566088A20F89579005711BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7566088D20F89579005711BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7566088F20F89579005711BF /* PictureMyWorld-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PictureMyWorld-iOS-Info.plist"; sourceTree = "<group>"; };
+		75D859472101FAF60073C1BD /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		75D8594A210202AB0073C1BD /* AssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
+		75D8594C210204680073C1BD /* VideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
+		75D8594E2102067C0073C1BD /* APIManager+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Images.swift"; sourceTree = "<group>"; };
 		F6E141CE60DB45694BA2D099 /* Pods_PictureMyWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureMyWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,6 +139,8 @@
 				75099D0220F8B2E8001A1F39 /* APIManager.swift */,
 				75099D0D20F8D46D001A1F39 /* APIManager+Versions.swift */,
 				753F3B5920FCDA9B0015CB23 /* APIManager+Models.swift */,
+				75D8594E2102067C0073C1BD /* APIManager+Images.swift */,
+				75D8594A210202AB0073C1BD /* AssetManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -230,7 +240,9 @@
 				75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */,
 				753F3B5320FCABF40015CB23 /* DetailViewRooter.swift */,
 				753F3B5520FCAEC00015CB23 /* DetailViewConstants.swift */,
+				75D8594C210204680073C1BD /* VideoDetailViewController.swift */,
 				75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */,
+				75D859472101FAF60073C1BD /* PostDetailViewController.swift */,
 				753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */,
 			);
 			path = DetailView;
@@ -385,11 +397,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -433,11 +447,15 @@
 				75099D1820F8F5B5001A1F39 /* APIConstants.swift in Sources */,
 				753F3B5D20FCE1070015CB23 /* Post+CRUD.swift in Sources */,
 				75099D2620F8FF0C001A1F39 /* Video.swift in Sources */,
+				75D8594B210202AB0073C1BD /* AssetManager.swift in Sources */,
 				755A4E4220FD02EA005656C8 /* String.swift in Sources */,
+				75D859482101FAF60073C1BD /* PostDetailViewController.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* CRUD.swift in Sources */,
 				753F3B5A20FCDA9B0015CB23 /* APIManager+Models.swift in Sources */,
+				75D8594F2102067C0073C1BD /* APIManager+Images.swift in Sources */,
 				755A4E4420FD130B005656C8 /* ContentManager.swift in Sources */,
 				75099D2020F8FAC2001A1F39 /* Country.swift in Sources */,
+				75D8594D210204680073C1BD /* VideoDetailViewController.swift in Sources */,
 				75099D0720F8B758001A1F39 /* URL.swift in Sources */,
 				753F3B6120FCE1340015CB23 /* Video+CRUD.swift in Sources */,
 				753F3B5F20FCE11E0015CB23 /* Country+CRUD.swift in Sources */,

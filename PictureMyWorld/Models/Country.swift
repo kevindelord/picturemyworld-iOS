@@ -24,7 +24,7 @@ struct Country		: Model {
 		self.name = (json[API.JSON.name] as? String ?? "")
 		self.image = (json[API.JSON.image] as? String ?? "")
 
-		// TODO: remove country.name
+		// TODO: remove country.name as title is mandatory by the `Model` protocol.
 		self.title = self.name
 
 		if (self.isInvalid == true) {

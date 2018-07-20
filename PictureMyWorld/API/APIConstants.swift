@@ -73,6 +73,12 @@ enum Endpoint							: String {
 	case videos							= "videos"
 	case versions						= "versions"
 
+	enum Image							: String {
+
+		case thumbnail					= "img/thumb"
+		case large						= "img/large"
+	}
+
 	var jsonKey		 					: String {
 		switch self {
 		case .posts						: return "posts"
