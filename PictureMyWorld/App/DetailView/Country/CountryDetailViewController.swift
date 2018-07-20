@@ -21,21 +21,13 @@ class CountryDetailViewController				: DetailViewController {
 
 	// MARK: - Setup functions
 
-	override func setup(with entity: Model?) {
-		super.setup(with: entity)
-
-		self.contentType = .countries
-	}
-
 	override func setupUIElements() {
 		super.setupUIElements()
 
 		guard let country = self.entity as? Country else {
-			self.title = "Create new country"
 			return
 		}
 
-		self.title = "Update country"
 		self.nameTextField.text = country.name
 		self.imageTextField.text = country.image
 		self.filenameTextField.text = country.filename

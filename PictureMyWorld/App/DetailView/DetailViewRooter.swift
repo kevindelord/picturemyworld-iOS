@@ -60,7 +60,7 @@ struct DetailViewRooter {
 			fatalError("Cannot instantiate detail view controller.")
 		}
 
-		controller.setup(with: entity)
+		controller.setup(with: destination.contentType, entity: entity)
 		self.navigationController?.pushViewController(controller, animated: true)
 	}
 }

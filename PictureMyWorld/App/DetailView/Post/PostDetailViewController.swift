@@ -22,21 +22,14 @@ class PostDetailViewController					: DetailViewController {
 
 	// MARK: - Setup functions
 
-	override func setup(with entity: Model?) {
-		super.setup(with: entity)
-
-		self.contentType = .posts
-	}
-
 	override func setupUIElements() {
 		super.setupUIElements()
 
 		guard let post = self.entity as? Post else {
-			self.title = "Create new post"
+			self.imageView.backgroundColor = .clear
 			return
 		}
 
-		self.title = "Update post"
 		self.titleTextField.text = post.title
 		self.imageTextField.text = post.image
 		self.dateTextField.text = post.date
@@ -60,3 +53,14 @@ class PostDetailViewController					: DetailViewController {
 		]
 	}
 }
+
+
+// MARK: - IBActions
+
+extension PostDetailViewController {
+
+	@IBAction private func selectPhotoFromLibrary() {
+
+	}
+}
+

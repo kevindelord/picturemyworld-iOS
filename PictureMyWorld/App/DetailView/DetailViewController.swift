@@ -27,6 +27,7 @@ class DetailViewController			: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.title = self.contentType?.destination.title
 		self.setupUIElements()
 	}
 
@@ -36,7 +37,8 @@ class DetailViewController			: UIViewController {
 		// Override in subclass to init all outlets.
 	}
 
-	func setup(with entity: Model? = nil) {
+	func setup(with contentType: ContentType, entity: Model? = nil) {
+		self.contentType = contentType
 		self.entity = entity
 	}
 }

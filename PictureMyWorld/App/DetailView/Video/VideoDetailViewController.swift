@@ -12,6 +12,7 @@ class VideoDetailViewController					: DetailViewController {
 
 	// MARK: - IBOutlets
 
+	@IBOutlet private var webView				: VideoWebView!
 	@IBOutlet private weak var titleTextField	: UITextField!
 	@IBOutlet private weak var dateTextField	: UITextField!
 	@IBOutlet private weak var filenameTextField: UITextField!
@@ -21,27 +22,29 @@ class VideoDetailViewController					: DetailViewController {
 
 	// MARK: - Setup functions
 
-	override func setup(with entity: Model?) {
-		super.setup(with: entity)
-
-		self.contentType = .videos
-	}
-
 	override func setupUIElements() {
 		super.setupUIElements()
 
 		guard let video = self.entity as? Video else {
-			self.title = "Create new video"
 			return
 		}
 
-		self.title = "Update video"
 		self.titleTextField.text = video.title
 		self.dateTextField.text = video.date
 		self.filenameTextField.text = video.filename
 		self.musicTextField.text = video.music
 		self.youtubeTextField.text = video.youtubeIdentifier
 		self.captionTextView.text = video.caption
+	}
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
+		guard let video = self.entity as? Video else {
+			return
+		}
+
+		self.webView.load(videoForYoutubeIdentifier: video.youtubeIdentifier)
 	}
 
 	override var serializedEntity				: [String: Any] {
