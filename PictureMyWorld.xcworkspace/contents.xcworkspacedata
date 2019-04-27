@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/kevindelord/Projects/picturemyworld-iOS/PictureMyWorld/API/APIManager+Upload.swift">
-   </FileRef>
-   <FileRef
       location = "group:PictureMyWorld.xcodeproj">
    </FileRef>
    <FileRef
