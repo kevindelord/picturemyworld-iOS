@@ -28,7 +28,7 @@ class CountryDetailViewController				: DetailViewController {
 			return
 		}
 
-		self.nameTextField.text = country.name
+		self.nameTextField.text = country.title
 		self.imageTextField.text = country.image
 		self.filenameTextField.text = country.filename
 		self.linkTextField.text = country.link

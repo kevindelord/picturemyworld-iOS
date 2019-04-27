@@ -12,7 +12,6 @@ struct Country		: Model {
 
 	var filename	: String
 	var link		: String
-	var name		: String
 	var image		: String
 	var ratio		: String
 	var title		: String
@@ -21,11 +20,9 @@ struct Country		: Model {
 		self.ratio = (json[API.JSON.ratio] as? String ?? "")
 		self.link = (json[API.JSON.link] as? String ?? "")
 		self.filename = (json[API.JSON.filename] as? String ?? "")
-		self.name = (json[API.JSON.name] as? String ?? "")
 		self.image = (json[API.JSON.image] as? String ?? "")
-
-		// TODO: remove country.name as title is mandatory by the `Model` protocol.
-		self.title = self.name
+		// The variable `name` is forced to be named `title` as this attribute is required by the `Model` protocol.
+		self.title = (json[API.JSON.name] as? String ?? "")
 
 		if (self.isInvalid == true) {
 			fatalError("invalid country with json: \(json)")
@@ -36,7 +33,7 @@ struct Country		: Model {
 		return (self.ratio.isEmpty == true ||
 			self.link.isEmpty == true ||
 			self.filename.isEmpty == true ||
-			self.name.isEmpty == true ||
+			self.title.isEmpty == true ||
 			self.image.isEmpty == true)
 	}
 }
