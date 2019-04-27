@@ -28,7 +28,6 @@
 		75099D2A20F9046E001A1F39 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2920F9046E001A1F39 /* Environment.swift */; };
 		75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */; };
 		75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */; };
-		752B22BB21021CEE004FF82A /* VideoWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BA21021CEE004FF82A /* VideoWebView.swift */; };
 		752B22BD21022392004FF82A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BC21022392004FF82A /* ImagePicker.swift */; };
 		752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BE21022EE8004FF82A /* APIManager+Upload.swift */; };
 		753F3B4D20FCA49C0015CB23 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */; };
@@ -84,7 +83,6 @@
 		75099D2920F9046E001A1F39 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
-		752B22BA21021CEE004FF82A /* VideoWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWebView.swift; sourceTree = "<group>"; };
 		752B22BC21022392004FF82A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		752B22BE21022EE8004FF82A /* APIManager+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIManager+Upload.swift"; path = "/Users/kevindelord/Projects/picturemyworld-iOS/PictureMyWorld/API/APIManager+Upload.swift"; sourceTree = "<absolute>"; };
 		753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				75D8594C210204680073C1BD /* VideoDetailViewController.swift */,
-				752B22BA21021CEE004FF82A /* VideoWebView.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -487,7 +484,6 @@
 				75099D2620F8FF0C001A1F39 /* Video.swift in Sources */,
 				75D8594B210202AB0073C1BD /* AssetManager.swift in Sources */,
 				752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */,
-				752B22BB21021CEE004FF82A /* VideoWebView.swift in Sources */,
 				755A4E4220FD02EA005656C8 /* String.swift in Sources */,
 				75D859482101FAF60073C1BD /* PostDetailViewController.swift in Sources */,
 				75099D0320F8B2E8001A1F39 /* CRUD.swift in Sources */,

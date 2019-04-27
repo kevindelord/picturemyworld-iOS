@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 class VideoDetailViewController					: DetailViewController {
 
 	// MARK: - IBOutlets
 
-	@IBOutlet private var webView				: VideoWebView!
+	@IBOutlet private weak var webView			: WKWebView!
 	@IBOutlet private weak var titleTextField	: UITextField!
 	@IBOutlet private weak var dateTextField	: UITextField!
 	@IBOutlet private weak var filenameTextField: UITextField!
@@ -35,17 +36,14 @@ class VideoDetailViewController					: DetailViewController {
 		self.musicTextField.text = video.music
 		self.youtubeTextField.text = video.youtubeIdentifier
 		self.captionTextView.text = video.caption
-	}
 
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-
-		guard let video = self.entity as? Video else {
-			return
+		guard
+			(video.youtubeIdentifier.isEmpty == false),
+			let youtubeURL = URL(string: "https://www.youtube.com/embed/\(video.youtubeIdentifier)") else {
+				return
 		}
 
-		// TODO: video preview super small
-		self.webView.load(videoForYoutubeIdentifier: video.youtubeIdentifier)
+		self.webView.load(URLRequest(url: youtubeURL))
 	}
 
 	override var serializedEntity				: [String: Any] {
