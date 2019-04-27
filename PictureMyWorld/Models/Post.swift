@@ -1,4 +1,3 @@
-//
 //  Post.swift
 //  PictureMyWorld
 //
@@ -8,12 +7,7 @@
 
 import Foundation
 
-protocol Serializable {
-
-	var serialized: [AnyHashable: Any] { get }
-}
-
-struct Post {
+struct Post				: Model {
 
 	var latitude		: String
 	var ratio			: String
@@ -22,19 +16,19 @@ struct Post {
 	var caption			: String
 	var filename		: String
 	var locationText	: String
-	var photo			: String
+	var image			: String
 	var date			: String
 
 	init(json: [AnyHashable: Any]) {
-		self.latitude = (json["latitude"] as? String ?? "")
-		self.ratio = (json["ratio"] as? String ?? "")
-		self.longitude = (json["longitude"] as? String ?? "")
-		self.title = (json["title"] as? String ?? "")
-		self.caption = (json["caption"] as? String ?? "")
-		self.filename = (json["filename"] as? String ?? "")
-		self.locationText = (json["location_text"] as? String ?? "")
-		self.photo = (json["photo"] as? String ?? "")
-		self.date = (json["date"] as? String ?? "")
+		self.latitude = (json[API.JSON.latitude] as? String ?? "")
+		self.ratio = (json[API.JSON.ratio] as? String ?? "")
+		self.longitude = (json[API.JSON.longitude] as? String ?? "")
+		self.title = (json[API.JSON.title] as? String ?? "")
+		self.caption = (json[API.JSON.caption] as? String ?? "")
+		self.filename = (json[API.JSON.filename] as? String ?? "")
+		self.locationText = (json[API.JSON.locationText] as? String ?? "")
+		self.image = (json[API.JSON.image] as? String ?? "")
+		self.date = (json[API.JSON.date] as? String ?? "")
 
 		if (self.isInvalid == true) {
 			fatalError("invalid post with json: \(json)")
@@ -49,24 +43,7 @@ struct Post {
 			self.caption.isEmpty == true ||
 			self.filename.isEmpty == true ||
 			self.locationText.isEmpty == true ||
-			self.photo.isEmpty == true ||
+			self.image.isEmpty == true ||
 			self.date.isEmpty == true)
-	}
-}
-
-extension Post: Serializable {
-
-	var serialized: [AnyHashable : Any] {
-		return [
-			"latitude": self.latitude,
-			"ratio": self.ratio,
-			"longitude": self.longitude,
-			"title": self.title,
-			"caption": self.caption,
-			"filename": self.filename,
-			"location_text": self.locationText,
-			"photo": self.photo,
-			"date": self.date
-		]
 	}
 }

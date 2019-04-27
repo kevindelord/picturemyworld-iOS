@@ -26,9 +26,18 @@ enum ContentType : Int {
 
 	var title: String {
 		switch self {
+		// TODO: Integrate localization
 		case .posts			: return "Posts"
 		case .countries		: return "Countries"
 		case .videos		: return "Videos"
+		}
+	}
+
+	var sorting: ((Any, Any) -> Bool) {
+		switch self {
+		case .posts			: return { ((($0 as? Post)?.date ?? "") > (($1 as? Post)?.date ?? "")) }
+		case .countries		: return { ((($0 as? Country)?.link ?? "") < (($1 as? Country)?.link ?? "")) }
+		case .videos		: return { ((($0 as? Video)?.date ?? "") > (($1 as? Video)?.date ?? "")) }
 		}
 	}
 
@@ -37,14 +46,6 @@ enum ContentType : Int {
 		case .posts			: return .post
 		case .countries		: return .country
 		case .videos		: return .video
-		}
-	}
-
-	var fetch: ((@escaping (([Any], Error?) -> Void)) -> Void)? {
-		switch self {
-		case .posts			: return PostManager.fetchEntities
-		case .countries		: return CountryManager.fetchEntities
-		case .videos		: return VideoManager.fetchEntities
 		}
 	}
 
@@ -69,6 +70,35 @@ enum ContentType : Int {
 		case .posts			: return 98.0
 		case .countries		: return 73.0
 		case .videos		: return 98.0
+		}
+	}
+}
+
+// MARK: -  CRUD Extension
+
+extension ContentType {
+
+	var fetchEntities: (@escaping (([Any], Error?) -> Void)) -> Void {
+		switch self {
+		case .posts			: return Post.fetchEntities
+		case .countries		: return Country.fetchEntities
+		case .videos		: return Video.fetchEntities
+		}
+	}
+
+	var createOrUpdateEntity: ([String: Any], Data?, @escaping (Error?) -> Void) -> Void {
+		switch self {
+		case .posts			: return Post.createOrUpdateEntity
+		case .countries		: return Country.createOrUpdateEntity
+		case .videos		: return Video.createOrUpdateEntity
+		}
+	}
+
+	var deleteEntity: (String, @escaping (Error?) -> Void) -> Void {
+		switch self {
+		case .posts			: return Post.deleteEntity
+		case .countries		: return Country.deleteEntity
+		case .videos		: return Video.deleteEntity
 		}
 	}
 }

@@ -16,10 +16,26 @@ struct DetailViewRooter {
 		self.navigationController = navigationController
 	}
 
-	enum Destination {
-		case post
+	enum Destination	: Int {
+		case post 		= 0
 		case country
 		case video
+
+		var contentType: ContentType {
+			switch self {
+			case .post:		return .posts
+			case .country:	return .countries
+			case .video:	return .videos
+			}
+		}
+
+		var title: String {
+			switch self {
+			case .post:		return "Post"
+			case .country:	return "Country"
+			case .video:	return "Video"
+			}
+		}
 
 		private var identifier: String {
 			switch self {
@@ -30,7 +46,7 @@ struct DetailViewRooter {
 		}
 
 		private var storyboard: UIStoryboard {
-			return UIStoryboard(name: "DetailView", bundle: nil)
+			return UIStoryboard(name: DetailViewConstants.storyboardName, bundle: nil)
 		}
 
 		var instantiateViewController: DetailViewController? {
@@ -39,12 +55,12 @@ struct DetailViewRooter {
 		}
 	}
 
-	func present(destination: Destination, entity: Serializable) {
+	func present(destination: Destination, entity: Model?) {
 		guard let controller = destination.instantiateViewController else {
 			fatalError("Cannot instantiate detail view controller.")
 		}
 
-		controller.setup(with: entity)
+		controller.setup(with: destination.contentType, entity: entity)
 		self.navigationController?.pushViewController(controller, animated: true)
 	}
 }

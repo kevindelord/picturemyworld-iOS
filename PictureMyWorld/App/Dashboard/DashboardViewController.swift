@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol DashboardDelegate {
-
-	func presentDetailView(for data: [AnyHashable: Any])
-}
-
 class DashboardViewController					: UIViewController {
 
 	@IBOutlet private weak var segmentedControl	: ContentTypeSegmentedControl?
@@ -24,16 +19,27 @@ class DashboardViewController					: UIViewController {
 		super.viewDidLoad()
 
 		self.detailViewRooter = DetailViewRooter(navigationController: self.navigationController)
-		// Reload the default content to display.
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		// Reload the content to display in case it changed in a child view controller.
 		self.reloadListView()
 	}
 }
 
 extension DashboardViewController {
 
-	@IBAction private func checkDesployedVersions() {
-		// Fetch and display the deployed versions.
-		VersionManager.presentDeployedVersion()
+	@IBAction private func createNew() {
+		let alertController = UIAlertController(title: "Create new...", message: nil, preferredStyle: .actionSheet)
+		for destination in DetailViewRooter.Destination.allCases {
+			alertController.addAction(UIAlertAction(title: destination.title, style: .default, handler: { (action: UIAlertAction) in
+				self.detailViewRooter?.present(destination: destination, entity: nil)
+			}))
+		}
+		alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		self.present(alertController, animated: true, completion: nil)
 	}
 
 	@IBAction private func reloadListView() {

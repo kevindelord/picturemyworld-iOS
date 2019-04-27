@@ -1,0 +1,18 @@
+//
+//  Post+CRUD.swift
+//  PictureMyWorld
+//
+//  Created by Kevin Delord on 16.07.18.
+//  Copyright © 2018 Kevin Delord. All rights reserved.
+//
+
+extension Post: CRUD {
+
+	static var entityEndpoint: Endpoint {
+		return .post
+	}
+
+	static var entitiesEndpoint: Endpoint {
+		return .posts
+	}
+}

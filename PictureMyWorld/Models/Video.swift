@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Video {
+struct Video				: Model {
 
 	var caption				: String
 	var date				: String
@@ -18,12 +18,12 @@ struct Video {
 	var youtubeIdentifier	: String
 
 	init(json: [AnyHashable: Any]) {
-		self.caption = (json["caption"] as? String ?? "")
-		self.date = (json["date"] as? String ?? "")
-		self.filename = (json["filename"] as? String ?? "")
-		self.music = (json["music"] as? String ?? "")
-		self.title = (json["title"] as? String ?? "")
-		self.youtubeIdentifier = (json["youtube_id"] as? String ?? "")
+		self.caption = (json[API.JSON.caption] as? String ?? "")
+		self.date = (json[API.JSON.date] as? String ?? "")
+		self.filename = (json[API.JSON.filename] as? String ?? "")
+		self.music = (json[API.JSON.music] as? String ?? "")
+		self.title = (json[API.JSON.title] as? String ?? "")
+		self.youtubeIdentifier = (json[API.JSON.youtubeIdentifier] as? String ?? "")
 
 		if (self.isInvalid == true) {
 			fatalError("invalid video with json: \(json)")
@@ -37,19 +37,5 @@ struct Video {
 			self.music.isEmpty == true ||
 			self.title.isEmpty == true ||
 			self.youtubeIdentifier.isEmpty == true)
-	}
-}
-
-extension Video: Serializable {
-
-	var serialized: [AnyHashable : Any] {
-		return [
-			"caption": self.caption,
-			"date": self.date,
-			"filename": self.filename,
-			"music": self.music,
-			"title": self.title,
-			"youtube_id": self.youtubeIdentifier
-		]
 	}
 }

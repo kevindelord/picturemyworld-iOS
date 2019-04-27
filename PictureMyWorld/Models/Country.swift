@@ -8,20 +8,24 @@
 
 import Foundation
 
-struct Country {
+struct Country		: Model {
 
 	var filename	: String
 	var link		: String
 	var name		: String
-	var photo		: String
+	var image		: String
 	var ratio		: String
+	var title		: String
 
 	init(json: [AnyHashable: Any]) {
-		self.ratio = (json["ratio"] as? String ?? "")
-		self.link = (json["link"] as? String ?? "")
-		self.filename = (json["filename"] as? String ?? "")
-		self.name = (json["name"] as? String ?? "")
-		self.photo = (json["photo"] as? String ?? "")
+		self.ratio = (json[API.JSON.ratio] as? String ?? "")
+		self.link = (json[API.JSON.link] as? String ?? "")
+		self.filename = (json[API.JSON.filename] as? String ?? "")
+		self.name = (json[API.JSON.name] as? String ?? "")
+		self.image = (json[API.JSON.image] as? String ?? "")
+
+		// TODO: remove country.name as title is mandatory by the `Model` protocol.
+		self.title = self.name
 
 		if (self.isInvalid == true) {
 			fatalError("invalid country with json: \(json)")
@@ -33,19 +37,6 @@ struct Country {
 			self.link.isEmpty == true ||
 			self.filename.isEmpty == true ||
 			self.name.isEmpty == true ||
-			self.photo.isEmpty == true)
-	}
-}
-
-extension Country: Serializable {
-
-	var serialized: [AnyHashable : Any] {
-		return [
-			"filename": self.filename,
-			"name": self.name,
-			"photo": self.photo,
-			"link": self.link,
-			"ratio": self.ratio
-		]
+			self.image.isEmpty == true)
 	}
 }

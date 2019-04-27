@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="-311"/>
         </scene>
-        <!--Dashboard View Controller-->
+        <!--Dashboard-->
         <scene sceneID="vF0-CD-8zd">
             <objects>
                 <viewController id="upb-1V-fzb" customClass="DashboardViewController" customModule="PictureMyWorld" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,8 +36,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s5x-vb-CTa" customClass="ContentTypeSegmentedControl" customModule="PictureMyWorld" customModuleProvider="target">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s5x-vb-CTa" customClass="ContentTypeSegmentedControl" customModule="PictureMyWorld" customModuleProvider="target">
                                 <rect key="frame" x="127" y="74" width="121" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="mhh-Oa-fqk"/>
+                                </constraints>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
@@ -214,10 +217,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O5t-Mk-4HS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="J7s-gq-SuK">
-                        <barButtonItem key="rightBarButtonItem" title="Versions" id="IOs-BZ-RQE">
+                    <navigationItem key="navigationItem" title="Dashboard" id="J7s-gq-SuK">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="yGk-OZ-v41">
                             <connections>
-                                <action selector="checkDesployedVersions" destination="upb-1V-fzb" id="Fa3-dY-WS3"/>
+                                <action selector="createNew" destination="upb-1V-fzb" id="mru-Ou-F7F"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

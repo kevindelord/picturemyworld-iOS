@@ -15,14 +15,14 @@ enum Environment : Int {
 
 	var key: String {
 		switch self {
-		case .development:	return "development"
-		case .staging:		return "staging"
-		case .producation:	return "production"
+		case .development:	return Configuration.SupportedEnvironmentName.development.rawValue
+		case .staging:		return Configuration.SupportedEnvironmentName.staging.rawValue
+		case .producation:	return Configuration.SupportedEnvironmentName.producation.rawValue
 		}
 	}
 
 	static var current : Environment {
-		return .development
+		return .staging
 	}
 
 	var webURL: URL? {

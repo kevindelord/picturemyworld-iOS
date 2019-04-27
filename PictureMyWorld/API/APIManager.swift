@@ -9,25 +9,26 @@
 import Foundation
 import Alamofire
 
+extension Dictionary where Key == String, Value == String {
+
+	mutating func contentType(_ contentType: API.ContentType) {
+		self.updateValue(contentType.headerValue, forKey: API.ContentType.headerKey)
+	}
+}
+
 /// Manager handling all API requests.
 struct APIManager {
 
 	/// Create valid authentification headers.
-	///
-	/// - Parameters:
-	///   - emailAddress: String email address to use in the authentification proccess.
-	///   - password: String password to use in the authentification proccess.
-	/// - Returns: Authentification headers for POST requests.
 	public static var authHeaders: HTTPHeaders {
 		guard
 			let username = Environment.current.username,
 			let password = Environment.current.password,
-			let authData = "\(username):\(password)".data(using: String.Encoding.utf8, allowLossyConversion: false) else {
+			let authorizationHeader = Request.authorizationHeader(user: username, password: password) else {
 				return [:]
 		}
 
-		let authValue = String(format: "Basic %@", authData.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength76Characters))
-		return ["Authorization": authValue]
+		return [authorizationHeader.key: authorizationHeader.value]
 	}
 
 	/// Create a new Error object with a specific error message.
@@ -49,67 +50,37 @@ struct APIManager {
 		let json = response.result.value as? [AnyHashable: Any]
 
 		// Did request fail?
-		if (json == nil), let error = response.result.error {
-			return (json: nil, error: error)
+		if (json == nil) {
+			if (response.response?.statusCode == 401) {
+				return (json: nil, error: APIManager.errorWithMessage(API.Error.Message.unauthorizedAccess))
+			} else if let error = response.result.error {
+				return (json: nil, error: error)
+			}
 		}
 
-		// Did credential fail?
-		if let errorMessage = ((json?[API.Key.errors] as? [AnyHashable: Any])?[API.Key.credentials] as? [String])?.first {
-			return (json: nil, error: APIManager.errorWithMessage(errorMessage))
+		// A request is invalid if an error message exists.
+		if let errorMessage = json?[API.Key.message] as? String {
+			return (json: json, error: APIManager.errorWithMessage(errorMessage.trim()))
 		}
 
-		// Was the request invalid?
-		if
-			let errorMessage = json?[API.Key.reason] as? String,
-			let status = json?[API.Key.status] as? String, (status == API.Key.error) {
-				return (json: nil, error: APIManager.errorWithMessage(errorMessage))
+		// A request is invalid if a dictionary of errors has been received.
+		if let errors = (json?[API.Key.message] as? [String: Any]) {
+			if let message = errors[API.Key.message] as? String {
+				return (json: json, error: APIManager.errorWithMessage(message.trim()))
+			}
+
+			if let error = errors.first {
+				let errorMessage = "\(error.key): \(error.value as? String ?? "")"
+				return (json: json, error: APIManager.errorWithMessage(errorMessage.trim()))
+			}
+		}
+
+		// A request is invalid if its status is 'error'
+		if let status = json?[API.Key.status] as? String, (status == API.Key.error) {
+			return (json, error: APIManager.errorWithMessage(API.Error.Message.unknownError))
 		}
 
 		return (json: json, error: nil)
-	}
-
-	/// Perform a GET request at the given Endpoint in order to fetch an array of dictionary.
-	///
-	/// - Parameters:
-	///   - endpoint: Endpoint to fetch the data from.
-	///   - completion: Completion block called after process.
-	internal static func fetchArray(endpoint: Endpoint, completion: @escaping ((_ entities: [[AnyHashable: Any]], _ error: Error?) -> Void)) {
-		guard let url = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
-			completion([], nil)
-			return
-		}
-
-		APIManager.get(url).responseJSON { (response: DataResponse<Any>) in
-			let result = APIManager.extractJSON(fromResponse: response)
-			guard let json = result.json?[endpoint.jsonKey] as? [[AnyHashable: Any]] else {
-				completion([], result.error)
-				return
-			}
-
-			completion(json, nil)
-		}
-	}
-
-	/// Perform a GET request at the given Endpoint in order to fetch a dictionary.
-	///
-	/// - Parameters:
-	///   - endpoint: Endpoint to fetch the data from.
-	///   - completion: Completion block called after process.
-	internal static func fetch(endpoint: Endpoint, completion: @escaping ((_ entity: [AnyHashable: Any], _ error: Error?) -> Void)) {
-		guard let endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
-			completion([:], nil)
-			return
-		}
-
-		APIManager.get(endpoint).responseJSON { (response: DataResponse<Any>) in
-			let result = APIManager.extractJSON(fromResponse: response)
-			guard let json = result.json else {
-				completion([:], result.error)
-				return
-			}
-
-			completion(json, nil)
-		}
 	}
 
 	/// Perform a GET request to the API.
@@ -132,7 +103,8 @@ struct APIManager {
 	///   - encoding: The parameter encoding; JSONEncoding.default by default.
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func post(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
-		let headers = APIManager.authHeaders
+		var headers = APIManager.authHeaders
+		headers.contentType(.json)
 		return Alamofire.request(url, method: .post, parameters: parameters, encoding: encoding, headers: headers)
 	}
 
@@ -144,7 +116,8 @@ struct APIManager {
 	///   - encoding: The parameter encoding; JSONEncoding.default by default.
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func put(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
-		let headers = APIManager.authHeaders
+		var headers = APIManager.authHeaders
+		headers.contentType(.json)
 		return Alamofire.request(url, method: .put, parameters: parameters, encoding: encoding, headers: headers)
 	}
 
