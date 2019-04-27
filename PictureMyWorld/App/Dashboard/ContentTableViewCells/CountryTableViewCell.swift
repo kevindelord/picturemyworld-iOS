@@ -18,7 +18,7 @@ class CountryTableViewCell: UITableViewCell {
 			return
 		}
 
-		self.name?.text = country.name
+		self.name?.text = country.title
 		self.filename?.text = country.filename
 	}
 }

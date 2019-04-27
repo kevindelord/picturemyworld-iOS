@@ -8,18 +8,19 @@
 
 import UIKit
 
-class DashboardViewController					: UIViewController {
+class DashboardViewController					: UIViewController, DashboardDelegate {
 
 	@IBOutlet private weak var segmentedControl	: ContentTypeSegmentedControl?
 	@IBOutlet private weak var tableView		: ContentTableView?
 
 	private var detailViewRooter				: DetailViewRooter?
+	private var contentManager 					= ContentManager()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.detailViewRooter = DetailViewRooter(navigationController: self.navigationController)
-		self.reloadListView()
+		self.tableView?.setup(with: self.contentManager, contentDelegate: self.contentManager, dashboardDelegate: self)
 	}
 }
 
@@ -28,8 +29,8 @@ extension DashboardViewController {
 	@IBAction private func createNew() {
 		let alertController = UIAlertController(title: "Create new...", message: nil, preferredStyle: .actionSheet)
 		for destination in DetailViewRooter.Destination.allCases {
-			alertController.addAction(UIAlertAction(title: destination.title, style: .default, handler: { (action: UIAlertAction) in
-				self.detailViewRooter?.present(destination: destination, entity: nil, contentDelegate: self.tableView)
+			alertController.addAction(UIAlertAction(title: destination.title, style: .default, handler: { [weak self] (action: UIAlertAction) in
+				self?.present(destination: destination, entity: nil)
 			}))
 		}
 
@@ -44,6 +45,20 @@ extension DashboardViewController {
 				return
 		}
 
-		self.tableView?.load(for: type, rooter: self.detailViewRooter)
+		// Update the current content type
+		self.contentManager.contentType = type
+		self.reloadTableView()
+	}
+}
+
+extension DashboardViewController {
+
+	func present(destination: DetailViewRooter.Destination, entity: Model?) {
+		self.detailViewRooter?.present(destination: destination, entity: entity, contentDataSource: self.contentManager, dashboardDelegate: self)
+	}
+
+	/// Reload the table view with the correct data type.
+	func reloadTableView() {
+		self.tableView?.reloadContent(deleteRows: [])
 	}
 }

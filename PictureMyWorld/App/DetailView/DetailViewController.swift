@@ -17,8 +17,8 @@ class DetailViewController			: UIViewController {
 	// MARK: - Private Attributes
 
 	internal var entity				: Model?
-	internal var contentType		: ContentType?
-	private var contentDelegate		: ContentManagerDelegate?
+	private var contentDataSource	: ContentManagerDataSource?
+	private var dashboardDelegate	: DashboardDelegate?
 
 	// MARK: - Computed Properties
 
@@ -30,6 +30,10 @@ class DetailViewController			: UIViewController {
 	internal var imageData			: Data? {
 		// If needed, override in subclass to upload an image.
 		return nil
+	}
+
+	internal var contentType		: ContentType? {
+		return self.contentDataSource?.contentType
 	}
 
 	// MARK: - Life View Cycles
@@ -57,10 +61,10 @@ class DetailViewController			: UIViewController {
 		// Override in subclass to init all outlets.
 	}
 
-	func setup(with contentType: ContentType, entity: Model?, contentDelegate: ContentManagerDelegate?) {
-		self.contentType = contentType
+	func setup(with entity: Model?, contentDataSource: ContentManagerDataSource?, dashboardDelegate: DashboardDelegate?) {
 		self.entity = entity
-		self.contentDelegate = contentDelegate
+		self.contentDataSource = contentDataSource
+		self.dashboardDelegate = dashboardDelegate
 	}
 }
 
@@ -91,16 +95,15 @@ extension DetailViewController {
 
 extension DetailViewController {
 
+	/// This function:
+	/// - Create or update a new entity.
+	/// - Re-fetch the data for the current content type.
+	/// - Reload the table view.
+	/// - And finally, pop the current view controller.
 	@IBAction func save() {
-		self.contentType?.createOrUpdateEntity(self.serializedEntity, self.imageData) { [weak self] (error: Error?) in
-			guard (error == nil) else {
-				UIAlertController.showErrorPopup(error as NSError?)
-				return
-			}
-
-			// Reload the displayed content in the main table view.
-			self?.contentDelegate?.reloadContent(deleteRows: [])
+		self.contentDataSource?.createOrUpdateEntity(json: self.serializedEntity, imageData: self.imageData, completion: { [weak self] in
+			self?.dashboardDelegate?.reloadTableView()
 			self?.navigationController?.popViewController(animated: true)
-		}
+		})
 	}
 }
