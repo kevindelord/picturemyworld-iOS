@@ -10,40 +10,52 @@ import UIKit
 
 class ContentTableView 					: UITableView {
 
-	private var contentManager			: ContentManager?
-	private var detailViewRooter		: DetailViewRooter?
+	private var contentDataSource		: ContentManagerDataSource?
+	private var contentDelegate			: ContentManagerDelegate?
+	private var dashboardDelegate		: DashboardDelegate?
 
-	func load(for type: ContentType, rooter: DetailViewRooter?) {
-		// TODO: Another object should own the ContentManager to hold all data...
-		// (RE-)Create a new ContentManager and fully reload the data.
-		self.contentManager = ContentManager(type: type, data: ContentType.defaultData, delegate: self)
+	func setup(with dataSource: ContentManagerDataSource, contentDelegate: ContentManagerDelegate, dashboardDelegate: DashboardDelegate?) {
 		self.delegate = self
 		self.dataSource = self
-		self.detailViewRooter = rooter
+		self.contentDataSource = dataSource
+		self.contentDelegate = contentDelegate
+		self.dashboardDelegate = dashboardDelegate
 
 		// Setup Refresh Contol
 		self.refreshControl =  UIRefreshControl()
 		self.refreshControl?.tintColor = self.tintColor
 		self.refreshControl?.addTarget(self, action: #selector(self.reloadContentManager), for: .valueChanged)
 
-		// Otherwise fetch the content from the API and then reload the table view.
+		// Fetch the content from the API and then reload the table view.
 		self.reloadContentManager()
 	}
 
 	@objc private func reloadContentManager() {
-		self.contentManager?.refreshContent()
+		self.contentDataSource?.refreshContent(completion: {
+			self.reloadData()
+			// If any, stop the refreshing animation
+			self.refreshControl?.endRefreshing()
+		})
 	}
 }
 
 // MARK: - ContentManagerDelegate
 
-extension ContentTableView: ContentManagerDelegate {
+extension ContentTableView {
 
+	/// Reload the table view with the current datasource.
+	/// If there is no data for the current type, it fetches the entities from the API.
+	///
+	/// - Parameter deleteRows: Array of rows to delete with a fade animation. If empty nothing happens.
 	func reloadContent(deleteRows: [IndexPath]) {
 		if (deleteRows.isEmpty == false) {
 			self.deleteRows(at: deleteRows, with: .fade)
 		} else {
-			self.reloadData()
+			if (self.contentDataSource?.modelsCount == 0) {
+				self.reloadContentManager()
+			} else {
+				self.reloadData()
+			}
 		}
 
 		// If any, stop the refreshing animation
@@ -56,25 +68,41 @@ extension ContentTableView: ContentManagerDelegate {
 extension ContentTableView: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return (self.contentManager?.contentType.heightForRow ?? 0)
+		return (self.contentDataSource?.contentType.heightForRow ?? 0)
 	}
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 
 		guard
-			let entity = self.contentManager?.model(at: indexPath),
-			let destination = self.contentManager?.contentType.destination else {
+			let entity = self.contentDataSource?.model(at: indexPath),
+			let destination = self.contentDataSource?.contentType.destination else {
 				fatalError("cannot retrieve model object.")
 		}
 
-		self.detailViewRooter?.present(destination: destination, entity: entity, contentDelegate: self)
+		self.dashboardDelegate?.present(destination: destination, entity: entity)
 	}
 
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if (editingStyle == .delete) {
-			self.contentManager?.presentDeleteContentAlert(for: indexPath)
+			self.presentDeleteContentAlert(for: indexPath)
 		}
+	}
+
+	private func presentDeleteContentAlert(for indexPath: IndexPath) {
+		guard let model = self.contentDataSource?.model(at: indexPath) else {
+			return
+		}
+
+		let alert = UIAlertController(title: nil, message: "Delete '\(model.title)' ?", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Go for it", style: .destructive, handler: { (_ : UIAlertAction) in
+			self.contentDelegate?.deleteContent(for: indexPath, completion: { [weak self] (row: IndexPath) in
+				self?.reloadContent(deleteRows: [row])
+			})
+		}))
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+		AppDelegate.alertPresentingController?.present(alert, animated: true, completion: nil)
 	}
 }
 
@@ -83,18 +111,18 @@ extension ContentTableView: UITableViewDelegate {
 extension ContentTableView: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return (self.contentManager?.models.count ?? 0)
+		return (self.contentDataSource?.modelsCount ?? 0)
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard
-			let identifier = self.contentManager?.contentType.reuseIdentifier,
+			let identifier = self.contentDataSource?.contentType.reuseIdentifier,
 			let cell = tableView.dequeueReusableCell(withIdentifier: identifier),
-			let model = self.contentManager?.model(at: indexPath) else {
+			let model = self.contentDataSource?.model(at: indexPath) else {
 				return UITableViewCell()
 		}
 
-		self.contentManager?.contentType.update(cell: cell, with: model)
+		self.contentDataSource?.contentType.update(cell: cell, with: model)
 		return cell
 	}
 

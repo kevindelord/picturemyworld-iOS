@@ -51,6 +51,8 @@
 		7566088920F89577005711BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7566088720F89577005711BF /* Main.storyboard */; };
 		7566088B20F89579005711BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7566088A20F89579005711BF /* Assets.xcassets */; };
 		7566088E20F89579005711BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7566088C20F89579005711BF /* LaunchScreen.storyboard */; };
+		7590460A2274BAC9002484A2 /* ContentManagerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759046092274BAC9002484A2 /* ContentManagerDataSource.swift */; };
+		7590460C2274E717002484A2 /* DashboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7590460B2274E717002484A2 /* DashboardDelegate.swift */; };
 		75CF12DD2274AC1A006EA6B3 /* DetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF12DC2274AC1A006EA6B3 /* DetailScrollView.swift */; };
 		75D859482101FAF60073C1BD /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D859472101FAF60073C1BD /* PostDetailViewController.swift */; };
 		75D8594B210202AB0073C1BD /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D8594A210202AB0073C1BD /* AssetManager.swift */; };
@@ -108,6 +110,8 @@
 		7566088A20F89579005711BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7566088D20F89579005711BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7566088F20F89579005711BF /* PictureMyWorld-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PictureMyWorld-iOS-Info.plist"; sourceTree = "<group>"; };
+		759046092274BAC9002484A2 /* ContentManagerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerDataSource.swift; sourceTree = "<group>"; };
+		7590460B2274E717002484A2 /* DashboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDelegate.swift; sourceTree = "<group>"; };
 		75CF12DC2274AC1A006EA6B3 /* DetailScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScrollView.swift; sourceTree = "<group>"; };
 		75D859472101FAF60073C1BD /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		75D8594A210202AB0073C1BD /* AssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */,
 				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
 				7566088320F89577005711BF /* DashboardViewController.swift */,
+				7590460B2274E717002484A2 /* DashboardDelegate.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -285,6 +290,9 @@
 			isa = PBXGroup;
 			children = (
 				75099D2120F8FC70001A1F39 /* ContentType.swift */,
+				755A4E4520FD1368005656C8 /* ContentManagerDelegate.swift */,
+				759046092274BAC9002484A2 /* ContentManagerDataSource.swift */,
+				755A4E4320FD130B005656C8 /* ContentManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -301,8 +309,6 @@
 			isa = PBXGroup;
 			children = (
 				75099D1120F8E50A001A1F39 /* ContentTableView.swift */,
-				755A4E4520FD1368005656C8 /* ContentManagerDelegate.swift */,
-				755A4E4320FD130B005656C8 /* ContentManager.swift */,
 			);
 			path = ContentTableView;
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 				75099D0420F8B2E8001A1F39 /* APIManager.swift in Sources */,
 				7566088620F89577005711BF /* WebViewController.swift in Sources */,
 				753F3B5620FCAEC00015CB23 /* DetailViewConstants.swift in Sources */,
+				7590460A2274BAC9002484A2 /* ContentManagerDataSource.swift in Sources */,
 				75099D0E20F8D46D001A1F39 /* APIManager+Versions.swift in Sources */,
 				75099D1220F8E50B001A1F39 /* ContentTableView.swift in Sources */,
 				75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */,
@@ -505,6 +512,7 @@
 				753F3B6320FCE15D0015CB23 /* Model.swift in Sources */,
 				753F3B5420FCABF40015CB23 /* DetailViewRooter.swift in Sources */,
 				75099D1A20F8F70F001A1F39 /* EnvironmentSegmentedControl.swift in Sources */,
+				7590460C2274E717002484A2 /* DashboardDelegate.swift in Sources */,
 				75099CFA20F8A490001A1F39 /* Configuration.swift in Sources */,
 				75099D1620F8F578001A1F39 /* ContentTypeSegmentedControl.swift in Sources */,
 				75099D1420F8E9AD001A1F39 /* PostTableViewCell.swift in Sources */,
