@@ -44,6 +44,7 @@ class VideoDetailViewController					: DetailViewController {
 			return
 		}
 
+		// TODO: video preview super small
 		self.webView.load(videoForYoutubeIdentifier: video.youtubeIdentifier)
 	}
 

@@ -10,6 +10,10 @@ import UIKit
 
 class DetailViewController			: UIViewController {
 
+	// MARK: - Outlets
+
+	@IBOutlet private weak var scrollView: DetailScrollView!
+
 	// MARK: - Private Attributes
 
 	internal var entity				: Model?
@@ -36,6 +40,16 @@ class DetailViewController			: UIViewController {
 		self.setupUIElements()
 	}
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.registerNotifications()
+	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		self.unregisterNotifications()
+	}
+
 	// MARK: - Setup Functions
 
 	func setupUIElements() {
@@ -45,6 +59,31 @@ class DetailViewController			: UIViewController {
 	func setup(with contentType: ContentType, entity: Model? = nil) {
 		self.contentType = contentType
 		self.entity = entity
+	}
+}
+
+extension DetailViewController {
+
+	private func registerNotifications() {
+		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+	}
+
+	private func unregisterNotifications() {
+		NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+	}
+
+	@objc func keyboardWillShow(notification: NSNotification){
+		guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+			return
+		}
+
+		self.scrollView.contentInset.bottom = view.convert(keyboardFrame.cgRectValue, from: nil).size.height
+	}
+
+	@objc func keyboardWillHide(notification: NSNotification) {
+		self.scrollView.contentInset.bottom = 0
 	}
 }
 
@@ -61,16 +100,3 @@ extension DetailViewController {
 		}
 	}
 }
-
-extension DetailViewController {
-
-	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		self.view.endEditing(true)
-	}
-}
-
-//extension DetailViewController: UITextFieldDelegate {
-//	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//		// TODO: Jump to next text field
-//	}
-//}

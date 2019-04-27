@@ -17,6 +17,7 @@ class VideoWebView : WKWebView {
 		let html = "<iframe width=\"\(width)\" height=\"\(height)\" src=\"\(src)\" frameborder=\"0\" allowfullscreen></iframe>"
 		return html
 	}
+
 	public func load(videoForYoutubeIdentifier identifier: String) {
 		guard (identifier.isEmpty == false) else {
 			return

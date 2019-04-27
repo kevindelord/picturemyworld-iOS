@@ -9,7 +9,6 @@
 import UIKit
 
 // TODO: use reachability to prevent API calls when there is no internet.
-// TODO: Integrate scroll view.
 
 class PostDetailViewController					: DetailViewController {
 
