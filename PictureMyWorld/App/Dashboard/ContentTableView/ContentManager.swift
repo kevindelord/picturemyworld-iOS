@@ -26,7 +26,6 @@ class ContentManager {
 extension ContentManager {
 
 	func model(at indexPath: IndexPath) -> Model? {
-		// TODO: why is the contentData empty when going back quickly ? creating double entity? memory management issue.
 		guard (self.contentData[self.contentType]?.isEmpty == false) else {
 			return nil
 		}

@@ -19,12 +19,6 @@ class DashboardViewController					: UIViewController {
 		super.viewDidLoad()
 
 		self.detailViewRooter = DetailViewRooter(navigationController: self.navigationController)
-	}
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
-		// Reload the content to display in case it changed in a child view controller.
 		self.reloadListView()
 	}
 }
@@ -35,9 +29,10 @@ extension DashboardViewController {
 		let alertController = UIAlertController(title: "Create new...", message: nil, preferredStyle: .actionSheet)
 		for destination in DetailViewRooter.Destination.allCases {
 			alertController.addAction(UIAlertAction(title: destination.title, style: .default, handler: { (action: UIAlertAction) in
-				self.detailViewRooter?.present(destination: destination, entity: nil)
+				self.detailViewRooter?.present(destination: destination, entity: nil, contentDelegate: self.tableView)
 			}))
 		}
+
 		alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 		self.present(alertController, animated: true, completion: nil)
 	}

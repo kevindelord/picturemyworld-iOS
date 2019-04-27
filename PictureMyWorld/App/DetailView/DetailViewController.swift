@@ -18,6 +18,7 @@ class DetailViewController			: UIViewController {
 
 	internal var entity				: Model?
 	internal var contentType		: ContentType?
+	private var contentDelegate		: ContentManagerDelegate?
 
 	// MARK: - Computed Properties
 
@@ -56,9 +57,10 @@ class DetailViewController			: UIViewController {
 		// Override in subclass to init all outlets.
 	}
 
-	func setup(with contentType: ContentType, entity: Model? = nil) {
+	func setup(with contentType: ContentType, entity: Model?, contentDelegate: ContentManagerDelegate?) {
 		self.contentType = contentType
 		self.entity = entity
+		self.contentDelegate = contentDelegate
 	}
 }
 
@@ -96,6 +98,8 @@ extension DetailViewController {
 				return
 			}
 
+			// Reload the displayed content in the main table view.
+			self?.contentDelegate?.reloadContent(deleteRows: [])
 			self?.navigationController?.popViewController(animated: true)
 		}
 	}
