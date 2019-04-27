@@ -8,20 +8,29 @@
 
 import UIKit
 
-// TODO: Integrate pull to refresh
-
 class ContentTableView 					: UITableView {
 
 	private var contentManager			: ContentManager?
 	private var detailViewRooter		: DetailViewRooter?
 
 	func load(for type: ContentType, rooter: DetailViewRooter?) {
+		// TODO: Another object should own the ContentManager to hold all data...
+		// (RE-)Create a new ContentManager and fully reload the data.
 		self.contentManager = ContentManager(type: type, data: ContentType.defaultData, delegate: self)
 		self.delegate = self
 		self.dataSource = self
 		self.detailViewRooter = rooter
 
+		// Setup Refresh Contol
+		self.refreshControl =  UIRefreshControl()
+		self.refreshControl?.tintColor = self.tintColor
+		self.refreshControl?.addTarget(self, action: #selector(self.reloadContentManager), for: .valueChanged)
+
 		// Otherwise fetch the content from the API and then reload the table view.
+		self.reloadContentManager()
+	}
+
+	@objc private func reloadContentManager() {
 		self.contentManager?.refreshContent()
 	}
 }
@@ -36,6 +45,9 @@ extension ContentTableView: ContentManagerDelegate {
 		} else {
 			self.reloadData()
 		}
+
+		// If any, stop the refreshing animation
+		self.refreshControl?.endRefreshing()
 	}
 }
 
