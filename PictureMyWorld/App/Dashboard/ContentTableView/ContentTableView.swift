@@ -56,7 +56,7 @@ extension ContentTableView: UITableViewDelegate {
 				fatalError("cannot retrieve model object.")
 		}
 
-		self.detailViewRooter?.present(destination: destination, entity: entity)
+		self.detailViewRooter?.present(destination: destination, entity: entity, contentDelegate: self)
 	}
 
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
