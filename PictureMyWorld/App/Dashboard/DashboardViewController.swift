@@ -29,8 +29,8 @@ extension DashboardViewController {
 	@IBAction private func createNew() {
 		let alertController = UIAlertController(title: "Create new...", message: nil, preferredStyle: .actionSheet)
 		for destination in DetailViewRooter.Destination.allCases {
-			alertController.addAction(UIAlertAction(title: destination.title, style: .default, handler: { (action: UIAlertAction) in
-				self.detailViewRooter?.present(destination: destination, entity: nil, contentDelegate: self.contentManager)
+			alertController.addAction(UIAlertAction(title: destination.title, style: .default, handler: { [weak self] (action: UIAlertAction) in
+				self?.present(destination: destination, entity: nil)
 			}))
 		}
 
@@ -47,14 +47,18 @@ extension DashboardViewController {
 
 		// Update the current content type
 		self.contentManager.contentType = type
-		// Reload the table view with the correct data type.
-		self.tableView?.reloadContent(deleteRows: [])
+		self.reloadTableView()
 	}
 }
 
 extension DashboardViewController {
 
 	func present(destination: DetailViewRooter.Destination, entity: Model?) {
-		self.detailViewRooter?.present(destination: destination, entity: entity, contentDelegate: self.contentManager)
+		self.detailViewRooter?.present(destination: destination, entity: entity, contentDataSource: self.contentManager, dashboardDelegate: self)
+	}
+
+	/// Reload the table view with the correct data type.
+	func reloadTableView() {
+		self.tableView?.reloadContent(deleteRows: [])
 	}
 }

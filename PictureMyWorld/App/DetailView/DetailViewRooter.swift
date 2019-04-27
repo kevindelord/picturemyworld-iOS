@@ -55,12 +55,12 @@ struct DetailViewRooter {
 		}
 	}
 
-	func present(destination: Destination, entity: Model?, contentDelegate: ContentManagerDelegate?) {
+	func present(destination: Destination, entity: Model?, contentDataSource: ContentManagerDataSource, dashboardDelegate: DashboardDelegate?) {
 		guard let controller = destination.instantiateViewController else {
 			fatalError("Cannot instantiate detail view controller.")
 		}
 
-		controller.setup(with: destination.contentType, entity: entity, contentDelegate: contentDelegate)
+		controller.setup(with: entity, contentDataSource: contentDataSource, dashboardDelegate: dashboardDelegate)
 		self.navigationController?.pushViewController(controller, animated: true)
 	}
 }

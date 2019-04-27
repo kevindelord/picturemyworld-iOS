@@ -16,4 +16,7 @@ protocol DashboardDelegate {
 	///   - destination: Destination Type.
 	///   - entity: Model object.
 	func present(destination: DetailViewRooter.Destination, entity: Model?)
+
+	/// Reload the content table view.
+	func reloadTableView()
 }

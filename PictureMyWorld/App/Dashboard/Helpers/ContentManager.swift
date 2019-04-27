@@ -18,7 +18,7 @@ class ContentManager				: ContentManagerDataSource, ContentManagerDelegate {
 
 extension ContentManager {
 
-	func model(at indexPath: IndexPath) -> Model? {
+	internal func model(at indexPath: IndexPath) -> Model? {
 		guard (self.contentData[self.contentType]?.isEmpty == false) else {
 			return nil
 		}
@@ -26,7 +26,7 @@ extension ContentManager {
 		return self.contentData[self.contentType]?[indexPath.row] as? Model
 	}
 
-	var modelsCount: Int{
+	internal var modelsCount: Int{
 		return (self.contentData[self.contentType] ?? []).count
 	}
 }
@@ -35,7 +35,7 @@ extension ContentManager {
 
 extension ContentManager {
 
-	internal func refreshContent(completion: @escaping (() -> Void)) {
+	internal func fetchContent(completion: @escaping (() -> Void)) {
 		self.contentType.fetchEntities({ (result: [Any], error: Error?) in
 			if let error = error {
 				let controller = AppDelegate.alertPresentingController
@@ -50,6 +50,20 @@ extension ContentManager {
 	private func set(data: [Any], for contentType: ContentType) {
 		let result = data.sorted(by: contentType.sorting)
 		self.contentData[contentType] = result
+	}
+
+	internal func createOrUpdateEntity(json: [String : Any], imageData: Data?, completion: @escaping () -> Void) {
+		self.contentType.createOrUpdateEntity(json, imageData) { [weak self] (error: Error?) in
+			guard (error == nil) else {
+				UIAlertController.showErrorPopup(error as NSError?)
+				return
+			}
+
+			// Re-Fetch the data, reload the table view and pop the current view controller.
+			self?.fetchContent(completion: {
+				completion()
+			})
+		}
 	}
 }
 

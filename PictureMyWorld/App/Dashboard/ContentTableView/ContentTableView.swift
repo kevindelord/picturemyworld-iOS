@@ -31,7 +31,7 @@ class ContentTableView 					: UITableView {
 	}
 
 	@objc private func reloadContentManager() {
-		self.contentDataSource?.refreshContent(completion: {
+		self.contentDataSource?.fetchContent(completion: {
 			self.reloadData()
 			// If any, stop the refreshing animation
 			self.refreshControl?.endRefreshing()

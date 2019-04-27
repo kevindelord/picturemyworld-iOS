@@ -25,7 +25,15 @@ protocol ContentManagerDataSource {
 	/// Fetch and store the entities related to the current content type.
 	///
 	/// - Parameter completion: Closure called after success.
-	func refreshContent(completion: @escaping (() -> Void))
+	func fetchContent(completion: @escaping (() -> Void))
+
+	/// Create or update an entity based on the current content type of the ContentManager.
+	///
+	/// - Parameters:
+	///   - json: Serialized Entity to create or update.
+	///   - imageData: Optional image data.
+	///   - completion: Closure calld after success.
+	func createOrUpdateEntity(json: [String: Any], imageData: Data?, completion: @escaping () -> Void)
 }
 
 
