@@ -59,7 +59,7 @@ extension ContentTableView: UITableViewDelegate {
 		self.detailViewRooter?.present(destination: destination, entity: entity)
 	}
 
-	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if (editingStyle == .delete) {
 			self.contentManager?.presentDeleteContentAlert(for: indexPath)
 		}

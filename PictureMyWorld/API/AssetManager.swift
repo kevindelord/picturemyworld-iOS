@@ -86,7 +86,7 @@ struct AssetManager {
 		DispatchQueue.global(qos: .background).async {
 
 			// Write image data to disk
-			let data = UIImageJPEGRepresentation(image, 100)
+			let data = image.jpegData(compressionQuality: 100)
 			print("Write image data to path: \(imagePath)")
 			do {
 				try data?.write(to: URL(fileURLWithPath: imagePath), options: .completeFileProtection)

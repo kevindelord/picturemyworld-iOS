@@ -382,6 +382,7 @@
 				TargetAttributes = {
 					7566087D20F89577005711BF = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -427,7 +428,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -440,7 +441,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PictureMyWorld/Pods-PictureMyWorld-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3E3C8213C7A57DA2CC1F9C34 /* [CP] Check Pods Manifest.lock */ = {
@@ -664,7 +665,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -684,7 +685,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.PictureMyWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

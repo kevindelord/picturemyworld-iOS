@@ -49,7 +49,7 @@ class PostDetailViewController					: DetailViewController {
 		// If needed, override in subclass to upload an image.
 		guard
 			let image = self.imageView.image,
-			let jpegRepresentation = UIImageJPEGRepresentation(image, 1.0) else {
+			let jpegRepresentation = image.jpegData(compressionQuality: 1.0) else {
 				return nil
 		}
 
