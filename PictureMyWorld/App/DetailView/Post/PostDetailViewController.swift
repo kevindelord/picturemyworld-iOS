@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: use reachability to prevent API calls when there is no internet.
-
 class PostDetailViewController					: DetailViewController {
 
 	// MARK: - IBOutlets
@@ -57,12 +55,14 @@ class PostDetailViewController					: DetailViewController {
 
 	override var serializedEntity				: [String: Any] {
 		return [
-			// TODO: Use real value from the text fields.
-			API.JSON.caption: "tmp caption",//(self.captionTextView.text ?? ""),
-			API.JSON.date: "2018-07-07",//(self.dateTextField.text ?? ""),
-//			API.JSON.filename: (self.filenameTextField.text ?? ""),
-			API.JSON.title: "Tmp Tile Awesome",//(self.titleTextField.text ?? ""),
-			API.JSON.location: "testing upload"//(self.locationTextField.text ?? "")
+			// Parameters used ot identify the action type (create or update)
+			API.JSON.filename: (self.filenameTextField.text ?? ""),
+			// Required Parameters
+			API.JSON.date: (self.dateTextField.text ?? ""),
+			API.JSON.caption: (self.captionTextView.text ?? ""),
+			API.JSON.title: (self.titleTextField.text ?? ""),
+			API.JSON.location: (self.locationTextField.text ?? "")
+			// API.JSON.image: The image is sent as a raw data by the APImanager.
 		]
 	}
 }

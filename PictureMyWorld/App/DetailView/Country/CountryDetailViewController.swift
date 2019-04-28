@@ -41,9 +41,11 @@ class CountryDetailViewController				: DetailViewController {
 
 	override var serializedEntity				: [String: Any] {
 		return [
-			API.JSON.name: (self.nameTextField.text ?? ""),
-			API.JSON.image: (self.imageTextField.text ?? ""),
+			// Parameters used ot identify the action type (create or update)
 			API.JSON.filename: (self.filenameTextField.text ?? ""),
+			// Required Parameters
+			API.JSON.name: (self.nameTextField.text ?? ""),
+			API.JSON.image: (self.imageTextField.text ?? "")
 		]
 	}
 }

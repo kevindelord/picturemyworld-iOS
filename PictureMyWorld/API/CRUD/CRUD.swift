@@ -29,15 +29,14 @@ extension CRUD where Self: Model {
 	}
 
 	static func createOrUpdateEntity(with dictionary: [String: Any], imageData: Data?, completion: @escaping ((_ error: Error?) -> Void)) {
-		guard let imageData = imageData else {
+		if let imageData = imageData {
+			// Create or update an entity with an image to upload.
+			let uploadManager = UploadManager(endpoint: Self.entityEndpoint, with: dictionary, imageData: imageData)
+			uploadManager.upload(completion: completion)
+		} else {
 			// Create or update an entity without uploading any image.
 			APIManager.createOrUpdate(Self.entityEndpoint, with: dictionary, completion: completion)
-			return
 		}
-
-		// Create or update an entity with an image to upload.
-		let uploadManager = UploadManager(endpoint: Self.entityEndpoint, with: dictionary, imageData: imageData)
-		uploadManager.upload(completion: completion)
 	}
 
 	static func deleteEntity(with filename: String, completion: @escaping ((_ error: Error?) -> Void)) {

@@ -56,19 +56,28 @@ extension APIManager {
 
 	private typealias Request = (method: (URLConvertible, Parameters?, ParameterEncoding) -> DataRequest, url: URL, parameters: [String : Any])
 
+	/// Create a PUT or POST Request representing either an "Update" or "Create" action.
+	/// If 'filename' exists, an update (PUT) action will be performed and the its key/value pair removed from the request's parameters.
+	///
+	/// - Parameters:
+	///   - url: Endpoint URL.
+	///   - dictionary: Serialized entity with required parameters.
+	/// - Returns: A new Request structure.
 	private static func createOrUpdateRequest(for url: URL, with dictionary: [String: Any]) -> Request {
 		var parameters = dictionary
 		let filename = parameters[API.JSON.filename] as? String
 		parameters.removeValue(forKey: API.JSON.filename)
 
-		guard
+		if
 			let destination = filename,
 			(destination.isEmpty == false),
-			let updateEndpointURL = url.add(path: destination) else {
-				return (APIManager.post, url, parameters)
+			let updateEndpointURL = url.add(path: destination) {
+				// UPDATE action
+				return (APIManager.put, updateEndpointURL, parameters)
+		} else {
+			// CREATE action
+			return (APIManager.post, url, parameters)
 		}
-
-		return (APIManager.put, updateEndpointURL, parameters)
 	}
 
 	/// Perform a DELETE request for a specific entity at the given Endpoint.

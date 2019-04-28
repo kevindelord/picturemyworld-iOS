@@ -48,9 +48,11 @@ class VideoDetailViewController					: DetailViewController {
 
 	override var serializedEntity				: [String: Any] {
 		return [
+			// Parameters used ot identify the action type (create or update)
+			API.JSON.filename: (self.filenameTextField.text ?? ""),
+			// Required Parameters
 			API.JSON.caption: (self.captionTextView.text ?? ""),
 			API.JSON.date: (self.dateTextField.text ?? ""),
-			API.JSON.filename: (self.filenameTextField.text ?? ""),
 			API.JSON.music: (self.musicTextField.text ?? ""),
 			API.JSON.title: (self.titleTextField.text ?? ""),
 			API.JSON.youtubeIdentifier: (self.youtubeTextField.text ?? "")
