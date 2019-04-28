@@ -28,6 +28,7 @@
 		75099D2A20F9046E001A1F39 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2920F9046E001A1F39 /* Environment.swift */; };
 		75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */; };
 		75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */; };
+		7524E5482275E11C00436D26 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E5472275E11C00436D26 /* SettingsViewController.swift */; };
 		752B22BD21022392004FF82A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BC21022392004FF82A /* ImagePicker.swift */; };
 		752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BE21022EE8004FF82A /* APIManager+Upload.swift */; };
 		753F3B4D20FCA49C0015CB23 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */; };
@@ -85,6 +86,7 @@
 		75099D2920F9046E001A1F39 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		7524E5472275E11C00436D26 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		752B22BC21022392004FF82A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		752B22BE21022EE8004FF82A /* APIManager+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIManager+Upload.swift"; path = "/Users/kevindelord/Projects/picturemyworld-iOS/PictureMyWorld/API/APIManager+Upload.swift"; sourceTree = "<absolute>"; };
 		753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,14 @@
 			path = ContentTableViewCells;
 			sourceTree = "<group>";
 		};
+		7524E5462275E10800436D26 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7524E5472275E11C00436D26 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		752B22B721021CCE004FF82A /* Video */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +264,7 @@
 		753F3B5220FCABA80015CB23 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				7524E5462275E10800436D26 /* Settings */,
 				75099D2820F901DB001A1F39 /* Dashboard */,
 				75532DE820FA5EDB001DDCFC /* DetailView */,
 				75099D2720F901C3001A1F39 /* WebViewer */,
@@ -475,6 +486,7 @@
 				75099D1220F8E50B001A1F39 /* ContentTableView.swift in Sources */,
 				75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */,
 				75099D1C20F8F998001A1F39 /* ContentWebView.swift in Sources */,
+				7524E5482275E11C00436D26 /* SettingsViewController.swift in Sources */,
 				75099D2220F8FC70001A1F39 /* ContentType.swift in Sources */,
 				75099D2A20F9046E001A1F39 /* Environment.swift in Sources */,
 				75099D1820F8F5B5001A1F39 /* APIConstants.swift in Sources */,
