@@ -29,6 +29,9 @@
 		75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */; };
 		75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */; };
 		7524E5482275E11C00436D26 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E5472275E11C00436D26 /* SettingsViewController.swift */; };
+		7524E54C2275F6AB00436D26 /* EnvironmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E54B2275F6AB00436D26 /* EnvironmentCollectionViewCell.swift */; };
+		7524E54E2275F6E200436D26 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E54D2275F6E200436D26 /* SettingsDelegate.swift */; };
+		7524E5502275F6F700436D26 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E54F2275F6F700436D26 /* Settings.swift */; };
 		752B22BD21022392004FF82A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BC21022392004FF82A /* ImagePicker.swift */; };
 		752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BE21022EE8004FF82A /* APIManager+Upload.swift */; };
 		753F3B4D20FCA49C0015CB23 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */; };
@@ -87,6 +90,9 @@
 		75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		7524E5472275E11C00436D26 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7524E54B2275F6AB00436D26 /* EnvironmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentCollectionViewCell.swift; sourceTree = "<group>"; };
+		7524E54D2275F6E200436D26 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
+		7524E54F2275F6F700436D26 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		752B22BC21022392004FF82A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		752B22BE21022EE8004FF82A /* APIManager+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIManager+Upload.swift"; path = "/Users/kevindelord/Projects/picturemyworld-iOS/PictureMyWorld/API/APIManager+Upload.swift"; sourceTree = "<absolute>"; };
 		753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -232,7 +238,10 @@
 		7524E5462275E10800436D26 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				7524E54F2275F6F700436D26 /* Settings.swift */,
 				7524E5472275E11C00436D26 /* SettingsViewController.swift */,
+				7524E54D2275F6E200436D26 /* SettingsDelegate.swift */,
+				7524E54B2275F6AB00436D26 /* EnvironmentCollectionViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -492,6 +501,7 @@
 				75099D1820F8F5B5001A1F39 /* APIConstants.swift in Sources */,
 				75CF12DD2274AC1A006EA6B3 /* DetailScrollView.swift in Sources */,
 				753F3B5D20FCE1070015CB23 /* Post+CRUD.swift in Sources */,
+				7524E54C2275F6AB00436D26 /* EnvironmentCollectionViewCell.swift in Sources */,
 				75099D2620F8FF0C001A1F39 /* Video.swift in Sources */,
 				75D8594B210202AB0073C1BD /* AssetManager.swift in Sources */,
 				752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */,
@@ -510,6 +520,7 @@
 				755A4E4620FD1368005656C8 /* ContentManagerDelegate.swift in Sources */,
 				75532DEA20FA5EEA001DDCFC /* CountryDetailViewController.swift in Sources */,
 				75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */,
+				7524E54E2275F6E200436D26 /* SettingsDelegate.swift in Sources */,
 				75099D0920F8B814001A1F39 /* UIAlertController.swift in Sources */,
 				7566088220F89577005711BF /* AppDelegate.swift in Sources */,
 				75099D0C20F8B982001A1F39 /* Post.swift in Sources */,
@@ -518,6 +529,7 @@
 				75099D1A20F8F70F001A1F39 /* EnvironmentSegmentedControl.swift in Sources */,
 				7590460C2274E717002484A2 /* DashboardDelegate.swift in Sources */,
 				75099CFA20F8A490001A1F39 /* Configuration.swift in Sources */,
+				7524E5502275F6F700436D26 /* Settings.swift in Sources */,
 				75099D1620F8F578001A1F39 /* ContentTypeSegmentedControl.swift in Sources */,
 				75099D1420F8E9AD001A1F39 /* PostTableViewCell.swift in Sources */,
 				75099D1020F8D5BF001A1F39 /* RawRepresentable.swift in Sources */,

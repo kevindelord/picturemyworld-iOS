@@ -8,17 +8,13 @@
 
 import UIKit
 
-// TODO: add constant file
-// TODO: add documentation
-
-protocol SettingsDelegate {
-
-	func previewWebsite(for environment: Environment?)
-
-	func deploy(to environment: Environment?)
-}
-
 class SettingsViewContoller : UICollectionViewController, SettingsDelegate {
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		self.title = "Environments"
+	}
 
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return Environment.allCases.count
@@ -27,7 +23,7 @@ class SettingsViewContoller : UICollectionViewController, SettingsDelegate {
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		// get a reference to our storyboard cell
 		guard
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EnvironmentCell", for: indexPath) as? EnvironmentCollectionViewCell,
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Settings.ReuseIdentifier.environmentCell, for: indexPath) as? EnvironmentCollectionViewCell,
 			let environment = Environment(rawValue: indexPath.item) else {
 				fatalError("Cannot dequeue settings collection view cell.")
 		}
@@ -39,17 +35,6 @@ class SettingsViewContoller : UICollectionViewController, SettingsDelegate {
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		collectionView.deselectItem(at: indexPath, animated: false)
-	}
-
-	override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-		// TODO: why is hasWebContent never correct for dev?
-		guard
-			let environment = sender as? Environment,
-			(environment.hasWebContent == true) else {
-				return false
-		}
-
-		return true
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,57 +68,10 @@ class SettingsViewContoller : UICollectionViewController, SettingsDelegate {
 extension SettingsViewContoller {
 
 	internal func previewWebsite(for environment: Environment?) {
-		self.performSegue(withIdentifier: "OpenWebViewer", sender: environment)
+		self.performSegue(withIdentifier: Settings.Segue.webPreview, sender: environment)
 	}
 
 	internal func deploy(to environment: Environment?) {
 		print("TODO: use APIManager")
-	}
-}
-
-class EnvironmentCollectionViewCell 			: UICollectionViewCell {
-
-	@IBOutlet private weak var nameLabel 		: UILabel!
-	@IBOutlet private weak var versionLabel		: UILabel!
-	@IBOutlet private weak var websiteLabel 	: UILabel!
-	@IBOutlet private weak var webPreviewButton : UIButton!
-	@IBOutlet private weak var deployButton 	: UIButton!
-
-	private var environment						: Environment?
-	private var settingsDelegate				: SettingsDelegate?
-
-	func setup(for environment: Environment?, settingsDelegate: SettingsDelegate) {
-		self.settingsDelegate = settingsDelegate
-		self.environment = environment
-		self.nameLabel.text = self.environment?.key
-		self.versionLabel.text = "Version: TODO"
-		self.websiteLabel.text = self.environment?.webURL?.absoluteString
-		self.webPreviewButton.isHidden = (self.environment?.hasWebContent == false)
-		self.deployButton.isHidden = (self.environment?.hasWebContent == false)
-	}
-}
-
-extension EnvironmentCollectionViewCell {
-
-	@IBAction private func openPreviewWebsite() {
-		self.settingsDelegate?.previewWebsite(for: self.environment)
-	}
-
-	@IBAction private func deployToEnvironment() {
-		self.presentDeployAlert()
-	}
-
-	private func presentDeployAlert() {
-		guard let env = self.environment?.key else {
-			return
-		}
-
-		let alert = UIAlertController(title: nil, message: "Deploy changes to '\(env)' ?", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Yes, I'm sure", style: .destructive, handler: { [weak self] (_ : UIAlertAction) in
-			self?.settingsDelegate?.deploy(to: self?.environment)
-		}))
-		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-		AppDelegate.alertPresentingController?.present(alert, animated: true, completion: nil)
 	}
 }
