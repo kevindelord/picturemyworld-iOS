@@ -31,9 +31,9 @@ struct DetailViewRooter {
 
 		var title: String {
 			switch self {
-			case .post:		return "Post"
-			case .country:	return "Country"
-			case .video:	return "Video"
+			case .post:		return "detail.title.post".localized()
+			case .country:	return "detail.title.country".localized()
+			case .video:	return "detail.title.video".localized()
 			}
 		}
 

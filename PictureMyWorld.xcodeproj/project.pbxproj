@@ -34,6 +34,7 @@
 		7524E5502275F6F700436D26 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E54F2275F6F700436D26 /* Settings.swift */; };
 		752B22BD21022392004FF82A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BC21022392004FF82A /* ImagePicker.swift */; };
 		752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BE21022EE8004FF82A /* APIManager+Upload.swift */; };
+		753064C022760234009102C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 753064C222760234009102C4 /* Localizable.strings */; };
 		753F3B4D20FCA49C0015CB23 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */; };
 		753F3B4F20FCAA530015CB23 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */; };
 		753F3B5120FCAADD0015CB23 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F3B5020FCAADD0015CB23 /* Settings.storyboard */; };
@@ -95,6 +96,7 @@
 		7524E54F2275F6F700436D26 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		752B22BC21022392004FF82A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		752B22BE21022EE8004FF82A /* APIManager+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIManager+Upload.swift"; path = "/Users/kevindelord/Projects/picturemyworld-iOS/PictureMyWorld/API/APIManager+Upload.swift"; sourceTree = "<absolute>"; };
+		753064C122760234009102C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		753F3B5020FCAADD0015CB23 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -201,10 +203,10 @@
 		75099D2820F901DB001A1F39 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				753064C322760742009102C4 /* ContentTypeSegmentedControl */,
 				755A4E3F20FCE9A3005656C8 /* ContentManager */,
 				75099D2C20F9063C001A1F39 /* ContentTableViewCells */,
 				755A4E4720FD138C005656C8 /* ContentTableView */,
-				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
 				7566088320F89577005711BF /* DashboardViewController.swift */,
 				7590460B2274E717002484A2 /* DashboardDelegate.swift */,
 			);
@@ -221,6 +223,7 @@
 				753F3B5020FCAADD0015CB23 /* Settings.storyboard */,
 				7566088C20F89579005711BF /* LaunchScreen.storyboard */,
 				7566088F20F89579005711BF /* PictureMyWorld-iOS-Info.plist */,
+				753064C222760234009102C4 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -269,6 +272,14 @@
 				75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */,
 			);
 			path = Country;
+			sourceTree = "<group>";
+		};
+		753064C322760742009102C4 /* ContentTypeSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
+			);
+			path = ContentTypeSegmentedControl;
 			sourceTree = "<group>";
 		};
 		753F3B5220FCABA80015CB23 /* App */ = {
@@ -432,6 +443,7 @@
 				753F3B5120FCAADD0015CB23 /* Settings.storyboard in Resources */,
 				75532DF020FC9AE0001DDCFC /* DetailView.storyboard in Resources */,
 				7566088B20F89579005711BF /* Assets.xcassets in Resources */,
+				753064C022760234009102C4 /* Localizable.strings in Resources */,
 				753F3B4F20FCAA530015CB23 /* Dashboard.storyboard in Resources */,
 				7566088920F89577005711BF /* Main.storyboard in Resources */,
 			);
@@ -541,6 +553,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		753064C222760234009102C4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				753064C122760234009102C4 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		7566088720F89577005711BF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

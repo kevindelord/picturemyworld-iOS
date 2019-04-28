@@ -20,7 +20,7 @@ class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.title = "Environments"
+		self.title = "settings.title".localized()
 
 		// Setup Refresh Contol
 		self.refreshControl.tintColor = self.view.tintColor

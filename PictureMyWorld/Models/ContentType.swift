@@ -26,10 +26,9 @@ enum ContentType : Int {
 
 	var title: String {
 		switch self {
-		// TODO: Integrate localization
-		case .posts			: return "Posts"
-		case .countries		: return "Countries"
-		case .videos		: return "Videos"
+		case .posts			: return "content.posts".localized()
+		case .countries		: return "content.countries".localized()
+		case .videos		: return "content.videos".localized()
 		}
 	}
 

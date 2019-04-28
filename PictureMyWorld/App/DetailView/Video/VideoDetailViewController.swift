@@ -39,7 +39,7 @@ class VideoDetailViewController					: DetailViewController {
 
 		guard
 			(video.youtubeIdentifier.isEmpty == false),
-			let youtubeURL = URL(string: "https://www.youtube.com/embed/\(video.youtubeIdentifier)") else {
+			let youtubeURL = URL(string: DetailViewConstants.youtubeBaseURL + video.youtubeIdentifier) else {
 				return
 		}
 

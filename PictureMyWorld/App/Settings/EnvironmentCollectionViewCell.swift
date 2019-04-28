@@ -23,7 +23,7 @@ class EnvironmentCollectionViewCell 			: UICollectionViewCell {
 		self.settingsDelegate = settingsDelegate
 		self.environment = environment
 		self.nameLabel.text = self.environment?.key
-		self.versionLabel.text = "Version: \(version)"
+		self.versionLabel.text = String(format: "settings.cell.version".localized(), version)
 		self.websiteLabel.text = self.environment?.webURL?.absoluteString
 		self.webPreviewButton.isHidden = (self.environment?.hasWebContent == false)
 		self.deployButton.isHidden = (self.environment?.hasWebContent == false)
@@ -45,11 +45,11 @@ extension EnvironmentCollectionViewCell {
 			return
 		}
 
-		let alert = UIAlertController(title: nil, message: "Deploy changes to '\(env)' ?", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Yes, I'm sure", style: .destructive, handler: { [weak self] (_ : UIAlertAction) in
+		let alert = UIAlertController(title: nil, message: String(format: "settings.alert.messsage".localized(), env), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "settings.alert.ok".localized(), style: .destructive, handler: { [weak self] (_ : UIAlertAction) in
 			self?.settingsDelegate?.deploy(to: self?.environment)
 		}))
-		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		alert.addAction(UIAlertAction(title: "settings.alert.cancel".localized(), style: .cancel, handler: nil))
 
 		AppDelegate.alertPresentingController?.present(alert, animated: true, completion: nil)
 	}
