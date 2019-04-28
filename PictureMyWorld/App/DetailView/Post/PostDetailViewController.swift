@@ -37,7 +37,7 @@ class PostDetailViewController					: DetailViewController {
 		self.locationTextField.text = post.locationText
 		self.captionTextView.text = post.caption
 
-		APIManager.downloadAndCache(.thumbnail, for: post.image, completion: { [weak self] (image: UIImage?) in
+		APIManager.downloadAndCache(image: post.image, completion: { [weak self] (image: UIImage?) in
 			self?.imageView.image = image
 		})
 	}
@@ -67,7 +67,6 @@ class PostDetailViewController					: DetailViewController {
 	}
 }
 
-
 // MARK: - IBActions
 
 extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -75,6 +74,11 @@ extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigati
 	@IBAction private func selectPhotoFromLibrary() {
 		let imagePicker = ImagePicker { [weak self] (image: UIImage?) in
 			self?.imageView.image = image
+
+			// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
+			if let imageName = (self?.entity as? Post)?.image {
+				APIManager.clearCache(image: imageName)
+			}
 		}
 
 		self.present(imagePicker, animated: true, completion: nil)

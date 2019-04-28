@@ -34,7 +34,7 @@ class CountryDetailViewController				: DetailViewController {
 		self.linkTextField.text = country.link
 		self.ratioTextField.text = country.ratio
 
-		APIManager.downloadAndCache(.thumbnail, for: country.image, completion: { [weak self] (image: UIImage?) in
+		APIManager.downloadAndCache(image: country.image, completion: { [weak self] (image: UIImage?) in
 			self?.imageView.image = image
 		})
 	}
