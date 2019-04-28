@@ -13,6 +13,7 @@ class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate {
 	// MARK: - Private Attributes
 
 	private var deployedVersions 	= [Environment: String]()
+	private var refreshControl 		= UIRefreshControl()
 
 	// MARK: - View life cycle
 
@@ -20,9 +21,15 @@ class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate {
 		super.viewDidLoad()
 
 		self.title = "Environments"
-		self.fetchDeployedVersion(completion: { [weak self] in
-			self?.collectionView.reloadData()
-		})
+
+		// Setup Refresh Contol
+		self.refreshControl.tintColor = self.view.tintColor
+		self.refreshControl.addTarget(self, action: #selector(self.fetchDeployedVersion), for: .valueChanged)
+		self.collectionView.alwaysBounceVertical = true
+		self.collectionView.addSubview(self.refreshControl)
+
+		// Fetch data and relaod table view
+		self.fetchDeployedVersion()
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,14 +75,16 @@ extension SettingsViewContoller {
 
 extension SettingsViewContoller {
 
-	private func fetchDeployedVersion(completion: @escaping (() -> Void)) {
+	@objc private func fetchDeployedVersion() {
 		APIManager.fetchVersions(completion: { [weak self] (versions: [Environment: String], error: Error?) in
 			if let error = error {
 				UIAlertController.showErrorMessage(error.localizedDescription)
 			} else {
 				self?.deployedVersions = versions
-				completion()
+				self?.collectionView.reloadData()
 			}
+
+			self?.refreshControl.endRefreshing()
 		})
 	}
 }

@@ -6,8 +6,6 @@
 //  Copyright © 2019 Kevin Delord. All rights reserved.
 //
 
-// TODO: add documentation
-
 protocol SettingsDelegate {
 
 	/// Open the Web Preview controller to display the web page related to the given environment.
