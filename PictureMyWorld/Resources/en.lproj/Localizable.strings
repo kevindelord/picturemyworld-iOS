@@ -29,3 +29,7 @@
 "content.posts" = "Posts";
 "content.countries" = "Countries";
 "content.videos" = "Videos";
+
+/// Errors
+"error.title" = "Error";
+"error.ok" = "OK";

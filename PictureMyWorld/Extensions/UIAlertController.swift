@@ -28,12 +28,12 @@ extension UIAlertController {
 	}
 
 	class func showErrorMessage(_ message: String, presentingViewController: UIViewController? = nil) {
-		self.showInfoMessage("Error", message: message, presentingViewController: presentingViewController)
+		self.showInfoMessage("error.title".localized(), message: message, presentingViewController: presentingViewController)
 	}
 
 	class func showInfoMessage(_ title: String, message: String, presentingViewController: UIViewController? = nil) {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		alertController.addAction(UIAlertAction(title: "error.ok".localized(), style: .default, handler: nil))
 
 		// Present the UIAlertController
 		let controller = (presentingViewController ?? AppDelegate.alertPresentingController)
