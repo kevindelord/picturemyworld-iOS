@@ -41,15 +41,41 @@ class SettingsViewContoller : UICollectionViewController, SettingsDelegate {
 		collectionView.deselectItem(at: indexPath, animated: false)
 	}
 
+	override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+		// TODO: why is hasWebContent never correct for dev?
+		guard
+			let environment = sender as? Environment,
+			(environment.hasWebContent == true) else {
+				return false
+		}
+
+		return true
+	}
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		super.prepare(for: segue, sender: sender)
 
-		guard let controller = segue.destination as? WebViewController else {
-			return
+		guard
+			let controller = segue.destination as? WebViewController,
+			let environment = sender as? Environment else {
+				return
 		}
 
-		// TODO: setup/refactor web preview controller
+		controller.setup(environment: environment)
 	}
+
+	// MARK: - Version Management
+
+	//	private func fetchDeployedVersion() {
+	//		APIManager.fetchVersions(completion: { [weak self] (versions: [Environment: String], error: Error?) in
+	//			if let error = error {
+	//				UIAlertController.showErrorMessage(error.localizedDescription)
+	//			} else {
+	//				self?.deployedVersions = versions
+	//				self?.displayEnvironmentVersion()
+	//			}
+	//		})
+	//	}
 }
 
 // MARK: - Settings Delegate Methods
@@ -57,7 +83,7 @@ class SettingsViewContoller : UICollectionViewController, SettingsDelegate {
 extension SettingsViewContoller {
 
 	internal func previewWebsite(for environment: Environment?) {
-		self.navigationController?.performSegue(withIdentifier: "OpenWebViewer", sender: environment)
+		self.performSegue(withIdentifier: "OpenWebViewer", sender: environment)
 	}
 
 	internal func deploy(to environment: Environment?) {
@@ -82,9 +108,8 @@ class EnvironmentCollectionViewCell 			: UICollectionViewCell {
 		self.nameLabel.text = self.environment?.key
 		self.versionLabel.text = "Version: TODO"
 		self.websiteLabel.text = self.environment?.webURL?.absoluteString
-		self.webPreviewButton.isEnabled = (self.environment?.hasWebContent != nil)
-		self.deployButton.isEnabled = (self.environment?.hasWebContent != nil)
-		self.backgroundColor = UIColor.cyan // make cell more visible in our example project
+		self.webPreviewButton.isHidden = (self.environment?.hasWebContent == false)
+		self.deployButton.isHidden = (self.environment?.hasWebContent == false)
 	}
 }
 
