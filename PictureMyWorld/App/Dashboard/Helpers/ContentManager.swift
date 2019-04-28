@@ -71,18 +71,22 @@ extension ContentManager {
 
 extension ContentManager {
 
+	/// Delete an entry from the API and refetch the latest status.
+	/// The (re-)fetch of the entities for the current content type is important to render the tableView without errors.
 	internal func deleteContent(for indexPath: IndexPath, completion: @escaping ((IndexPath) -> Void)) {
 		guard let model = self.model(at: indexPath) else {
 			return
 		}
 
-		self.contentType.deleteEntity(model.filename) { (error: Error?) in
+		self.contentType.deleteEntity(model.filename) { [weak self] (error: Error?) in
 			guard (error == nil) else {
 				UIAlertController.showErrorPopup(error as NSError?)
 				return
 			}
 
-			completion(indexPath)
+			self?.fetchContent(completion: {
+				completion(indexPath)
+			})
 		}
 	}
 }
