@@ -8,6 +8,9 @@
 
 import UIKit
 
+// TODO: Add app icon
+// TODO: Update design of tab bar (default icons no text).
+
 class DashboardViewController					: UIViewController, DashboardDelegate {
 
 	@IBOutlet private weak var segmentedControl	: ContentTypeSegmentedControl?
