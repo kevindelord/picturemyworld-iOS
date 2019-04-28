@@ -21,7 +21,7 @@ enum Environment : Int {
 		}
 	}
 
-	/// Currnet API environment used.
+	/// Current API environment used.
 	static var current : Environment {
 		#if targetEnvironment(simulator)
 			// Default environment for local development.
