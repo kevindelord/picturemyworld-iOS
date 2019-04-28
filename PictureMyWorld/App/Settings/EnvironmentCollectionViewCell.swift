@@ -19,11 +19,11 @@ class EnvironmentCollectionViewCell 			: UICollectionViewCell {
 	private var environment						: Environment?
 	private var settingsDelegate				: SettingsDelegate?
 
-	func setup(for environment: Environment?, settingsDelegate: SettingsDelegate) {
+	func setup(for environment: Environment?, settingsDelegate: SettingsDelegate, version: String) {
 		self.settingsDelegate = settingsDelegate
 		self.environment = environment
 		self.nameLabel.text = self.environment?.key
-		self.versionLabel.text = "Version: TODO"
+		self.versionLabel.text = "Version: \(version)"
 		self.websiteLabel.text = self.environment?.webURL?.absoluteString
 		self.webPreviewButton.isHidden = (self.environment?.hasWebContent == false)
 		self.deployButton.isHidden = (self.environment?.hasWebContent == false)

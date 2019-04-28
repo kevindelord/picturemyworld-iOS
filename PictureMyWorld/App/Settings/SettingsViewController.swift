@@ -8,13 +8,39 @@
 
 import UIKit
 
-class SettingsViewContoller : UICollectionViewController, SettingsDelegate {
+class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate {
+
+	// MARK: - Private Attributes
+
+	private var deployedVersions 	= [Environment: String]()
+
+	// MARK: - View life cycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.title = "Environments"
+		self.fetchDeployedVersion(completion: { [weak self] in
+			self?.collectionView.reloadData()
+		})
 	}
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		super.prepare(for: segue, sender: sender)
+
+		guard
+			let controller = segue.destination as? WebViewController,
+			let environment = sender as? Environment else {
+				return
+		}
+
+		controller.setup(environment: environment)
+	}
+}
+
+// MARK: - Collection view
+
+extension SettingsViewContoller {
 
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return Environment.allCases.count
@@ -29,38 +55,29 @@ class SettingsViewContoller : UICollectionViewController, SettingsDelegate {
 		}
 
 		// Use the outlet in our custom class to get a reference to the UILabel in the cell
-		cell.setup(for: environment, settingsDelegate: self)
+		cell.setup(for: environment, settingsDelegate: self, version: self.deployedVersions[environment] ?? "")
 		return cell
 	}
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		collectionView.deselectItem(at: indexPath, animated: false)
 	}
+}
 
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		super.prepare(for: segue, sender: sender)
+// MARK: - Version Management
 
-		guard
-			let controller = segue.destination as? WebViewController,
-			let environment = sender as? Environment else {
-				return
-		}
+extension SettingsViewContoller {
 
-		controller.setup(environment: environment)
+	private func fetchDeployedVersion(completion: @escaping (() -> Void)) {
+		APIManager.fetchVersions(completion: { [weak self] (versions: [Environment: String], error: Error?) in
+			if let error = error {
+				UIAlertController.showErrorMessage(error.localizedDescription)
+			} else {
+				self?.deployedVersions = versions
+				completion()
+			}
+		})
 	}
-
-	// MARK: - Version Management
-
-	//	private func fetchDeployedVersion() {
-	//		APIManager.fetchVersions(completion: { [weak self] (versions: [Environment: String], error: Error?) in
-	//			if let error = error {
-	//				UIAlertController.showErrorMessage(error.localizedDescription)
-	//			} else {
-	//				self?.deployedVersions = versions
-	//				self?.displayEnvironmentVersion()
-	//			}
-	//		})
-	//	}
 }
 
 // MARK: - Settings Delegate Methods
