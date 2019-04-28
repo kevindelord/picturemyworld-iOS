@@ -21,6 +21,7 @@ enum Environment : Int {
 		}
 	}
 
+	/// Current API environment used.
 	static var current : Environment {
 		#if targetEnvironment(simulator)
 			// Default environment for local development.
