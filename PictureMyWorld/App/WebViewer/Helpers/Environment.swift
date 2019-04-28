@@ -22,7 +22,7 @@ enum Environment : Int {
 	}
 
 	static var current : Environment {
-		return .staging
+		return .development
 	}
 
 	var webURL: URL? {

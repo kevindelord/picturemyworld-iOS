@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: use reachability to prevent API calls when there is no internet.
-
 class PostDetailViewController					: DetailViewController {
 
 	// MARK: - IBOutlets
@@ -39,7 +37,7 @@ class PostDetailViewController					: DetailViewController {
 		self.locationTextField.text = post.locationText
 		self.captionTextView.text = post.caption
 
-		APIManager.downloadAndCache(.thumbnail, for: post.image, completion: { [weak self] (image: UIImage?) in
+		APIManager.downloadAndCache(image: post.image, completion: { [weak self] (image: UIImage?) in
 			self?.imageView.image = image
 		})
 	}
@@ -57,16 +55,17 @@ class PostDetailViewController					: DetailViewController {
 
 	override var serializedEntity				: [String: Any] {
 		return [
-			// TODO: Use real value from the text fields.
-			API.JSON.caption: "tmp caption",//(self.captionTextView.text ?? ""),
-			API.JSON.date: "2018-07-07",//(self.dateTextField.text ?? ""),
-//			API.JSON.filename: (self.filenameTextField.text ?? ""),
-			API.JSON.title: "Tmp Tile Awesome",//(self.titleTextField.text ?? ""),
-			API.JSON.location: "testing upload"//(self.locationTextField.text ?? "")
+			// Parameters used ot identify the action type (create or update)
+			API.JSON.filename: (self.filenameTextField.text ?? ""),
+			// Required Parameters
+			API.JSON.date: (self.dateTextField.text ?? ""),
+			API.JSON.caption: (self.captionTextView.text ?? ""),
+			API.JSON.title: (self.titleTextField.text ?? ""),
+			API.JSON.location: (self.locationTextField.text ?? "")
+			// API.JSON.image: The image is sent as a raw data by the APImanager.
 		]
 	}
 }
-
 
 // MARK: - IBActions
 
@@ -75,6 +74,11 @@ extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigati
 	@IBAction private func selectPhotoFromLibrary() {
 		let imagePicker = ImagePicker { [weak self] (image: UIImage?) in
 			self?.imageView.image = image
+
+			// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
+			if let imageName = (self?.entity as? Post)?.image {
+				APIManager.clearCache(image: imageName)
+			}
 		}
 
 		self.present(imagePicker, animated: true, completion: nil)

@@ -427,7 +427,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tT-FC-vl4">
-                                        <rect key="frame" x="98" y="125.5" width="179" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="211.5"/>
                                         <state key="normal" title="Select Photo From Library"/>
                                         <connections>
                                             <action selector="selectPhotoFromLibrary" destination="4C1-4u-FKC" eventType="touchUpInside" id="k5B-LP-z1x"/>
@@ -588,18 +588,20 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="9tT-FC-vl4" firstAttribute="trailing" secondItem="Tf0-bD-xSk" secondAttribute="trailing" id="0au-u3-2qV"/>
                                     <constraint firstAttribute="trailing" secondItem="Tf0-bD-xSk" secondAttribute="trailing" id="D8n-F1-fUH"/>
+                                    <constraint firstItem="9tT-FC-vl4" firstAttribute="top" secondItem="Tf0-bD-xSk" secondAttribute="top" id="G8i-Fr-Fh5"/>
                                     <constraint firstItem="qWw-3I-ajr" firstAttribute="bottom" secondItem="Tf0-bD-xSk" secondAttribute="bottom" id="G9N-nQ-wIH"/>
                                     <constraint firstAttribute="trailing" secondItem="mi9-4P-fwQ" secondAttribute="trailing" id="Hly-hi-HMB"/>
                                     <constraint firstItem="mi9-4P-fwQ" firstAttribute="top" secondItem="Tf0-bD-xSk" secondAttribute="bottom" id="Mts-cB-VJk"/>
                                     <constraint firstItem="qWw-3I-ajr" firstAttribute="leading" secondItem="u3u-YC-rsW" secondAttribute="leading" id="N75-GD-sIt"/>
                                     <constraint firstItem="Tf0-bD-xSk" firstAttribute="leading" secondItem="u3u-YC-rsW" secondAttribute="leading" id="Som-Dw-giK"/>
-                                    <constraint firstItem="9tT-FC-vl4" firstAttribute="centerY" secondItem="Tf0-bD-xSk" secondAttribute="centerY" id="Tao-xJ-OrG"/>
                                     <constraint firstItem="mi9-4P-fwQ" firstAttribute="leading" secondItem="u3u-YC-rsW" secondAttribute="leading" id="Yhm-np-G4P"/>
+                                    <constraint firstItem="9tT-FC-vl4" firstAttribute="leading" secondItem="Tf0-bD-xSk" secondAttribute="leading" id="Ynm-xj-NkP"/>
+                                    <constraint firstItem="qWw-3I-ajr" firstAttribute="top" secondItem="9tT-FC-vl4" secondAttribute="bottom" id="ZRY-dT-rvW"/>
                                     <constraint firstAttribute="bottom" secondItem="mi9-4P-fwQ" secondAttribute="bottom" id="hwq-pO-egj"/>
                                     <constraint firstItem="Tf0-bD-xSk" firstAttribute="top" secondItem="u3u-YC-rsW" secondAttribute="top" id="m7H-wb-vOl"/>
                                     <constraint firstAttribute="trailing" secondItem="qWw-3I-ajr" secondAttribute="trailing" id="ozd-uJ-rDo"/>
-                                    <constraint firstItem="9tT-FC-vl4" firstAttribute="centerX" secondItem="Tf0-bD-xSk" secondAttribute="centerX" id="qr2-bx-hkL"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

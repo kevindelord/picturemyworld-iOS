@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: Integrate loading indicator on CREATE-UPADTE-DELETE actions.
+
 class DetailViewController			: UIViewController {
 
 	// MARK: - Outlets
