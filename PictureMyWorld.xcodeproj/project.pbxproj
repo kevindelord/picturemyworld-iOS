@@ -203,10 +203,10 @@
 		75099D2820F901DB001A1F39 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				753064C322760742009102C4 /* ContentTypeSegmentedControl */,
 				755A4E3F20FCE9A3005656C8 /* ContentManager */,
 				75099D2C20F9063C001A1F39 /* ContentTableViewCells */,
 				755A4E4720FD138C005656C8 /* ContentTableView */,
-				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
 				7566088320F89577005711BF /* DashboardViewController.swift */,
 				7590460B2274E717002484A2 /* DashboardDelegate.swift */,
 			);
@@ -272,6 +272,14 @@
 				75532DE920FA5EEA001DDCFC /* CountryDetailViewController.swift */,
 			);
 			path = Country;
+			sourceTree = "<group>";
+		};
+		753064C322760742009102C4 /* ContentTypeSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
+			);
+			path = ContentTypeSegmentedControl;
 			sourceTree = "<group>";
 		};
 		753F3B5220FCABA80015CB23 /* App */ = {
