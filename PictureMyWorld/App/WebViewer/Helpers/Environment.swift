@@ -22,7 +22,13 @@ enum Environment : Int {
 	}
 
 	static var current : Environment {
-		return .development
+		#if targetEnvironment(simulator)
+			// Default environment for local development.
+			return .development
+		#else
+			// Default environment for active usage (ie. on a device).
+			return .staging
+		#endif
 	}
 
 	var webURL: URL? {
