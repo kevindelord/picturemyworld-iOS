@@ -33,7 +33,7 @@
 		752B22BF21022EE9004FF82A /* APIManager+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B22BE21022EE8004FF82A /* APIManager+Upload.swift */; };
 		753F3B4D20FCA49C0015CB23 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */; };
 		753F3B4F20FCAA530015CB23 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */; };
-		753F3B5120FCAADD0015CB23 /* WebViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F3B5020FCAADD0015CB23 /* WebViewer.storyboard */; };
+		753F3B5120FCAADD0015CB23 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753F3B5020FCAADD0015CB23 /* Settings.storyboard */; };
 		753F3B5420FCABF40015CB23 /* DetailViewRooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B5320FCABF40015CB23 /* DetailViewRooter.swift */; };
 		753F3B5620FCAEC00015CB23 /* DetailViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B5520FCAEC00015CB23 /* DetailViewConstants.swift */; };
 		753F3B5A20FCDA9B0015CB23 /* APIManager+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F3B5920FCDA9B0015CB23 /* APIManager+Models.swift */; };
@@ -91,7 +91,7 @@
 		752B22BE21022EE8004FF82A /* APIManager+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIManager+Upload.swift"; path = "/Users/kevindelord/Projects/picturemyworld-iOS/PictureMyWorld/API/APIManager+Upload.swift"; sourceTree = "<absolute>"; };
 		753F3B4C20FCA49C0015CB23 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
-		753F3B5020FCAADD0015CB23 /* WebViewer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewer.storyboard; sourceTree = "<group>"; };
+		753F3B5020FCAADD0015CB23 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		753F3B5320FCABF40015CB23 /* DetailViewRooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewRooter.swift; sourceTree = "<group>"; };
 		753F3B5520FCAEC00015CB23 /* DetailViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewConstants.swift; sourceTree = "<group>"; };
 		753F3B5920FCDA9B0015CB23 /* APIManager+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Models.swift"; sourceTree = "<group>"; };
@@ -185,7 +185,6 @@
 		75099D2720F901C3001A1F39 /* WebViewer */ = {
 			isa = PBXGroup;
 			children = (
-				753F3B5020FCAADD0015CB23 /* WebViewer.storyboard */,
 				75099D1B20F8F998001A1F39 /* ContentWebView.swift */,
 				75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */,
 				7566088520F89577005711BF /* WebViewController.swift */,
@@ -199,7 +198,6 @@
 				755A4E3F20FCE9A3005656C8 /* ContentManager */,
 				75099D2C20F9063C001A1F39 /* ContentTableViewCells */,
 				755A4E4720FD138C005656C8 /* ContentTableView */,
-				753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */,
 				75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */,
 				7566088320F89577005711BF /* DashboardViewController.swift */,
 				7590460B2274E717002484A2 /* DashboardDelegate.swift */,
@@ -212,6 +210,9 @@
 			children = (
 				7566088A20F89579005711BF /* Assets.xcassets */,
 				7566088720F89577005711BF /* Main.storyboard */,
+				753F3B4E20FCAA530015CB23 /* Dashboard.storyboard */,
+				75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */,
+				753F3B5020FCAADD0015CB23 /* Settings.storyboard */,
 				7566088C20F89579005711BF /* LaunchScreen.storyboard */,
 				7566088F20F89579005711BF /* PictureMyWorld-iOS-Info.plist */,
 			);
@@ -286,7 +287,6 @@
 		75532DE820FA5EDB001DDCFC /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				75532DEF20FC9AE0001DDCFC /* DetailView.storyboard */,
 				75CF12DC2274AC1A006EA6B3 /* DetailScrollView.swift */,
 				753F3B5320FCABF40015CB23 /* DetailViewRooter.swift */,
 				753F3B5520FCAEC00015CB23 /* DetailViewConstants.swift */,
@@ -420,7 +420,7 @@
 			files = (
 				7566088E20F89579005711BF /* LaunchScreen.storyboard in Resources */,
 				75099CF820F8A385001A1F39 /* credentials.plist in Resources */,
-				753F3B5120FCAADD0015CB23 /* WebViewer.storyboard in Resources */,
+				753F3B5120FCAADD0015CB23 /* Settings.storyboard in Resources */,
 				75532DF020FC9AE0001DDCFC /* DetailView.storyboard in Resources */,
 				7566088B20F89579005711BF /* Assets.xcassets in Resources */,
 				753F3B4F20FCAA530015CB23 /* Dashboard.storyboard in Resources */,
