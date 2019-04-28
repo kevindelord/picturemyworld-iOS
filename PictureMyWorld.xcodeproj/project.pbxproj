@@ -20,7 +20,6 @@
 		75099D1420F8E9AD001A1F39 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */; };
 		75099D1620F8F578001A1F39 /* ContentTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */; };
 		75099D1820F8F5B5001A1F39 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1720F8F5B5001A1F39 /* APIConstants.swift */; };
-		75099D1A20F8F70F001A1F39 /* EnvironmentSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */; };
 		75099D1C20F8F998001A1F39 /* ContentWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1B20F8F998001A1F39 /* ContentWebView.swift */; };
 		75099D2020F8FAC2001A1F39 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D1F20F8FAC2001A1F39 /* Country.swift */; };
 		75099D2220F8FC70001A1F39 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2120F8FC70001A1F39 /* ContentType.swift */; };
@@ -28,6 +27,7 @@
 		75099D2A20F9046E001A1F39 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2920F9046E001A1F39 /* Environment.swift */; };
 		75099D2E20F9064F001A1F39 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */; };
 		75099D3020F90664001A1F39 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */; };
+		751C815E2275FCFC00BB93F8 /* APIManager+Deploy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C815D2275FCFC00BB93F8 /* APIManager+Deploy.swift */; };
 		7524E5482275E11C00436D26 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E5472275E11C00436D26 /* SettingsViewController.swift */; };
 		7524E54C2275F6AB00436D26 /* EnvironmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E54B2275F6AB00436D26 /* EnvironmentCollectionViewCell.swift */; };
 		7524E54E2275F6E200436D26 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E54D2275F6E200436D26 /* SettingsDelegate.swift */; };
@@ -81,7 +81,6 @@
 		75099D1320F8E9AD001A1F39 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		75099D1520F8F578001A1F39 /* ContentTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTypeSegmentedControl.swift; sourceTree = "<group>"; };
 		75099D1720F8F5B5001A1F39 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
-		75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSegmentedControl.swift; sourceTree = "<group>"; };
 		75099D1B20F8F998001A1F39 /* ContentWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWebView.swift; sourceTree = "<group>"; };
 		75099D1F20F8FAC2001A1F39 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		75099D2120F8FC70001A1F39 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		75099D2920F9046E001A1F39 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		75099D2D20F9064F001A1F39 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		75099D2F20F90664001A1F39 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		751C815D2275FCFC00BB93F8 /* APIManager+Deploy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Deploy.swift"; sourceTree = "<group>"; };
 		7524E5472275E11C00436D26 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7524E54B2275F6AB00436D26 /* EnvironmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		7524E54D2275F6E200436D26 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +157,7 @@
 				75099D1720F8F5B5001A1F39 /* APIConstants.swift */,
 				75099D0220F8B2E8001A1F39 /* APIManager.swift */,
 				75099D0D20F8D46D001A1F39 /* APIManager+Versions.swift */,
+				751C815D2275FCFC00BB93F8 /* APIManager+Deploy.swift */,
 				753F3B5920FCDA9B0015CB23 /* APIManager+Models.swift */,
 				75D8594E2102067C0073C1BD /* APIManager+Images.swift */,
 				75D8594A210202AB0073C1BD /* AssetManager.swift */,
@@ -192,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				75099D1B20F8F998001A1F39 /* ContentWebView.swift */,
-				75099D1920F8F70F001A1F39 /* EnvironmentSegmentedControl.swift */,
 				7566088520F89577005711BF /* WebViewController.swift */,
 			);
 			path = WebViewer;
@@ -526,7 +526,6 @@
 				75099D0C20F8B982001A1F39 /* Post.swift in Sources */,
 				753F3B6320FCE15D0015CB23 /* Model.swift in Sources */,
 				753F3B5420FCABF40015CB23 /* DetailViewRooter.swift in Sources */,
-				75099D1A20F8F70F001A1F39 /* EnvironmentSegmentedControl.swift in Sources */,
 				7590460C2274E717002484A2 /* DashboardDelegate.swift in Sources */,
 				75099CFA20F8A490001A1F39 /* Configuration.swift in Sources */,
 				7524E5502275F6F700436D26 /* Settings.swift in Sources */,
@@ -535,6 +534,7 @@
 				75099D1020F8D5BF001A1F39 /* RawRepresentable.swift in Sources */,
 				7566088420F89577005711BF /* DashboardViewController.swift in Sources */,
 				753F3B4D20FCA49C0015CB23 /* DetailViewController.swift in Sources */,
+				751C815E2275FCFC00BB93F8 /* APIManager+Deploy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

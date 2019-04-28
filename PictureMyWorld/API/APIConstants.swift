@@ -80,6 +80,7 @@ enum Endpoint							: String {
 	case video							= "video"
 	case videos							= "videos"
 	case versions						= "versions"
+	case deploy							= "deploy"
 
 	enum Image							: String {
 

@@ -9,11 +9,11 @@
 struct Settings {
 
 	struct ReuseIdentifier {
-		static let environmentCell = "EnvironmentCell"
+		static let environmentCell 	= "EnvironmentCell"
 	}
 
 	struct Segue {
-		static let webPreview = "OpenWebPreview"
+		static let webPreview 		= "OpenWebViewer"
 	}
 }
 

@@ -98,6 +98,17 @@ extension SettingsViewContoller {
 	}
 
 	internal func deploy(to environment: Environment?) {
-		print("TODO: use APIManager")
+		guard let environment = environment else {
+			return
+		}
+
+		APIManager.deployChanges(to: environment, completion: { [weak self] (error: Error?) in
+			if let error = error {
+				UIAlertController.showErrorMessage(error.localizedDescription)
+			} else {
+				// Refresh the deployed version and reload the collection view.
+				self?.fetchDeployedVersion()
+			}
+		})
 	}
 }
