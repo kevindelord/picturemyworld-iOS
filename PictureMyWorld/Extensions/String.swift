@@ -13,4 +13,8 @@ extension String {
 	func trim() -> String {
 		return self.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 	}
+
+	func localized() -> String {
+		return NSLocalizedString(self, comment: "")
+	}
 }

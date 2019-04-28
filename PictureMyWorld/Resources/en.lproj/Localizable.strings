@@ -1,0 +1,31 @@
+/* 
+  Localization.strings
+  PictureMyWorld
+
+  Created by kevindelord on 28/04/2019.
+  Copyright © 2019 Kevin Delord. All rights reserved.
+*/
+
+/// Settings
+"settings.title" = "Environments";
+"settings.cell.version" = "Version %@";
+"settings.alert.messsage" = "Deploy changes to '%@' ?";
+"settings.alert.ok" = "Yes, I'm sure";
+"settings.alert.cancel" = "Cancel";
+
+/// Dashboard
+"dashboard.alert.delete.message" = "Delete '%@' ?";
+"dashboard.alert.delete.cancel" = "Cancel";
+"dashboard.alert.delete.ok" = "Go for it";
+"dashboard.alert.create.message" = "Create new...";
+"dashboard.alert.create.cancel" = "Cancel";
+
+/// Details
+"detail.title.post" = "Post";
+"detail.title.country" = "Country";
+"detail.title.video" = "Video";
+
+/// ContentType
+"content.posts" = "Posts";
+"content.countries" = "Countries";
+"content.videos" = "Videos";

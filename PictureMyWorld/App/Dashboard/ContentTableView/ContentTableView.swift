@@ -94,13 +94,13 @@ extension ContentTableView: UITableViewDelegate {
 			return
 		}
 
-		let alert = UIAlertController(title: nil, message: "Delete '\(model.title)' ?", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Go for it", style: .destructive, handler: { (_ : UIAlertAction) in
+		let alert = UIAlertController(title: nil, message: String(format: "dashboard.alert.delete.message".localized(), model.title), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "dashboard.alert.delete.ok".localized(), style: .destructive, handler: { (_ : UIAlertAction) in
 			self.contentDelegate?.deleteContent(for: indexPath, completion: { [weak self] (row: IndexPath) in
 				self?.reloadContent(deleteRows: [row])
 			})
 		}))
-		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		alert.addAction(UIAlertAction(title: "dashboard.alert.delete.cancel".localized(), style: .cancel, handler: nil))
 
 		AppDelegate.alertPresentingController?.present(alert, animated: true, completion: nil)
 	}
