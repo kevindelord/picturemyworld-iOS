@@ -8,7 +8,6 @@
 
 /// Settings
 "settings.title" = "Environments";
-"settings.cell.version" = "Version %@";
 "settings.alert.messsage" = "Deploy changes to '%@' ?";
 "settings.alert.ok" = "Yes, I'm sure";
 "settings.alert.cancel" = "Cancel";

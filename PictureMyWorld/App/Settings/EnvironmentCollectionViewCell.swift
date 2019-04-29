@@ -12,7 +12,6 @@ class EnvironmentCollectionViewCell 			: UICollectionViewCell {
 
 	@IBOutlet private weak var nameLabel 		: UILabel!
 	@IBOutlet private weak var versionLabel		: UILabel!
-	@IBOutlet private weak var websiteLabel 	: UILabel!
 	@IBOutlet private weak var webPreviewButton : UIButton!
 	@IBOutlet private weak var deployButton 	: UIButton!
 
@@ -23,10 +22,9 @@ class EnvironmentCollectionViewCell 			: UICollectionViewCell {
 		self.settingsDelegate = settingsDelegate
 		self.environment = environment
 		self.nameLabel.text = self.environment?.key
-		self.versionLabel.text = String(format: "settings.cell.version".localized(), version)
-		self.websiteLabel.text = self.environment?.webURL?.absoluteString
+		self.versionLabel.text = version
 		self.webPreviewButton.isHidden = (self.environment?.hasWebContent == false)
-		self.deployButton.isHidden = (self.environment?.hasWebContent == false)
+		self.webPreviewButton.setTitle(self.environment?.webURL?.absoluteString, for: .normal)
 	}
 }
 
