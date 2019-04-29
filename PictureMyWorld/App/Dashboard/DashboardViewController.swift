@@ -8,9 +8,6 @@
 
 import UIKit
 
-// TODO: Add app icon
-// TODO: Update design of tab bar (default icons no text).
-
 class DashboardViewController					: UIViewController, DashboardDelegate {
 
 	@IBOutlet private weak var segmentedControl	: ContentTypeSegmentedControl?
@@ -22,6 +19,7 @@ class DashboardViewController					: UIViewController, DashboardDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.title = "dashboard.title".localized()
 		self.detailViewRooter = DetailViewRooter(navigationController: self.navigationController)
 		self.tableView?.setup(with: self.contentManager, contentDelegate: self.contentManager, dashboardDelegate: self)
 	}

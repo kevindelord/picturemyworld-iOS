@@ -14,6 +14,7 @@
 "settings.alert.cancel" = "Cancel";
 
 /// Dashboard
+"dashboard.title" = "Dashboard";
 "dashboard.alert.delete.message" = "Delete '%@' ?";
 "dashboard.alert.delete.cancel" = "Cancel";
 "dashboard.alert.delete.ok" = "Go for it";
