@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: Add app icon
-
 class DashboardViewController					: UIViewController, DashboardDelegate {
 
 	@IBOutlet private weak var segmentedControl	: ContentTypeSegmentedControl?
