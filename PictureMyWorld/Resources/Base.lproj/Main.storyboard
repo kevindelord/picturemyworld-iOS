@@ -31,7 +31,7 @@
         <scene sceneID="XQY-kp-29l">
             <objects>
                 <viewControllerPlaceholder storyboardName="Dashboard" id="9yH-Wb-zHn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cfO-fJ-6ca"/>
+                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="cfO-fJ-6ca"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFR-ec-adh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +41,7 @@
         <scene sceneID="nMI-kx-HjH">
             <objects>
                 <viewControllerPlaceholder storyboardName="Settings" id="Hgp-Xa-ku1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5df-Hs-7M1"/>
+                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="5df-Hs-7M1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QZ-gd-rbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

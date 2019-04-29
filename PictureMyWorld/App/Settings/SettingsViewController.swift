@@ -8,6 +8,9 @@
 
 import UIKit
 
+// TODO: Add valid 'deploy' for development environment: -> simple git push to remote repo. What happen when nothing to push?
+// TODO: [OPTIONAL] Integrate new deploy versioning: deploy_count.commit_count
+
 class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate {
 
 	// MARK: - Private Attributes

@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Environments-->
         <scene sceneID="psw-7c-eZE">
             <objects>
                 <navigationController id="fjG-dB-89P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="rM4-fe-EL6"/>
+                    <tabBarItem key="tabBarItem" title="Environments" image="settings" id="rM4-fe-EL6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jTE-Ce-q2q">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -178,4 +178,7 @@
             <point key="canvasLocation" x="2439" y="412"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings" width="28" height="28"/>
+    </resources>
 </document>
