@@ -47,6 +47,12 @@ class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate, Pr
 
 		controller.setup(environment: environment)
 	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		self.stopRefreshAnimations()
+	}
 }
 
 // MARK: - Collection view
@@ -91,9 +97,13 @@ extension SettingsViewContoller {
 				self?.collectionView.reloadData()
 			}
 
-			self?.refreshControl.endRefreshing()
-			self?.hideProgressView()
+			self?.stopRefreshAnimations()
 		})
+	}
+
+	private func stopRefreshAnimations() {
+		self.refreshControl.endRefreshing()
+		self.hideProgressView()
 	}
 }
 
