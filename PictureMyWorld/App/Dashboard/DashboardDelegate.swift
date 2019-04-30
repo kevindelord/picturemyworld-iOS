@@ -6,7 +6,7 @@
 //  Copyright © 2019 Kevin Delord. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol DashboardDelegate {
 
@@ -19,4 +19,7 @@ protocol DashboardDelegate {
 
 	/// Reload the content table view.
 	func reloadTableView()
+
+	/// Required container attributes to display a linear progress view.
+	var loadingContainer : (view: UIView, anchor: NSLayoutYAxisAnchor)  { get }
 }

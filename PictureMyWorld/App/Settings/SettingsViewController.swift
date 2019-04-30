@@ -8,12 +8,13 @@
 
 import UIKit
 
-class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate {
+class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate, ProgressView {
 
 	// MARK: - Private Attributes
 
 	private var deployedVersions 	= [Environment: String]()
 	private var refreshControl 		= UIRefreshControl()
+	internal var progressView		: LinearProgressView?
 
 	// MARK: - View life cycle
 
@@ -21,6 +22,9 @@ class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate {
 		super.viewDidLoad()
 
 		self.title = "settings.title".localized()
+
+		// Configure the ProgressView for the current view.
+		self.progressView = LinearProgressView(within: self.view, layoutAnchor: self.view.safeAreaLayoutGuide.topAnchor)
 
 		// Setup Refresh Contol
 		self.refreshControl.tintColor = self.view.tintColor
@@ -76,6 +80,9 @@ extension SettingsViewContoller {
 extension SettingsViewContoller {
 
 	@objc private func fetchDeployedVersion() {
+		// Show Linear Progress View
+		self.showProgressView()
+		// Fetch entitiews from the API
 		APIManager.fetchVersions(completion: { [weak self] (versions: [Environment: String], error: Error?) in
 			if let error = error {
 				UIAlertController.showErrorMessage(error.localizedDescription)
@@ -85,6 +92,7 @@ extension SettingsViewContoller {
 			}
 
 			self?.refreshControl.endRefreshing()
+			self?.hideProgressView()
 		})
 	}
 }
@@ -102,6 +110,7 @@ extension SettingsViewContoller {
 			return
 		}
 
+		self.showProgressView()
 		APIManager.deployChanges(to: environment, completion: { [weak self] (error: Error?) in
 			if let error = error {
 				UIAlertController.showErrorMessage(error.localizedDescription)

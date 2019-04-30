@@ -8,11 +8,14 @@
 
 import UIKit
 
-class DashboardViewController					: UIViewController, DashboardDelegate {
+class DashboardViewController					: UIViewController, DashboardDelegate, ProgressView {
 
 	@IBOutlet private weak var segmentedControl	: ContentTypeSegmentedControl?
 	@IBOutlet private weak var tableView		: ContentTableView?
 
+	// MARK: - Private Attributes
+
+	internal var progressView					: LinearProgressView?
 	private var detailViewRooter				: DetailViewRooter?
 	private var contentManager 					= ContentManager()
 
@@ -61,5 +64,9 @@ extension DashboardViewController {
 	/// Reload the table view with the correct data type.
 	func reloadTableView() {
 		self.tableView?.reloadContent(deleteRows: [])
+	}
+
+	var loadingContainer : (view: UIView, anchor: NSLayoutYAxisAnchor)  {
+		return (view: self.view, anchor: self.view.safeAreaLayoutGuide.topAnchor)
 	}
 }

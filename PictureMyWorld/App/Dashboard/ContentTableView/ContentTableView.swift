@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ContentTableView 					: UITableView {
+class ContentTableView 					: UITableView, ProgressView {
 
 	private var contentDataSource		: ContentManagerDataSource?
 	private var contentDelegate			: ContentManagerDelegate?
 	private var dashboardDelegate		: DashboardDelegate?
+	internal var progressView			: LinearProgressView?
 
 	func setup(with dataSource: ContentManagerDataSource, contentDelegate: ContentManagerDelegate, dashboardDelegate: DashboardDelegate?) {
 		self.delegate = self
@@ -20,6 +21,11 @@ class ContentTableView 					: UITableView {
 		self.contentDataSource = dataSource
 		self.contentDelegate = contentDelegate
 		self.dashboardDelegate = dashboardDelegate
+
+		// Configure the ProgressView.
+		if let loadingContainer = self.dashboardDelegate?.loadingContainer {
+			self.progressView = LinearProgressView(within: loadingContainer.view, layoutAnchor: loadingContainer.anchor)
+		}
 
 		// Setup Refresh Contol
 		self.refreshControl =  UIRefreshControl()
@@ -31,15 +37,23 @@ class ContentTableView 					: UITableView {
 	}
 
 	@objc private func reloadContentManager() {
+		// Show Linear Progress View
+		self.showProgressView()
+		// Fetch entitiews from the API
 		self.contentDataSource?.fetchContent(completion: {
 			self.reloadData()
-			// If any, stop the refreshing animation
-			self.refreshControl?.endRefreshing()
+			self.stopRefreshingAnimations()
 		})
+	}
+
+	/// If any, stop the refreshing animation
+	private func stopRefreshingAnimations() {
+		self.refreshControl?.endRefreshing()
+		self.hideProgressView()
 	}
 }
 
-// MARK: - ContentManagerDelegate
+// MARK: - Content Management
 
 extension ContentTableView {
 
@@ -51,15 +65,24 @@ extension ContentTableView {
 		if (deleteRows.isEmpty == false) {
 			self.deleteRows(at: deleteRows, with: .fade)
 		} else {
-			if (self.contentDataSource?.modelsCount == 0) {
+			guard ((self.contentDataSource?.modelsCount ?? 0) > 0) else {
 				self.reloadContentManager()
-			} else {
-				self.reloadData()
+				return
 			}
+
+			self.reloadData()
 		}
 
-		// If any, stop the refreshing animation
-		self.refreshControl?.endRefreshing()
+		self.stopRefreshingAnimations()
+	}
+
+	private func deleteContentForRow(at indexPath: IndexPath) {
+		// Show Linear Progress View
+		self.showProgressView()
+		// Delete content through the API.
+		self.contentDelegate?.deleteContent(for: indexPath, completion: { [weak self] (row: IndexPath) in
+			self?.reloadContent(deleteRows: [row])
+		})
 	}
 }
 
@@ -95,10 +118,8 @@ extension ContentTableView: UITableViewDelegate {
 		}
 
 		let alert = UIAlertController(title: nil, message: String(format: "dashboard.alert.delete.message".localized(), model.title), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "dashboard.alert.delete.ok".localized(), style: .destructive, handler: { (_ : UIAlertAction) in
-			self.contentDelegate?.deleteContent(for: indexPath, completion: { [weak self] (row: IndexPath) in
-				self?.reloadContent(deleteRows: [row])
-			})
+		alert.addAction(UIAlertAction(title: "dashboard.alert.delete.ok".localized(), style: .destructive, handler: { [weak self] (_ : UIAlertAction) in
+			self?.deleteContentForRow(at: indexPath)
 		}))
 		alert.addAction(UIAlertAction(title: "dashboard.alert.delete.cancel".localized(), style: .cancel, handler: nil))
 
