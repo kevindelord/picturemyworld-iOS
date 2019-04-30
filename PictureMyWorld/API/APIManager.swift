@@ -9,8 +9,6 @@
 import Foundation
 import Alamofire
 
-// TODO: Use reachability to prevent API calls when there is no internet connection.
-
 extension Dictionary where Key == String, Value == String {
 
 	mutating func contentType(_ contentType: API.ContentType) {
