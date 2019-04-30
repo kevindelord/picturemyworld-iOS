@@ -9,18 +9,6 @@ import UIKit
 
 extension NSLayoutConstraint {
 
-	/// Add constraints to make sure the given subview always fit its superview container (and even when the device rotates).
-	///
-	/// - Parameters:
-	///   - view: Subview to fit to its parent view.
-	///   - superview: SUperview containing the given subview.
-	class func fit(_ view: UIView, into superview: UIView) {
-		let attributes: [NSLayoutConstraint.Attribute] = [.leading, .trailing, .top, .bottom]
-		attributes.forEach({ (attribute: NSLayoutConstraint.Attribute) in
-			NSLayoutConstraint.equal(attribute, view: view, superview: superview)
-		})
-	}
-
 	/// Add an active constraint where the given attributes are related as `equal` between the given items.
 	///
 	/// - Parameters:

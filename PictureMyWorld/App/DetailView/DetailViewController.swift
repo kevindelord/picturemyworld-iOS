@@ -63,7 +63,7 @@ class DetailViewController			: UIViewController, ProgressView {
 		// Override in subclass to init all outlets.
 
 		// Configure the ProgressView for the current view.
-		self.progressView = LinearProgressView(within: self.view, layoutSupport: self.topLayoutGuide)
+		self.progressView = LinearProgressView(within: self.view, layoutAnchor: self.view.safeAreaLayoutGuide.topAnchor)
 	}
 
 	func setup(with entity: Model?, contentDataSource: ContentManagerDataSource?, dashboardDelegate: DashboardDelegate?) {

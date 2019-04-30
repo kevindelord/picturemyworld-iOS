@@ -24,7 +24,7 @@ class SettingsViewContoller 		: UICollectionViewController, SettingsDelegate, Pr
 		self.title = "settings.title".localized()
 
 		// Configure the ProgressView for the current view.
-		self.progressView = LinearProgressView(within: self.view, layoutSupport: self.topLayoutGuide)
+		self.progressView = LinearProgressView(within: self.view, layoutAnchor: self.view.safeAreaLayoutGuide.topAnchor)
 
 		// Setup Refresh Contol
 		self.refreshControl.tintColor = self.view.tintColor

@@ -81,14 +81,14 @@ public class LinearProgressView				: UIView {
 	// Lock Queue to avoid multi-threading problem for the anitmation.
 	fileprivate let lockQueue = DispatchQueue(label: Interface.ProgressView.lockQueueIdentifier)
 
-	convenience public init?(within superView: UIView?, layoutSupport: UILayoutSupport) {
+	convenience public init?(within superView: UIView?, layoutAnchor: NSLayoutYAxisAnchor) {
 		guard let superView = superView else {
 			return nil
 		}
 
 		self.init(frame: CGRect(x: 0, y: 0, width: superView.frame.width, height: Interface.ProgressView.standard))
 
-		self.initViewPosition(within: superView, layoutSupport: layoutSupport)
+		self.initViewPosition(within: superView, layoutAnchor: layoutAnchor)
 		self.initProgressBarIndicator()
 	}
 
@@ -105,9 +105,8 @@ public class LinearProgressView				: UIView {
 	///
 	/// - Parameters:
 	///   - superView: Superview owning the current ProgressView.
-	///   - layoutSupport: Bottom or Top Layout Support (for the navigation bar).
-	///   - position: Position of the progress view within the superview (bottom or top).
-	private func initViewPosition(within superView: UIView, layoutSupport: UILayoutSupport) {
+	///   - layoutAnchor: Y Axis Layout Anchor.
+	private func initViewPosition(within superView: UIView, layoutAnchor: NSLayoutYAxisAnchor) {
 		superView.addSubview(self)
 		superView.bringSubviewToFront(safe: self)
 
@@ -122,7 +121,7 @@ public class LinearProgressView				: UIView {
 		// Width
 		NSLayoutConstraint.equal(.trailing, view: self, superview: superView)
 		// Y origin
-		NSLayoutConstraint.equal(.top, view: self, superview: layoutSupport, secondAttribute: .bottom)
+		self.topAnchor.constraint(equalTo: layoutAnchor, constant: 0).isActive = true
 	}
 
 	/// Configure the indicator bar.

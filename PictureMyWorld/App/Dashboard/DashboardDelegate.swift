@@ -20,7 +20,6 @@ protocol DashboardDelegate {
 	/// Reload the content table view.
 	func reloadTableView()
 
-	// TODO: refactor ProgressView for iOS 11 + documentation
-	var presentingView : UIView { get }
-	var layoutGuide : UILayoutSupport { get }
+	/// Required container attributes to display a linear progress view.
+	var loadingContainer : (view: UIView, anchor: NSLayoutYAxisAnchor)  { get }
 }

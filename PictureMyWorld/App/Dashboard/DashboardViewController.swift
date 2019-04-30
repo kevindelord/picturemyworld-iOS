@@ -66,11 +66,7 @@ extension DashboardViewController {
 		self.tableView?.reloadContent(deleteRows: [])
 	}
 
-	var presentingView : UIView {
-		return self.view
-	}
-
-	var layoutGuide: UILayoutSupport {
-		return self.topLayoutGuide
+	var loadingContainer : (view: UIView, anchor: NSLayoutYAxisAnchor)  {
+		return (view: self.view, anchor: self.view.safeAreaLayoutGuide.topAnchor)
 	}
 }

@@ -23,10 +23,8 @@ class ContentTableView 					: UITableView, ProgressView {
 		self.dashboardDelegate = dashboardDelegate
 
 		// Configure the ProgressView.
-		if
-			let presentingView = self.dashboardDelegate?.presentingView,
-			let layout = self.dashboardDelegate?.layoutGuide {
-				self.progressView = LinearProgressView(within: presentingView, layoutSupport: layout)
+		if let loadingContainer = self.dashboardDelegate?.loadingContainer {
+			self.progressView = LinearProgressView(within: loadingContainer.view, layoutAnchor: loadingContainer.anchor)
 		}
 
 		// Setup Refresh Contol
