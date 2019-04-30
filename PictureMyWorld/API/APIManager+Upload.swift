@@ -29,7 +29,7 @@ struct UploadManager {
 
 	private static func url(for endpoint: Endpoint, with filename: String?) -> URL {
 		guard let url = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
-			fatalError("Cannot create endpoint for: Country.createOrUpdateEntity")
+			fatalError("Cannot create endpoint for: \(endpoint.rawValue)")
 		}
 
 		guard

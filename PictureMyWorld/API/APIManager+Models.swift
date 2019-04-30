@@ -40,7 +40,7 @@ extension APIManager {
 	///   - completion: Completion block called after process.
 	internal static func createOrUpdate(_ endpoint: Endpoint, with dictionary: [String: Any], completion: @escaping ((_ error: Error?) -> Void)) {
 		guard let url = Environment.current.baseURL?.add(path: endpoint.rawValue) else {
-			fatalError("Cannot create endpoint for: Country.createOrUpdateEntity")
+			fatalError("Cannot create endpoint for: \(endpoint.rawValue)")
 		}
 
 		let request = self.createOrUpdateRequest(for: url, with: dictionary)
@@ -90,7 +90,7 @@ extension APIManager {
 		guard
 			let endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue),
 			let deleteEndpoint = endpoint.add(path: filename) else {
-				fatalError("Cannot create endpoint for: Country.createOrUpdateEntity")
+				fatalError("Cannot create endpoint for: \(endpoint.rawValue)")
 		}
 
 		APIManager.delete(deleteEndpoint).responseJSON { (response: DataResponse<Any>) in
