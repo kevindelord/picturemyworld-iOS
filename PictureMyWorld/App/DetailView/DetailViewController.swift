@@ -8,9 +8,7 @@
 
 import UIKit
 
-// TODO: Integrate loading indicator on CREATE-UPADTE-DELETE actions.
-
-class DetailViewController			: UIViewController {
+class DetailViewController			: UIViewController, ProgressView {
 
 	// MARK: - Outlets
 
@@ -21,6 +19,7 @@ class DetailViewController			: UIViewController {
 	internal var entity				: Model?
 	private var contentDataSource	: ContentManagerDataSource?
 	private var dashboardDelegate	: DashboardDelegate?
+	internal var progressView		: LinearProgressView?
 
 	// MARK: - Computed Properties
 
@@ -55,12 +54,16 @@ class DetailViewController			: UIViewController {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		self.unregisterNotifications()
+		self.hideProgressView()
 	}
 
 	// MARK: - Setup Functions
 
 	func setupUIElements() {
 		// Override in subclass to init all outlets.
+
+		// Configure the ProgressView for the current view.
+		self.progressView = LinearProgressView(within: self.view, layoutSupport: self.topLayoutGuide)
 	}
 
 	func setup(with entity: Model?, contentDataSource: ContentManagerDataSource?, dashboardDelegate: DashboardDelegate?) {
@@ -103,6 +106,9 @@ extension DetailViewController {
 	/// - Reload the table view.
 	/// - And finally, pop the current view controller.
 	@IBAction func save() {
+		// Show Linear Progress View
+		self.showProgressView()
+		// Create or Update entities entities through the API
 		self.contentDataSource?.createOrUpdateEntity(json: self.serializedEntity, imageData: self.imageData, completion: { [weak self] in
 			self?.dashboardDelegate?.reloadTableView()
 			self?.navigationController?.popViewController(animated: true)
