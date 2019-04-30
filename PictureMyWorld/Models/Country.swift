@@ -23,10 +23,6 @@ struct Country		: Model {
 		self.image = (json[API.JSON.image] as? String ?? "")
 		// The variable `name` is forced to be named `title` as this attribute is required by the `Model` protocol.
 		self.title = (json[API.JSON.name] as? String ?? "")
-
-		if (self.isInvalid == true) {
-			fatalError("invalid country with json: \(json)")
-		}
 	}
 
 	var isInvalid: Bool {
