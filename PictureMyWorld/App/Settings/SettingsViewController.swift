@@ -80,7 +80,9 @@ extension SettingsViewContoller {
 extension SettingsViewContoller {
 
 	@objc private func fetchDeployedVersion() {
+		// Show Linear Progress View
 		self.showProgressView()
+		// Fetch entitiews from the API
 		APIManager.fetchVersions(completion: { [weak self] (versions: [Environment: String], error: Error?) in
 			if let error = error {
 				UIAlertController.showErrorMessage(error.localizedDescription)

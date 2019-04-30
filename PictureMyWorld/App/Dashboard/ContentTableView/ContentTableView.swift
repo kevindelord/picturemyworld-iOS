@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ContentTableView 					: UITableView {
+class ContentTableView 					: UITableView, ProgressView {
 
 	private var contentDataSource		: ContentManagerDataSource?
 	private var contentDelegate			: ContentManagerDelegate?
 	private var dashboardDelegate		: DashboardDelegate?
+	internal var progressView			: LinearProgressView?
 
 	func setup(with dataSource: ContentManagerDataSource, contentDelegate: ContentManagerDelegate, dashboardDelegate: DashboardDelegate?) {
 		self.delegate = self
@@ -20,6 +21,13 @@ class ContentTableView 					: UITableView {
 		self.contentDataSource = dataSource
 		self.contentDelegate = contentDelegate
 		self.dashboardDelegate = dashboardDelegate
+
+		// Configure the ProgressView.
+		if
+			let presentingView = self.dashboardDelegate?.presentingView,
+			let layout = self.dashboardDelegate?.layoutGuide {
+				self.progressView = LinearProgressView(within: presentingView, layoutSupport: layout)
+		}
 
 		// Setup Refresh Contol
 		self.refreshControl =  UIRefreshControl()
@@ -31,11 +39,19 @@ class ContentTableView 					: UITableView {
 	}
 
 	@objc private func reloadContentManager() {
+		// Show Linear Progress View
+		self.showProgressView()
+		// Fetch entitiews from the API
 		self.contentDataSource?.fetchContent(completion: {
 			self.reloadData()
-			// If any, stop the refreshing animation
-			self.refreshControl?.endRefreshing()
+			self.stopRefreshingAnimations()
 		})
+	}
+
+	/// If any, stop the refreshing animation
+	private func stopRefreshingAnimations() {
+		self.refreshControl?.endRefreshing()
+		self.hideProgressView()
 	}
 }
 
@@ -51,15 +67,15 @@ extension ContentTableView {
 		if (deleteRows.isEmpty == false) {
 			self.deleteRows(at: deleteRows, with: .fade)
 		} else {
-			if (self.contentDataSource?.modelsCount == 0) {
+			guard ((self.contentDataSource?.modelsCount ?? 0) > 0) else {
 				self.reloadContentManager()
-			} else {
-				self.reloadData()
+				return
 			}
+
+			self.reloadData()
 		}
 
-		// If any, stop the refreshing animation
-		self.refreshControl?.endRefreshing()
+		self.stopRefreshingAnimations()
 	}
 }
 
