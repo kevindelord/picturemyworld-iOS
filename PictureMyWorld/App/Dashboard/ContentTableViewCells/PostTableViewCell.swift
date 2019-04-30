@@ -8,20 +8,20 @@
 
 import UIKit
 
-class PostTableViewCell: UITableViewCell {
+class PostTableViewCell						: UITableViewCell {
 
 	@IBOutlet private weak var title		: UILabel?
 	@IBOutlet private weak var date			: UILabel?
 	@IBOutlet private weak var location 	: UILabel?
 	@IBOutlet private weak var caption 		: UILabel?
+	@IBOutlet private weak var errorImage 	: UIImageView?
 
 	func update(with post: Post?) {
 		guard let post = post else {
 			return
 		}
 
-		// TODO: If model is invalid display a error icon.
-
+		self.errorImage?.isHidden = (post.isInvalid == false)
 		self.title?.text = post.title
 		self.date?.text = post.date
 		self.location?.text = post.locationText
