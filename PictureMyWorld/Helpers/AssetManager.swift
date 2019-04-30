@@ -7,7 +7,17 @@
 import Foundation
 import SDWebImage
 
-// TODO: Update AssetManager
+// MARK: - Log
+
+fileprivate var _AssetManagerLogEnabled = false
+
+func Log(_ message: String) {
+	guard (_AssetManagerLogEnabled == true) else {
+		return
+	}
+
+	print(message)
+}
 
 // MARK: - DownloadPriority
 
@@ -89,7 +99,7 @@ struct AssetManager {
 
 			// Write image data to disk
 			let data = image.jpegData(compressionQuality: 100)
-			print("Write image data to path: \(imagePath)")
+			Log("Write image data to path: \(imagePath)")
 			do {
 				try data?.write(to: URL(fileURLWithPath: imagePath), options: .completeFileProtection)
 				// SUCCESS: back on main thread, call the completion block with the image static path.
@@ -101,7 +111,7 @@ struct AssetManager {
 			} catch let error {
 				// ERROR: back on main thread, log the error and call the completion block without static path.
 				DispatchQueue.main.async {
-					print(error)
+					Log(error.localizedDescription)
 					completion(nil)
 				}
 			}
@@ -135,12 +145,12 @@ struct AssetManager {
 	/// - Returns: true if succeded; false otherwise.
 	static func deleteItem(atURL url: URL) -> Bool {
 		// Remove item at path
-		print("Remove asset item at url: \(url)")
+		Log("Remove asset item at url: \(url)")
 		do {
 			try FileManager.default.removeItem(at: url)
 			return true
 		} catch let error {
-			print(error)
+			Log(error.localizedDescription)
 			return false
 		}
 	}
@@ -205,7 +215,7 @@ extension AssetManager {
 		SDImageCache.shared().queryCacheOperation(forKey: imageKey, done: { (image: UIImage?, data: Data?, type: SDImageCacheType) in
 
 			// If any, return the image from the cache.
-			print("Return cached image for KEY: \(imageKey)")
+			Log("Return cached image for KEY: \(imageKey)")
 			completion?(image, imageKey)
 		})
 	}
@@ -223,11 +233,11 @@ extension AssetManager {
 		SDWebImageDownloader.shared().username = self.APIUsername
 		SDWebImageDownloader.shared().password = self.APIPassword
 
-		print("Download and cache image from URL: \(imageKey)")
+		Log("Download and cache image from URL: \(imageKey)")
 		SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(), progress: nil) { (image: UIImage?, data: Data?, error: Error?, finished: Bool) in
-			print("Download completed from URL: \(imageKey)")
+			Log("Download completed from URL: \(imageKey)")
 			if (finished == true), let image = image {
-				print("Write to disk and add Backup attribute for item from URL: \(imageKey)")
+				Log("Write to disk and add Backup attribute for item from URL: \(imageKey)")
 				self.storeImageWithBackupAttribute(at: url, image: image)
 			}
 
@@ -260,13 +270,13 @@ extension AssetManager {
 		if let operation = operation {
 			guard (operation.isExecuting == false) else {
 				// If the image is currently being downloaded then do nothing, just wait.
-				print("Operation already in process: \(imageURLKey)")
+				Log("Operation already in process: \(imageURLKey)")
 				return
 			}
 
 			// Otherwise, cancel the operation and create a new one.
 			operation.cancel()
-			print("Cancel download operation: \(imageURLKey)")
+			Log("Cancel download operation: \(imageURLKey)")
 		}
 
 		// Create a new operation and configure its quality of service and queue priority
@@ -354,7 +364,7 @@ extension AssetManager {
 	/// - Returns: true if the resource property is successfully set; false otherwise.
 	private static func addSkipBackupAttribute(forFileURL fileUrl: URL) -> Bool {
 		// Set NSURLIsExcludedFromBackupKey=NO for the file. code is taken from Apples iOS Dev Library
-		print("Exclude item from Backup at url: \(fileUrl)")
+		Log("Exclude item from Backup at url: \(fileUrl)")
 
 		do {
 			var urlToExclude = fileUrl
@@ -363,7 +373,7 @@ extension AssetManager {
 			try urlToExclude.setResourceValues(resourceValues)
 			return true
 		} catch let error {
-			print("error: \(error)")
+			Log("error: \(error)")
 			return false
 		}
 	}
@@ -382,13 +392,13 @@ extension AssetManager {
 		// We recurse the process until the file is present and correctly set.
 		let filePath = url.absoluteString
 		if (attempt == 0) {
-			print("Cache image for KEY: \(filePath)")
+			Log("Cache image for KEY: \(filePath)")
 			SDImageCache.shared().store(image, forKey: filePath)
 		}
 
 		let maxAttempts = 20
 		guard (attempt >= 0 && attempt < maxAttempts) else {
-			print("ERROR storing image with backup attributes. File Path: \(filePath)")
+			Log("ERROR storing image with backup attributes. File Path: \(filePath)")
 			return
 		}
 
@@ -414,11 +424,11 @@ extension AssetManager {
 			((FileManager.default.fileExists(atPath: cachePath) == true) &&
 			(self.addSkipBackupAttribute(forFileURL: fileURL) == true) &&
 			(self.checkSkipBackupAttribute(forFileURL: fileURL) == true)) else {
-				print("ERROR trying to cache the image again... new attempt: \(attempt + 1)")
+				Log("ERROR trying to cache the image again... new attempt: \(attempt + 1)")
 				self.storeImageWithBackupAttribute(at: url, image: image, attempt: attempt + 1)
 				return
 		}
 
-		print("Cache completed!")
+		Log("Cache completed!")
 	}
 }
