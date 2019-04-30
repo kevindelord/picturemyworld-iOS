@@ -55,7 +55,7 @@ class ContentTableView 					: UITableView, ProgressView {
 	}
 }
 
-// MARK: - ContentManagerDelegate
+// MARK: - Content Management
 
 extension ContentTableView {
 
@@ -76,6 +76,15 @@ extension ContentTableView {
 		}
 
 		self.stopRefreshingAnimations()
+	}
+
+	private func deleteContentForRow(at indexPath: IndexPath) {
+		// Show Linear Progress View
+		self.showProgressView()
+		// Delete content through the API.
+		self.contentDelegate?.deleteContent(for: indexPath, completion: { [weak self] (row: IndexPath) in
+			self?.reloadContent(deleteRows: [row])
+		})
 	}
 }
 
@@ -111,10 +120,8 @@ extension ContentTableView: UITableViewDelegate {
 		}
 
 		let alert = UIAlertController(title: nil, message: String(format: "dashboard.alert.delete.message".localized(), model.title), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "dashboard.alert.delete.ok".localized(), style: .destructive, handler: { (_ : UIAlertAction) in
-			self.contentDelegate?.deleteContent(for: indexPath, completion: { [weak self] (row: IndexPath) in
-				self?.reloadContent(deleteRows: [row])
-			})
+		alert.addAction(UIAlertAction(title: "dashboard.alert.delete.ok".localized(), style: .destructive, handler: { [weak self] (_ : UIAlertAction) in
+			self?.deleteContentForRow(at: indexPath)
 		}))
 		alert.addAction(UIAlertAction(title: "dashboard.alert.delete.cancel".localized(), style: .cancel, handler: nil))
 
