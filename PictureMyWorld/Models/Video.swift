@@ -24,10 +24,6 @@ struct Video				: Model {
 		self.music = (json[API.JSON.music] as? String ?? "")
 		self.title = (json[API.JSON.title] as? String ?? "")
 		self.youtubeIdentifier = (json[API.JSON.youtubeIdentifier] as? String ?? "")
-
-		if (self.isInvalid == true) {
-			fatalError("invalid video with json: \(json)")
-		}
 	}
 
 	var isInvalid: Bool {

@@ -29,10 +29,6 @@ struct Post				: Model {
 		self.locationText = (json[API.JSON.locationText] as? String ?? "")
 		self.image = (json[API.JSON.image] as? String ?? "")
 		self.date = (json[API.JSON.date] as? String ?? "")
-
-		if (self.isInvalid == true) {
-			fatalError("invalid post with json: \(json)")
-		}
 	}
 
 	var isInvalid: Bool {
