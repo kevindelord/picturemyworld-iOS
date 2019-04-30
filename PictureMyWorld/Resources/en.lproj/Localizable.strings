@@ -11,6 +11,8 @@
 "settings.alert.messsage" = "Deploy changes to '%@' ?";
 "settings.alert.ok" = "Yes, I'm sure";
 "settings.alert.cancel" = "Cancel";
+"settings.deploy" = "Update Remote Server";
+"settings.publish" = "Publish";
 
 /// Dashboard
 "dashboard.title" = "Dashboard";

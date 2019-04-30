@@ -22,7 +22,7 @@ struct Configuration {
 	}
 
 	public enum SupportedEnvironmentName : String {
-
+		case local			= "local"
 		case development 	= "development"
 		case staging 		= "staging"
 		case producation	= "production"

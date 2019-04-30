@@ -25,6 +25,8 @@ class EnvironmentCollectionViewCell 			: UICollectionViewCell {
 		self.versionLabel.text = version
 		self.webPreviewButton.isHidden = (self.environment?.hasWebContent == false)
 		self.webPreviewButton.setTitle(self.environment?.webURL?.absoluteString, for: .normal)
+		self.deployButton.isHidden = (self.environment?.isRemoteEnvironment == false)
+		self.deployButton.setTitle(self.environment?.deployTitle, for: .normal)
 	}
 }
 

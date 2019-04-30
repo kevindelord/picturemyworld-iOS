@@ -9,12 +9,14 @@
 import Foundation
 
 enum Environment : Int {
-	case development = 0
+	case local = 0
+	case development
 	case staging
 	case producation
 
 	var key: String {
 		switch self {
+		case .local:		return Configuration.SupportedEnvironmentName.local.rawValue
 		case .development:	return Configuration.SupportedEnvironmentName.development.rawValue
 		case .staging:		return Configuration.SupportedEnvironmentName.staging.rawValue
 		case .producation:	return Configuration.SupportedEnvironmentName.producation.rawValue
@@ -32,6 +34,15 @@ enum Environment : Int {
 		#endif
 	}
 
+	var deployTitle : String {
+		switch self {
+		case .local:		return ""
+		case .development:	return "settings.deploy".localized()
+		case .staging:		return "settings.publish".localized()
+		case .producation:	return "settings.publish".localized()
+		}
+	}
+
 	var webURL: URL? {
 		guard let webURLString = Configuration.getValue(for: .webURL, in: self) else {
 			return nil
@@ -42,6 +53,10 @@ enum Environment : Int {
 
 	var hasWebContent: Bool {
 		return (self.webURL != nil)
+	}
+
+	var isRemoteEnvironment: Bool {
+		return (self != .local)
 	}
 
 	var baseURL: URL? {
