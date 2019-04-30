@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostDetailViewController					: DetailViewController {
+class PostDetailViewController					: DetailViewController, UITextFieldDelegate {
 
 	// MARK: - IBOutlets
 
@@ -32,6 +32,7 @@ class PostDetailViewController					: DetailViewController {
 
 		self.titleTextField.text = post.title
 		self.imageTextField.text = post.image
+		self.imageTextField.inputView = UIView.init()
 		self.dateTextField.text = post.date
 		self.filenameTextField.text = post.filename
 		self.locationTextField.text = post.locationText
@@ -64,6 +65,14 @@ class PostDetailViewController					: DetailViewController {
 			API.JSON.location: (self.locationTextField.text ?? "")
 			// API.JSON.image: The image is sent as a raw data by the APImanager.
 		]
+	}
+}
+
+extension PostDetailViewController {
+
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		// Make sure the image text field is read only.
+		return (textField != self.imageTextField)
 	}
 }
 
