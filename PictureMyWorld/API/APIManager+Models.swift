@@ -88,8 +88,8 @@ extension APIManager {
 	///   - completion: Completion block called after process.
 	internal static func delete(_ endpoint: Endpoint, with filename: String, completion: @escaping ((_ error: Error?) -> Void)) {
 		guard
-			let endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue),
-			let deleteEndpoint = endpoint.add(path: filename) else {
+			let full_endpoint = Environment.current.baseURL?.add(path: endpoint.rawValue),
+			let deleteEndpoint = full_endpoint.add(path: filename) else {
 				fatalError("Cannot create endpoint for: \(endpoint.rawValue)")
 		}
 
