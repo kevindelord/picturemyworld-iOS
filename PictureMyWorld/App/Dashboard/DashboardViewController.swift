@@ -31,15 +31,13 @@ class DashboardViewController					: UIViewController, DashboardDelegate, Progres
 extension DashboardViewController {
 
 	@IBAction private func createNew() {
-		let alertController = UIAlertController(title: "dashboard.alert.create.message".localized(), message: nil, preferredStyle: .actionSheet)
-		for destination in DetailViewRooter.Destination.allCases {
-			alertController.addAction(UIAlertAction(title: destination.title, style: .default, handler: { [weak self] (action: UIAlertAction) in
-				self?.present(destination: destination, entity: nil)
-			}))
+		guard
+			let index = self.segmentedControl?.selectedSegmentIndex,
+			let type = ContentType(rawValue: index) else {
+				return
 		}
 
-		alertController.addAction(UIAlertAction(title: "dashboard.alert.create.cancel".localized(), style: .cancel, handler: nil))
-		self.present(alertController, animated: true, completion: nil)
+		self.present(destination: type.destination, entity: nil)
 	}
 
 	@IBAction private func reloadListView() {
