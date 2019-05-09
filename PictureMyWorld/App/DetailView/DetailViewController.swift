@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController			: UIViewController, ProgressView {
+class DetailViewController			: UIViewController, ProgressView, UITextFieldDelegate {
 
 	// MARK: - Outlets
 
@@ -70,6 +70,11 @@ class DetailViewController			: UIViewController, ProgressView {
 		self.entity = entity
 		self.contentDataSource = contentDataSource
 		self.dashboardDelegate = dashboardDelegate
+	}
+
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		self.view.endEditing(true)
+		return true
 	}
 }
 

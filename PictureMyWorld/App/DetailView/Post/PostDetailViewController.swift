@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostDetailViewController					: DetailViewController, UITextFieldDelegate {
+class PostDetailViewController					: DetailViewController {
 
 	// MARK: - IBOutlets
 
@@ -32,7 +32,6 @@ class PostDetailViewController					: DetailViewController, UITextFieldDelegate {
 
 		self.titleTextField.text = post.title
 		self.imageTextField.text = post.image
-		self.imageTextField.inputView = UIView.init()
 		self.dateTextField.text = post.date
 		self.filenameTextField.text = post.filename
 		self.locationTextField.text = post.locationText
@@ -68,14 +67,6 @@ class PostDetailViewController					: DetailViewController, UITextFieldDelegate {
 	}
 }
 
-extension PostDetailViewController {
-
-	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		// Make sure the image text field is read only.
-		return (textField != self.imageTextField)
-	}
-}
-
 // MARK: - IBActions
 
 extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -91,5 +82,9 @@ extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigati
 		}
 
 		self.present(imagePicker, animated: true, completion: nil)
+	}
+
+	@IBAction private func copyImageNameToClipboard() {
+		UIPasteboard.general.string = self.imageTextField.text
 	}
 }
