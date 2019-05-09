@@ -11,5 +11,7 @@ struct DetailViewConstants {
 	static let storyboardName = "DetailView"
 
 	static let youtubeBaseURL = "https://www.youtube.com/embed/"
+
+	static let dateFormat = "yyyy-MM-dd"
 }
 

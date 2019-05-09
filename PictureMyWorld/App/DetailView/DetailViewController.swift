@@ -71,14 +71,16 @@ class DetailViewController			: UIViewController, ProgressView, UITextFieldDelega
 		self.contentDataSource = contentDataSource
 		self.dashboardDelegate = dashboardDelegate
 	}
+}
+
+// MARK: - Keyboard Handling
+
+extension DetailViewController {
 
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		self.view.endEditing(true)
 		return true
 	}
-}
-
-extension DetailViewController {
 
 	private func registerNotifications() {
 		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

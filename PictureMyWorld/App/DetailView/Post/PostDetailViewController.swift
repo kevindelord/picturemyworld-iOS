@@ -20,6 +20,14 @@ class PostDetailViewController					: DetailViewController {
 	@IBOutlet private weak var locationTextField: UITextField!
 	@IBOutlet private weak var captionTextView	: UITextView!
 
+	// MARK: - Computed Properties
+
+	private var todayDate						: String {
+		let dateFormatterGet = DateFormatter()
+		dateFormatterGet.dateFormat = DetailViewConstants.dateFormat
+		return dateFormatterGet.string(from: Date())
+	}
+
 	// MARK: - Setup functions
 
 	override func setupUIElements() {
@@ -27,8 +35,10 @@ class PostDetailViewController					: DetailViewController {
 
 		guard let post = self.entity as? Post else {
 			self.imageView.backgroundColor = .clear
+			self.dateTextField.text = self.todayDate
 			return
 		}
+
 
 		self.titleTextField.text = post.title
 		self.imageTextField.text = post.image
