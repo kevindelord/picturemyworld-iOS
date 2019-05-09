@@ -19,8 +19,6 @@
 "dashboard.alert.delete.message" = "Delete '%@' ?";
 "dashboard.alert.delete.cancel" = "Cancel";
 "dashboard.alert.delete.ok" = "Go for it";
-"dashboard.alert.create.message" = "Create new...";
-"dashboard.alert.create.cancel" = "Cancel";
 
 /// Details
 "detail.title.post" = "Post";
