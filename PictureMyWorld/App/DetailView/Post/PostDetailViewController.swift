@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class PostDetailViewController					: DetailViewController {
 
@@ -20,14 +21,6 @@ class PostDetailViewController					: DetailViewController {
 	@IBOutlet private weak var locationTextField: UITextField!
 	@IBOutlet private weak var captionTextView	: UITextView!
 
-	// MARK: - Computed Properties
-
-	private var todayDate						: String {
-		let dateFormatterGet = DateFormatter()
-		dateFormatterGet.dateFormat = DetailViewConstants.dateFormat
-		return dateFormatterGet.string(from: Date())
-	}
-
 	// MARK: - Setup functions
 
 	override func setupUIElements() {
@@ -35,10 +28,8 @@ class PostDetailViewController					: DetailViewController {
 
 		guard let post = self.entity as? Post else {
 			self.imageView.backgroundColor = .clear
-			self.dateTextField.text = self.todayDate
 			return
 		}
-
 
 		self.titleTextField.text = post.title
 		self.imageTextField.text = post.image
@@ -82,8 +73,11 @@ class PostDetailViewController					: DetailViewController {
 extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 	@IBAction private func selectPhotoFromLibrary() {
-		let imagePicker = ImagePicker { [weak self] (image: UIImage?) in
+
+		let imagePicker = ImagePicker { [weak self] (image: UIImage?, date: Date?, placemark: CLPlacemark?) in
 			self?.imageView.image = image
+			self?.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
+			self?.locationTextField?.text = placemark?.areasOfInterest?.first
 
 			// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
 			if let imageName = (self?.entity as? Post)?.image {
@@ -96,5 +90,18 @@ extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigati
 
 	@IBAction private func copyImageNameToClipboard() {
 		UIPasteboard.general.string = self.imageTextField.text
+	}
+}
+
+extension String {
+
+	fileprivate func using(date: Date?) -> String? {
+		guard let date = date else {
+			return nil
+		}
+
+		let dateFormatterGet = DateFormatter()
+		dateFormatterGet.dateFormat = self
+		return dateFormatterGet.string(from: date)
 	}
 }
