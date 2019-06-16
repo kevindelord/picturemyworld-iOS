@@ -77,7 +77,7 @@ extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigati
 		let imagePicker = ImagePicker { [weak self] (image: UIImage?, date: Date?, placemark: CLPlacemark?) in
 			self?.imageView.image = image
 			self?.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
-			self?.locationTextField?.text = placemark?.areasOfInterest?.first
+			self?.locationTextField?.text = placemark?.formattedAddress()
 
 			// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
 			if let imageName = (self?.entity as? Post)?.image {
@@ -103,5 +103,21 @@ extension String {
 		let dateFormatterGet = DateFormatter()
 		dateFormatterGet.dateFormat = self
 		return dateFormatterGet.string(from: date)
+	}
+}
+
+extension CLPlacemark {
+
+	fileprivate func formattedAddress() -> String {
+		let info = [self.name, self.subLocality, self.administrativeArea, country].compactMap({$0})
+		var address = ""
+		for attr in info {
+			if (address.isEmpty == true) {
+				address = attr
+			} else {
+				address = address + ", " + attr
+			}
+		}
+		return address
 	}
 }
