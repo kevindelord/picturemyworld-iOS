@@ -31,6 +31,25 @@ struct Post				: Model {
 		self.date = (json[API.JSON.date] as? String ?? "")
 	}
 
+	/// Extract the country from the complete location text.
+	/// Pattern: <Area of Interest or Name>, <District>, <Country>
+	var country			: String {
+		let pattern = "[a-zA-Z-_ ]*$"
+		var country = ""
+		guard let range = self.locationText.range(of: pattern, options: .regularExpression) else {
+			return ""
+		}
+
+		self.locationText.enumerateSubstrings(in: range) { (value: String?, start: Range<String.Index>, end: Range<String.Index>, stopEnumeration: inout Bool) in
+			if let value = value {
+				country = value.trimmingCharacters(in: .whitespacesAndNewlines)
+				stopEnumeration = true
+			}
+		}
+
+		return country
+	}
+
 	var isInvalid: Bool {
 		return (self.latitude.isEmpty == true ||
 			self.ratio.isEmpty == true ||

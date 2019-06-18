@@ -19,6 +19,7 @@ class PostDetailViewController					: DetailViewController {
 	@IBOutlet private weak var dateTextField	: UITextField!
 	@IBOutlet private weak var filenameTextField: UITextField!
 	@IBOutlet private weak var locationTextField: UITextField!
+	@IBOutlet private weak var countryTextField	: UITextField!
 	@IBOutlet private weak var captionTextView	: UITextView!
 
 	// MARK: - Setup functions
@@ -37,6 +38,7 @@ class PostDetailViewController					: DetailViewController {
 		self.filenameTextField.text = post.filename
 		self.locationTextField.text = post.locationText
 		self.captionTextView.text = post.caption
+		self.countryTextField.text = post.country
 
 		APIManager.downloadAndCache(image: post.image, completion: { [weak self] (image: UIImage?) in
 			self?.imageView.image = image
@@ -55,6 +57,10 @@ class PostDetailViewController					: DetailViewController {
 	}
 
 	override var serializedEntity				: [String: Any] {
+		var location = (self.locationTextField.text ?? "")
+		let country = (self.countryTextField.text ?? "")
+		location = (location.isEmpty == true ? country : location + ", " + country)
+
 		return [
 			// Parameters used ot identify the action type (create or update)
 			API.JSON.filename: (self.filenameTextField.text ?? ""),
@@ -62,7 +68,7 @@ class PostDetailViewController					: DetailViewController {
 			API.JSON.date: (self.dateTextField.text ?? ""),
 			API.JSON.caption: (self.captionTextView.text ?? ""),
 			API.JSON.title: (self.titleTextField.text ?? ""),
-			API.JSON.location: (self.locationTextField.text ?? "")
+			API.JSON.location: location
 			// API.JSON.image: The image is sent as a raw data by the APImanager.
 		]
 	}
@@ -77,7 +83,8 @@ extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigati
 		let imagePicker = ImagePicker { [weak self] (image: UIImage?, date: Date?, placemark: CLPlacemark?) in
 			self?.imageView.image = image
 			self?.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
-			self?.locationTextField?.text = placemark?.formattedAddress()
+			self?.locationTextField?.text = placemark?.formattedLocation()
+			self?.countryTextField?.text = placemark?.country
 
 			// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
 			if let imageName = (self?.entity as? Post)?.image {
@@ -108,8 +115,8 @@ extension String {
 
 extension CLPlacemark {
 
-	fileprivate func formattedAddress() -> String {
-		let info = [self.name, self.subLocality, self.administrativeArea, country].compactMap({$0})
+	fileprivate func formattedLocation() -> String {
+		let info = [self.name, self.subLocality, self.administrativeArea].compactMap({$0})
 		var address = ""
 		for attr in info {
 			if (address.isEmpty == true) {
