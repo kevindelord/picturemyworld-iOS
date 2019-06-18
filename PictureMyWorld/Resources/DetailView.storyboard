@@ -445,21 +445,21 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tT-FC-vl4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="211.5"/>
                                         <state key="normal" title="Select Photo From Library"/>
                                         <connections>
                                             <action selector="selectPhotoFromLibrary" destination="4C1-4u-FKC" eventType="touchUpInside" id="k5B-LP-z1x"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tf0-bD-xSk">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
                                         <color key="backgroundColor" red="0.4549019608" green="0.45562034849999999" blue="0.45561432839999999" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Tf0-bD-xSk" secondAttribute="height" multiplier="100:60" id="Ece-pM-ydE"/>
+                                            <constraint firstAttribute="width" secondItem="Tf0-bD-xSk" secondAttribute="height" multiplier="100:75" id="Ece-pM-ydE"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-3I-ajr" userLabel="header">
-                                        <rect key="frame" x="0.0" y="155" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="211.5" width="375" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Post Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHD-uJ-i7c">
                                                 <rect key="frame" x="16" y="10" width="343" height="50"/>
@@ -481,7 +481,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mi9-4P-fwQ">
-                                        <rect key="frame" x="0.0" y="225" width="375" height="378"/>
+                                        <rect key="frame" x="0.0" y="281.5" width="375" height="378"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23y-XS-34i" userLabel="Country">
                                                 <rect key="frame" x="20" y="65.5" width="55" height="21"/>
