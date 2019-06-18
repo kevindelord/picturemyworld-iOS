@@ -59,9 +59,10 @@ struct API {
 		static let longitude 			= "longitude"
 		static let locationText 		= "location_text"
 		static let location 			= "location"
-		static let image				= "image"
 		static let link 				= "link"
 		static let name 				= "name"
+		static let image				= "image"
+		static let imageFilename		= "image_filename"
 		static let defaultImageName		= "image.jpg"
 	}
 

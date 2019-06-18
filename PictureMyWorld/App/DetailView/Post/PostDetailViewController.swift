@@ -19,7 +19,12 @@ class PostDetailViewController					: DetailViewController {
 	@IBOutlet private weak var dateTextField	: UITextField!
 	@IBOutlet private weak var filenameTextField: UITextField!
 	@IBOutlet private weak var locationTextField: UITextField!
+	@IBOutlet private weak var countryTextField	: UITextField!
 	@IBOutlet private weak var captionTextView	: UITextView!
+
+	// MARK: - Private Attributes
+
+	private var newSelectedImageData			: Data? = nil
 
 	// MARK: - Setup functions
 
@@ -37,6 +42,7 @@ class PostDetailViewController					: DetailViewController {
 		self.filenameTextField.text = post.filename
 		self.locationTextField.text = post.locationText
 		self.captionTextView.text = post.caption
+		self.countryTextField.text = post.country
 
 		APIManager.downloadAndCache(image: post.image, completion: { [weak self] (image: UIImage?) in
 			self?.imageView.image = image
@@ -44,17 +50,14 @@ class PostDetailViewController					: DetailViewController {
 	}
 
 	override internal var imageData : Data? {
-		// If needed, override in subclass to upload an image.
-		guard
-			let image = self.imageView.image,
-			let jpegRepresentation = image.jpegData(compressionQuality: 1.0) else {
-				return nil
-		}
-
-		return jpegRepresentation
+		return self.newSelectedImageData
 	}
 
 	override var serializedEntity				: [String: Any] {
+		var location = (self.locationTextField.text ?? "")
+		let country = (self.countryTextField.text ?? "")
+		location = (location.isEmpty == true ? country : location + ", " + country)
+
 		return [
 			// Parameters used ot identify the action type (create or update)
 			API.JSON.filename: (self.filenameTextField.text ?? ""),
@@ -62,8 +65,10 @@ class PostDetailViewController					: DetailViewController {
 			API.JSON.date: (self.dateTextField.text ?? ""),
 			API.JSON.caption: (self.captionTextView.text ?? ""),
 			API.JSON.title: (self.titleTextField.text ?? ""),
-			API.JSON.location: (self.locationTextField.text ?? "")
+			API.JSON.location: location,
 			// API.JSON.image: The image is sent as a raw data by the APImanager.
+			// Optional Parameters
+			API.JSON.imageFilename: (self.imageTextField.text ?? "")
 		]
 	}
 }
@@ -72,17 +77,38 @@ class PostDetailViewController					: DetailViewController {
 
 extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+	/// With a progress view shown, display the new image and retain its data.
+	/// Display the give Date with a specific format and reverse geocode the CLLocation to a user friendly location.
+	///
+	/// - Parameters:
+	///   - image: Original Image of the PHAsset.
+	///   - date: Creation date of the PHAsset.
+	///   - location: Location of the PHAsset of reverse geocode.
+	private func process(image: UIImage?, date: Date?, location: CLLocation?) {
+		self.showProgressView()
+
+		self.newSelectedImageData = image?.jpegData(compressionQuality: 1.0)
+		self.imageView.image = image
+		self.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
+
+		// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
+		if let imageName = (self.entity as? Post)?.image {
+			APIManager.clearCache(image: imageName)
+		}
+
+		// If any location, reverse the geocode to determine the area of interest.
+		AssetLocation.reverse(location: location, completionHandler: { (location: String?, country: String?) in
+			self.locationTextField?.text = location
+			self.countryTextField?.text = country
+			self.hideProgressView()
+		})
+	}
+
 	@IBAction private func selectPhotoFromLibrary() {
-
-		let imagePicker = ImagePicker { [weak self] (image: UIImage?, date: Date?, placemark: CLPlacemark?) in
-			self?.imageView.image = image
-			self?.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
-			self?.locationTextField?.text = placemark?.formattedAddress()
-
-			// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
-			if let imageName = (self?.entity as? Post)?.image {
-				APIManager.clearCache(image: imageName)
-			}
+		let imagePicker = ImagePicker { [weak self] (image: UIImage?, date: Date?, location: CLLocation?) in
+			self?.presentedViewController?.dismiss(animated: true, completion: {
+				self?.process(image: image, date: date, location: location)
+			})
 		}
 
 		self.present(imagePicker, animated: true, completion: nil)
@@ -103,21 +129,5 @@ extension String {
 		let dateFormatterGet = DateFormatter()
 		dateFormatterGet.dateFormat = self
 		return dateFormatterGet.string(from: date)
-	}
-}
-
-extension CLPlacemark {
-
-	fileprivate func formattedAddress() -> String {
-		let info = [self.name, self.subLocality, self.administrativeArea, country].compactMap({$0})
-		var address = ""
-		for attr in info {
-			if (address.isEmpty == true) {
-				address = attr
-			} else {
-				address = address + ", " + attr
-			}
-		}
-		return address
 	}
 }
