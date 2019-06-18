@@ -78,18 +78,29 @@ class PostDetailViewController					: DetailViewController {
 
 extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+	private func process(image: UIImage?, date: Date?, location: CLLocation?) {
+		self.showProgressView()
+		self.imageView.image = image
+		self.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
+
+		// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
+		if let imageName = (self.entity as? Post)?.image {
+			APIManager.clearCache(image: imageName)
+		}
+
+		// If any location, reverse the geocode to determine the area of interest.
+		AssetLocation.reverse(location: location, completionHandler: { (location: String?, country: String?) in
+			self.locationTextField?.text = location
+			self.countryTextField?.text = country
+			self.hideProgressView()
+		})
+	}
+
 	@IBAction private func selectPhotoFromLibrary() {
-
-		let imagePicker = ImagePicker { [weak self] (image: UIImage?, date: Date?, placemark: CLPlacemark?) in
-			self?.imageView.image = image
-			self?.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
-			self?.locationTextField?.text = placemark?.formattedLocation()
-			self?.countryTextField?.text = placemark?.country
-
-			// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
-			if let imageName = (self?.entity as? Post)?.image {
-				APIManager.clearCache(image: imageName)
-			}
+		let imagePicker = ImagePicker { [weak self] (image: UIImage?, date: Date?, location: CLLocation?) in
+			self?.presentedViewController?.dismiss(animated: true, completion: {
+				self?.process(image: image, date: date, location: location)
+			})
 		}
 
 		self.present(imagePicker, animated: true, completion: nil)
@@ -110,21 +121,5 @@ extension String {
 		let dateFormatterGet = DateFormatter()
 		dateFormatterGet.dateFormat = self
 		return dateFormatterGet.string(from: date)
-	}
-}
-
-extension CLPlacemark {
-
-	fileprivate func formattedLocation() -> String {
-		let info = [self.name, self.subLocality, self.administrativeArea].compactMap({$0})
-		var address = ""
-		for attr in info {
-			if (address.isEmpty == true) {
-				address = attr
-			} else {
-				address = address + ", " + attr
-			}
-		}
-		return address
 	}
 }
