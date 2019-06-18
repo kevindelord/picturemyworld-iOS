@@ -58,18 +58,25 @@ class PostDetailViewController					: DetailViewController {
 		let country = (self.countryTextField.text ?? "")
 		location = (location.isEmpty == true ? country : location + ", " + country)
 
-		return [
+		var serializedEntity = [
 			// Parameters used ot identify the action type (create or update)
 			API.JSON.filename: (self.filenameTextField.text ?? ""),
 			// Required Parameters
 			API.JSON.date: (self.dateTextField.text ?? ""),
 			API.JSON.caption: (self.captionTextView.text ?? ""),
 			API.JSON.title: (self.titleTextField.text ?? ""),
-			API.JSON.location: location,
+			API.JSON.location: location
 			// API.JSON.image: The image is sent as a raw data by the APImanager.
-			// Optional Parameters
-			API.JSON.imageFilename: (self.imageTextField.text ?? "")
 		]
+
+		// Optional Parameters
+		// If it's an update the self.entity object exists and the image_filename should be sent with the payload.
+		// Therefore we do not need to re-upload the image when updating the description only of an image post.
+		if (self.entity as? Post != nil) {
+			serializedEntity[API.JSON.imageFilename] = (self.imageTextField.text ?? "")
+		}
+
+		return serializedEntity
 	}
 }
 
