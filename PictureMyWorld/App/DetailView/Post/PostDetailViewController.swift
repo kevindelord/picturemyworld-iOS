@@ -22,6 +22,10 @@ class PostDetailViewController					: DetailViewController {
 	@IBOutlet private weak var countryTextField	: UITextField!
 	@IBOutlet private weak var captionTextView	: UITextView!
 
+	// MARK: - Private Attributes
+
+	private var newSelectedImageData			: Data? = nil
+
 	// MARK: - Setup functions
 
 	override func setupUIElements() {
@@ -46,14 +50,7 @@ class PostDetailViewController					: DetailViewController {
 	}
 
 	override internal var imageData : Data? {
-		// If needed, override in subclass to upload an image.
-		guard
-			let image = self.imageView.image,
-			let jpegRepresentation = image.jpegData(compressionQuality: 1.0) else {
-				return nil
-		}
-
-		return jpegRepresentation
+		return self.newSelectedImageData
 	}
 
 	override var serializedEntity				: [String: Any] {
@@ -68,8 +65,10 @@ class PostDetailViewController					: DetailViewController {
 			API.JSON.date: (self.dateTextField.text ?? ""),
 			API.JSON.caption: (self.captionTextView.text ?? ""),
 			API.JSON.title: (self.titleTextField.text ?? ""),
-			API.JSON.location: location
+			API.JSON.location: location,
 			// API.JSON.image: The image is sent as a raw data by the APImanager.
+			// Optional Parameters
+			API.JSON.imageFilename: (self.imageTextField.text ?? "")
 		]
 	}
 }
@@ -78,8 +77,17 @@ class PostDetailViewController					: DetailViewController {
 
 extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+	/// With a progress view shown, display the new image and retain its data.
+	/// Display the give Date with a specific format and reverse geocode the CLLocation to a user friendly location.
+	///
+	/// - Parameters:
+	///   - image: Original Image of the PHAsset.
+	///   - date: Creation date of the PHAsset.
+	///   - location: Location of the PHAsset of reverse geocode.
 	private func process(image: UIImage?, date: Date?, location: CLLocation?) {
 		self.showProgressView()
+
+		self.newSelectedImageData = image?.jpegData(compressionQuality: 1.0)
 		self.imageView.image = image
 		self.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
 
