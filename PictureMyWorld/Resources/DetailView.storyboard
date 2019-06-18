@@ -481,7 +481,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mi9-4P-fwQ">
-                                        <rect key="frame" x="0.0" y="225" width="375" height="346"/>
+                                        <rect key="frame" x="0.0" y="225" width="375" height="378"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23y-XS-34i" userLabel="Country">
                                                 <rect key="frame" x="20" y="65.5" width="55" height="21"/>
@@ -587,7 +587,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="Post Description..." translatesAutoresizingMaskIntoConstraints="NO" id="EyY-S6-ggG">
-                                                <rect key="frame" x="20" y="258.5" width="335" height="59.5"/>
+                                                <rect key="frame" x="20" y="258.5" width="335" height="103.5"/>
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -618,7 +618,7 @@
                                             <constraint firstAttribute="trailing" secondItem="hc6-dW-PyI" secondAttribute="trailing" constant="20" id="Emt-Ab-MXf"/>
                                             <constraint firstItem="bJS-uB-eN1" firstAttribute="top" secondItem="Wan-jY-jNp" secondAttribute="bottom" constant="20" id="GFQ-No-Fi5"/>
                                             <constraint firstItem="Wan-jY-jNp" firstAttribute="leading" secondItem="23y-XS-34i" secondAttribute="leading" id="GFb-ke-2M9"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="EyY-S6-ggG" secondAttribute="bottom" constant="20" id="Imd-aV-afT"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="EyY-S6-ggG" secondAttribute="bottom" constant="8" id="Imd-aV-afT"/>
                                             <constraint firstItem="FkI-tK-QaR" firstAttribute="leading" secondItem="0hF-dz-EOk" secondAttribute="trailing" constant="8" id="J5x-12-JJf"/>
                                             <constraint firstItem="EyY-S6-ggG" firstAttribute="leading" secondItem="mi9-4P-fwQ" secondAttribute="leading" constant="20" id="Jdh-go-WXp"/>
                                             <constraint firstItem="23y-XS-34i" firstAttribute="top" secondItem="hc6-dW-PyI" secondAttribute="bottom" constant="20" id="KZp-jL-mer"/>
@@ -637,7 +637,7 @@
                                             <constraint firstItem="JRU-zt-vMM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="23y-XS-34i" secondAttribute="trailing" constant="8" id="xWs-Zs-RjY"/>
                                             <constraint firstItem="JRU-zt-vMM" firstAttribute="centerY" secondItem="23y-XS-34i" secondAttribute="centerY" id="yN9-Qp-1dL"/>
                                             <constraint firstItem="DBB-XU-vaQ" firstAttribute="trailing" secondItem="hc6-dW-PyI" secondAttribute="trailing" id="zLw-Ki-d9f"/>
-                                            <constraint firstAttribute="height" constant="346" id="zgI-dT-en4"/>
+                                            <constraint firstAttribute="height" constant="378" id="zgI-dT-en4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
