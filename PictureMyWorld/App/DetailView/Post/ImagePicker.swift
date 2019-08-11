@@ -31,9 +31,37 @@ class ImagePicker	: UIImagePickerController {
 
 extension ImagePicker: UIImagePickerControllerDelegate {
 
-	func fetchImageData(asset: PHAsset, completion: @escaping (_ imageData: Data?) -> Void) {
-		PHImageManager.default().requestImageData(for: asset, options: nil) { (imageData: Data?, dataUTI: String?, orientation: UIImage.Orientation, info: [AnyHashable : Any]?) in
-			completion(imageData)
+	/// New size of the PHAsset conforming to the Server scaling configuration.
+	///
+	/// - Parameter asset: The PHAsset to resize.
+	/// - Returns: The new CGSize of the PHAsset.
+	private func downscaledSize(for asset: PHAsset) -> CGSize {
+		let width = Double(asset.pixelWidth)
+		let height = Double(asset.pixelHeight)
+		let maxSize = API.Upload.maximumImageSize
+
+		var size = CGSize.zero
+		if (height > width) {
+			let scale = (Double(maxSize.height) / height)
+			let newWidth = (width * scale)
+			size = CGSize(width: newWidth, height: Double(maxSize.height))
+		} else {
+			let scale = (Double(maxSize.width) / width)
+			let newHeight = (height * scale)
+			size = CGSize(width: Double(maxSize.width), height: newHeight)
+		}
+
+		return size
+	}
+
+	func requestImageDataFromDisk(for asset: PHAsset, completion: @escaping (_ imageData: Data?) -> Void) {
+		let size = self.downscaledSize(for: asset)
+		let options = PHImageRequestOptions()
+		options.resizeMode = .exact
+		options.deliveryMode = .highQualityFormat
+		PHImageManager.default().requestImage(for: asset, targetSize: size, contentMode: PHImageContentMode.aspectFit, options: options) { (image: UIImage?, info: [AnyHashable : Any]?) in
+			let data = image?.jpegData(compressionQuality: 1.0)
+			completion(data)
 		}
 	}
 
@@ -58,8 +86,7 @@ extension ImagePicker: UIImagePickerControllerDelegate {
 
 		let date = phAsset.creationDate
 		let location = phAsset.location
-
-		self.fetchImageData(asset: phAsset) { [weak self] (imageData: Data?) in
+		self.requestImageDataFromDisk(for: phAsset) { [weak self] (imageData: Data?) in
 			if let imageData = imageData {
 				self?.completion?(imageData, date, location)
 			} else {

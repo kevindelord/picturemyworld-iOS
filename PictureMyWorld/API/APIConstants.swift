@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct API {
 
@@ -69,6 +70,15 @@ struct API {
 	struct MimeType {
 
 		static let imageJPEG			= "image/jpeg"
+	}
+
+	struct Upload {
+		// Those values have been defined in the downscaling script written in Python.
+		// See more at:
+		//  - GitHub Repository: picturemyworld.github.io
+		//  - File: `/scripts/create_image_post.py`
+		//    > line 60: `convert %s -resize 2160x1440 -quality 40 %s`
+		static let maximumImageSize		= CGSize(width: 2160.0, height: 1440.0)
 	}
 }
 
