@@ -11,9 +11,9 @@ import Photos
 
 class ImagePicker	: UIImagePickerController {
 
-	var completion	: ((UIImage?, Date?, CLLocation?) -> Void)?
+	var completion	: ((Data?, Date?, CLLocation?) -> Void)?
 
-	convenience init(completion: (@escaping ((UIImage?, Date?, CLLocation?) -> Void))) {
+	convenience init(completion: (@escaping ((Data?, Date?, CLLocation?) -> Void))) {
 		self.init()
 
 		self.allowsEditing = false
@@ -31,23 +31,41 @@ class ImagePicker	: UIImagePickerController {
 
 extension ImagePicker: UIImagePickerControllerDelegate {
 
+	func fetchImageData(asset: PHAsset, completion: @escaping (_ imageData: Data?) -> Void) {
+		PHImageManager.default().requestImageData(for: asset, options: nil) { (imageData: Data?, dataUTI: String?, orientation: UIImage.Orientation, info: [AnyHashable : Any]?) in
+			completion(imageData)
+		}
+	}
+
 	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 		self.dismiss(animated: true, completion: nil)
 	}
 
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-		var date : Date? = nil
-		var location : CLLocation? = nil
+		guard let phAsset = info[UIImagePickerController.InfoKey.phAsset.rawValue] as? PHAsset else {
+			if let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
+				// Otherwise give the image and its date to the handler.
+				let imageData = image.jpegData(compressionQuality: 0.8)
+				self.completion?(imageData, Date(), nil)
+			} else {
+				UIAlertController.showErrorMessage("Invalid Image Asset.")
+				self.completion?(nil, nil, nil)
+			}
 
-		if let phAsset = info[UIImagePickerController.InfoKey.phAsset.rawValue] as? PHAsset {
-			date = phAsset.creationDate
-			location = phAsset.location
+			return
 		}
 
-		if let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
-			// Otherwise give the image and its date to the handler.
-			self.completion?(image, date, location)
+		let date = phAsset.creationDate
+		let location = phAsset.location
+
+		self.fetchImageData(asset: phAsset) { [weak self] (imageData: Data?) in
+			if let imageData = imageData {
+				self?.completion?(imageData, date, location)
+			} else {
+				UIAlertController.showErrorMessage("Cannot retrieve Image Asset.")
+				self?.completion?(nil, date, location)
+			}
 		}
 	}
 }

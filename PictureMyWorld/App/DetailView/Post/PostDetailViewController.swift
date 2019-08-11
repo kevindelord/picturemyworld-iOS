@@ -91,11 +91,10 @@ extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigati
 	///   - image: Original Image of the PHAsset.
 	///   - date: Creation date of the PHAsset.
 	///   - location: Location of the PHAsset of reverse geocode.
-	private func process(image: UIImage?, date: Date?, location: CLLocation?) {
+	private func process(imageData: Data?, date: Date?, location: CLLocation?) {
 		self.showProgressView()
-
-		self.newSelectedImageData = image?.jpegData(compressionQuality: 1.0)
-		self.imageView.image = image
+		self.newSelectedImageData = imageData
+		self.imageView.image = UIImage(data: imageData ?? Data())
 		self.dateTextField?.text = DetailViewConstants.dateFormat.using(date: date)
 
 		// Clear the cached image. Next time the new picture (with the same name) will be downloaded again.
@@ -112,9 +111,9 @@ extension PostDetailViewController : UIImagePickerControllerDelegate, UINavigati
 	}
 
 	@IBAction private func selectPhotoFromLibrary() {
-		let imagePicker = ImagePicker { [weak self] (image: UIImage?, date: Date?, location: CLLocation?) in
+		let imagePicker = ImagePicker { [weak self] (imageData: Data?, date: Date?, location: CLLocation?) in
 			self?.presentedViewController?.dismiss(animated: true, completion: {
-				self?.process(image: image, date: date, location: location)
+				self?.process(imageData: imageData, date: date, location: location)
 			})
 		}
 
