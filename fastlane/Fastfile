@@ -1,0 +1,62 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+default_platform(:ios)
+
+platform :ios do
+
+	desc "Build and deploy a new app version to TestFlight!"
+	desc "This lane does:"
+	desc "- Ensure the git repository is clean"
+	desc "- Increment the build number"
+	desc "- Automatically code sign and build the app"
+	desc "- Upload the binary to TestFlight"
+	desc "- Add and push a new git tag"
+	desc "- Clean build artifacts"
+
+	lane :deploy do
+		# Ensure that your git status is not dirty
+		ensure_git_status_clean
+
+		# Increment build number
+		increment_build_number(xcodeproj: "PictureMyWorld.xcodeproj")
+
+		# Code Signing
+		# `cert`: check for valid certificate and install its private key on the local machine
+		get_certificates(output_path: "fastlane/deploy")
+		# `sigh`: download and install matching provisioning profile on the local machine
+		get_provisioning_profile(output_path: "fastlane/deploy")
+		# Build iOS app
+		build_app(
+			scheme: "PictureMyWorld",
+			workspace: "PictureMyWorld.xcworkspace",
+			include_bitcode: true,
+			clean: true,
+			derived_data_path: "fastlane/deploy")
+
+		# Upload binary to testflight
+		upload_to_testflight
+
+		# Deletes files created as result of running gym, cert, sigh or download_dsyms
+		clean_build_artifacts
+		clear_derived_data(derived_data_path: "fastlane/deploy")
+
+		# Commit the version bump
+		commit_version_bump(xcodeproj: "PictureMyWorld.xcodeproj")
+
+		# Add a git tag for this build.
+		add_git_tag
+
+		# Push the new commit and tag back to your git remote
+		push_to_git_remote
+	end
+end
