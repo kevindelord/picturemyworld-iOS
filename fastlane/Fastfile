@@ -40,11 +40,13 @@ platform :ios do
 			scheme: "PictureMyWorld",
 			workspace: "PictureMyWorld.xcworkspace",
 			include_bitcode: true,
-			build_path: "Fastlane/deploy",
-			archive_path: "Fastlane/deploy")
+			derived_data_path: "Fastlane/deploy")
 
 		# Upload binary to testflight
 		# upload_to_testflight
+
+		# Deletes files created as result of running gym, cert, sigh or download_dsyms
+		clean_build_artifacts
 
 		# Commit the version bump
 		commit_version_bump(xcodeproj: "PictureMyWorld.xcodeproj")
@@ -54,8 +56,5 @@ platform :ios do
 
 		# Push the new commit and tag back to your git remote
 		push_to_git_remote
-
-		# Deletes files created as result of running gym, cert, sigh or download_dsyms
-		clean_build_artifacts
 	end
 end

@@ -13,9 +13,16 @@ List of dependencies installed via [CocoaPods](https://cocoapods.org/):
 - Alamofire: Handle API requests and image upload
 - AppCenter: Crash reports and distribution platform
 
+## Project Setup
+
+After installing all the pods make sure to create a `credentials.plist` using the script: `PictureMyWorld/generate_credentials.sh`
+```
+
+```
+
 ## Infrastructure
 
-To automatically deploy a new version use Fastlane:
+To automatically deploy a new version to TestFlight use Fastlane:
 ```
 $> bundle exec fastlane ios deploy
 ```
