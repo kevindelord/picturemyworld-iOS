@@ -11,7 +11,6 @@ target 'PictureMyWorld' do
 	pod 'SDWebImage', '~> 5.5.2'
 	pod 'Reachability', '~> 3.2.0'
 	pod 'Alamofire', '~> 5.0.2'
-	pod 'AppCenter', '~> 3.0.0'
 end
 
 post_install do |installer|

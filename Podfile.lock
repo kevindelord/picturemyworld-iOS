@@ -1,13 +1,5 @@
 PODS:
   - Alamofire (5.0.2)
-  - AppCenter (3.0.0):
-    - AppCenter/Analytics (= 3.0.0)
-    - AppCenter/Crashes (= 3.0.0)
-  - AppCenter/Analytics (3.0.0):
-    - AppCenter/Core
-  - AppCenter/Core (3.0.0)
-  - AppCenter/Crashes (3.0.0):
-    - AppCenter/Core
   - Reachability (3.2)
   - SDWebImage (5.5.2):
     - SDWebImage/Core (= 5.5.2)
@@ -15,23 +7,20 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.2)
-  - AppCenter (~> 3.0.0)
   - Reachability (~> 3.2.0)
   - SDWebImage (~> 5.5.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
-    - AppCenter
     - Reachability
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
-  AppCenter: 7a0bbe928d07467ac8b2d7f6f2a675872a6471d8
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
 
-PODFILE CHECKSUM: 20686bb87bf463a53a288363f1eb2dff13b4e439
+PODFILE CHECKSUM: 84f630bbf73e3cfd87408adf699bb8de2c2b2f48
 
 COCOAPODS: 1.8.3
