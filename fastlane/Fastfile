@@ -32,16 +32,16 @@ platform :ios do
 
 		# Code Signing
 		# `cert`: check for valid certificate and install its private key on the local machine
-		get_certificates(output_path: "Fastlane/deploy")
+		get_certificates(output_path: "fastlane/deploy")
 		# `sigh`: download and install matching provisioning profile on the local machine
-		get_provisioning_profile(output_path: "Fastlane/deploy")
+		get_provisioning_profile(output_path: "fastlane/deploy")
 		# Build iOS app
 		build_app(
 			scheme: "PictureMyWorld",
 			workspace: "PictureMyWorld.xcworkspace",
 			include_bitcode: true,
 			clean: true,
-			destination: "Fastlane/deploy")
+			destination: "fastlane/deploy")
 
 		# Upload binary to testflight
 		# upload_to_testflight
