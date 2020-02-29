@@ -2,7 +2,7 @@ app_identifier("io.kevindelord.app.picturemyworld.uploader") # The bundle identi
 apple_id("delord.kevin@gmail.com") # Your Apple email address
 
 itc_team_name "Kevin Delord"
-itc_team_id "QXY3J9PHW4"
+itc_team_id "118442343"
 
 # For more information about the Appfile, see:
 #     https://docs.fastlane.tools/advanced/#appfile
