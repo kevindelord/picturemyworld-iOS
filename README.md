@@ -1,7 +1,9 @@
 # PictureMyWorld-Uploader-iOS
 
 Xcode Version: 11.3.1
+
 Code Signing: Automatic
+
 Swift Version: 5
 
 ## Dependencies
