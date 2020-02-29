@@ -24,10 +24,15 @@ platform :ios do
 
 	# Increment build number
 	increment_build_number(
-  		build_number: latest_testflight_build_number + 1,
-  		xcodeproj: "PictureMyWorld.xcodeproj"
+		build_number: latest_testflight_build_number + 1,
+		xcodeproj: "PictureMyWorld.xcodeproj"
 	)
 
+	# Code Signing
+	# cert will make sure you have a valid certificate and its private key installed on the local machine
+	# sigh will make sure you have a valid provisioning profile installed locally, that matches the installed certificate
+	#get_certificates           # invokes cert
+	#get_provisioning_profile   # invokes sigh
 	# Build iOS app
 	build_app(scheme: "PictureMyWorld", workspace: "PictureMyWorld.xcworkspace", include_bitcode: true)
 
