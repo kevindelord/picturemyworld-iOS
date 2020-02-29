@@ -41,7 +41,7 @@ platform :ios do
 			workspace: "PictureMyWorld.xcworkspace",
 			include_bitcode: true,
 			clean: true,
-			destination: "fastlane/deploy")
+			destination: "deploy")
 
 		# Upload binary to testflight
 		# upload_to_testflight
