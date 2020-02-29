@@ -70,3 +70,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+# Custom folder used by the deploment process:
+fastlane/deploy
