@@ -15,9 +15,10 @@ List of dependencies installed via [CocoaPods](https://cocoapods.org/):
 
 ## Project Setup
 
-After installing all the pods make sure to create a `credentials.plist` using the script: `PictureMyWorld/generate_credentials.sh`
+Make sure to create and fill a `credentials.plist` using the following script:
 ```
-
+$> cd PictureMyWorld
+$> ./generate_credentials.sh
 ```
 
 ## Infrastructure
