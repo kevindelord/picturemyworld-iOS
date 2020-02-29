@@ -20,7 +20,7 @@ extension APIManager {
 			return
 		}
 
-		APIManager.get(endpoint).responseJSON { (response: DataResponse<Any>) in
+		APIManager.get(endpoint).responseJSON { (response: AFDataResponse<Any>) in
 			let result = APIManager.extractJSON(fromResponse: response)
 			guard let json = result.json else {
 				completion([:], result.error)

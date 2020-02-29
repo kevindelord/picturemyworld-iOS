@@ -25,7 +25,7 @@ extension APIManager {
 				return
 		}
 
-		APIManager.put(endpoint).responseJSON { (response: DataResponse<Any>) in
+		APIManager.put(endpoint).responseJSON { (response: AFDataResponse<Any>) in
 			let result = APIManager.extractJSON(fromResponse: response)
 			completion(result.error)
 		}
