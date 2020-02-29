@@ -23,12 +23,12 @@ struct APIManager {
 	public static var authHeaders: HTTPHeaders {
 		guard
 			let username = Environment.current.username,
-			let password = Environment.current.password,
-			let authorizationHeader = Request.authorizationHeader(user: username, password: password) else {
+			let password = Environment.current.password else {
 				return [:]
 		}
 
-		return [authorizationHeader.key: authorizationHeader.value]
+		let authorizationHeader = HTTPHeader.authorization(username: username, password: password)
+		return HTTPHeaders([authorizationHeader])
 	}
 
 	/// Create a new Error object with a specific error message.
@@ -46,16 +46,18 @@ struct APIManager {
 	///
 	/// - Parameter response: The DataResponse object coming from the API.
 	/// - Returns: Tuple with the JSON or if any error occured `nil` and a valid Error object.
-	internal static func extractJSON(fromResponse response: DataResponse<Any>) -> (json: [AnyHashable: Any]?, error: Error?) {
-		let json = response.result.value as? [AnyHashable: Any]
+	internal static func extractJSON(fromResponse response: AFDataResponse<Any>) -> (json: [AnyHashable: Any]?, error: Error?) {
+		var json: [AnyHashable: Any]?
+		switch response.result {
+		case .success(let value):
+			json = (value as? [AnyHashable: Any])
+		case .failure(let error):
+			return (json: nil, error: error)
+		}
 
 		// Did request fail?
-		if (json == nil) {
-			if (response.response?.statusCode == 401) {
-				return (json: nil, error: APIManager.errorWithMessage(API.Error.Message.unauthorizedAccess))
-			} else if let error = response.result.error {
-				return (json: nil, error: error)
-			}
+		if (json == nil && response.response?.statusCode == 401) {
+			return (json: nil, error: APIManager.errorWithMessage(API.Error.Message.unauthorizedAccess))
 		}
 
 		// A request is invalid if an error message exists.
@@ -92,7 +94,7 @@ struct APIManager {
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func get(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
 		let headers = APIManager.authHeaders
-		return Alamofire.request(url, method: .get, parameters: parameters, encoding: encoding, headers: headers)
+		return AF.request(url, method: .get, parameters: parameters, encoding: encoding, headers: headers)
 	}
 
 	/// Perform a POST request to the API.
@@ -104,8 +106,9 @@ struct APIManager {
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func post(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
 		var headers = APIManager.authHeaders
-		headers.contentType(.json)
-		return Alamofire.request(url, method: .post, parameters: parameters, encoding: encoding, headers: headers)
+		let json = HTTPHeader.contentType(API.ContentType.json.headerValue)
+		headers.add(json)
+		return AF.request(url, method: .post, parameters: parameters, encoding: encoding, headers: headers)
 	}
 
 	/// Perform a PUT request to the API.
@@ -117,8 +120,9 @@ struct APIManager {
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func put(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
 		var headers = APIManager.authHeaders
-		headers.contentType(.json)
-		return Alamofire.request(url, method: .put, parameters: parameters, encoding: encoding, headers: headers)
+		let json = HTTPHeader.contentType(API.ContentType.json.headerValue)
+		headers.add(json)
+		return AF.request(url, method: .put, parameters: parameters, encoding: encoding, headers: headers)
 	}
 
 	/// Perform a DELETE request to the API.
@@ -130,6 +134,6 @@ struct APIManager {
 	/// - Returns: The created `DataRequest` object used to extract the JSON response.
 	internal static func delete(_ url: URLConvertible, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default) -> DataRequest {
 		let headers = APIManager.authHeaders
-		return Alamofire.request(url, method: .delete, parameters: parameters, encoding: encoding, headers: headers)
+		return AF.request(url, method: .delete, parameters: parameters, encoding: encoding, headers: headers)
 	}
 }
