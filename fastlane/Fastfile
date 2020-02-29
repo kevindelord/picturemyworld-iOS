@@ -16,12 +16,12 @@ platform :ios do
 
 	desc "Build and deploy a new app version to TestFlight!"
 	desc "This lane does:"
-	desc "	- Ensure the git repository is clean"
-	desc "	- Increment the build number"
-	desc "	- Automatically code sign and build the app"
-	desc " 	- Upload the binary to TestFlight"
-	desc "	- Add and push a new git tag"
-	desc "	- Clean build artifacts"
+	desc "- Ensure the git repository is clean"
+	desc "- Increment the build number"
+	desc "- Automatically code sign and build the app"
+	desc "- Upload the binary to TestFlight"
+	desc "- Add and push a new git tag"
+	desc "- Clean build artifacts"
 
 	lane :deploy do
 		# Ensure that your git status is not dirty
@@ -44,10 +44,11 @@ platform :ios do
 			derived_data_path: "fastlane/deploy")
 
 		# Upload binary to testflight
-		# upload_to_testflight
+		upload_to_testflight
 
 		# Deletes files created as result of running gym, cert, sigh or download_dsyms
 		clean_build_artifacts
+		clear_derived_data(derived_data_path: "fastlane/deploy")
 
 		# Commit the version bump
 		commit_version_bump(xcodeproj: "PictureMyWorld.xcodeproj")

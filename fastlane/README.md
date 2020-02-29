@@ -24,17 +24,17 @@ Build and deploy a new app version to TestFlight!
 
 This lane does:
 
-	- Ensure the git repository is clean
+- Ensure the git repository is clean
 
-	- Increment the build number
+- Increment the build number
 
-	- Automatically code sign and build the app
+- Automatically code sign and build the app
 
- 	- Upload the binary to TestFlight
+- Upload the binary to TestFlight
 
-	- Add and push a new git tag
+- Add and push a new git tag
 
-	- Clean build artifacts
+- Clean build artifacts
 
 ----
 
