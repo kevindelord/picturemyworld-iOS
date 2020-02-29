@@ -63,10 +63,7 @@ struct UploadManager {
 		headers.add(multipart)
 
 		AF
-			.upload(multipartFormData: self.formData, to: self.url, method: self.httpMethod, headers: headers)
-			.uploadProgress { progress in
-				print(progress)
-		}
+		.upload(multipartFormData: self.formData, to: self.url, method: self.httpMethod, headers: headers)
 		.responseJSON { (response: AFDataResponse<Any>) in
 			let result = APIManager.extractJSON(fromResponse: response)
 			completion(result.error)
