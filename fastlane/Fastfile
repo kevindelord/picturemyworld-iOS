@@ -17,7 +17,14 @@ default_platform(:ios)
 
 platform :ios do
 
-  desc "Description of what the lane does"
+  desc "Build and deploy a new version to TestFlight!"\
+	"This action does:"\
+	"	- Ensure the git repository is clean"\
+	"	- Set or Increment the build number based on the latest TestFlight release"\
+	"	- Automatically code sign and build the app"\
+	" 	- Upload the binary to TestFlight"\
+	"	- Add and push a new git tag"\
+
   lane :deploy do
 	# Ensure that your git status is not dirty
 	ensure_git_status_clean
@@ -31,8 +38,8 @@ platform :ios do
 	# Code Signing
 	# cert will make sure you have a valid certificate and its private key installed on the local machine
 	# sigh will make sure you have a valid provisioning profile installed locally, that matches the installed certificate
-	#get_certificates           # invokes cert
-	#get_provisioning_profile   # invokes sigh
+	get_certificates           # invokes cert
+	get_provisioning_profile   # invokes sigh
 	# Build iOS app
 	build_app(scheme: "PictureMyWorld", workspace: "PictureMyWorld.xcworkspace", include_bitcode: true)
 
