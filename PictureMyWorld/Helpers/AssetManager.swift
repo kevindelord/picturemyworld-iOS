@@ -135,8 +135,8 @@ struct AssetManager {
 		}
 
 		// Thumbnails and DB assets
-		SDImageCache.shared().clearDisk()
-		SDImageCache.shared().clearMemory()
+		SDImageCache.shared.clearDisk()
+		SDImageCache.shared.clearMemory()
 	}
 
 	/// Function to remove an item from the disk with a dedicated url.
@@ -160,7 +160,7 @@ struct AssetManager {
 	/// - Parameter imageURL: URL of the image
 	static func removeCachedImage(_ imageURL: URL?) {
 		if let url = imageURL?.absoluteString {
-			SDImageCache.shared().removeImage(forKey: url)
+			SDImageCache.shared.removeImage(forKey: url)
 		}
 	}
 }
@@ -179,7 +179,7 @@ extension AssetManager {
 			return
 		}
 
-		SDImageCache.shared().diskImageExists(withKey: url.absoluteString) { (isInCache: Bool) in
+		SDImageCache.shared.diskImageExists(withKey: url.absoluteString) { (isInCache: Bool) in
 			if (isInCache == false) {
 				self.addDownloadOperation(fromURL: url, priority: priority, completion: nil)
 			}
@@ -212,7 +212,7 @@ extension AssetManager {
 
 		let imageKey = url.absoluteString
 		// Check if image is already cached:
-		SDImageCache.shared().queryCacheOperation(forKey: imageKey, done: { (image: UIImage?, data: Data?, type: SDImageCacheType) in
+		SDImageCache.shared.queryCacheOperation(forKey: imageKey, done: { (image: UIImage?, data: Data?, type: SDImageCacheType) in
 
 			// If any, return the image from the cache.
 			Log("Return cached image for KEY: \(imageKey)")
@@ -226,15 +226,14 @@ extension AssetManager {
 	///   - url:			URL of the image to download.
 	///   - completion: 	Completion closure containing the downloaded image.
 	private static func downloadAndCacheImage(fromURL url: URL, completion: ((_ image: UIImage?, _ imageKey: String) -> Void)?) {
-
-		let imageKey = url.absoluteString
+		// Set default credentials
+		SDWebImageDownloaderConfig.default.username = self.APIUsername
+		SDWebImageDownloaderConfig.default.password = self.APIPassword
 
 		// Download image and cache on Disk
-		SDWebImageDownloader.shared().username = self.APIUsername
-		SDWebImageDownloader.shared().password = self.APIPassword
-
+		let imageKey = url.absoluteString
 		Log("Download and cache image from URL: \(imageKey)")
-		SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(), progress: nil) { (image: UIImage?, data: Data?, error: Error?, finished: Bool) in
+		SDWebImageDownloader.shared.downloadImage(with: url, options: SDWebImageDownloaderOptions(), progress: nil) { (image: UIImage?, data: Data?, error: Error?, finished: Bool) in
 			Log("Download completed from URL: \(imageKey)")
 			if (finished == true), let image = image {
 				Log("Write to disk and add Backup attribute for item from URL: \(imageKey)")
@@ -336,7 +335,7 @@ extension AssetManager {
 	/// - Parameter key: The key of the stored image.
 	/// - Returns: the default cache path
 	static func cachePath(forKey key: String?) -> String? {
-		return SDImageCache.shared().defaultCachePath(forKey: key)
+		return SDImageCache.shared.cachePath(forKey: key)
 	}
 }
 
@@ -393,7 +392,7 @@ extension AssetManager {
 		let filePath = url.absoluteString
 		if (attempt == 0) {
 			Log("Cache image for KEY: \(filePath)")
-			SDImageCache.shared().store(image, forKey: filePath)
+			SDImageCache.shared.store(image, forKey: filePath)
 		}
 
 		let maxAttempts = 20
@@ -402,7 +401,7 @@ extension AssetManager {
 			return
 		}
 
-		guard let cachePath = SDImageCache.shared().defaultCachePath(forKey: filePath) else {
+		guard let cachePath = SDImageCache.shared.cachePath(forKey: filePath) else {
 			return
 		}
 

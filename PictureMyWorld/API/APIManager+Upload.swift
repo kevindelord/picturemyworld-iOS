@@ -59,23 +59,14 @@ struct UploadManager {
 
 	internal func upload(completion: @escaping ((_ error: Error?) -> Void)) {
 		var headers = APIManager.authHeaders
-		headers.contentType(.multipart)
+		let multipart = HTTPHeader.contentType(API.ContentType.multipart.headerValue)
+		headers.add(multipart)
 
-		guard let request = try? URLRequest(url: self.url, method: self.httpMethod, headers: headers) else {
-			completion(APIManager.errorWithMessage("Invalid URL for upload."))
-			return
-		}
-
-		Alamofire.upload(multipartFormData: self.formData, with: request) { (result: SessionManager.MultipartFormDataEncodingResult) in
-			switch result {
-			case .success(let upload, _, _):
-				upload.responseJSON { response in
-					let result = APIManager.extractJSON(fromResponse: response)
-					completion(result.error)
-				}
-			case .failure(let error):
-				completion(error)
-			}
+		AF
+		.upload(multipartFormData: self.formData, to: self.url, method: self.httpMethod, headers: headers)
+		.responseJSON { (response: AFDataResponse<Any>) in
+			let result = APIManager.extractJSON(fromResponse: response)
+			completion(result.error)
 		}
 	}
 }

@@ -21,7 +21,7 @@ extension APIManager {
 			return
 		}
 
-		APIManager.get(url).responseJSON { (response: DataResponse<Any>) in
+		APIManager.get(url).responseJSON { (response: AFDataResponse<Any>) in
 			let result = APIManager.extractJSON(fromResponse: response)
 			guard let json = result.json?[endpoint.jsonKey] as? [[AnyHashable: Any]] else {
 				completion([], result.error)
@@ -44,13 +44,9 @@ extension APIManager {
 		}
 
 		let request = self.createOrUpdateRequest(for: url, with: dictionary)
-		request.method(request.url, request.parameters, JSONEncoding.default).responseJSON { (response: DataResponse<Any>) in
+		request.method(request.url, request.parameters, JSONEncoding.default).responseJSON { (response: AFDataResponse<Any>) in
 			let result = APIManager.extractJSON(fromResponse: response)
-			if let error = result.error {
-				completion(error)
-			} else {
-				completion(nil)
-			}
+			completion(result.error)
 		}
 	}
 
@@ -93,13 +89,9 @@ extension APIManager {
 				fatalError("Cannot create endpoint for: \(endpoint.rawValue)")
 		}
 
-		APIManager.delete(deleteEndpoint).responseJSON { (response: DataResponse<Any>) in
+		APIManager.delete(deleteEndpoint).responseJSON { (response: AFDataResponse<Any>) in
 			let result = APIManager.extractJSON(fromResponse: response)
-			if let error = result.error {
-				completion(error)
-			} else {
-				completion(nil)
-			}
+			completion(result.error)
 		}
 	}
 }
