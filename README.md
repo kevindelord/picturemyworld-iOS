@@ -15,4 +15,9 @@ List of dependencies installed via [CocoaPods](https://cocoapods.org/):
 
 ## Infrastructure
 
-Install Fastlane: [Setup Guide](https://docs.fastlane.tools/getting-started/ios/setup/)
+To automatically deploy a new version use Fastlane:
+```
+$> bundle exec fastlane ios deploy
+```
+
+More information [here](fastlane/README.md)

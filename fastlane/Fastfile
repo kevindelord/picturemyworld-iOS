@@ -10,50 +10,52 @@
 #     https://docs.fastlane.tools/plugins/available-plugins
 #
 
-# Uncomment the line if you want fastlane to automatically update itself
-update_fastlane
-
 default_platform(:ios)
 
 platform :ios do
 
-  desc "Build and deploy a new version to TestFlight!"\
-	"This action does:"\
-	"	- Ensure the git repository is clean"\
-	"	- Set or Increment the build number based on the latest TestFlight release"\
-	"	- Automatically code sign and build the app"\
-	" 	- Upload the binary to TestFlight"\
-	"	- Add and push a new git tag"\
+	desc "Build and deploy a new app version to TestFlight!"
+	desc "This lane does:"
+	desc "	- Ensure the git repository is clean"
+	desc "	- Increment the build number"
+	desc "	- Automatically code sign and build the app"
+	desc " 	- Upload the binary to TestFlight"
+	desc "	- Add and push a new git tag"
+	desc "	- Clean build artifacts"
 
-  lane :deploy do
-	# Ensure that your git status is not dirty
-	ensure_git_status_clean
+	lane :deploy do
+		# Ensure that your git status is not dirty
+		# ensure_git_status_clean
 
-	# Increment build number
-	increment_build_number(
-		build_number: latest_testflight_build_number + 1,
-		xcodeproj: "PictureMyWorld.xcodeproj"
-	)
+		# Increment build number
+		increment_build_number(xcodeproj: "PictureMyWorld.xcodeproj")
 
-	# Code Signing
-	# cert will make sure you have a valid certificate and its private key installed on the local machine
-	# sigh will make sure you have a valid provisioning profile installed locally, that matches the installed certificate
-	get_certificates           # invokes cert
-	get_provisioning_profile   # invokes sigh
-	# Build iOS app
-	build_app(scheme: "PictureMyWorld", workspace: "PictureMyWorld.xcworkspace", include_bitcode: true)
+		# Code Signing
+		# `cert`: check for valid certificate and install its private key on the local machine
+		get_certificates(output_path: "Fastlane/deploy")
+		# `sigh`: download and install matching provisioning profile on the local machine
+		get_provisioning_profile(output_path: "Fastlane/deploy")
+		# Build iOS app
+		build_app(
+			scheme: "PictureMyWorld",
+			workspace: "PictureMyWorld.xcworkspace",
+			include_bitcode: true,
+			build_path: "Fastlane/deploy",
+			archive_path: "Fastlane/deploy")
 
-	# Upload binry to testflight
-	upload_to_testflight
+		# Upload binary to testflight
+		# upload_to_testflight
 
-	# Commit the version bump
-	commit_version_bump(xcodeproj: "PictureMyWorld.xcodeproj")
+		# Commit the version bump
+		commit_version_bump(xcodeproj: "PictureMyWorld.xcodeproj")
 
-	# Add a git tag for this build. This will automatically
-	# use an appropriate git tag name
-	add_git_tag
+		# Add a git tag for this build.
+		add_git_tag
 
-	# Push the new commit and tag back to your git remote
-	push_to_git_remote
-  end
+		# Push the new commit and tag back to your git remote
+		push_to_git_remote
+
+		# Deletes files created as result of running gym, cert, sigh or download_dsyms
+		clean_build_artifacts
+	end
 end

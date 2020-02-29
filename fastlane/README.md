@@ -20,7 +20,21 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane ios deploy
 ```
-Description of what the lane does
+Build and deploy a new app version to TestFlight!
+
+This lane does:
+
+	- Ensure the git repository is clean
+
+	- Increment the build number
+
+	- Automatically code sign and build the app
+
+ 	- Upload the binary to TestFlight
+
+	- Add and push a new git tag
+
+	- Clean build artifacts
 
 ----
 
