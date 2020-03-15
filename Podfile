@@ -8,9 +8,9 @@ inhibit_all_warnings!
 project 'PictureMyWorld.xcodeproj'
 
 target 'PictureMyWorld' do
-	pod 'SDWebImage', '~> 5.5.2'
+	pod 'SDWebImage', '~> 5.6.1'
 	pod 'Reachability', '~> 3.2.0'
-	pod 'Alamofire', '~> 5.0.2'
+	pod 'Alamofire', '~> 5.0.3'
 end
 
 post_install do |installer|
