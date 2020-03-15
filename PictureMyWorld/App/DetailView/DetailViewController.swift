@@ -115,6 +115,8 @@ extension DetailViewController {
 	@IBAction func save() {
 		// Show Linear Progress View
 		self.showProgressView()
+		// Disable the `save` button to avoid multiple triggered events.
+		self.navigationItem.rightBarButtonItem?.isEnabled = false
 		// Create or Update entities entities through the API
 		self.contentDataSource?.createOrUpdateEntity(json: self.serializedEntity, imageData: self.imageData, completion: { [weak self] in
 			self?.dashboardDelegate?.reloadTableView()

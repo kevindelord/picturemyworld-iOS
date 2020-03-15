@@ -136,9 +136,6 @@ public class LinearProgressView				: UIView {
 		}
 
 		subview.translatesAutoresizingMaskIntoConstraints = false
-		// X, Height
-		NSLayoutConstraint.equal(.top, view: subview, superview: self)
-		NSLayoutConstraint.equal(.bottom, view: subview, superview: self)
 	}
 }
 
@@ -171,11 +168,11 @@ extension LinearProgressView {
 	private func configureAnimation() {
 		/// Bring (again) the progress view to the front.
 		self.superview?.bringSubviewToFront(safe: self)
-		// (Re)configure the bar indicator.
+		/// (Re)configure the bar indicator.
 		self.progressBarIndicator?.frame = CGRect(x: 0, y: 0, width: 0, height: self.frame.size.height)
 		let reduceSize = (self.frame.size.width * Interface.ProgressView.reducedSizeRatio)
 
-		// First step animation
+		/// First step animation
 		UIView.animate(withDuration: Interface.ProgressView.firstSlideDuration, delay: 0, options: [], animations: {
 			self.progressBarIndicator?.frame = CGRect(x: self.frame.size.width * Interface.ProgressView.slidedOriginRatio,
 													  y: 0,
@@ -183,7 +180,7 @@ extension LinearProgressView {
 													  height: self.frame.size.height)
 		}, completion: nil)
 
-		// Second step animation
+		/// Second step animation
 		UIView.animate(withDuration: Interface.ProgressView.secondSlideDuration, delay: Interface.ProgressView.secondSlideDelay, options: [], animations: {
 			self.progressBarIndicator?.frame = CGRect(x: self.frame.width, y: 0, width: reduceSize, height: self.frame.size.height)
 		}, completion: { (animationFinished: Bool) in
